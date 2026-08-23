@@ -1,0 +1,11 @@
+built/
+pxt_modules/
+node_modules/
+.pxt/
+projects/
+package.json
+package-lock.json
+tsconfig.json
+*.hex
+*.uf2
+*.log

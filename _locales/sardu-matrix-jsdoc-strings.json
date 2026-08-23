@@ -1,0 +1,23 @@
+{
+  "MatrixModuleType": "Physical size of one matrix module.",
+  "MatrixOrigin": "Physical corner where the data chain starts.",
+  "MatrixPath": "Shape of the data path.",
+  "MatrixScanAxis": "Primary direction followed by the data chain.",
+  "sarduMatrix.Matrix": "A configurable RGB LED matrix.",
+  "sarduMatrix.Matrix.clear": "Clears the RGB buffer. Call show to update the physical display.",
+  "sarduMatrix.Matrix.drawText": "Draws one line of text into the RGB buffer without showing it.",
+  "sarduMatrix.Matrix.height": "Returns the logical display height.",
+  "sarduMatrix.Matrix.ledCount": "Returns the number of configured RGB LEDs.",
+  "sarduMatrix.Matrix.rgbBufferBytes": "Returns the exact size of the NeoPixel RGB buffer in bytes.",
+  "sarduMatrix.Matrix.scrollText": "Scrolls one line from right to left, then leaves the display black.",
+  "sarduMatrix.Matrix.setBrightness": "Sets brightness for pixels written after this call.",
+  "sarduMatrix.Matrix.setPixel": "Sets one logical pixel. Call show to update the physical display.",
+  "sarduMatrix.Matrix.show": "Sends the RGB buffer to the physical display.",
+  "sarduMatrix.Matrix.width": "Returns the logical display width.",
+  "sarduMatrix.create": "Creates one matrix using its total logical width and height.",
+  "sarduMatrix.createAdvanced": "Creates one matrix with an explicitly configured physical pixel path.",
+  "sarduMatrix.createModules": "Creates a horizontal row of identical matrix modules.",
+  "sarduMatrix.createModulesAdvanced": "Creates a rectangular grid of modules with explicit physical paths.",
+  "sarduMatrixInternal.pathIndex": "Maps a logical coordinate to a position in one physical scan path.",
+  "sarduMatrixInternal.physicalIndex": "Maps a display coordinate to its LED position."
+}

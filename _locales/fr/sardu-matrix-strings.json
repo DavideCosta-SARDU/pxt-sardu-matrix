@@ -1,0 +1,14 @@
+{
+  "MatrixModuleType.Matrix16x16|block": "16 x 16", "MatrixModuleType.Matrix16x8|block": "16 x 8", "MatrixModuleType.Matrix32x8|block": "32 x 8", "MatrixModuleType.Matrix8x16|block": "8 x 16", "MatrixModuleType.Matrix8x32|block": "8 x 32", "MatrixModuleType.Matrix8x8|block": "8 x 8",
+  "MatrixOrigin.BottomLeft|block": "en bas à gauche", "MatrixOrigin.BottomRight|block": "en bas à droite", "MatrixOrigin.TopLeft|block": "en haut à gauche", "MatrixOrigin.TopRight|block": "en haut à droite",
+  "MatrixPath.Progressive|block": "progressif", "MatrixPath.Serpentine|block": "serpentin", "MatrixScanAxis.Columns|block": "colonnes", "MatrixScanAxis.Rows|block": "lignes",
+  "sarduMatrix.Matrix.clear|block": "effacer %matrix", "sarduMatrix.Matrix.drawText|block": "%matrix dessiner le texte %text à x %x y %y en %color=neopixel_colors", "sarduMatrix.Matrix.drawText|param|text|defl": "Bonjour",
+  "sarduMatrix.Matrix.height|block": "hauteur de %matrix", "sarduMatrix.Matrix.ledCount|block": "nombre de LED de %matrix", "sarduMatrix.Matrix.rgbBufferBytes|block": "octets du tampon RVB de %matrix",
+  "sarduMatrix.Matrix.scrollText|block": "%matrix faire défiler le texte %text en %color=neopixel_colors toutes les %frameIntervalMs ms", "sarduMatrix.Matrix.scrollText|param|text|defl": "Bonjour",
+  "sarduMatrix.Matrix.setBrightness|block": "%matrix régler la luminosité à %brightness", "sarduMatrix.Matrix.setPixel|block": "%matrix régler le pixel x %x y %y sur %color=neopixel_colors", "sarduMatrix.Matrix.show|block": "afficher %matrix", "sarduMatrix.Matrix.width|block": "largeur de %matrix",
+  "sarduMatrix.createAdvanced|block": "créer une matrice largeur %width hauteur %height|départ pixels %origin balayage %axis chemin %path|sur la broche %pin",
+  "sarduMatrix.createModulesAdvanced|block": "créer %matrixCount matrices de type %matrixType sur %matrixRows lignes|départ pixels %pixelOrigin balayage %pixelAxis chemin %pixelPath|départ modules %moduleOrigin balayage %moduleAxis chemin %modulePath|sur la broche %pin",
+  "sarduMatrix.createModules|block": "créer %matrixCount matrices de type %matrixType sur la broche %pin", "sarduMatrix.create|block": "créer une matrice largeur %width hauteur %height sur la broche %pin",
+  "sarduMatrixInternal|block": "sarduMatrixInternal", "sarduMatrix|block": "SARDU Matrix", "{id:category}SarduMatrix": "SARDU Matrix", "{id:category}SarduMatrixInternal": "SarduMatrixInternal",
+  "{id:group}Creation": "Création", "{id:group}Display": "Affichage", "{id:group}More": "Plus", "{id:group}Pixels": "Pixels", "{id:group}Scrolling": "Défilement", "{id:group}Text": "Texte"
+}

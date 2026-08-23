@@ -1,0 +1,23 @@
+{
+  "MatrixModuleType": "Dimensione fisica di un modulo matrice.",
+  "MatrixOrigin": "Angolo fisico da cui inizia la catena dati.",
+  "MatrixPath": "Forma del percorso dati.",
+  "MatrixScanAxis": "Direzione principale seguita dalla catena dati.",
+  "sarduMatrix.Matrix": "Una matrice LED RGB configurabile.",
+  "sarduMatrix.Matrix.clear": "Cancella il buffer RGB. Chiama mostra per aggiornare il display fisico.",
+  "sarduMatrix.Matrix.drawText": "Disegna una riga di testo nel buffer RGB senza mostrarla.",
+  "sarduMatrix.Matrix.height": "Restituisce l'altezza logica del display.",
+  "sarduMatrix.Matrix.ledCount": "Restituisce il numero di LED RGB configurati.",
+  "sarduMatrix.Matrix.rgbBufferBytes": "Restituisce la dimensione esatta in byte del buffer RGB NeoPixel.",
+  "sarduMatrix.Matrix.scrollText": "Scorre una riga da destra a sinistra e lascia il display nero.",
+  "sarduMatrix.Matrix.setBrightness": "Imposta la luminosità per i pixel scritti dopo questa chiamata.",
+  "sarduMatrix.Matrix.setPixel": "Imposta un pixel logico. Chiama mostra per aggiornare il display fisico.",
+  "sarduMatrix.Matrix.show": "Invia il buffer RGB al display fisico.",
+  "sarduMatrix.Matrix.width": "Restituisce la larghezza logica del display.",
+  "sarduMatrix.create": "Crea una matrice usando larghezza e altezza logiche totali.",
+  "sarduMatrix.createAdvanced": "Crea una matrice configurando esplicitamente il percorso fisico dei pixel.",
+  "sarduMatrix.createModules": "Crea una riga orizzontale di moduli matrice identici.",
+  "sarduMatrix.createModulesAdvanced": "Crea una griglia rettangolare di moduli con percorsi fisici espliciti.",
+  "sarduMatrixInternal.pathIndex": "Converte una coordinata logica in una posizione del percorso fisico.",
+  "sarduMatrixInternal.physicalIndex": "Converte una coordinata del display nella posizione del LED."
+}

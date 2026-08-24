@@ -14,8 +14,8 @@ namespace sarduMatrix {
 
     /** Creates one matrix with an explicitly configured physical pixel path. */
     //% blockId=sardu_matrix_create_advanced block="create matrix width %width height %height|pixel start %origin scan %axis path %path|on pin %pin"
-    //% blockSetVariable=matrix group="More" weight=15 advanced=true
-    //% width.defl=16 height.defl=16 pin.defl=DigitalPin.P0
+    //% blockSetVariable=matrix group="More" weight=30 advanced=true
+    //% width.defl=16 height.defl=16 origin.defl=MatrixOrigin.TopLeft axis.defl=MatrixScanAxis.Columns path.defl=MatrixPath.ZigZag pin.defl=DigitalPin.P0
     export function createAdvanced(
         width: number = 16,
         height: number = 16,
@@ -45,8 +45,10 @@ namespace sarduMatrix {
 
     /** Creates a rectangular grid of modules with explicit physical paths. */
     //% blockId=sardu_matrix_create_modules_advanced block="create %matrixCount matrices of type %matrixType in %matrixRows rows|pixels start %pixelOrigin scan %pixelAxis path %pixelPath|modules start %moduleOrigin scan %moduleAxis path %modulePath|on pin %pin"
-    //% blockSetVariable=matrix group="More" weight=14 advanced=true
-    //% matrixCount.defl=1 matrixCount.min=1 matrixRows.defl=1 matrixRows.min=1 matrixType.defl=MatrixModuleType.Matrix16x16 pin.defl=DigitalPin.P0
+    //% blockSetVariable=matrix group="More" weight=29 advanced=true
+    //% matrixCount.defl=1 matrixCount.min=1 matrixRows.defl=1 matrixRows.min=1 matrixType.defl=MatrixModuleType.Matrix16x16
+    //% pixelOrigin.defl=MatrixOrigin.TopLeft pixelAxis.defl=MatrixScanAxis.Columns pixelPath.defl=MatrixPath.ZigZag
+    //% moduleOrigin.defl=MatrixOrigin.TopLeft moduleAxis.defl=MatrixScanAxis.Rows modulePath.defl=MatrixPath.ZigZag pin.defl=DigitalPin.P0
     export function createModulesAdvanced(
         matrixCount: number = 1,
         matrixType: MatrixModuleType = MatrixModuleType.Matrix16x16,

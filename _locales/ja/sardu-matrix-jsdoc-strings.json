@@ -1,8 +1,8 @@
 {
   "MatrixModuleType": "1つのマトリックスモジュールの物理サイズです。", "MatrixOrigin": "データチェーンが始まる物理的な角です。", "MatrixPath": "データ経路の形です。", "MatrixScanAxis": "データチェーンが進む主方向です。",
-  "sarduMatrix.Matrix": "設定可能な RGB LED マトリックスです。", "sarduMatrix.Matrix.clear": "RGB バッファーを消去します。実機を更新するには表示を呼び出します。", "sarduMatrix.Matrix.drawText": "RGB バッファーに1行の文字列を描画します。表示は行いません。",
-  "sarduMatrix.Matrix.height": "ディスプレイの論理的な高さを返します。", "sarduMatrix.Matrix.ledCount": "設定された RGB LED の数を返します。", "sarduMatrix.Matrix.rgbBufferBytes": "NeoPixel RGB バッファーの正確なバイト数を返します。",
-  "sarduMatrix.Matrix.scrollText": "1行を右から左へスクロールし、最後にディスプレイを消灯します。", "sarduMatrix.Matrix.setBrightness": "この呼び出し以降に書き込むピクセルの明るさを設定します。", "sarduMatrix.Matrix.setPixel": "論理ピクセルを設定します。実機を更新するには表示を呼び出します。", "sarduMatrix.Matrix.show": "RGB バッファーを実機のディスプレイへ送ります。", "sarduMatrix.Matrix.width": "ディスプレイの論理的な幅を返します。",
+  "sarduMatrix.Matrix": "設定可能な RGB LED マトリックスです。", "sarduMatrix.Matrix.clear": "RGB バッファーを消去し、実機の表示をすぐに更新します。", "sarduMatrix.Matrix.clearBuffer": "RGB バッファーだけを消去します。実機を更新するには表示を呼び出します。", "sarduMatrix.Matrix.drawText": "RGB バッファーに1行の文字列を描画します。表示は行いません。",
+  "sarduMatrix.Matrix.height": "ディスプレイの論理的な高さを返します。", "sarduMatrix.Matrix.interruptAndClear": "実行中の出力を停止し、RGB バッファーを消去して表示をすぐに更新します。", "sarduMatrix.Matrix.ledCount": "設定された RGB LED の数を返します。", "sarduMatrix.Matrix.rgbBufferBytes": "NeoPixel RGB バッファーの正確なバイト数を返します。",
+  "sarduMatrix.Matrix.scrollText": "選択した X、Y 座標から1行を左へスクロールし、最後にディスプレイを消灯します。", "sarduMatrix.Matrix.setBrightness": "この呼び出し以降に書き込むピクセルの明るさを設定します。", "sarduMatrix.Matrix.setPixel": "論理ピクセルを設定します。実機を更新するには表示を呼び出します。", "sarduMatrix.Matrix.show": "RGB バッファーを実機のディスプレイへ送ります。", "sarduMatrix.Matrix.width": "ディスプレイの論理的な幅を返します。",
   "sarduMatrix.create": "論理的な全幅と全高を使ってマトリックスを作成します。", "sarduMatrix.createAdvanced": "物理ピクセル経路を明示的に設定してマトリックスを作成します。", "sarduMatrix.createModules": "同じマトリックスモジュールを横1行に作成します。", "sarduMatrix.createModulesAdvanced": "物理経路を指定した長方形のモジュールグリッドを作成します。",
   "sarduMatrixInternal.pathIndex": "論理座標を物理スキャン経路上の位置に変換します。", "sarduMatrixInternal.physicalIndex": "ディスプレイ座標を LED 位置に変換します。"
 }

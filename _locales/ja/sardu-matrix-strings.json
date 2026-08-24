@@ -1,14 +1,14 @@
 {
   "MatrixModuleType.Matrix16x16|block": "16 x 16", "MatrixModuleType.Matrix16x8|block": "16 x 8", "MatrixModuleType.Matrix32x8|block": "32 x 8", "MatrixModuleType.Matrix8x16|block": "8 x 16", "MatrixModuleType.Matrix8x32|block": "8 x 32", "MatrixModuleType.Matrix8x8|block": "8 x 8",
   "MatrixOrigin.BottomLeft|block": "左下", "MatrixOrigin.BottomRight|block": "右下", "MatrixOrigin.TopLeft|block": "左上", "MatrixOrigin.TopRight|block": "右上",
-  "MatrixPath.Progressive|block": "順方向", "MatrixPath.Serpentine|block": "ジグザグ", "MatrixScanAxis.Columns|block": "列", "MatrixScanAxis.Rows|block": "行",
-  "sarduMatrix.Matrix.clear|block": "%matrix を消去", "sarduMatrix.Matrix.drawText|block": "%matrix に文字列 %text を x %x y %y、色 %color=neopixel_colors で描画", "sarduMatrix.Matrix.drawText|param|text|defl": "こんにちは",
-  "sarduMatrix.Matrix.height|block": "%matrix の高さ", "sarduMatrix.Matrix.ledCount|block": "%matrix の LED 数", "sarduMatrix.Matrix.rgbBufferBytes|block": "%matrix の RGB バッファーバイト数",
-  "sarduMatrix.Matrix.scrollText|block": "%matrix で文字列 %text を色 %color=neopixel_colors、間隔 %frameIntervalMs ミリ秒でスクロール", "sarduMatrix.Matrix.scrollText|param|text|defl": "こんにちは",
+  "MatrixPath.Progressive|block": "順方向", "MatrixPath.ZigZag|block": "ZigZag", "MatrixScanAxis.Columns|block": "列", "MatrixScanAxis.Rows|block": "行",
+  "sarduMatrix.Matrix.clearBuffer|block": "%matrix のバッファーを消去", "sarduMatrix.Matrix.clear|block": "%matrix のマトリックスを消去", "sarduMatrix.Matrix.drawText|block": "%matrix に文字列 %text を x %x y %y、色 %color=neopixel_colors で描画", "sarduMatrix.Matrix.drawText|param|text|defl": "SARDU",
+  "sarduMatrix.Matrix.height|block": "%matrix の高さ", "sarduMatrix.Matrix.interruptAndClear|block": "%matrix を停止してマトリックスを消去", "sarduMatrix.Matrix.ledCount|block": "%matrix の LED 数", "sarduMatrix.Matrix.rgbBufferBytes|block": "%matrix の RGB バッファーバイト数",
+  "sarduMatrix.Matrix.scrollText|block": "%matrix で文字列 %text を x %x y %y から色 %color=neopixel_colors、間隔 %frameIntervalMs ミリ秒でスクロール", "sarduMatrix.Matrix.scrollText|param|text|defl": "SARDU",
   "sarduMatrix.Matrix.setBrightness|block": "%matrix の明るさを %brightness に設定", "sarduMatrix.Matrix.setPixel|block": "%matrix のピクセル x %x y %y を %color=neopixel_colors に設定", "sarduMatrix.Matrix.show|block": "%matrix を表示", "sarduMatrix.Matrix.width|block": "%matrix の幅",
   "sarduMatrix.createAdvanced|block": "幅 %width 高さ %height のマトリックスを作成|ピクセル開始 %origin スキャン %axis 経路 %path|ピン %pin",
   "sarduMatrix.createModulesAdvanced|block": "%matrixCount 個の %matrixType マトリックスを %matrixRows 行で作成|ピクセル開始 %pixelOrigin スキャン %pixelAxis 経路 %pixelPath|モジュール開始 %moduleOrigin スキャン %moduleAxis 経路 %modulePath|ピン %pin",
   "sarduMatrix.createModules|block": "%matrixCount 個の %matrixType マトリックスをピン %pin に作成", "sarduMatrix.create|block": "幅 %width 高さ %height のマトリックスをピン %pin に作成",
   "sarduMatrixInternal|block": "sarduMatrixInternal", "sarduMatrix|block": "SARDU Matrix", "{id:category}SarduMatrix": "SARDU Matrix", "{id:category}SarduMatrixInternal": "SarduMatrixInternal",
-  "{id:group}Creation": "作成", "{id:group}Display": "表示", "{id:group}More": "その他", "{id:group}Pixels": "ピクセル", "{id:group}Scrolling": "スクロール", "{id:group}Text": "文字列"
+  "{id:group}Creation": "作成", "{id:group}Display": "表示", "{id:group}More": "その他", "{id:group}Pixels": "ピクセル", "{id:group}Scrolling text": "スクロール文字列", "{id:group}Static text": "静止文字列"
 }

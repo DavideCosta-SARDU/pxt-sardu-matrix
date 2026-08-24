@@ -38,7 +38,10 @@ enum MatrixScanAxis {
 enum MatrixPath {
     //% block="progressive"
     Progressive = 0,
-    //% block="serpentine"
+    //% block="ZigZag"
+    ZigZag = 1,
+    // Kept as a hidden alias so existing TypeScript projects still compile.
+    //% blockHidden=true
     Serpentine = 1
 }
 
@@ -84,7 +87,7 @@ namespace sarduMatrixInternal {
     }
 
     function validPath(value: MatrixPath): boolean {
-        return value == MatrixPath.Progressive || value == MatrixPath.Serpentine;
+        return value == MatrixPath.Progressive || value == MatrixPath.ZigZag;
     }
 
     function validatePath(origin: MatrixOrigin, axis: MatrixScanAxis, path: MatrixPath): void {

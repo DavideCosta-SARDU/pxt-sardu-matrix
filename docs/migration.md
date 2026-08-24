@@ -13,7 +13,7 @@ Le firme mostrate sono ancora proposte di progetto e saranno definitive soltanto
 | Creazione | larghezza e altezza in variabili globali/inizializzazione legacy | oggetto `Matrix`, creato per dimensioni o per moduli |
 | Default | dipendente dall'inizializzazione legacy | un modulo 16×16 oppure 16×16 diretto |
 | Caso 96×16 | dimensioni complessive | esempio/test, non default né limite |
-| Mapping | column-zigzag continuo | origine, asse e progressivo/serpentina; piano separato per moduli |
+| Mapping | column-ZigZag continuo | origine, asse e progressivo/ZigZag; piano separato per moduli |
 | Buffer RGB | proporzionale ai LED ma non documentato chiaramente | esattamente `ledCount × 3`, nessun massimo fisso a 1536 |
 | Stato | prevalentemente globale | incapsulato nell'istanza matrice |
 | Pixel fuori schermo | errore sul bordo esclusivo con possibile alias | ignorato in sicurezza |
@@ -42,7 +42,7 @@ Alternativa equivalente per questo specifico cablaggio:
 let matrix = sarduMatrix.create(96, 16, DigitalPin.P0)
 ```
 
-Il blocco base usa una riga. Con i default column-serpentine interni e ordine dei moduli da sinistra a destra, i due metodi generano gli stessi 1536 indici fisici. Per griglie con più righe o altri cablaggi si usa la configurazione avanzata descritta in `display-configuration.md` e `wiring.md`.
+Il blocco base usa una riga. Con i default column-ZigZag interni e ordine dei moduli da sinistra a destra, i due metodi generano gli stessi 1536 indici fisici. Per griglie con più righe o altri cablaggi si usa la configurazione avanzata descritta in `display-configuration.md` e `wiring.md`.
 
 ## 3.1 Configurazioni non 96×16
 
@@ -93,16 +93,15 @@ Per cancellare sia il buffer sia il display fisico:
 
 ```typescript
 matrix.clear()
-matrix.show()
 ```
 
-`clear()` da solo prepara un fotogramma nero ma non lo trasmette. Questa regola è la stessa usata per `setPixel()` e `drawText()`.
+`clear()` azzera il buffer e trasmette subito il nero. Per preparare un fotogramma senza trasmetterlo si usa il blocco avanzato `clearBuffer()`.
 
 ## 6. Luminosità
 
 ```typescript
 matrix.setBrightness(64)
-matrix.clear()
+matrix.clearBuffer()
 matrix.drawText("SARDU", 0, 4, neopixel.colors(NeoPixelColors.Red))
 matrix.show()
 ```
@@ -114,7 +113,7 @@ Come nel backend NeoPixel usato dalla libreria storica, il nuovo valore agisce s
 Per mostrare una scritta:
 
 ```typescript
-matrix.clear()
+matrix.clearBuffer()
 matrix.drawText("CIAO", 0, 4, neopixel.colors(NeoPixelColors.Green))
 matrix.show()
 ```
@@ -128,7 +127,7 @@ Differenze intenzionali:
 - caratteri non supportati diventano `?`;
 - non sono previsti livelli di composizione nell'API iniziale.
 
-Per sovrapporre testo a pixel già disegnati, non chiamare `clear()` prima di `drawText()`.
+Per sovrapporre testo a pixel già disegnati, non chiamare `clearBuffer()` prima di `drawText()`.
 
 ## 8. Testo scorrevole
 
@@ -137,6 +136,8 @@ Esempio:
 ```typescript
 matrix.scrollText(
     "SARDU MATRIX",
+    16,
+    0,
     neopixel.colors(NeoPixelColors.Blue),
     80
 )
@@ -150,7 +151,7 @@ Il terzo parametro non è una velocità astratta: è l'intervallo obiettivo fra 
 
 La vecchia formula legava la velocità a un reciproco e rendeva poco intuitivo il risultato. Nella nuova API l'unità è stabile e direttamente spiegabile nei blocchi.
 
-Lo scrolling parte fuori dal bordo destro, attraversa il display, esce dal bordo sinistro e termina col display nero. Non è necessario chiamare `show()` durante o dopo questa operazione composta.
+Lo scrolling parte dalle coordinate X e Y scelte, esce dal bordo sinistro e termina col display nero. Non è necessario chiamare `show()` durante o dopo questa operazione composta. `interruptAndClear()` può arrestarlo da un evento pulsante o radio appena termina l'eventuale invio WS2812 già iniziato.
 
 ## 9. Colore del testo
 
@@ -160,7 +161,7 @@ Il colore non è uno stato globale separato: viene passato alla singola operazio
 matrix.drawText("A", 0, 0, neopixel.rgb(255, 80, 0))
 matrix.show()
 
-matrix.scrollText("B", neopixel.rgb(0, 50, 255), 100)
+matrix.scrollText("B", 16, 0, neopixel.rgb(0, 50, 255), 100)
 ```
 
 Questo evita che il risultato dipenda da una precedente chiamata lontana nel programma e permette colori diversi nello stesso fotogramma statico.
@@ -177,7 +178,7 @@ I livelli testuali legacy non vengono copiati. Il buffer NeoPixel è il piano di
 
 ### Auto-show
 
-Le funzioni elementari non aggiornano automaticamente i LED. Quando si converte un programma legacy bisogna aggiungere `show()` dopo aver completato il fotogramma. `scrollText()` è l'eccezione intenzionale, perché gestisce un'intera animazione.
+`setPixel()`, `drawText()` e `clearBuffer()` non aggiornano automaticamente i LED. Quando si converte un programma legacy bisogna aggiungere `show()` dopo aver completato il fotogramma. `clear()`, `interruptAndClear()` e `scrollText()` aggiornano invece il display intenzionalmente.
 
 ### Accesso alla strip
 
@@ -192,11 +193,12 @@ La strip e il buffer interni non sono pubblici. Un programma che usava direttame
 | Configurare per dimensioni | `create(96, 16, P0)` |
 | Configurare più righe di moduli | factory/opzioni avanzate con `matrixRows` |
 | Accendere un pixel | `setPixel(x, y, color)` poi `show()` |
-| Preparare il nero | `clear()` |
-| Spegnere fisicamente | `clear()` poi `show()` |
+| Preparare il nero senza inviarlo | `clearBuffer()` |
+| Spegnere fisicamente | `clear()` |
+| Arrestare un'animazione e spegnere | `interruptAndClear()` |
 | Impostare luminosità | `setBrightness(0..255)` prima di disegnare |
 | Disegnare testo | `drawText(text, x, y, color)` poi `show()` |
-| Far scorrere testo | `scrollText(text, color, frameIntervalMs)` |
+| Far scorrere testo | `scrollText(text, x, y, color, frameIntervalMs)` |
 | Leggere la geometria | `width()` e `height()` |
 
 ## 12. Checklist di migrazione
@@ -216,7 +218,7 @@ La strip e il buffer interni non sono pubblici. Un programma che usava direttame
 
 La migrazione conserva:
 
-- controllo di matrici RGB column-zigzag e altri percorsi configurati;
+- controllo di matrici RGB column-ZigZag e altri percorsi configurati;
 - coordinate logiche bidimensionali;
 - pixel colorati;
 - luminosità;

@@ -52,21 +52,21 @@ Advanced creation blocks can configure module rows and two independent physical 
 - pixel order inside every module;
 - module order across the rectangular grid.
 
-Each path selects its starting corner, row/column scan axis and progressive/serpentine order. A module grid must be complete, so the module count must be exactly divisible by the selected row count.
+Each path selects its starting corner, row/column scan axis and progressive/ZigZag order. A module grid must be complete, so the module count must be exactly divisible by the selected row count.
 
 ## Drawing
 
 Changes are written to the RGB buffer. Call `show()` when the physical LEDs must be updated.
 
 ```blocks
-matrix.clear()
-matrix.drawText("HELLO", 0, 4, neopixel.colors(NeoPixelColors.Red))
+matrix.clearBuffer()
+matrix.drawText("Hello, città!", 0, 4, neopixel.colors(NeoPixelColors.Red))
 matrix.show()
 ```
 
-`setPixel()` and `drawText()` do not call `show()` automatically. Coordinates outside the logical display are safely clipped. `scrollText()` is a complete blocking/cooperative animation and leaves both buffer and display black.
+`clear()` immediately clears both buffer and physical display. `clearBuffer()` only changes memory and is available under advanced blocks. `setPixel()` and `drawText()` do not call `show()` automatically. Coordinates outside the logical display are safely clipped. `scrollText()` starts at the selected X/Y coordinates, moves left and can be stopped by `interruptAndClear()` from a button or radio event.
 
-The original compact font is monospaced 6×8: five visible columns plus spacing. Printable ASCII is accepted; lowercase letters intentionally use the corresponding uppercase glyph in this first version.
+The standard compact font is monospaced 6×8: five visible columns plus spacing. It distinguishes uppercase and lowercase, supports printable ASCII, common accented Latin letters (`À`–`ÿ`, including `Œ/œ` and `Ÿ`) and selected symbols (`€ £ © ® ° × ÷ ¿ ¡`). Unsupported characters are displayed as `?`. Additional font choices will be designed separately before release.
 
 ## Dynamic memory use
 

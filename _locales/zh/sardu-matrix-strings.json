@@ -1,14 +1,14 @@
 {
   "MatrixModuleType.Matrix16x16|block": "16 x 16", "MatrixModuleType.Matrix16x8|block": "16 x 8", "MatrixModuleType.Matrix32x8|block": "32 x 8", "MatrixModuleType.Matrix8x16|block": "8 x 16", "MatrixModuleType.Matrix8x32|block": "8 x 32", "MatrixModuleType.Matrix8x8|block": "8 x 8",
   "MatrixOrigin.BottomLeft|block": "左下", "MatrixOrigin.BottomRight|block": "右下", "MatrixOrigin.TopLeft|block": "左上", "MatrixOrigin.TopRight|block": "右上",
-  "MatrixPath.Progressive|block": "连续", "MatrixPath.Serpentine|block": "蛇形", "MatrixScanAxis.Columns|block": "列", "MatrixScanAxis.Rows|block": "行",
-  "sarduMatrix.Matrix.clear|block": "清除 %matrix", "sarduMatrix.Matrix.drawText|block": "%matrix 绘制文本 %text 于 x %x y %y，颜色 %color=neopixel_colors", "sarduMatrix.Matrix.drawText|param|text|defl": "你好",
-  "sarduMatrix.Matrix.height|block": "%matrix 高度", "sarduMatrix.Matrix.ledCount|block": "%matrix LED 数量", "sarduMatrix.Matrix.rgbBufferBytes|block": "%matrix RGB 缓冲区字节数",
-  "sarduMatrix.Matrix.scrollText|block": "%matrix 滚动文本 %text，颜色 %color=neopixel_colors，每 %frameIntervalMs 毫秒", "sarduMatrix.Matrix.scrollText|param|text|defl": "你好",
+  "MatrixPath.Progressive|block": "连续", "MatrixPath.ZigZag|block": "ZigZag", "MatrixScanAxis.Columns|block": "列", "MatrixScanAxis.Rows|block": "行",
+  "sarduMatrix.Matrix.clearBuffer|block": "%matrix 清空缓冲区", "sarduMatrix.Matrix.clear|block": "%matrix 清除矩阵", "sarduMatrix.Matrix.drawText|block": "%matrix 绘制文本 %text 于 x %x y %y，颜色 %color=neopixel_colors", "sarduMatrix.Matrix.drawText|param|text|defl": "SARDU",
+  "sarduMatrix.Matrix.height|block": "%matrix 高度", "sarduMatrix.Matrix.interruptAndClear|block": "%matrix 停止并清除矩阵", "sarduMatrix.Matrix.ledCount|block": "%matrix LED 数量", "sarduMatrix.Matrix.rgbBufferBytes|block": "%matrix RGB 缓冲区字节数",
+  "sarduMatrix.Matrix.scrollText|block": "%matrix 滚动文本 %text，从 x %x y %y 开始，颜色 %color=neopixel_colors，每 %frameIntervalMs 毫秒", "sarduMatrix.Matrix.scrollText|param|text|defl": "SARDU",
   "sarduMatrix.Matrix.setBrightness|block": "将 %matrix 亮度设为 %brightness", "sarduMatrix.Matrix.setPixel|block": "将 %matrix 的像素 x %x y %y 设为 %color=neopixel_colors", "sarduMatrix.Matrix.show|block": "显示 %matrix", "sarduMatrix.Matrix.width|block": "%matrix 宽度",
   "sarduMatrix.createAdvanced|block": "创建宽 %width 高 %height 的矩阵|像素起点 %origin 扫描 %axis 路径 %path|引脚 %pin",
   "sarduMatrix.createModulesAdvanced|block": "创建 %matrixCount 个 %matrixType 矩阵并排成 %matrixRows 行|像素起点 %pixelOrigin 扫描 %pixelAxis 路径 %pixelPath|模块起点 %moduleOrigin 扫描 %moduleAxis 路径 %modulePath|引脚 %pin",
   "sarduMatrix.createModules|block": "创建 %matrixCount 个 %matrixType 矩阵，引脚 %pin", "sarduMatrix.create|block": "创建矩阵，宽 %width 高 %height，引脚 %pin",
   "sarduMatrixInternal|block": "sarduMatrixInternal", "sarduMatrix|block": "SARDU Matrix", "{id:category}SarduMatrix": "SARDU Matrix", "{id:category}SarduMatrixInternal": "SarduMatrixInternal",
-  "{id:group}Creation": "创建", "{id:group}Display": "显示", "{id:group}More": "更多", "{id:group}Pixels": "像素", "{id:group}Scrolling": "滚动", "{id:group}Text": "文本"
+  "{id:group}Creation": "创建", "{id:group}Display": "显示", "{id:group}More": "更多", "{id:group}Pixels": "像素", "{id:group}Scrolling text": "滚动文本", "{id:group}Static text": "静态文本"
 }

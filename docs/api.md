@@ -63,7 +63,7 @@ enum MatrixScanAxis {
 ```typescript
 enum MatrixPath {
     Progressive,
-    Serpentine
+    ZigZag
 }
 ```
 
@@ -92,7 +92,7 @@ Mapping di default:
 ```text
 origine  = alto a sinistra
 asse     = colonne
-percorso = serpentina
+percorso = ZigZag
 ```
 
 La variante avanzata dello stesso metodo permette di scegliere origine, asse e percorso dell'intera superficie. Non contiene quantità, tipo modulo o numero righe.
@@ -132,7 +132,7 @@ Quindi `2` matrici `16×16` producono normalmente una superficie 32×16.
 
 - origine pixel;
 - scansione pixel per righe/colonne;
-- percorso pixel progressivo/serpentina.
+- percorso pixel progressivo/ZigZag.
 
 ### 6.2 Parametri del Metodo 2
 
@@ -231,9 +231,25 @@ Modifica il buffer NeoPixel; non chiama `show()`.
 matrix.clear(): void
 ```
 
-Imposta a nero il buffer; non aggiorna da solo i LED.
+Imposta a nero il buffer e aggiorna immediatamente i LED; non richiede `show()`.
 
-### 9.3 Show
+### 9.3 Svuota buffer
+
+```typescript
+matrix.clearBuffer(): void
+```
+
+Funzione avanzata che azzera soltanto il buffer in memoria. Per aggiornare i LED serve `show()`.
+
+### 9.4 Interrompi e cancella
+
+```typescript
+matrix.interruptAndClear(): void
+```
+
+Invalida l'operazione animata in corso, azzera il buffer e trasmette il nero appena possibile. Un invio WS2812 già iniziato deve comunque terminare.
+
+### 9.5 Show
 
 ```typescript
 matrix.show(): void
@@ -241,7 +257,7 @@ matrix.show(): void
 
 Trasferisce l'intero buffer ai LED. Durata e interferenza temporale crescono col numero configurato di LED.
 
-### 9.4 Luminosità
+### 9.6 Luminosità
 
 ```typescript
 matrix.setBrightness(brightness: number): void
@@ -259,7 +275,7 @@ matrix.drawText(text: string, x: number, y: number, color: number): void
 
 Semantica:
 
-- font originale monospazio con metrica 6×8;
+- font originale monospazio con metrica 6×8, maiuscole e minuscole distinte;
 - cinque colonne del glifo più una colonna di spazio;
 - disegna soltanto pixel accesi;
 - non cancella lo sfondo;
@@ -267,17 +283,29 @@ Semantica:
 - nessun `show()` implicito;
 - nessuna bitmap completa della stringa;
 - carattere non supportato sostituito con `?`;
-- lettere minuscole rappresentate con la forma maiuscola corrispondente nella prima versione;
+- ASCII stampabile, lettere latine accentate comuni e simboli documentati;
 - prima versione monoriga.
 
 I dati del font legacy non vengono copiati.
+
+Il font standard supporta:
+
+- tutti i caratteri ASCII stampabili da spazio (`U+0020`) a tilde (`U+007E`), comprese punteggiatura e simboli;
+- maiuscole e minuscole distinte;
+- `À Á Â Ã Ä Å Ç È É Ê Ë Ì Í Î Ï Ñ Ò Ó Ô Õ Ö Ø Ù Ú Û Ü Ý Ÿ`;
+- `à á â ã ä å ç è é ê ë ì í î ï ñ ò ó ô õ ö ø ù ú û ü ý ÿ`;
+- `Æ æ Œ œ ß ¿ ¡ ° € £ © ® × ÷`.
+
+Ogni altro carattere viene rappresentato con `?`. I font e gli alfabeti aggiuntivi saranno progettati separatamente per mantenere esplicito il consumo di memoria.
 
 ## 11. Scrolling
 
 ```typescript
 matrix.scrollText(
     text: string,
-    color: number,
+    x: number = 16,
+    y: number = 0,
+    color: number = NeoPixelColors.White,
     frameIntervalMs: number = 100
 ): void
 ```
@@ -286,13 +314,14 @@ matrix.scrollText(
 
 Comportamento implementato:
 
-1. testo inizialmente fuori a destra;
+1. testo inizialmente alle coordinate X e Y selezionate;
 2. movimento verso sinistra;
 3. clear, disegno della parte visibile e show per fotogramma;
 4. conclusione fuori a sinistra;
 5. buffer e display fisico neri al ritorno;
 6. stringa vuota: clear e show senza animazione lunga;
-7. chiamata bloccante/cooperativa, non background.
+7. chiamata bloccante/cooperativa, non background;
+8. controllo a ogni fotogramma dell'eventuale richiesta di `interruptAndClear()`.
 
 ## 12. Proprietà informative
 

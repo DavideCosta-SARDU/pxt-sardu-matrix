@@ -35,8 +35,8 @@ function testModuleType(type: MatrixModuleType, moduleWidth: number, moduleHeigh
         const rowCount = rows[gridIndex];
         const config = sarduMatrixInternal.modularConfig(
             count, type, rowCount,
-            MatrixOrigin.TopLeft, MatrixScanAxis.Columns, MatrixPath.Serpentine,
-            MatrixOrigin.TopLeft, MatrixScanAxis.Rows, MatrixPath.Serpentine
+            MatrixOrigin.TopLeft, MatrixScanAxis.Columns, MatrixPath.ZigZag,
+            MatrixOrigin.TopLeft, MatrixScanAxis.Rows, MatrixPath.ZigZag
         );
         expectSarduMatrix(config.width == moduleWidth * Math.idiv(count, rowCount));
         expectSarduMatrix(config.height == moduleHeight * rowCount);
@@ -57,12 +57,12 @@ function testModuleType(type: MatrixModuleType, moduleWidth: number, moduleHeigh
 
 function testEquivalent96x16(): void {
     const direct = sarduMatrixInternal.directConfig(
-        96, 16, MatrixOrigin.TopLeft, MatrixScanAxis.Columns, MatrixPath.Serpentine
+        96, 16, MatrixOrigin.TopLeft, MatrixScanAxis.Columns, MatrixPath.ZigZag
     );
     const modular = sarduMatrixInternal.modularConfig(
         6, MatrixModuleType.Matrix16x16, 1,
-        MatrixOrigin.TopLeft, MatrixScanAxis.Columns, MatrixPath.Serpentine,
-        MatrixOrigin.TopLeft, MatrixScanAxis.Rows, MatrixPath.Serpentine
+        MatrixOrigin.TopLeft, MatrixScanAxis.Columns, MatrixPath.ZigZag,
+        MatrixOrigin.TopLeft, MatrixScanAxis.Rows, MatrixPath.ZigZag
     );
     for (let y = 0; y < 16; y++) {
         for (let x = 0; x < 96; x++) {
@@ -112,12 +112,18 @@ function testFontAndTextMetrics(): void {
     expectSarduMatrix(sarduMatrixInternal.textWidth("") == 0);
     expectSarduMatrix(sarduMatrixInternal.textWidth("ABC") == 18);
     expectSarduMatrix(sarduMatrixInternal.fontColumn(65, 0) != 0);
-    for (let column = 0; column < 5; column++)
-        expectSarduMatrix(sarduMatrixInternal.fontColumn(65, column) == sarduMatrixInternal.fontColumn(97, column));
+    let lowercaseDiffers = false;
+    for (let column = 0; column < 5; column++) {
+        if (sarduMatrixInternal.fontColumn(65, column) != sarduMatrixInternal.fontColumn(97, column))
+            lowercaseDiffers = true;
+    }
+    expectSarduMatrix(lowercaseDiffers);
+    expectSarduMatrix(sarduMatrixInternal.fontColumn(224, 0) != sarduMatrixInternal.fontColumn(63, 0)); // à is not ?
+    expectSarduMatrix(sarduMatrixInternal.fontColumn(8364, 0) != sarduMatrixInternal.fontColumn(63, 0)); // € is not ?
     expectSarduMatrix(sarduMatrixInternal.firstVisibleGlyph("ABCDE", -12) == 2);
     expectSarduMatrix(sarduMatrixInternal.lastVisibleGlyph("ABCDE", 16, 16) == -1);
     const config = sarduMatrixInternal.directConfig(
-        16, 16, MatrixOrigin.TopLeft, MatrixScanAxis.Columns, MatrixPath.Serpentine
+        16, 16, MatrixOrigin.TopLeft, MatrixScanAxis.Columns, MatrixPath.ZigZag
     );
     expectSarduMatrix(sarduMatrixInternal.physicalIndex(config, -1, 0) == -1);
     expectSarduMatrix(sarduMatrixInternal.physicalIndex(config, 0, -1) == -1);
@@ -143,8 +149,10 @@ function compilePublicApiSmoke(): void {
     matrix.drawText("A", 1, 0, neopixel.rgb(0, 0, 255));
     matrix.show();
     matrix.clear();
+    matrix.clearBuffer();
     matrix.show();
-    matrix.scrollText("", neopixel.rgb(255, 255, 255), 0);
+    matrix.interruptAndClear();
+    matrix.scrollText("", 16, 0, neopixel.rgb(255, 255, 255), 0);
 
     const modules = sarduMatrix.createModules(
         2, MatrixModuleType.Matrix8x8, DigitalPin.P1

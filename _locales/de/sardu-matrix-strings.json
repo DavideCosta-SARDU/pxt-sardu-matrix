@@ -1,14 +1,14 @@
 {
   "MatrixModuleType.Matrix16x16|block": "16 x 16", "MatrixModuleType.Matrix16x8|block": "16 x 8", "MatrixModuleType.Matrix32x8|block": "32 x 8", "MatrixModuleType.Matrix8x16|block": "8 x 16", "MatrixModuleType.Matrix8x32|block": "8 x 32", "MatrixModuleType.Matrix8x8|block": "8 x 8",
   "MatrixOrigin.BottomLeft|block": "unten links", "MatrixOrigin.BottomRight|block": "unten rechts", "MatrixOrigin.TopLeft|block": "oben links", "MatrixOrigin.TopRight|block": "oben rechts",
-  "MatrixPath.Progressive|block": "fortlaufend", "MatrixPath.Serpentine|block": "Schlangenlinie", "MatrixScanAxis.Columns|block": "Spalten", "MatrixScanAxis.Rows|block": "Zeilen",
-  "sarduMatrix.Matrix.clear|block": "%matrix löschen", "sarduMatrix.Matrix.drawText|block": "%matrix Text %text bei x %x y %y in %color=neopixel_colors zeichnen", "sarduMatrix.Matrix.drawText|param|text|defl": "Hallo",
-  "sarduMatrix.Matrix.height|block": "Höhe von %matrix", "sarduMatrix.Matrix.ledCount|block": "LED-Anzahl von %matrix", "sarduMatrix.Matrix.rgbBufferBytes|block": "RGB-Pufferbytes von %matrix",
-  "sarduMatrix.Matrix.scrollText|block": "%matrix Text %text in %color=neopixel_colors alle %frameIntervalMs ms scrollen", "sarduMatrix.Matrix.scrollText|param|text|defl": "Hallo",
+  "MatrixPath.Progressive|block": "fortlaufend", "MatrixPath.ZigZag|block": "ZigZag", "MatrixScanAxis.Columns|block": "Spalten", "MatrixScanAxis.Rows|block": "Zeilen",
+  "sarduMatrix.Matrix.clearBuffer|block": "%matrix Puffer leeren", "sarduMatrix.Matrix.clear|block": "%matrix Matrix löschen", "sarduMatrix.Matrix.drawText|block": "%matrix Text %text bei x %x y %y in %color=neopixel_colors zeichnen", "sarduMatrix.Matrix.drawText|param|text|defl": "Hallo",
+  "sarduMatrix.Matrix.height|block": "Höhe von %matrix", "sarduMatrix.Matrix.interruptAndClear|block": "%matrix stoppen und Matrix löschen", "sarduMatrix.Matrix.ledCount|block": "LED-Anzahl von %matrix", "sarduMatrix.Matrix.rgbBufferBytes|block": "RGB-Pufferbytes von %matrix",
+  "sarduMatrix.Matrix.scrollText|block": "%matrix Lauftext %text ab x %x y %y in %color=neopixel_colors alle %frameIntervalMs ms", "sarduMatrix.Matrix.scrollText|param|text|defl": "Hallo",
   "sarduMatrix.Matrix.setBrightness|block": "%matrix Helligkeit auf %brightness setzen", "sarduMatrix.Matrix.setPixel|block": "%matrix Pixel x %x y %y auf %color=neopixel_colors setzen", "sarduMatrix.Matrix.show|block": "%matrix anzeigen", "sarduMatrix.Matrix.width|block": "Breite von %matrix",
   "sarduMatrix.createAdvanced|block": "Matrix Breite %width Höhe %height erstellen|Pixelstart %origin Scan %axis Pfad %path|an Pin %pin",
   "sarduMatrix.createModulesAdvanced|block": "%matrixCount Matrizen vom Typ %matrixType in %matrixRows Zeilen erstellen|Pixelstart %pixelOrigin Scan %pixelAxis Pfad %pixelPath|Modulstart %moduleOrigin Scan %moduleAxis Pfad %modulePath|an Pin %pin",
   "sarduMatrix.createModules|block": "%matrixCount Matrizen vom Typ %matrixType an Pin %pin erstellen", "sarduMatrix.create|block": "Matrix Breite %width Höhe %height an Pin %pin erstellen",
   "sarduMatrixInternal|block": "sarduMatrixInternal", "sarduMatrix|block": "SARDU Matrix", "{id:category}SarduMatrix": "SARDU Matrix", "{id:category}SarduMatrixInternal": "SarduMatrixInternal",
-  "{id:group}Creation": "Erstellung", "{id:group}Display": "Anzeige", "{id:group}More": "Mehr", "{id:group}Pixels": "Pixel", "{id:group}Scrolling": "Laufschrift", "{id:group}Text": "Text"
+  "{id:group}Creation": "Erstellung", "{id:group}Display": "Anzeige", "{id:group}More": "Mehr", "{id:group}Pixels": "Pixel", "{id:group}Scrolling text": "Lauftext", "{id:group}Static text": "Statischer Text"
 }

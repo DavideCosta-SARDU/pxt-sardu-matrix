@@ -1,5 +1,5 @@
-//% color=#7B2CBF icon="\uf00a" block="SARDU Matrix"
-//% groups=['Creation', 'Pixels', 'Text', 'Scrolling', 'Display', 'More']
+//% color=#003366 icon="\uf00a" block="SARDU Matrix"
+//% groups='["Creation", "Pixels", "Static text", "Scrolling text", "Display", "More"]'
 namespace sarduMatrix {
     /** Creates one matrix using its total logical width and height. */
     //% blockId=sardu_matrix_create block="create matrix width %width height %height on pin %pin"
@@ -8,7 +8,7 @@ namespace sarduMatrix {
     export function create(width: number = 16, height: number = 16, pin: DigitalPin = DigitalPin.P0): Matrix {
         return new Matrix(sarduMatrixInternal.directConfig(
             width, height,
-            MatrixOrigin.TopLeft, MatrixScanAxis.Columns, MatrixPath.Serpentine
+            MatrixOrigin.TopLeft, MatrixScanAxis.Columns, MatrixPath.ZigZag
         ), pin);
     }
 
@@ -21,7 +21,7 @@ namespace sarduMatrix {
         height: number = 16,
         origin: MatrixOrigin = MatrixOrigin.TopLeft,
         axis: MatrixScanAxis = MatrixScanAxis.Columns,
-        path: MatrixPath = MatrixPath.Serpentine,
+        path: MatrixPath = MatrixPath.ZigZag,
         pin: DigitalPin = DigitalPin.P0
     ): Matrix {
         return new Matrix(sarduMatrixInternal.directConfig(width, height, origin, axis, path), pin);
@@ -38,8 +38,8 @@ namespace sarduMatrix {
     ): Matrix {
         return new Matrix(sarduMatrixInternal.modularConfig(
             matrixCount, matrixType, 1,
-            MatrixOrigin.TopLeft, MatrixScanAxis.Columns, MatrixPath.Serpentine,
-            MatrixOrigin.TopLeft, MatrixScanAxis.Rows, MatrixPath.Serpentine
+            MatrixOrigin.TopLeft, MatrixScanAxis.Columns, MatrixPath.ZigZag,
+            MatrixOrigin.TopLeft, MatrixScanAxis.Rows, MatrixPath.ZigZag
         ), pin);
     }
 
@@ -53,10 +53,10 @@ namespace sarduMatrix {
         matrixRows: number = 1,
         pixelOrigin: MatrixOrigin = MatrixOrigin.TopLeft,
         pixelAxis: MatrixScanAxis = MatrixScanAxis.Columns,
-        pixelPath: MatrixPath = MatrixPath.Serpentine,
+        pixelPath: MatrixPath = MatrixPath.ZigZag,
         moduleOrigin: MatrixOrigin = MatrixOrigin.TopLeft,
         moduleAxis: MatrixScanAxis = MatrixScanAxis.Rows,
-        modulePath: MatrixPath = MatrixPath.Serpentine,
+        modulePath: MatrixPath = MatrixPath.ZigZag,
         pin: DigitalPin = DigitalPin.P0
     ): Matrix {
         return new Matrix(sarduMatrixInternal.modularConfig(

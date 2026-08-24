@@ -15,12 +15,12 @@ namespace sarduMatrixInternal {
             ? height - 1 - y : y;
 
         if (axis == MatrixScanAxis.Columns) {
-            if (path == MatrixPath.Serpentine && scanX % 2 != 0)
+            if (path == MatrixPath.ZigZag && scanX % 2 != 0)
                 return scanX * height + height - 1 - scanY;
             return scanX * height + scanY;
         }
 
-        if (path == MatrixPath.Serpentine && scanY % 2 != 0)
+        if (path == MatrixPath.ZigZag && scanY % 2 != 0)
             return scanY * width + width - 1 - scanX;
         return scanY * width + scanX;
     }

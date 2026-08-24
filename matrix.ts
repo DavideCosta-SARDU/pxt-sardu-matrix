@@ -3,10 +3,12 @@ namespace sarduMatrix {
     export class Matrix {
         private config: sarduMatrixInternal.MatrixConfig;
         private strip: neopixel.Strip;
+        private operationVersion: number;
 
         constructor(config: sarduMatrixInternal.MatrixConfig, pin: DigitalPin) {
             this.config = config;
             this.strip = neopixel.create(pin, config.ledCount, NeoPixelMode.RGB);
+            this.operationVersion = 0;
         }
 
         /** Sets one logical pixel. Call show to update the physical display. */
@@ -20,23 +22,40 @@ namespace sarduMatrix {
             if (index >= 0) this.strip.setPixelColor(index, color);
         }
 
-        /** Clears the RGB buffer. Call show to update the physical display. */
+        /** Stops long-running output, clears the RGB buffer and immediately updates the display. */
+        //% blockId=sardu_matrix_interrupt_and_clear block="%matrix stop and clear matrix"
+        //% group="Display" weight=72
+        interruptAndClear(): void {
+            this.operationVersion++;
+            this.strip.clear();
+            this.strip.show();
+        }
+
+        /** Clears the RGB buffer and immediately updates the physical display. */
         //% blockId=sardu_matrix_clear block="%matrix clear"
-        //% group="Display" weight=70
+        //% group="Display" weight=71
         clear(): void {
+            this.strip.clear();
+            this.strip.show();
+        }
+
+        /** Clears only the RGB buffer. Call show to update the physical display. */
+        //% blockId=sardu_matrix_clear_buffer block="%matrix clear buffer"
+        //% group="More" weight=21 advanced=true
+        clearBuffer(): void {
             this.strip.clear();
         }
 
         /** Sends the RGB buffer to the physical display. */
         //% blockId=sardu_matrix_show block="%matrix show"
-        //% group="Display" weight=69
+        //% group="Display" weight=70
         show(): void {
             this.strip.show();
         }
 
         /** Sets brightness for pixels written after this call. */
         //% blockId=sardu_matrix_set_brightness block="%matrix set brightness %brightness"
-        //% group="Display" weight=68 brightness.min=0 brightness.max=255 brightness.defl=128
+        //% group="Display" weight=69 brightness.min=0 brightness.max=255 brightness.defl=128
         setBrightness(brightness: number): void {
             brightness = Math.floor(brightness);
             if (brightness != brightness) brightness = 0;
@@ -47,18 +66,18 @@ namespace sarduMatrix {
 
         /** Draws one line of text into the RGB buffer without showing it. */
         //% blockId=sardu_matrix_draw_text block="%matrix draw text %text at x %x y %y in %color=neopixel_colors"
-        //% group="Text" weight=80
+        //% group="Static text" weight=80
         //% text.defl="Hello" x.defl=0 y.defl=0 color.defl=NeoPixelColors.White
         drawText(text: string, x: number, y: number, color: number): void {
             sarduMatrixInternal.drawText(this, text, x, y, color);
         }
 
-        /** Scrolls one line from right to left, then leaves the display black. */
-        //% blockId=sardu_matrix_scroll_text block="%matrix scroll text %text in %color=neopixel_colors every %frameIntervalMs ms"
-        //% group="Scrolling" weight=75
-        //% text.defl="Hello" color.defl=NeoPixelColors.White frameIntervalMs.defl=100 frameIntervalMs.min=0
-        scrollText(text: string, color: number, frameIntervalMs: number = 100): void {
-            sarduMatrixInternal.scrollText(this, text, color, frameIntervalMs);
+        /** Scrolls one line left from the selected X and Y coordinates, then leaves the display black. */
+        //% blockId=sardu_matrix_scroll_text block="%matrix scroll text %text from x %x y %y in %color=neopixel_colors every %frameIntervalMs ms"
+        //% group="Scrolling text" weight=75
+        //% text.defl="Hello" x.defl=16 y.defl=0 color.defl=NeoPixelColors.White frameIntervalMs.defl=100 frameIntervalMs.min=0
+        scrollText(text: string, x: number = 16, y: number = 0, color: number = NeoPixelColors.White, frameIntervalMs: number = 100): void {
+            sarduMatrixInternal.scrollText(this, text, x, y, color, frameIntervalMs);
         }
 
         /** Returns the logical display width. */
@@ -92,6 +111,22 @@ namespace sarduMatrix {
         //% blockHidden=true
         _setTextPixel(x: number, y: number, color: number): void {
             this.setPixel(x, y, color);
+        }
+
+        //% blockHidden=true
+        _clearBuffer(): void {
+            this.strip.clear();
+        }
+
+        //% blockHidden=true
+        _beginOperation(): number {
+            this.operationVersion++;
+            return this.operationVersion;
+        }
+
+        //% blockHidden=true
+        _operationIsActive(version: number): boolean {
+            return version == this.operationVersion;
         }
     }
 }

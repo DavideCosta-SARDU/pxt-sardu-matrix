@@ -36,7 +36,7 @@ altezza   = 16
 
 Questo metodo è indipendente dalla lista dei formati commerciali. Accetta qualunque coppia di interi positivi compatibile con la memoria realmente disponibile.
 
-Il mapping predefinito è column-serpentine con origine in alto a sinistra, coerente con il comportamento utile della libreria legacy. La configurazione avanzata può scegliere un altro percorso sull'intera superficie.
+Il mapping predefinito è column-ZigZag con origine in alto a sinistra, coerente con il comportamento utile della libreria legacy. La configurazione avanzata può scegliere un altro percorso sull'intera superficie.
 
 Il Metodo 1 non contiene i concetti di `NumeroMatrici` o `NumeroRighe`; non applica quindi alcuna regola di divisibilità fra moduli e righe.
 
@@ -206,7 +206,7 @@ Una scansione per righe completa una riga prima di passare alla successiva. Una 
 Valori:
 
 - progressivo;
-- serpentina/zigzag.
+- ZigZag.
 
 Progressivo significa che ogni riga o colonna usa la stessa direzione logica, con un collegamento di ritorno verso l'inizio della tratta successiva.
 
@@ -219,7 +219,7 @@ Default pixel:
 ```text
 origine  = alto a sinistra
 asse     = colonne
-percorso = serpentina
+percorso = ZigZag
 ```
 
 Default moduli:
@@ -227,10 +227,10 @@ Default moduli:
 ```text
 origine  = alto a sinistra
 asse     = righe
-percorso = serpentina
+percorso = ZigZag
 ```
 
-Con una sola riga di moduli, progressivo e serpentina per righe producono lo stesso ordine dei moduli.
+Con una sola riga di moduli, progressivo e ZigZag per righe producono lo stesso ordine dei moduli.
 
 ## 7. Formula generica del percorso
 
@@ -308,7 +308,7 @@ Metodo 1:
 ```text
 width  = 96
 height = 16
-pixel  = column-serpentine, origine alto-sinistra
+pixel  = column-ZigZag, origine alto-sinistra
 ```
 
 Metodo 2:
@@ -317,7 +317,7 @@ Metodo 2:
 NumeroMatrici = 6
 TipoMatrice   = 16×16
 NumeroRighe   = 1
-pixel         = column-serpentine, origine alto-sinistra
+pixel         = column-ZigZag, origine alto-sinistra
 moduli        = per righe, origine alto-sinistra
 ```
 
@@ -447,7 +447,7 @@ Dopo una creazione valida:
 
 - quattro origini;
 - scansione righe/colonne;
-- progressivo/serpentina;
+- progressivo/ZigZag;
 - combinazioni pixel/moduli;
 - unicità, copertura e limiti.
 

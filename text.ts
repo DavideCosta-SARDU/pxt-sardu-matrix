@@ -44,27 +44,35 @@ namespace sarduMatrixInternal {
     export function scrollText(
         matrix: sarduMatrix.Matrix,
         text: string,
+        startX: number,
+        y: number,
         color: number,
         frameIntervalMs: number
     ): void {
+        startX = Math.floor(startX);
+        y = Math.floor(y);
         frameIntervalMs = Math.floor(frameIntervalMs);
         if (frameIntervalMs != frameIntervalMs) frameIntervalMs = 0;
         if (frameIntervalMs < 0) frameIntervalMs = 0;
 
+        const operation = matrix._beginOperation();
         if (!text || text.length == 0) {
-            matrix.clear();
+            matrix._clearBuffer();
             matrix.show();
             return;
         }
 
         const finalX = -textWidth(text);
-        for (let x = matrix.width(); x >= finalX; x--) {
+        for (let x = startX; x >= finalX; x--) {
+            if (!matrix._operationIsActive(operation)) return;
             const started = control.millis();
-            matrix.clear();
-            drawText(matrix, text, x, 0, color);
+            matrix._clearBuffer();
+            drawText(matrix, text, x, y, color);
             matrix.show();
             const remaining = frameIntervalMs - (control.millis() - started);
-            if (remaining > 0) basic.pause(remaining);
+            // Always yield, even at maximum speed, so button/radio handlers can
+            // run interruptAndClear() between two physical WS2812 transfers.
+            basic.pause(remaining > 0 ? remaining : 0);
         }
 
         // The final loop iteration is the blank frame: buffer and display are black.

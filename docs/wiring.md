@@ -90,7 +90,7 @@ Gli esempi usano un modulo teorico 4×4 per rendere leggibili gli indici. Lo ste
 
 Ogni colonna procede dall'alto al basso; fra colonne il collegamento torna in alto.
 
-### 5.2 Colonne a serpentina, origine alto-sinistra
+### 5.2 Colonne ZigZag, origine alto-sinistra
 
 ```text
  0   7   8  15
@@ -99,7 +99,7 @@ Ogni colonna procede dall'alto al basso; fra colonne il collegamento torna in al
  3   4  11  12
 ```
 
-È il column-zigzag compatibile col default storico.
+È il column-ZigZag compatibile col default storico.
 
 ### 5.3 Righe progressive, origine alto-sinistra
 
@@ -110,7 +110,7 @@ Ogni colonna procede dall'alto al basso; fra colonne il collegamento torna in al
 12  13  14  15
 ```
 
-### 5.4 Righe a serpentina, origine alto-sinistra
+### 5.4 Righe ZigZag, origine alto-sinistra
 
 ```text
  0   1   2   3
@@ -204,7 +204,7 @@ Nella prima versione tutti i moduli della griglia devono avere lo stesso orienta
 - stesso asse interno;
 - stesso percorso interno.
 
-La serpentina fra moduli cambia l'ordine in cui vengono visitate le posizioni della griglia; non implica automaticamente la rotazione fisica dei pannelli della seconda riga.
+Il percorso ZigZag fra moduli cambia l'ordine in cui vengono visitate le posizioni della griglia; non implica automaticamente la rotazione fisica dei pannelli della seconda riga.
 
 Rotazioni o inversioni differenti per singolo modulo non sono incluse nella prima versione. Se l'impianto usa pannelli ruotati individualmente, deve essere ricablato/orientato in modo uniforme oppure richiederà una futura mappa per-modulo.
 
@@ -255,7 +255,7 @@ NumeroRighe   = 1
 
 Dimensioni 96×16, 1536 LED, 4608 byte RGB.
 
-Con moduli column-serpentine di larghezza pari, origine alto-sinistra e ordine sinistra→destra, questo mapping coincide con la configurazione diretta 96×16 column-serpentine.
+Con moduli column-ZigZag di larghezza pari, origine alto-sinistra e ordine sinistra→destra, questo mapping coincide con la configurazione diretta 96×16 column-ZigZag.
 
 ## 13. Esempio 6×2 / 96×32
 
@@ -283,7 +283,7 @@ Il tempo minimo teorico del solo trasferimento WS2812B è circa 92,44 ms, prima 
 1. Individuare il DIN del primo pannello collegato al micro:bit.
 2. Stabilire in quale angolo della griglia si trova: origine moduli.
 3. Seguire ogni DOUT→DIN e numerare i pannelli 0, 1, 2…
-4. Confrontare la numerazione con progressivo/serpentina per righe/colonne.
+4. Confrontare la numerazione con progressivo/ZigZag per righe/colonne.
 5. Su un singolo pannello, individuare il pixel locale 0.
 6. Seguire alcuni LED per capire asse e alternanza del percorso interno.
 7. Inserire le stesse scelte nella configurazione avanzata.
@@ -308,7 +308,7 @@ Interpretazione tipica:
 
 - angoli scambiati: origine errata;
 - righe al posto delle colonne: asse errato;
-- tratte alternate invertite: progressivo/serpentina errato;
+- tratte alternate invertite: progressivo/ZigZag errato;
 - pannelli accesi nell'ordine sbagliato: percorso moduli errato;
 - un solo pannello specchiato o ruotato: orientamento fisico non uniforme;
 - colori errati ma posizioni corrette: modalità/ordine colore o hardware da verificare.
@@ -334,7 +334,7 @@ Supportati nel modello:
 - sei formati modulo approvati;
 - quattro origini;
 - scansione per righe o colonne;
-- progressivo o serpentina;
+- progressivo o ZigZag;
 - percorso pixel e percorso moduli indipendenti;
 - stesso orientamento per tutti i moduli.
 

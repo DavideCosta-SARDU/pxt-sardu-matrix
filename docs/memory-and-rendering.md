@@ -105,13 +105,13 @@ Oltre ai 4.608 byte del buffer NeoPixel sono necessari:
 
 Il piano di mapping non richiede una tabella da 1536 indici: l'indice viene calcolato con formule intere. Una tabella di indici a 16 bit costerebbe altri 3.072 byte e non è giustificata.
 
-Il font definitivo accetta ASCII 32–126, riusa le forme maiuscole per le lettere minuscole e memorizza 69 forme da cinque colonne:
+Il font standard accetta ASCII 32–126 con forme minuscole distinte, compone le lettere latine accentate più comuni e memorizza 69 forme ASCII di base, 26 forme minuscole e 16 simboli speciali da cinque colonne:
 
 ```text
-69 forme × 5 byte = 345 byte
+(69 + 26 + 16) forme × 5 byte = 555 byte
 ```
 
-La rappresentazione finale in flash/RAM dipende dalla compilazione PXT. La profilazione hardware dovrà comunque verificare che il literal non produca una copia RAM inattesa. I 345 byte restano inferiori ai 760 byte della tabella legacy a otto byte per glifo.
+La rappresentazione finale in flash/RAM dipende dalla compilazione PXT. La profilazione hardware dovrà comunque verificare che i literal non producano copie RAM inattese. Le lettere accentate riusano i glifi di base e non richiedono una tabella completa aggiuntiva.
 
 ### 4.2 Temporanee
 
@@ -166,7 +166,7 @@ rendering + `showMs(ledCount)` + pausa
 Per esempio, con 1536 LED una pausa aggiuntiva di 100 ms produrrebbe meno di 7 fps. È più comprensibile definire il parametro pubblico come durata obiettivo del fotogramma:
 
 ```typescript
-scrollText(text, color, frameIntervalMs)
+scrollText(text, x, y, color, frameIntervalMs)
 ```
 
 Per ogni fotogramma:

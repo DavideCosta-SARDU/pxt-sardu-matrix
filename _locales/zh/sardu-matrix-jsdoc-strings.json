@@ -1,8 +1,8 @@
 {
   "MatrixModuleType": "单个矩阵模块的物理尺寸。", "MatrixOrigin": "数据链开始的物理角。", "MatrixPath": "数据路径的形状。", "MatrixScanAxis": "数据链遵循的主要方向。",
-  "sarduMatrix.Matrix": "可配置的 RGB LED 矩阵。", "sarduMatrix.Matrix.clear": "清除 RGB 缓冲区。调用显示以更新物理屏幕。", "sarduMatrix.Matrix.drawText": "在 RGB 缓冲区中绘制一行文本，但不显示。",
-  "sarduMatrix.Matrix.height": "返回屏幕的逻辑高度。", "sarduMatrix.Matrix.ledCount": "返回已配置的 RGB LED 数量。", "sarduMatrix.Matrix.rgbBufferBytes": "返回 NeoPixel RGB 缓冲区的准确字节数。",
-  "sarduMatrix.Matrix.scrollText": "将一行文本从右向左滚动，结束后使屏幕保持黑色。", "sarduMatrix.Matrix.setBrightness": "设置本次调用后写入像素的亮度。", "sarduMatrix.Matrix.setPixel": "设置一个逻辑像素。调用显示以更新物理屏幕。", "sarduMatrix.Matrix.show": "将 RGB 缓冲区发送到物理屏幕。", "sarduMatrix.Matrix.width": "返回屏幕的逻辑宽度。",
+  "sarduMatrix.Matrix": "可配置的 RGB LED 矩阵。", "sarduMatrix.Matrix.clear": "清除 RGB 缓冲区并立即更新物理屏幕。", "sarduMatrix.Matrix.clearBuffer": "仅清除 RGB 缓冲区。调用显示以更新物理屏幕。", "sarduMatrix.Matrix.drawText": "在 RGB 缓冲区中绘制一行文本，但不显示。",
+  "sarduMatrix.Matrix.height": "返回屏幕的逻辑高度。", "sarduMatrix.Matrix.interruptAndClear": "停止正在运行的输出，清除 RGB 缓冲区并立即更新屏幕。", "sarduMatrix.Matrix.ledCount": "返回已配置的 RGB LED 数量。", "sarduMatrix.Matrix.rgbBufferBytes": "返回 NeoPixel RGB 缓冲区的准确字节数。",
+  "sarduMatrix.Matrix.scrollText": "从选定的 X、Y 坐标向左滚动一行文本，结束后使屏幕保持黑色。", "sarduMatrix.Matrix.setBrightness": "设置本次调用后写入像素的亮度。", "sarduMatrix.Matrix.setPixel": "设置一个逻辑像素。调用显示以更新物理屏幕。", "sarduMatrix.Matrix.show": "将 RGB 缓冲区发送到物理屏幕。", "sarduMatrix.Matrix.width": "返回屏幕的逻辑宽度。",
   "sarduMatrix.create": "使用完整逻辑宽度和高度创建矩阵。", "sarduMatrix.createAdvanced": "通过明确配置物理像素路径来创建矩阵。", "sarduMatrix.createModules": "创建一行相同的矩阵模块。", "sarduMatrix.createModulesAdvanced": "创建具有明确物理路径的矩形模块网格。",
   "sarduMatrixInternal.pathIndex": "将逻辑坐标映射到物理扫描路径中的位置。", "sarduMatrixInternal.physicalIndex": "将屏幕坐标映射到对应的 LED 位置。"
 }

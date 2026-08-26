@@ -45,6 +45,28 @@ enum MatrixPath {
     Serpentine = 1
 }
 
+/** Font used to draw text on the matrix. */
+enum MatrixFont {
+    //% block="SARDU"
+    Sardu = 0,
+    //% block="micro:bit extended"
+    MicroBitExtended = 1,
+    //% block="SARDU proportional"
+    SarduProportional = 2
+}
+
+/** Integer scale applied to a text font. */
+enum MatrixFontSize {
+    //% block="1x"
+    X1 = 1,
+    //% block="2x"
+    X2 = 2,
+    //% block="3x"
+    X3 = 3,
+    //% block="4x"
+    X4 = 4
+}
+
 namespace sarduMatrixInternal {
     // Buffer payload length is a signed C++ int in the current micro:bit target.
     // This guards representation only; practical limits remain available RAM and

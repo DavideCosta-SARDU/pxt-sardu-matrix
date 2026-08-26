@@ -191,7 +191,7 @@ La strip e il buffer interni non sono pubblici. Un programma che usava direttame
 | Configurare un modulo 16×16 | `createModules(1, Matrix16x16, P0)` |
 | Configurare 96×16 per moduli | `createModules(6, Matrix16x16, P0)` |
 | Configurare per dimensioni | `create(96, 16, P0)` |
-| Configurare più righe di moduli | factory/opzioni avanzate con `matrixRows` |
+| Configurare più righe di moduli | factory/opzioni avanzate con `moduleRows` |
 | Accendere un pixel | `setPixel(x, y, color)` poi `show()` |
 | Preparare il nero senza inviarlo | `clearBuffer()` |
 | Spegnere fisicamente | `clear()` |

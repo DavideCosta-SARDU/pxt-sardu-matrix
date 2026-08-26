@@ -385,7 +385,7 @@ crea matrice larghezza [16] altezza [16] su pin [P0]
 ```
 
 ```text
-crea [1] matrici di tipo [16×16] su pin [P0]
+crea matrice con [1] moduli di tipo [16×16] sul pin [P0] luminosità [128]
 ```
 
 Le opzioni non necessarie al caso comune devono essere collocate in “Altro…” mediante blocchi avanzati o, se il prototipo MakeCode risulta chiaro, parametri espandibili.

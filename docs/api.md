@@ -2,7 +2,7 @@
 
 ## 1. Stato
 
-Questa specifica incorpora le decisioni approvate fino al 23 agosto 2026 ed è implementata nei sorgenti della versione 0.1.0 non ancora rilasciata. Le firme e i block ID compilano con PXT; l'aspetto visuale deve ancora essere verificato nell'editor MakeCode prima della release stabile.
+Questa specifica incorpora le decisioni approvate fino al 26 agosto 2026 ed è implementata nei sorgenti della versione 0.1.0 non ancora rilasciata. Le firme e i block ID compilano con PXT; l'aspetto visuale dei nuovi blocchi deve ancora essere verificato nell'editor MakeCode prima della release stabile.
 
 Obiettivi:
 
@@ -69,6 +69,25 @@ enum MatrixPath {
 
 I nomi TypeScript saranno inglesi e stabili; i valori della combo verranno localizzati.
 
+### 3.5 Font e dimensione
+
+```typescript
+enum MatrixFont {
+    Sardu,
+    MicroBitExtended,
+    SarduProportional
+}
+
+enum MatrixFontSize {
+    X1 = 1,
+    X2 = 2,
+    X3 = 3,
+    X4 = 4
+}
+```
+
+I font sono scelte alternative. `Sardu` resta il default; la dimensione ingrandisce matematicamente ciascun pixel senza creare una bitmap o un framebuffer aggiuntivo.
+
 ## 4. Metodo 1: dimensioni dirette
 
 Firma base:
@@ -77,14 +96,15 @@ Firma base:
 sarduMatrix.create(
     width: number = 16,
     height: number = 16,
-    pin: DigitalPin = DigitalPin.P0
+    pin: DigitalPin = DigitalPin.P0,
+    brightness: number = 128
 ): Matrix
 ```
 
 Blocco base:
 
 ```text
-crea matrice larghezza [16] altezza [16] su pin [P0]
+crea matrice larghezza [16] altezza [16] sul pin [P0] luminosità [128]
 ```
 
 Mapping di default:
@@ -103,25 +123,26 @@ Firma base:
 
 ```typescript
 sarduMatrix.createModules(
-    matrixCount: number = 1,
-    matrixType: MatrixModuleType = MatrixModuleType.Matrix16x16,
-    pin: DigitalPin = DigitalPin.P0
+    moduleCount: number = 1,
+    moduleType: MatrixModuleType = MatrixModuleType.Matrix16x16,
+    pin: DigitalPin = DigitalPin.P0,
+    brightness: number = 128
 ): Matrix
 ```
 
 Blocco base:
 
 ```text
-crea [1] matrici di tipo [16×16] su pin [P0]
+crea matrice con [1] moduli di tipo [16×16] sul pin [P0] luminosità [128]
 ```
 
-`matrixCount` è un campo numerico, non una combo. `matrixType` è la combo dei sei formati approvati.
+`moduleCount` è un campo numerico, non una combo. `moduleType` è la combo dei sei formati approvati.
 
 Il default implica:
 
 ```text
 NumeroRighe = 1
-NumeroColonne = matrixCount
+NumeroColonne = moduleCount
 ```
 
 Quindi `2` matrici `16×16` producono normalmente una superficie 32×16.
@@ -136,7 +157,7 @@ Quindi `2` matrici `16×16` producono normalmente una superficie 32×16.
 
 ### 6.2 Parametri del Metodo 2
 
-- `matrixRows`, default 1;
+- `moduleRows`, default 1;
 - origine pixel dentro ogni modulo;
 - asse e percorso dei pixel dentro ogni modulo;
 - origine del primo modulo nella griglia;
@@ -146,16 +167,17 @@ La firma concettuale avanzata è:
 
 ```typescript
 sarduMatrix.createModulesAdvanced(
-    matrixCount: number,
-    matrixType: MatrixModuleType,
-    matrixRows: number,
+    moduleCount: number,
+    moduleType: MatrixModuleType,
+    moduleRows: number,
     pixelOrigin: MatrixOrigin,
     pixelAxis: MatrixScanAxis,
     pixelPath: MatrixPath,
     moduleOrigin: MatrixOrigin,
     moduleAxis: MatrixScanAxis,
     modulePath: MatrixPath,
-    pin: DigitalPin
+    pin: DigitalPin,
+    brightness: number = 128
 ): Matrix
 ```
 
@@ -178,14 +200,14 @@ rgbBytes = ledCount × 3
 ### 7.2 Metodo 2
 
 ```text
-matrixColumns = matrixCount / matrixRows
-width         = moduleWidth × matrixColumns
-height        = moduleHeight × matrixRows
-ledCount      = moduleWidth × moduleHeight × matrixCount
+moduleColumns = moduleCount / moduleRows
+width         = moduleWidth × moduleColumns
+height        = moduleHeight × moduleRows
+ledCount      = moduleWidth × moduleHeight × moduleCount
 rgbBytes      = ledCount × 3
 ```
 
-La divisibilità `matrixCount % matrixRows == 0` riguarda esclusivamente il Metodo 2 e garantisce una griglia completa.
+La divisibilità `moduleCount % moduleRows == 0` riguarda esclusivamente il Metodo 2 e garantisce una griglia completa.
 
 Entrambi i metodi rifiutano:
 
@@ -213,7 +235,14 @@ La configurazione avanzata modifica coordinate→indice fisico, non il sistema d
 
 Coordinate fuori schermo vengono ignorate in sicurezza. Questo consente clipping e impedisce alias del bordo.
 
-Un colore è un numero RGB compatibile con `neopixel.rgb(...)`, colori NeoPixel e selettore colore MakeCode.
+Un colore è un numero RGB compatibile con `neopixel.rgb(...)`, colori NeoPixel e selettore colore MakeCode. L'estensione aggiunge:
+
+```typescript
+sarduMatrix.rgbColor(red: number, green: number, blue: number): number
+sarduMatrix.hslColor(hue: number, saturation: number, lightness: number): number
+```
+
+RGB usa tre componenti `0..255`. HSL usa tonalità `0..360` e saturazione/luminosità `0..100`. Ogni valore viene limitato matematicamente al proprio intervallo. La luminosità HSL modifica il colore: non è la luminosità generale della matrice e non è la luminosità locale della stringa.
 
 ## 9. API fondamentale
 
@@ -265,17 +294,25 @@ matrix.setBrightness(brightness: number): void
 
 Intervallo pubblico 0–255, con limitazione esplicita per evitare wrap-around. Coerentemente col backend, influenza i colori scritti successivamente e non ridimensiona automaticamente quelli già presenti nel buffer.
 
-Default: 128, uguale al comportamento effettivo della factory pxt-neopixel corrente.
+La luminosità iniziale è ora un parametro di tutte le factory e ha default prudente `128`. Il metodo resta disponibile in “Altro” per variazioni durante l'esecuzione. Influenza soltanto i pixel scritti dopo la chiamata.
 
 ## 10. Testo statico
 
 ```typescript
-matrix.drawText(text: string, x: number, y: number, color: number): void
+matrix.drawText(
+    text: string,
+    x: number,
+    y: number,
+    color: number,
+    font: MatrixFont = MatrixFont.Sardu,
+    size: MatrixFontSize = MatrixFontSize.X1,
+    brightness: number = 255
+): void
 ```
 
 Semantica:
 
-- font originale monospazio con metrica 6×8, maiuscole e minuscole distinte;
+- font SARDU monospazio con cinque colonne visibili, altezza 8 e maiuscole/minuscole distinte;
 - cinque colonne del glifo più una colonna di spazio;
 - disegna soltanto pixel accesi;
 - non cancella lo sfondo;
@@ -284,7 +321,8 @@ Semantica:
 - nessuna bitmap completa della stringa;
 - carattere non supportato sostituito con `?`;
 - ASCII stampabile, lettere latine accentate comuni e simboli documentati;
-- prima versione monoriga.
+- testo monoriga;
+- luminosità locale per stringa `0..255`, applicata matematicamente al colore senza buffer aggiuntivi.
 
 I dati del font legacy non vengono copiati.
 
@@ -296,7 +334,17 @@ Il font standard supporta:
 - `à á â ã ä å ç è é ê ë ì í î ï ñ ò ó ô õ ö ø ù ú û ü ý ÿ`;
 - `Æ æ Œ œ ß ¿ ¡ ° € £ © ® × ÷`.
 
-Ogni altro carattere viene rappresentato con `?`. I font e gli alfabeti aggiuntivi saranno progettati separatamente per mantenere esplicito il consumo di memoria.
+Ogni altro carattere viene rappresentato con `?`. `MicroBitExtended` usa i glifi 5×5 ufficiali micro:bit dentro una metrica alta 7 pixel, riservando spazio ad accenti e cediglia. `SarduProportional` elimina le colonne laterali vuote di ogni glifo SARDU e calcola la larghezza effettiva carattere per carattere.
+
+Sono disponibili blocchi distinti per:
+
+- X e Y manuali;
+- centratura nell'intera larghezza con Y manuale;
+- centratura nell'intera altezza con X manuale;
+- centratura completa;
+- centratura avanzata entro un intervallo X, un intervallo Y o il rettangolo inclusivo delimitato dai punti A e B.
+
+Gli estremi invertiti vengono riordinati e quelli esterni vengono ritagliati ai limiti della matrice. Le funzioni avanzate `measureTextWidth()` e `measureFontHeight()` espongono le stesse metriche usate dal renderer.
 
 ## 11. Scrolling
 
@@ -306,7 +354,10 @@ matrix.scrollText(
     x: number = 16,
     y: number = 0,
     color: number = NeoPixelColors.White,
-    frameIntervalMs: number = 100
+    frameIntervalMs: number = 100,
+    font: MatrixFont = MatrixFont.Sardu,
+    size: MatrixFontSize = MatrixFontSize.X1,
+    brightness: number = 255
 ): void
 ```
 
@@ -338,14 +389,15 @@ Gli ultimi due rendono trasparente il costo calcolato della configurazione. Non 
 
 ## 13. Organizzazione dei blocchi
 
-Gruppi proposti:
+Gruppi implementati:
 
 1. Creazione;
 2. Pixel;
-3. Testo;
-4. Scrolling;
-5. Display;
-6. Altro…/Configurazione avanzata.
+3. Colori;
+4. Testo statico;
+5. Testo scorrevole;
+6. Display;
+7. Altro…/Configurazione avanzata.
 
 I block ID saranno espliciti, prefissati e stabili. Le varianti avanzate non devono duplicare il motore: normalizzano parametri e chiamano lo stesso core.
 
@@ -353,14 +405,7 @@ I block ID saranno espliciti, prefissati e stabili. Le varianti avanzate non dev
 
 Lingua sorgente: inglese.
 
-Lingue previste nella prima versione:
-
-- italiano `it`;
-- tedesco `de`;
-- spagnolo `es-ES`;
-- francese `fr`;
-- giapponese `ja`;
-- cinese `zh`.
+Durante lo sviluppo il pacchetto include inglese e italiano `it`. Tedesco, spagnolo, francese, giapponese e cinese restano nei sorgenti ma sono temporaneamente esclusi da `pxt.json`; verranno aggiornati e riattivati insieme prima della release stabile.
 
 Saranno localizzati:
 
@@ -388,7 +433,8 @@ Le chiavi verranno generate con `pxt gendocs --locs` soltanto dopo aver stabiliz
 let matrix = sarduMatrix.createModules(
     1,
     MatrixModuleType.Matrix16x16,
-    DigitalPin.P0
+    DigitalPin.P0,
+    128
 )
 ```
 
@@ -398,7 +444,8 @@ let matrix = sarduMatrix.createModules(
 let matrix = sarduMatrix.createModules(
     2,
     MatrixModuleType.Matrix16x16,
-    DigitalPin.P0
+    DigitalPin.P0,
+    128
 )
 ```
 
@@ -407,7 +454,7 @@ Risultato: 32×16, 512 LED, 1536 byte RGB.
 ### Dimensioni dirette
 
 ```typescript
-let matrix = sarduMatrix.create(96, 32, DigitalPin.P0)
+let matrix = sarduMatrix.create(96, 32, DigitalPin.P0, 128)
 ```
 
 Risultato: 3072 LED e 9216 byte RGB, senza alcun concetto di modulo.
@@ -415,21 +462,20 @@ Risultato: 3072 LED e 9216 byte RGB, senza alcun concetto di modulo.
 ### Griglia avanzata 6×2
 
 ```text
-matrixCount = 12
-matrixType  = 16×16
-matrixRows  = 2
-matrixColumns calcolato = 6
+moduleCount = 12
+moduleType  = 16×16
+moduleRows  = 2
+moduleColumns calcolato = 6
 ```
 
 Risultato: 96×32, 3072 LED, 9216 byte RGB.
 
-## 16. Decisioni ancora da verificare nell'editor
+## 16. Verifiche residue
 
-1. Factory avanzata separata oppure argomenti espandibili.
-2. Testo finale inglese e italiano dei blocchi.
-3. Messaggio e comportamento esatto dell'errore di configurazione.
-4. Ordine e raggruppamento nella toolbox.
-5. Se esporre tutte e quattro le proprietà informative anche come blocchi.
+1. Controllare nell'editor MakeCode l'impaginazione dei nuovi blocchi lunghi e delle combo font/dimensione.
+2. Provare su matrice reale font, ingrandimenti, centrature, HSL e luminosità locale della stringa.
+3. Riesaminare prima del rilascio definitivo i comportamenti dei blocchi di cancellazione.
+4. Aggiornare e riattivare insieme le altre cinque localizzazioni.
 
 ## 17. Criteri prima di congelare l'API
 

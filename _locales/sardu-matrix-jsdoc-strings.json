@@ -1,4 +1,6 @@
 {
+  "MatrixFont": "Font used to draw text on the matrix.",
+  "MatrixFontSize": "Integer scale applied to a text font.",
   "MatrixModuleType": "Physical size of one matrix module.",
   "MatrixOrigin": "Physical corner where the data chain starts.",
   "MatrixPath": "Shape of the data path.",
@@ -6,7 +8,13 @@
   "sarduMatrix.Matrix": "A configurable RGB LED matrix.",
   "sarduMatrix.Matrix.clear": "Clears the RGB buffer and immediately updates the physical display.",
   "sarduMatrix.Matrix.clearBuffer": "Clears only the RGB buffer. Call show to update the physical display.",
-  "sarduMatrix.Matrix.drawText": "Draws one line of text into the RGB buffer without showing it.",
+  "sarduMatrix.Matrix.drawText": "Draws static text at explicit coordinates without showing it.",
+  "sarduMatrix.Matrix.drawTextCentered": "Draws static text centered both horizontally and vertically.",
+  "sarduMatrix.Matrix.drawTextCenteredArea": "Draws text centered inside the inclusive rectangle delimited by A and B.",
+  "sarduMatrix.Matrix.drawTextCenteredHeight": "Draws static text centered across the matrix height at an explicit X coordinate.",
+  "sarduMatrix.Matrix.drawTextCenteredHeightRange": "Draws text vertically centered between two inclusive Y coordinates.",
+  "sarduMatrix.Matrix.drawTextCenteredWidth": "Draws static text centered across the matrix width at an explicit Y coordinate.",
+  "sarduMatrix.Matrix.drawTextCenteredWidthRange": "Draws text horizontally centered between two inclusive X coordinates.",
   "sarduMatrix.Matrix.height": "Returns the logical display height.",
   "sarduMatrix.Matrix.interruptAndClear": "Stops long-running output, clears the RGB buffer and immediately updates the display.",
   "sarduMatrix.Matrix.ledCount": "Returns the number of configured RGB LEDs.",
@@ -20,6 +28,10 @@
   "sarduMatrix.createAdvanced": "Creates one matrix with an explicitly configured physical pixel path.",
   "sarduMatrix.createModules": "Creates a horizontal row of identical matrix modules.",
   "sarduMatrix.createModulesAdvanced": "Creates a rectangular grid of modules with explicit physical paths.",
+  "sarduMatrix.hslColor": "Creates a color using hue, saturation and HSL lightness.",
+  "sarduMatrix.measureFontHeight": "Returns the rendered height of the selected font and size.",
+  "sarduMatrix.measureTextWidth": "Returns the rendered width of a string for the selected font and size.",
+  "sarduMatrix.rgbColor": "Creates a color from red, green and blue components.",
   "sarduMatrixInternal.pathIndex": "Maps a logical coordinate to a position in one physical scan path.",
   "sarduMatrixInternal.physicalIndex": "Maps a display coordinate to its LED position."
 }

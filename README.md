@@ -28,7 +28,7 @@ SARDU-Matrix offers two alternative creation methods.
 Use the logical width and height of the complete display. The default is 16×16.
 
 ```blocks
-let matrix = sarduMatrix.create(16, 16, DigitalPin.P0)
+let matrix = sarduMatrix.create(16, 16, DigitalPin.P0, 128)
 ```
 
 This method is independent of module sizes and module rows.
@@ -41,7 +41,8 @@ Choose the number and physical type of identical modules. The default is one 16�
 let matrix = sarduMatrix.createModules(
     2,
     MatrixModuleType.Matrix16x16,
-    DigitalPin.P0
+    DigitalPin.P0,
+    128
 )
 ```
 
@@ -60,13 +61,23 @@ Changes are written to the RGB buffer. Call `show()` when the physical LEDs must
 
 ```blocks
 matrix.clearBuffer()
-matrix.drawText("Hello, città!", 0, 4, neopixel.colors(NeoPixelColors.Red))
+matrix.drawText(
+    "Hello, città!", 0, 4,
+    sarduMatrix.rgbColor(255, 40, 0),
+    MatrixFont.Sardu,
+    MatrixFontSize.X1,
+    255
+)
 matrix.show()
 ```
 
 `clear()` immediately clears both buffer and physical display. `clearBuffer()` only changes memory and is available under advanced blocks. `setPixel()` and `drawText()` do not call `show()` automatically. Coordinates outside the logical display are safely clipped. `scrollText()` starts at the selected X/Y coordinates, moves left and can be stopped by `interruptAndClear()` from a button or radio event.
 
-The standard compact font is monospaced 6×8: five visible columns plus spacing. It distinguishes uppercase and lowercase, supports printable ASCII, common accented Latin letters (`À`–`ÿ`, including `Œ/œ` and `Ÿ`) and selected symbols (`€ £ © ® ° × ÷ ¿ ¡`). Unsupported characters are displayed as `?`. Additional font choices will be designed separately before release.
+The text blocks offer three alternative fonts: SARDU, the extended micro:bit system style and SARDU proportional. Each can be rendered at 1×, 2×, 3× or 4×. The SARDU fonts distinguish uppercase and lowercase and support printable ASCII, common accented Latin letters (`À`–`ÿ`, including `Œ/œ` and `Ÿ`) and selected symbols (`€ £ © ® ° × ÷ ¿ ¡`). The extended micro:bit choice uses the official 5×5 base glyphs and adds an extra row for accents or cedilla.
+
+Static text can use explicit X/Y coordinates, be centered across the complete width, complete height or both, or be centered inside an advanced inclusive X/Y range. Every string also has its own 0–255 brightness, independent from the matrix-wide brightness selected during creation.
+
+Colors can come from the MakeCode/NeoPixel picker, from explicit RGB components, or from HSL fields. RGB uses 0–255. HSL uses hue 0–360 and saturation/lightness 0–100. HSL lightness changes the color itself and is distinct from matrix or string brightness.
 
 ## Dynamic memory use
 
@@ -96,7 +107,7 @@ See [docs/wiring.md](docs/wiring.md) for diagrams and mapping examples.
 
 ## Languages
 
-English is the source and fallback language. Block and API-description translations are included for Italian, German, Spanish (Spain), French, Japanese and Chinese.
+English is the source and fallback language. During the current development phase the package includes Italian only; German, Spanish (Spain), French, Japanese and Chinese will be updated together before the stable release.
 
 ## License
 

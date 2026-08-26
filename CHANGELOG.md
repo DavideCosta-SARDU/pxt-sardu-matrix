@@ -9,6 +9,9 @@
 - Added an original compact 6×8 font, clipped text drawing and timed scrolling.
 - Added mapping and configuration tests, including all approved module sizes and the 96×16 compatibility case.
 - Added English source strings plus Italian, German, Spanish, French, Japanese and Chinese localizations.
+- Added initial brightness to every creation block and retained runtime brightness under advanced blocks.
+- Added per-string brightness, RGB/HSL colors, selectable fonts, 1x-4x sizing and full/area text centering.
+- Updated module terminology and temporarily limited packaged development locales to English and Italian.
 - Added wiring, power, memory, architecture, API and migration documentation.
 - Changed the category to the official SARDU blue and made creation the first block group.
 - Renamed the text groups to static text and scrolling text; scrolling now accepts start X/Y coordinates.

@@ -13,21 +13,12 @@
         "config.ts",
         "mapping.ts",
         "font.ts",
+        "colors.ts",
         "text.ts",
         "matrix.ts",
         "main.ts",
         "_locales/it/sardu-matrix-strings.json",
-        "_locales/it/sardu-matrix-jsdoc-strings.json",
-        "_locales/de/sardu-matrix-strings.json",
-        "_locales/de/sardu-matrix-jsdoc-strings.json",
-        "_locales/es-ES/sardu-matrix-strings.json",
-        "_locales/es-ES/sardu-matrix-jsdoc-strings.json",
-        "_locales/fr/sardu-matrix-strings.json",
-        "_locales/fr/sardu-matrix-jsdoc-strings.json",
-        "_locales/ja/sardu-matrix-strings.json",
-        "_locales/ja/sardu-matrix-jsdoc-strings.json",
-        "_locales/zh/sardu-matrix-strings.json",
-        "_locales/zh/sardu-matrix-jsdoc-strings.json"
+        "_locales/it/sardu-matrix-jsdoc-strings.json"
     ],
     "testFiles": [
         "test.ts"

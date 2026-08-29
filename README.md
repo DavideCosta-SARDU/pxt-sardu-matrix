@@ -1,12 +1,12 @@
 # SARDU-Matrix
 
-SARDU-Matrix is a configurable RGB LED matrix extension for Microsoft MakeCode and micro:bit. It uses the official Microsoft `pxt-neopixel` extension as its RGB backend.
+SARDU-Matrix is a configurable RGB LED matrix extension for Microsoft MakeCode and Micro:Bit. It uses the official Microsoft `pxt-neopixel` extension as its RGB backend.
 
 This is a pre-1.0 implementation. The software builds and its mapping tests pass in the MakeCode simulator; real hardware validation is still required before a stable release.
 
 ## Installation in MakeCode
 
-1. Open [MakeCode for micro:bit](https://makecode.microbit.org/).
+1. Open [MakeCode for Micro:Bit](https://makecode.microbit.org/).
 2. Create or open a project.
 3. Select **Extensions** in the toolbox.
 4. Paste this repository URL into the search box:
@@ -73,7 +73,7 @@ matrix.show()
 
 `clear()` immediately clears both buffer and physical display. `clearBuffer()` only changes memory and is available under advanced blocks. `setPixel()` and `drawText()` do not call `show()` automatically. Coordinates outside the logical display are safely clipped. `scrollText()` starts at the selected X/Y coordinates, moves left and can be stopped by `interruptAndClear()` from a button or radio event.
 
-The text blocks offer three alternative fonts: SARDU, the extended micro:bit system style and SARDU proportional. Each can be rendered at 1×, 2×, 3× or 4×. The SARDU fonts distinguish uppercase and lowercase and support printable ASCII, common accented Latin letters (`À`–`ÿ`, including `Œ/œ` and `Ÿ`) and selected symbols (`€ £ © ® ° × ÷ ¿ ¡`). The extended micro:bit choice uses the official 5×5 base glyphs and adds an extra row for accents or cedilla.
+The text blocks offer three alternative fonts: SARDU, the extended Micro:Bit system style and SARDU proportional. Each can be rendered at 1×, 2×, 3× or 4×. The SARDU fonts distinguish uppercase and lowercase and support printable ASCII, common accented Latin letters (`À`–`ÿ`, including `Œ/œ` and `Ÿ`) and selected symbols (`€ £ © ® ° × ÷ ¿ ¡`). The extended Micro:Bit choice uses the official 5×5 base glyphs and adds an extra row for accents or cedilla.
 
 Static text can use explicit X/Y coordinates, be centered across the complete width, complete height or both, or be centered inside an advanced inclusive X/Y range. Every string also has its own 0–255 brightness, independent from the matrix-wide brightness selected during creation.
 
@@ -87,13 +87,13 @@ There is no arbitrary 1536-LED limit. One RGB NeoPixel buffer is allocated using
 RGB bytes = width × height × 3
 ```
 
-The actual maximum depends on the micro:bit revision, MakeCode runtime, the rest of the program and other extensions. An allocation that does not fit fails explicitly; the library does not silently reduce dimensions.
+The actual maximum depends on the Micro:Bit revision, MakeCode runtime, the rest of the program and other extensions. An allocation that does not fit fails explicitly; the library does not silently reduce dimensions.
 
 ## Wiring and power safety
 
-Connect the micro:bit data pin to `DIN` of the first panel, then connect each panel's `DOUT` to the next panel's `DIN` in the configured order.
+Connect the Micro:Bit data pin to `DIN` of the first panel, then connect each panel's `DOUT` to the next panel's `DIN` in the configured order.
 
-Do not power a matrix from the micro:bit 3V pin. Use an external supply suitable for the real panels and connect a common ground between the supply, every panel and the micro:bit. Power sizing, wiring, injection points, fusing and installation compliance remain the user's responsibility. Software brightness is not a substitute for correct electrical design.
+Do not power a matrix from the Micro:Bit 3V pin. Use an external supply suitable for the real panels and connect a common ground between the supply, every panel and the Micro:Bit. Power sizing, wiring, injection points, fusing and installation compliance remain the user's responsibility. Software brightness is not a substitute for correct electrical design.
 
 See [docs/wiring.md](docs/wiring.md) for diagrams and mapping examples.
 

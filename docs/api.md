@@ -334,7 +334,7 @@ Il font standard supporta:
 - `à á â ã ä å ç è é ê ë ì í î ï ñ ò ó ô õ ö ø ù ú û ü ý ÿ`;
 - `Æ æ Œ œ ß ¿ ¡ ° € £ © ® × ÷`.
 
-Ogni altro carattere viene rappresentato con `?`. `MicroBitExtended` usa i glifi 5×5 ufficiali micro:bit dentro una metrica alta 7 pixel, riservando spazio ad accenti e cediglia. `SarduProportional` elimina le colonne laterali vuote di ogni glifo SARDU e calcola la larghezza effettiva carattere per carattere.
+Ogni altro carattere viene rappresentato con `?`. `MicroBitExtended` usa i glifi 5×5 ufficiali Micro:Bit dentro una metrica alta 7 pixel, riservando spazio ad accenti e cediglia. `SarduProportional` elimina le colonne laterali vuote di ogni glifo SARDU e calcola la larghezza effettiva carattere per carattere.
 
 Sono disponibili blocchi distinti per:
 
@@ -479,7 +479,7 @@ Risultato: 96×32, 3072 LED, 9216 byte RGB.
 
 ## 17. Criteri prima di congelare l'API
 
-- compilazione col target micro:bit corrente;
+- compilazione col target Micro:Bit corrente;
 - rendering visuale dei blocchi base e avanzati;
 - menu enum e default corretti;
 - test del selettore colore e pin;

@@ -9,7 +9,7 @@ I concetti da non confondere sono:
 1. direzione dei pixel dentro ogni modulo;
 2. ordine dei moduli nella griglia;
 3. alimentazione elettrica dei pannelli;
-4. segnale dati del micro:bit.
+4. segnale dati del Micro:Bit.
 
 ## 2. Nomi dei collegamenti
 
@@ -24,10 +24,10 @@ Non dedurre DIN/DOUT soltanto dalla posizione del connettore: pannelli esteriorm
 
 ## 3. Collegamento dati fondamentale
 
-Il micro:bit invia i dati soltanto al primo modulo:
+Il Micro:Bit invia i dati soltanto al primo modulo:
 
 ```text
-micro:bit P0 ─────► DIN [Modulo 0]
+Micro:Bit P0 ─────► DIN [Modulo 0]
                          DOUT ─────► DIN [Modulo 1]
                                            DOUT ─────► DIN [Modulo 2]
                                                              ...
@@ -53,17 +53,17 @@ Alimentatore esterno +V ─┤
                          └────────────► altri punti di iniezione, se previsti
 
 Alimentatore esterno GND ─────┬──────► GND pannelli
-                              └──────► GND micro:bit
+                              └──────► GND Micro:Bit
 
-micro:bit pin dati ──────────────────► DIN primo pannello
+Micro:Bit pin dati ──────────────────► DIN primo pannello
 ```
 
 Requisiti inderogabili:
 
-- non alimentare la matrice dal pin 3V del micro:bit;
+- non alimentare la matrice dal pin 3V del Micro:Bit;
 - usare un alimentatore esterno con tensione adatta al pannello reale;
-- collegare insieme negativo dell'alimentatore, GND dei pannelli e GND del micro:bit;
-- non collegare il positivo dell'alimentatore esterno al pin 3V del micro:bit;
+- collegare insieme negativo dell'alimentatore, GND dei pannelli e GND del Micro:Bit;
+- non collegare il positivo dell'alimentatore esterno al pin 3V del Micro:Bit;
 - dimensionare cavi, connettori, distribuzione, iniezioni e protezioni per la corrente prevista;
 - seguire le istruzioni del produttore per livello logico e condizionamento del segnale dati.
 
@@ -194,7 +194,7 @@ L'origine dei moduli indica dove si trova il Modulo 0:
 - basso-sinistra;
 - basso-destra.
 
-Asse e percorso vengono applicati a partire da quell'angolo. Per evitare errori, prima si sceglie fisicamente il pannello collegato al micro:bit, poi si imposta quell'angolo come origine della griglia.
+Asse e percorso vengono applicati a partire da quell'angolo. Per evitare errori, prima si sceglie fisicamente il pannello collegato al Micro:Bit, poi si imposta quell'angolo come origine della griglia.
 
 ## 9. Orientamento dei pannelli
 
@@ -280,7 +280,7 @@ Il tempo minimo teorico del solo trasferimento WS2812B è circa 92,44 ms, prima 
 
 ## 14. Come scegliere le opzioni
 
-1. Individuare il DIN del primo pannello collegato al micro:bit.
+1. Individuare il DIN del primo pannello collegato al Micro:Bit.
 2. Stabilire in quale angolo della griglia si trova: origine moduli.
 3. Seguire ogni DOUT→DIN e numerare i pannelli 0, 1, 2…
 4. Confrontare la numerazione con progressivo/ZigZag per righe/colonne.
@@ -318,8 +318,8 @@ Interpretazione tipica:
 - tensione dell'alimentatore compatibile col pannello;
 - corrente, cavi, connettori e protezioni dimensionati dall'utente;
 - polarità verificata;
-- positivo esterno non collegato al 3V del micro:bit;
-- negativo alimentatore collegato a GND pannelli e GND micro:bit;
+- positivo esterno non collegato al 3V del Micro:Bit;
+- negativo alimentatore collegato a GND pannelli e GND Micro:Bit;
 - pin dati collegato al DIN del primo modulo;
 - ogni DOUT collegato al DIN successivo;
 - configurazione software coerente con origine e percorso;

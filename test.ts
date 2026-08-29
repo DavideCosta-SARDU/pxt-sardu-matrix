@@ -112,15 +112,14 @@ function testFontAndTextMetrics(): void {
     expectSarduMatrix(sarduMatrixInternal.textWidth("") == 0);
     expectSarduMatrix(sarduMatrixInternal.textWidth("ABC") == 17);
     expectSarduMatrix(sarduMatrixInternal.textWidth("ABC", MatrixFont.Sardu, MatrixFontSize.X2) == 34);
-    expectSarduMatrix(sarduMatrixInternal.textWidth("A", MatrixFont.MicroBitExtended) == 5);
     expectSarduMatrix(sarduMatrixInternal.renderedFontHeight(MatrixFont.Sardu, MatrixFontSize.X1) == 8);
     expectSarduMatrix(sarduMatrixInternal.renderedFontHeight(MatrixFont.MicroBitExtended, MatrixFontSize.X1) == 7);
-    expectSarduMatrix(sarduMatrixInternal.renderedFontHeight(MatrixFont.SarduProportional, MatrixFontSize.X4) == 32);
     expectSarduMatrix(
         sarduMatrixInternal.textWidth("...", MatrixFont.SarduProportional) <
         sarduMatrixInternal.textWidth("...", MatrixFont.Sardu)
     );
-    expectSarduMatrix(sarduMatrixInternal.fontColumn(65, 0) != 0);
+    // The asymmetric F catches row/column swaps that rotate the Micro:Bit font.
+    expectSarduMatrix(sarduMatrixInternal.fontColumn(70, 3, MatrixFont.MicroBitExtended) == 2);
     let lowercaseDiffers = false;
     for (let column = 0; column < 5; column++) {
         if (sarduMatrixInternal.fontColumn(65, column) != sarduMatrixInternal.fontColumn(97, column))

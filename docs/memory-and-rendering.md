@@ -2,13 +2,13 @@
 
 ## 1. Stato dell'analisi
 
-Analisi eseguita il 23 agosto 2026 prima dell'implementazione. I valori fisici provengono dalla documentazione ufficiale micro:bit, dal codice fissato di pxt-neopixel/pxt-ws2812b e dal datasheet Worldsemi WS2812B-V5.
+Analisi eseguita il 23 agosto 2026 prima dell'implementazione. I valori fisici provengono dalla documentazione ufficiale Micro:Bit, dal codice fissato di pxt-neopixel/pxt-ws2812b e dal datasheet Worldsemi WS2812B-V5.
 
 Questa fase sceglie la strategia di progetto, ma non sostituisce compilazione, profilazione e prova su hardware. In particolare, RAM fisica totale e heap realmente disponibile a un programma MakeCode non sono la stessa quantità.
 
-## 2. Hardware micro:bit
+## 2. Hardware Micro:Bit
 
-### 2.1 micro:bit V1
+### 2.1 Micro:Bit V1
 
 La revisione V1.5 usa come processore applicativo un Nordic nRF51822, Cortex-M0 a 16 MHz, con:
 
@@ -19,7 +19,7 @@ Fonte ufficiale: https://tech.microbit.org/hardware/1-5-revision/
 
 Il codice utente, il runtime, stack, heap, periferiche e buffer condividono i 16 KB. Non è quindi corretto considerare tutti i 16 KB disponibili per l'estensione.
 
-### 2.2 micro:bit V2
+### 2.2 Micro:Bit V2
 
 Le revisioni V2 usano come processore applicativo un Nordic nRF52833, Cortex-M4F a 64 MHz, con:
 
@@ -37,8 +37,8 @@ La RAM del processore di interfaccia USB non è memoria utilizzabile dal program
 
 | Scheda | RAM fisica | Buffer RGB 1536 LED | Percentuale della RAM fisica |
 |---|---:|---:|---:|
-| micro:bit V1 | 16.384 byte | 4.608 byte | 28,125% |
-| micro:bit V2 | 131.072 byte | 4.608 byte | 3,516% |
+| Micro:Bit V1 | 16.384 byte | 4.608 byte | 28,125% |
+| Micro:Bit V2 | 131.072 byte | 4.608 byte | 3,516% |
 
 Già il solo buffer colore occupa più di un quarto della RAM fisica V1, prima di contare runtime e heap. Su V2 il medesimo costo è molto più sostenibile.
 
@@ -83,7 +83,7 @@ RGBW non è incluso nell'API iniziale. Il Buffer non è fissato al caso 1536: px
 
 ### 3.1 Limite della singola allocazione nel runtime verificato
 
-La verifica eseguita durante l'implementazione su micro:bit PXT 9.1.1 / pxt-core 13.0.1 ha confermato che la lunghezza del `Buffer` nativo è un intero a 32 bit: non esiste quindi un limite strutturale a 65.535 byte. Il garbage collector del target impone però un massimo alla singola allocazione:
+La verifica eseguita durante l'implementazione su Micro:Bit PXT 9.1.1 / pxt-core 13.0.1 ha confermato che la lunghezza del `Buffer` nativo è un intero a 32 bit: non esiste quindi un limite strutturale a 65.535 byte. Il garbage collector del target impone però un massimo alla singola allocazione:
 
 - runtime DAL/V1: circa 9.000 byte complessivi;
 - runtime CODAL/V2: circa 11.000 byte complessivi.
@@ -100,7 +100,7 @@ Oltre ai 4.608 byte del buffer NeoPixel sono necessari:
 - geometria e piano di mapping normalizzati;
 - luminosità e pochi campi di stato;
 - tabella del font;
-- runtime MakeCode e runtime micro:bit;
+- runtime MakeCode e runtime Micro:Bit;
 - stack ed heap del programma utente.
 
 Il piano di mapping non richiede una tabella da 1536 indici: l'indice viene calcolato con formule intere. Una tabella di indici a 16 bit costerebbe altri 3.072 byte e non è giustificata.
@@ -151,7 +151,7 @@ showMs(N) = N × 0,03 ms + almeno 0,28 ms di reset
 
 Questo è un limite del collegamento seriale, non della velocità del renderer. Calcolo coordinate, cancellazione, testo, chiamate MakeCode e scheduling riducono ulteriormente il frame rate ottenibile.
 
-Il driver assembly fissato in pxt-ws2812b trasmette l'intero Buffer e, nel percorso DAL visibile, disabilita gli interrupt durante il flusso temporizzato. Più LED significano un intervallo bloccante più lungo: interazioni con radio, temporizzazioni e periferiche devono essere provate su entrambe le revisioni. Il manifest della dipendenza disabilita esplicitamente Bluetooth nel percorso micro:bit DAL.
+Il driver assembly fissato in pxt-ws2812b trasmette l'intero Buffer e, nel percorso DAL visibile, disabilita gli interrupt durante il flusso temporizzato. Più LED significano un intervallo bloccante più lungo: interazioni con radio, temporizzazioni e periferiche devono essere provate su entrambe le revisioni. Il manifest della dipendenza disabilita esplicitamente Bluetooth nel percorso Micro:Bit DAL.
 
 Conclusione: il frame rate dichiarabile deve essere calcolato e misurato per il numero configurato di LED. Per 1536 è inferiore a 22 fps; per 3072 è inferiore a 11 fps.
 
@@ -273,11 +273,11 @@ L'assenza di un secondo framebuffer non lega il motore al testo: future linee, r
 
 ## 9. Supporto V1 e V2
 
-### micro:bit V2
+### Micro:Bit V2
 
 È la piattaforma con maggiore margine per configurazioni grandi. Un buffer da 256 LED occupa 768 byte; 1536 LED occupano circa il 3,5% della RAM fisica e 3072 circa il 7%. Il progetto deve comunque essere profilato insieme al programma utente prima di dichiarare una configurazione massima consigliata.
 
-### micro:bit V1
+### Micro:Bit V1
 
 La V1 è utilizzabile soprattutto con configurazioni più piccole, ma non viene esclusa dall'API. Il buffer usa il 4,688% della RAM fisica con 256 LED, il 28,125% con 1536 e il 56,25% con 3072, prima di runtime, stack e heap. Ogni fascia significativa deve essere provata mediante:
 
@@ -305,7 +305,7 @@ Le guide forniranno esempi e fasce misurate, non un valore universale presentato
 
 ## 11. Alimentazione e segnale: limite esterno ma essenziale
 
-Le matrici non devono essere alimentate dal pin 3V del micro:bit. Le specifiche ufficiali indicano, a seconda della revisione, decine o poche centinaia di milliampere disponibili sul connettore; anche configurazioni molto più piccole possono superare questo valore.
+Le matrici non devono essere alimentate dal pin 3V del Micro:Bit. Le specifiche ufficiali indicano, a seconda della revisione, decine o poche centinaia di milliampere disponibili sul connettore; anche configurazioni molto più piccole possono superare questo valore.
 
 Il WS2812B-V5 citato dal produttore usa fino a 12 mA per ciascuno dei tre canali, cioè fino a 36 mA per pixel:
 
@@ -321,9 +321,9 @@ Il dimensionamento elettrico è responsabilità dell'utente e dell'installazione
 - alimentatore esterno dimensionato per pannelli e luminosità massima prevista;
 - iniezione di alimentazione distribuita e cablaggio adeguato;
 - protezioni/fusibili appropriati al progetto;
-- negativo/massa comune fra alimentatore esterno, matrice e GND del micro:bit;
+- negativo/massa comune fra alimentatore esterno, matrice e GND del Micro:Bit;
 - verifica del livello logico e dell'integrità del segnale sulla catena reale;
-- mai prelevare dal pin 3V del micro:bit la corrente della matrice.
+- mai prelevare dal pin 3V del Micro:Bit la corrente della matrice.
 
 Questi aspetti non cambiano l'API software, ma determinano la sicurezza e l'affidabilità del sistema.
 
@@ -362,4 +362,4 @@ Questi aspetti non cambiano l'API software, ma determinano la sicurezza e l'affi
 
 Per qualunque geometria, il buffer RGB obbligatorio è `ledCount × 3` byte. Duplicarlo non porta benefici sufficienti e rende soprattutto V1 più fragile. Il rendering diretto nel buffer NeoPixel, con mapping calcolato e font compatto, è il miglior compromesso fra RAM, semplicità, velocità ed estendibilità.
 
-V2 offre più margine, mentre V1 richiede maggiore prudenza, ma l'API non impone una geometria diversa per scheda. Memoria e tempo crescono linearmente: 256 LED richiedono 768 byte e almeno circa 7,96 ms di show; 1536 richiedono 4608 byte e 46,36 ms; 3072 richiedono 9216 byte e 92,44 ms. L'alimentazione esterna deve sempre essere dimensionata dall'utente per l'hardware reale, con massa comune al micro:bit.
+V2 offre più margine, mentre V1 richiede maggiore prudenza, ma l'API non impone una geometria diversa per scheda. Memoria e tempo crescono linearmente: 256 LED richiedono 768 byte e almeno circa 7,96 ms di show; 1536 richiedono 4608 byte e 46,36 ms; 3072 richiedono 9216 byte e 92,44 ms. L'alimentazione esterna deve sempre essere dimensionata dall'utente per l'hardware reale, con massa comune al Micro:Bit.

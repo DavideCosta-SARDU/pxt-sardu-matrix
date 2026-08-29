@@ -49,7 +49,7 @@ enum MatrixPath {
 enum MatrixFont {
     //% block="SARDU"
     Sardu = 0,
-    //% block="micro:bit extended"
+    //% block="Micro:Bit extended"
     MicroBitExtended = 1,
     //% block="SARDU proportional"
     SarduProportional = 2
@@ -68,7 +68,7 @@ enum MatrixFontSize {
 }
 
 namespace sarduMatrixInternal {
-    // Buffer payload length is a signed C++ int in the current micro:bit target.
+    // Buffer payload length is a signed C++ int in the current Micro:Bit target.
     // This guards representation only; practical limits remain available RAM and
     // the maximum single allocation supported by the selected runtime.
     export const MAX_REPRESENTABLE_BUFFER_BYTES = 0x7fffffff;

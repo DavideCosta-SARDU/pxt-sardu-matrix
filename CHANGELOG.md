@@ -11,6 +11,8 @@
 - Added English source strings plus Italian, German, Spanish, French, Japanese and Chinese localizations.
 - Added initial brightness to every creation block and retained runtime brightness under advanced blocks.
 - Added per-string brightness, RGB/HSL colors, selectable fonts, 1x-4x sizing and full/area text centering.
+- Fixed text-block parameter controls and corrected the extended Micro:Bit font orientation on hardware.
+- Standardized user-facing references and font labels as `Micro:Bit`.
 - Updated module terminology and temporarily limited packaged development locales to English and Italian.
 - Added wiring, power, memory, architecture, API and migration documentation.
 - Changed the category to the official SARDU blue and made creation the first block group.

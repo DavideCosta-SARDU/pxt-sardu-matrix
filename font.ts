@@ -10,7 +10,7 @@ namespace sarduMatrixInternal {
     // Æ, æ, Œ, œ, ß, Ø, ø, ¿, ¡, °, €, £, ©, ®, ×, ÷
     const SPECIAL = hex`7e09097f4920545478543e41417f493844447c547e090949363e61514946384c54443830484d400000007d00000007060700143e55554148547e51423e4955493e3e4d55493e221408142208002a0008`;
 
-    // The official micro:bit 5x5 system font, as distributed by MakeCode in
+    // The official Micro:Bit 5x5 system font, as distributed by MakeCode in
     // pxt-common-packages. Each record is a two-byte character code followed
     // by five bitmap columns and one blank advance column.
     const MICROBIT_FONT = hex`
@@ -163,13 +163,20 @@ namespace sarduMatrixInternal {
         }
     }
 
-    // Native builds use the micro:bit system font exposed by the core target.
-    // The TypeScript body provides the same official data to the simulator.
+    // Native builds expose five horizontal bitmap rows. The TypeScript body
+    // converts the same official column table to that format for the simulator.
     //% shim=images::charCodeBuffer
     function systemFontGlyph(characterCode: number): Buffer {
         const glyph = control.createBuffer(5);
         const offset = (characterCode - 32) * 8 + 2;
-        for (let column = 0; column < 5; column++) glyph[column] = MICROBIT_FONT[offset + column];
+        for (let row = 0; row < 5; row++) {
+            let bits = 0;
+            for (let column = 0; column < 5; column++) {
+                if ((MICROBIT_FONT[offset + column] & (1 << row)) != 0)
+                    bits |= 1 << (4 - column);
+            }
+            glyph[row] = bits;
+        }
         return glyph;
     }
 
@@ -179,7 +186,10 @@ namespace sarduMatrixInternal {
 
     function microBitColumn(characterCode: number, column: number, glyph: Buffer): number {
         if (column < 0 || column >= 5 || !glyph || glyph.length < 5) return 0;
-        let bits = (glyph[column] & 31) << 1;
+        let bits = 0;
+        for (let row = 0; row < 5; row++) {
+            if ((glyph[row] & (1 << (4 - column))) != 0) bits |= 1 << (row + 1);
+        }
         const kind = accentKind(characterCode);
         if (kind == 1 && (column == 1 || column == 2)) bits |= column == 1 ? 1 : 2;
         else if (kind == 2 && (column == 2 || column == 3)) bits |= column == 2 ? 2 : 1;

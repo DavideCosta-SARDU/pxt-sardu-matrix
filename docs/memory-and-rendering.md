@@ -125,6 +125,14 @@ Il renderer proposto deve evitare:
 
 Per lo scrolling servono soltanto contatori, coordinate, riferimenti alla stringa e accesso diretto alla tabella compatta del font. La memoria temporanea deve restare sostanzialmente costante rispetto alla lunghezza della stringa, salvo la stringa fornita dall'utente.
 
+La modalità di scorrimento **esclusiva** rispetta questa regola e non duplica il buffer RGB. La modalità **composta**, richiesta per conservare disegni e testi già presenti mentre passa una nuova riga, crea invece una sola copia temporanea dell'intero buffer NeoPixel all'inizio dell'animazione:
+
+```text
+memoria temporanea composta = width × height × 3 byte
+```
+
+La stessa copia viene ripristinata a ogni fotogramma e viene rilasciata al termine; non vengono create copie successive per ogni frame. Questa modalità raddoppia temporaneamente la memoria RGB e va usata con prudenza soprattutto su Micro:Bit V1. La modalità esclusiva resta il default.
+
 ## 5. Timing del trasferimento WS2812B
 
 Il WS2812B usa 24 bit per pixel RGB e un flusso nominale di 800 kbit/s. Il datasheet Worldsemi WS2812B-V5 indica inoltre un reset maggiore di 280 µs.
@@ -257,7 +265,7 @@ Decisione: rifiutato.
 
 ## 8. Strategia scelta
 
-La prima versione usa:
+La prima versione usa normalmente:
 
 - un solo Buffer RGB, quello allocato da pxt-neopixel;
 - nessuna tabella completa di mapping;
@@ -268,6 +276,8 @@ La prima versione usa:
 - `show()` esplicito per i fotogrammi statici;
 - scrolling che visita soltanto i glifi potenzialmente visibili;
 - intervallo obiettivo del fotogramma, non pausa aggiuntiva.
+
+Fa eccezione soltanto lo scorrimento composto: per poter ripristinare esattamente la scena sottostante usa una seconda copia RGB temporanea per la durata dell'operazione. Non è un framebuffer permanente e non modifica il costo delle operazioni statiche o dello scorrimento esclusivo.
 
 L'assenza di un secondo framebuffer non lega il motore al testo: future linee, rettangoli e bitmap possono chiamare lo stesso `setPixel()` e condividere clipping, mapping e show.
 

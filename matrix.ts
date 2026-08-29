@@ -67,9 +67,9 @@ namespace sarduMatrix {
 
         /** Draws static text at explicit coordinates without showing it. */
         // Keep block placeholders in the same order as the TypeScript parameters.
-        //% blockId=sardu_matrix_draw_text block="%matrix draw static text %text at x %x y %y|color %color=neopixel_colors font %font size %size brightness %brightness"
+        //% blockId=sardu_matrix_draw_text block="%matrix draw static text %text at x %x y %y|color %color=neopixel_colors font %font size %size brightness %brightness orientation %orientation"
         //% group="Static text" weight=80
-        //% text.defl="Hello" x.defl=0 y.defl=0 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 color.defl=NeoPixelColors.White brightness.min=0 brightness.max=255 brightness.defl=255
+        //% text.defl="Hello" x.defl=0 y.defl=0 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 color.defl=NeoPixelColors.White brightness.min=0 brightness.max=255 brightness.defl=255 orientation.defl=MatrixTextOrientation.Normal
         drawText(
             text: string,
             x: number,
@@ -77,130 +77,137 @@ namespace sarduMatrix {
             color: number,
             font: MatrixFont = MatrixFont.Sardu,
             size: MatrixFontSize = MatrixFontSize.X1,
-            brightness: number = 255
+            brightness: number = 255,
+            orientation: MatrixTextOrientation = MatrixTextOrientation.Normal
         ): void {
-            sarduMatrixInternal.drawText(this, text, x, y, color, font, size, brightness);
+            sarduMatrixInternal.drawText(this, text, x, y, color, font, size, brightness, orientation);
         }
 
         /** Draws static text centered across the matrix width at an explicit Y coordinate. */
-        //% blockId=sardu_matrix_draw_text_centered_width block="%matrix draw static text %text centered in width at y %y|color %color=neopixel_colors font %font size %size brightness %brightness"
+        //% blockId=sardu_matrix_draw_text_centered_width block="%matrix draw static text %text centered in width at y %y|color %color=neopixel_colors font %font size %size brightness %brightness orientation %orientation"
         //% group="Static text" weight=79
-        //% text.defl="Hello" y.defl=0 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 color.defl=NeoPixelColors.White brightness.min=0 brightness.max=255 brightness.defl=255
+        //% text.defl="Hello" y.defl=0 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 color.defl=NeoPixelColors.White brightness.min=0 brightness.max=255 brightness.defl=255 orientation.defl=MatrixTextOrientation.Normal
         drawTextCenteredWidth(
             text: string,
             y: number,
             color: number,
             font: MatrixFont = MatrixFont.Sardu,
             size: MatrixFontSize = MatrixFontSize.X1,
-            brightness: number = 255
+            brightness: number = 255,
+            orientation: MatrixTextOrientation = MatrixTextOrientation.Normal
         ): void {
             const x = sarduMatrixInternal.centeredCoordinate(
                 0, this.config.width - 1,
-                sarduMatrixInternal.textWidth(text, font, size),
+                sarduMatrixInternal.renderedTextWidth(text, font, size, orientation),
                 this.config.width - 1
             );
-            this.drawText(text, x, y, color, font, size, brightness);
+            this.drawText(text, x, y, color, font, size, brightness, orientation);
         }
 
         /** Draws static text centered across the matrix height at an explicit X coordinate. */
-        //% blockId=sardu_matrix_draw_text_centered_height block="%matrix draw static text %text centered in height at x %x|color %color=neopixel_colors font %font size %size brightness %brightness"
+        //% blockId=sardu_matrix_draw_text_centered_height block="%matrix draw static text %text centered in height at x %x|color %color=neopixel_colors font %font size %size brightness %brightness orientation %orientation"
         //% group="Static text" weight=78
-        //% text.defl="Hello" x.defl=0 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 color.defl=NeoPixelColors.White brightness.min=0 brightness.max=255 brightness.defl=255
+        //% text.defl="Hello" x.defl=0 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 color.defl=NeoPixelColors.White brightness.min=0 brightness.max=255 brightness.defl=255 orientation.defl=MatrixTextOrientation.Normal
         drawTextCenteredHeight(
             text: string,
             x: number,
             color: number,
             font: MatrixFont = MatrixFont.Sardu,
             size: MatrixFontSize = MatrixFontSize.X1,
-            brightness: number = 255
+            brightness: number = 255,
+            orientation: MatrixTextOrientation = MatrixTextOrientation.Normal
         ): void {
             const y = sarduMatrixInternal.centeredCoordinate(
                 0, this.config.height - 1,
-                sarduMatrixInternal.renderedFontHeight(font, size),
+                sarduMatrixInternal.renderedTextHeight(text, font, size, orientation),
                 this.config.height - 1
             );
-            this.drawText(text, x, y, color, font, size, brightness);
+            this.drawText(text, x, y, color, font, size, brightness, orientation);
         }
 
         /** Draws static text centered both horizontally and vertically. */
-        //% blockId=sardu_matrix_draw_text_centered block="%matrix draw static text %text centered in width and height|color %color=neopixel_colors font %font size %size brightness %brightness"
+        //% blockId=sardu_matrix_draw_text_centered block="%matrix draw static text %text centered in width and height|color %color=neopixel_colors font %font size %size brightness %brightness orientation %orientation"
         //% group="Static text" weight=77
-        //% text.defl="Hello" font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 color.defl=NeoPixelColors.White brightness.min=0 brightness.max=255 brightness.defl=255
+        //% text.defl="Hello" font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 color.defl=NeoPixelColors.White brightness.min=0 brightness.max=255 brightness.defl=255 orientation.defl=MatrixTextOrientation.Normal
         drawTextCentered(
             text: string,
             color: number,
             font: MatrixFont = MatrixFont.Sardu,
             size: MatrixFontSize = MatrixFontSize.X1,
-            brightness: number = 255
+            brightness: number = 255,
+            orientation: MatrixTextOrientation = MatrixTextOrientation.Normal
         ): void {
             const x = sarduMatrixInternal.centeredCoordinate(
                 0, this.config.width - 1,
-                sarduMatrixInternal.textWidth(text, font, size),
+                sarduMatrixInternal.renderedTextWidth(text, font, size, orientation),
                 this.config.width - 1
             );
             const y = sarduMatrixInternal.centeredCoordinate(
                 0, this.config.height - 1,
-                sarduMatrixInternal.renderedFontHeight(font, size),
+                sarduMatrixInternal.renderedTextHeight(text, font, size, orientation),
                 this.config.height - 1
             );
-            this.drawText(text, x, y, color, font, size, brightness);
+            this.drawText(text, x, y, color, font, size, brightness, orientation);
         }
 
         /** Draws text horizontally centered between two inclusive X coordinates. */
-        //% blockId=sardu_matrix_draw_text_centered_width_range block="%matrix draw static text %text centered from x %startX to x %endX at y %y|color %color=neopixel_colors font %font size %size brightness %brightness"
+        //% blockId=sardu_matrix_draw_text_centered_width_range block="%matrix draw static text %text centered from x %startX to x %endX at y %y|color %color=neopixel_colors font %font size %size brightness %brightness orientation %orientation"
         //% group="More" weight=15 advanced=true
-        //% text.defl="Hello" startX.defl=0 endX.defl=15 y.defl=0 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 color.defl=NeoPixelColors.White brightness.min=0 brightness.max=255 brightness.defl=255
+        //% text.defl="Hello" startX.defl=0 endX.defl=15 y.defl=0 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 color.defl=NeoPixelColors.White brightness.min=0 brightness.max=255 brightness.defl=255 orientation.defl=MatrixTextOrientation.Normal
         drawTextCenteredWidthRange(
             text: string, startX: number, endX: number, y: number, color: number,
             font: MatrixFont = MatrixFont.Sardu,
             size: MatrixFontSize = MatrixFontSize.X1,
-            brightness: number = 255
+            brightness: number = 255,
+            orientation: MatrixTextOrientation = MatrixTextOrientation.Normal
         ): void {
             const x = sarduMatrixInternal.centeredCoordinate(
-                startX, endX, sarduMatrixInternal.textWidth(text, font, size), this.config.width - 1
+                startX, endX, sarduMatrixInternal.renderedTextWidth(text, font, size, orientation), this.config.width - 1
             );
-            this.drawText(text, x, y, color, font, size, brightness);
+            this.drawText(text, x, y, color, font, size, brightness, orientation);
         }
 
         /** Draws text vertically centered between two inclusive Y coordinates. */
-        //% blockId=sardu_matrix_draw_text_centered_height_range block="%matrix draw static text %text centered from y %startY to y %endY at x %x|color %color=neopixel_colors font %font size %size brightness %brightness"
+        //% blockId=sardu_matrix_draw_text_centered_height_range block="%matrix draw static text %text centered from y %startY to y %endY at x %x|color %color=neopixel_colors font %font size %size brightness %brightness orientation %orientation"
         //% group="More" weight=14 advanced=true
-        //% text.defl="Hello" startY.defl=0 endY.defl=15 x.defl=0 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 color.defl=NeoPixelColors.White brightness.min=0 brightness.max=255 brightness.defl=255
+        //% text.defl="Hello" startY.defl=0 endY.defl=15 x.defl=0 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 color.defl=NeoPixelColors.White brightness.min=0 brightness.max=255 brightness.defl=255 orientation.defl=MatrixTextOrientation.Normal
         drawTextCenteredHeightRange(
             text: string, startY: number, endY: number, x: number, color: number,
             font: MatrixFont = MatrixFont.Sardu,
             size: MatrixFontSize = MatrixFontSize.X1,
-            brightness: number = 255
+            brightness: number = 255,
+            orientation: MatrixTextOrientation = MatrixTextOrientation.Normal
         ): void {
             const y = sarduMatrixInternal.centeredCoordinate(
-                startY, endY, sarduMatrixInternal.renderedFontHeight(font, size), this.config.height - 1
+                startY, endY, sarduMatrixInternal.renderedTextHeight(text, font, size, orientation), this.config.height - 1
             );
-            this.drawText(text, x, y, color, font, size, brightness);
+            this.drawText(text, x, y, color, font, size, brightness, orientation);
         }
 
         /** Draws text centered inside the inclusive rectangle delimited by A and B. */
-        //% blockId=sardu_matrix_draw_text_centered_area block="%matrix draw static text %text centered in area A x %startX y %startY B x %endX y %endY|color %color=neopixel_colors font %font size %size brightness %brightness"
+        //% blockId=sardu_matrix_draw_text_centered_area block="%matrix draw static text %text centered in area A x %startX y %startY B x %endX y %endY|color %color=neopixel_colors font %font size %size brightness %brightness orientation %orientation"
         //% group="More" weight=13 advanced=true
-        //% text.defl="Hello" startX.defl=0 startY.defl=0 endX.defl=15 endY.defl=15 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 color.defl=NeoPixelColors.White brightness.min=0 brightness.max=255 brightness.defl=255
+        //% text.defl="Hello" startX.defl=0 startY.defl=0 endX.defl=15 endY.defl=15 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 color.defl=NeoPixelColors.White brightness.min=0 brightness.max=255 brightness.defl=255 orientation.defl=MatrixTextOrientation.Normal
         drawTextCenteredArea(
             text: string, startX: number, startY: number, endX: number, endY: number, color: number,
             font: MatrixFont = MatrixFont.Sardu,
             size: MatrixFontSize = MatrixFontSize.X1,
-            brightness: number = 255
+            brightness: number = 255,
+            orientation: MatrixTextOrientation = MatrixTextOrientation.Normal
         ): void {
             const x = sarduMatrixInternal.centeredCoordinate(
-                startX, endX, sarduMatrixInternal.textWidth(text, font, size), this.config.width - 1
+                startX, endX, sarduMatrixInternal.renderedTextWidth(text, font, size, orientation), this.config.width - 1
             );
             const y = sarduMatrixInternal.centeredCoordinate(
-                startY, endY, sarduMatrixInternal.renderedFontHeight(font, size), this.config.height - 1
+                startY, endY, sarduMatrixInternal.renderedTextHeight(text, font, size, orientation), this.config.height - 1
             );
-            this.drawText(text, x, y, color, font, size, brightness);
+            this.drawText(text, x, y, color, font, size, brightness, orientation);
         }
 
-        /** Scrolls one line left from the selected X and Y coordinates, then leaves the display black. */
-        //% blockId=sardu_matrix_scroll_text block="%matrix scroll text %text from x %x y %y|color %color=neopixel_colors every %frameIntervalMs ms font %font size %size brightness %brightness"
+        /** Scrolls one line left from selected coordinates, clearing or preserving the existing scene. */
+        //% blockId=sardu_matrix_scroll_text block="%matrix scroll text %text from x %x y %y|color %color=neopixel_colors every %frameIntervalMs ms font %font size %size brightness %brightness orientation %orientation mode %mode"
         //% group="Scrolling text" weight=75
-        //% text.defl="Hello" x.defl=16 y.defl=0 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 color.defl=NeoPixelColors.White brightness.min=0 brightness.max=255 brightness.defl=255 frameIntervalMs.defl=100 frameIntervalMs.min=0
+        //% text.defl="Hello" x.defl=16 y.defl=0 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 color.defl=NeoPixelColors.White brightness.min=0 brightness.max=255 brightness.defl=255 frameIntervalMs.defl=100 frameIntervalMs.min=0 orientation.defl=MatrixTextOrientation.Normal mode.defl=MatrixScrollMode.Exclusive
         scrollText(
             text: string,
             x: number = 16,
@@ -209,9 +216,31 @@ namespace sarduMatrix {
             frameIntervalMs: number = 100,
             font: MatrixFont = MatrixFont.Sardu,
             size: MatrixFontSize = MatrixFontSize.X1,
-            brightness: number = 255
+            brightness: number = 255,
+            orientation: MatrixTextOrientation = MatrixTextOrientation.Normal,
+            mode: MatrixScrollMode = MatrixScrollMode.Exclusive
         ): void {
-            sarduMatrixInternal.scrollText(this, text, x, y, color, frameIntervalMs, font, size, brightness);
+            sarduMatrixInternal.scrollText(this, text, x, y, color, frameIntervalMs, font, size, brightness, orientation, mode);
+        }
+
+        /** Scrolls a centered text line from one matrix edge, clearing or preserving the existing scene. */
+        //% blockId=sardu_matrix_scroll_text_from_edge block="%matrix scroll text %text from edge %edge|color %color=neopixel_colors every %frameIntervalMs ms font %font size %size brightness %brightness orientation %orientation mode %mode"
+        //% group="Scrolling text" weight=76
+        //% text.defl="Hello" edge.defl=MatrixScrollEdge.Right color.defl=NeoPixelColors.White frameIntervalMs.defl=100 frameIntervalMs.min=0 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 brightness.min=0 brightness.max=255 brightness.defl=255 orientation.defl=MatrixTextOrientation.Normal mode.defl=MatrixScrollMode.Exclusive
+        scrollTextFromEdge(
+            text: string,
+            edge: MatrixScrollEdge = MatrixScrollEdge.Right,
+            color: number = NeoPixelColors.White,
+            frameIntervalMs: number = 100,
+            font: MatrixFont = MatrixFont.Sardu,
+            size: MatrixFontSize = MatrixFontSize.X1,
+            brightness: number = 255,
+            orientation: MatrixTextOrientation = MatrixTextOrientation.Normal,
+            mode: MatrixScrollMode = MatrixScrollMode.Exclusive
+        ): void {
+            sarduMatrixInternal.scrollTextFromEdge(
+                this, text, edge, color, frameIntervalMs, font, size, brightness, orientation, mode
+            );
         }
 
         /** Returns the logical display width. */
@@ -250,6 +279,16 @@ namespace sarduMatrix {
         //% blockHidden=true
         _clearBuffer(): void {
             this.strip.clear();
+        }
+
+        //% blockHidden=true
+        _captureBuffer(): Buffer {
+            return this.strip.buf.slice();
+        }
+
+        //% blockHidden=true
+        _restoreBuffer(saved: Buffer): void {
+            if (saved && saved.length == this.strip.buf.length) this.strip.buf.write(0, saved);
         }
 
         //% blockHidden=true

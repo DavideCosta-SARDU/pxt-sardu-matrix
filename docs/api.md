@@ -2,7 +2,7 @@
 
 ## 1. Stato
 
-Questa specifica incorpora le decisioni approvate fino al 26 agosto 2026 ed è implementata nei sorgenti della versione 0.1.0 non ancora rilasciata. Le firme e i block ID compilano con PXT; l'aspetto visuale dei nuovi blocchi deve ancora essere verificato nell'editor MakeCode prima della release stabile.
+Questa specifica incorpora le decisioni approvate fino al 29 agosto 2026 ed è implementata nei sorgenti della versione 0.1.0 non ancora stabile. Le firme e i block ID compilano con PXT; l'aspetto visuale dei nuovi blocchi deve essere verificato nell'editor MakeCode e sull'hardware reale.
 
 Obiettivi:
 
@@ -87,6 +87,31 @@ enum MatrixFontSize {
 ```
 
 I font sono scelte alternative. `Sardu` resta il default; la dimensione ingrandisce matematicamente ciascun pixel senza creare una bitmap o un framebuffer aggiuntivo.
+
+### 3.6 Orientamento e scorrimento
+
+```typescript
+enum MatrixTextOrientation {
+    Normal,
+    Clockwise90,
+    UpsideDown180,
+    Clockwise270
+}
+
+enum MatrixScrollEdge {
+    Right,
+    Left,
+    Top,
+    Bottom
+}
+
+enum MatrixScrollMode {
+    Exclusive,
+    Composed
+}
+```
+
+L'orientamento ruota l'intera riga già composta, non i singoli caratteri. Bordo di ingresso e orientamento sono indipendenti: sono quindi disponibili tutte le 16 combinazioni. I default restano orientamento normale, ingresso da destra e modalità esclusiva.
 
 ## 4. Metodo 1: dimensioni dirette
 
@@ -306,7 +331,8 @@ matrix.drawText(
     color: number,
     font: MatrixFont = MatrixFont.Sardu,
     size: MatrixFontSize = MatrixFontSize.X1,
-    brightness: number = 255
+    brightness: number = 255,
+    orientation: MatrixTextOrientation = MatrixTextOrientation.Normal
 ): void
 ```
 
@@ -322,7 +348,8 @@ Semantica:
 - carattere non supportato sostituito con `?`;
 - ASCII stampabile, lettere latine accentate comuni e simboli documentati;
 - testo monoriga;
-- luminosità locale per stringa `0..255`, applicata matematicamente al colore senza buffer aggiuntivi.
+- luminosità locale per stringa `0..255`, applicata matematicamente al colore senza buffer aggiuntivi;
+- rotazione dell'intera riga a 0°, 90° orari, 180° o 270° orari.
 
 I dati del font legacy non vengono copiati.
 
@@ -344,7 +371,7 @@ Sono disponibili blocchi distinti per:
 - centratura completa;
 - centratura avanzata entro un intervallo X, un intervallo Y o il rettangolo inclusivo delimitato dai punti A e B.
 
-Gli estremi invertiti vengono riordinati e quelli esterni vengono ritagliati ai limiti della matrice. Le funzioni avanzate `measureTextWidth()` e `measureFontHeight()` espongono le stesse metriche usate dal renderer.
+Gli estremi invertiti vengono riordinati e quelli esterni vengono ritagliati ai limiti della matrice. La centratura usa larghezza e altezza successive alla rotazione. Le funzioni avanzate `measureTextWidth()`, `measureTextHeight()` e `measureFontHeight()` espongono le stesse metriche usate dal renderer.
 
 ## 11. Scrolling
 
@@ -357,22 +384,44 @@ matrix.scrollText(
     frameIntervalMs: number = 100,
     font: MatrixFont = MatrixFont.Sardu,
     size: MatrixFontSize = MatrixFontSize.X1,
-    brightness: number = 255
+    brightness: number = 255,
+    orientation: MatrixTextOrientation = MatrixTextOrientation.Normal,
+    mode: MatrixScrollMode = MatrixScrollMode.Exclusive
 ): void
 ```
+
+Il blocco manuale mantiene X e Y selezionabili e scorre verso sinistra. Il blocco semplificato aggiunge:
+
+```typescript
+matrix.scrollTextFromEdge(
+    text: string,
+    edge: MatrixScrollEdge = MatrixScrollEdge.Right,
+    color: number = NeoPixelColors.White,
+    frameIntervalMs: number = 100,
+    font: MatrixFont = MatrixFont.Sardu,
+    size: MatrixFontSize = MatrixFontSize.X1,
+    brightness: number = 255,
+    orientation: MatrixTextOrientation = MatrixTextOrientation.Normal,
+    mode: MatrixScrollMode = MatrixScrollMode.Exclusive
+): void
+```
+
+Il testo entra completamente da destra, sinistra, alto o basso ed esce dal lato opposto. Viene centrato automaticamente sull'asse perpendicolare al movimento, usando le dimensioni successive alla rotazione.
 
 `frameIntervalMs` rappresenta la durata obiettivo fra l'inizio di due fotogrammi. Il tempo di rendering e `show()` è incluso; si attende soltanto il residuo. Se il trasferimento richiede più tempo, non si aggiunge pausa.
 
 Comportamento implementato:
 
-1. testo inizialmente alle coordinate X e Y selezionate;
-2. movimento verso sinistra;
-3. clear, disegno della parte visibile e show per fotogramma;
-4. conclusione fuori a sinistra;
-5. buffer e display fisico neri al ritorno;
-6. stringa vuota: clear e show senza animazione lunga;
+1. blocco manuale: testo inizialmente alle coordinate X e Y selezionate e movimento verso sinistra;
+2. blocco dai bordi: ingresso e uscita completi sul lato opposto, con centratura sull'altro asse;
+3. modalità esclusiva: clear, disegno e show per fotogramma, con display nero al termine;
+4. modalità composta: ripristino della scena preesistente, disegno e show per fotogramma, con scena originale al termine;
+5. conclusione soltanto quando la riga è completamente uscita;
+6. stringa vuota: clear e show soltanto in modalità esclusiva;
 7. chiamata bloccante/cooperativa, non background;
 8. controllo a ogni fotogramma dell'eventuale richiesta di `interruptAndClear()`.
+
+La modalità esclusiva non aggiunge un secondo buffer RGB. La modalità composta crea invece, soltanto per la durata dello scorrimento, una copia del buffer NeoPixel di `width × height × 3` byte. Su Micro:Bit V1 e con matrici grandi va quindi preferita la modalità esclusiva quando la RAM disponibile è ridotta.
 
 ## 12. Proprietà informative
 
@@ -472,8 +521,8 @@ Risultato: 96×32, 3072 LED, 9216 byte RGB.
 
 ## 16. Verifiche residue
 
-1. Controllare nell'editor MakeCode l'impaginazione dei nuovi blocchi lunghi e delle combo font/dimensione.
-2. Provare su matrice reale font, ingrandimenti, centrature, HSL e luminosità locale della stringa.
+1. Controllare nell'editor MakeCode l'impaginazione dei nuovi blocchi lunghi e delle combo font/dimensione/orientamento/modalità.
+2. Provare su matrice reale le quattro rotazioni, i quattro bordi, le due modalità, i font, gli ingrandimenti e le centrature.
 3. Riesaminare prima del rilascio definitivo i comportamenti dei blocchi di cancellazione.
 4. Aggiornare e riattivare insieme le altre cinque localizzazioni.
 

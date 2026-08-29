@@ -71,21 +71,35 @@ namespace sarduMatrix {
         ), pin, brightness);
     }
 
-    /** Returns the rendered width of a string for the selected font and size. */
-    //% blockId=sardu_matrix_text_width block="text width %text font %font size %size"
+    /** Returns the rendered width of a string after applying its orientation. */
+    //% blockId=sardu_matrix_text_width block="text width %text font %font size %size orientation %orientation"
     //% group="More" weight=12 advanced=true
-    //% text.defl="Hello" font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1
+    //% text.defl="Hello" font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 orientation.defl=MatrixTextOrientation.Normal
     export function measureTextWidth(
         text: string,
         font: MatrixFont = MatrixFont.Sardu,
-        size: MatrixFontSize = MatrixFontSize.X1
+        size: MatrixFontSize = MatrixFontSize.X1,
+        orientation: MatrixTextOrientation = MatrixTextOrientation.Normal
     ): number {
-        return sarduMatrixInternal.textWidth(text, font, size);
+        return sarduMatrixInternal.renderedTextWidth(text, font, size, orientation);
+    }
+
+    /** Returns the rendered height of a string after applying its orientation. */
+    //% blockId=sardu_matrix_text_height block="text height %text font %font size %size orientation %orientation"
+    //% group="More" weight=11 advanced=true
+    //% text.defl="Hello" font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 orientation.defl=MatrixTextOrientation.Normal
+    export function measureTextHeight(
+        text: string,
+        font: MatrixFont = MatrixFont.Sardu,
+        size: MatrixFontSize = MatrixFontSize.X1,
+        orientation: MatrixTextOrientation = MatrixTextOrientation.Normal
+    ): number {
+        return sarduMatrixInternal.renderedTextHeight(text, font, size, orientation);
     }
 
     /** Returns the rendered height of the selected font and size. */
     //% blockId=sardu_matrix_font_height block="font height %font size %size"
-    //% group="More" weight=11 advanced=true
+    //% group="More" weight=10 advanced=true
     //% font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1
     export function measureFontHeight(
         font: MatrixFont = MatrixFont.Sardu,

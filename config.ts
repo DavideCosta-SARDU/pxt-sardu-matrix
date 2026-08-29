@@ -67,6 +67,38 @@ enum MatrixFontSize {
     X4 = 4
 }
 
+/** Rotation applied to the complete rendered text line. */
+enum MatrixTextOrientation {
+    //% block="normal (0 degrees)"
+    Normal = 0,
+    //% block="90 degrees clockwise"
+    Clockwise90 = 1,
+    //% block="180 degrees"
+    UpsideDown180 = 2,
+    //% block="270 degrees clockwise"
+    Clockwise270 = 3
+}
+
+/** Edge from which an automatically positioned text line enters the matrix. */
+enum MatrixScrollEdge {
+    //% block="right"
+    Right = 0,
+    //% block="left"
+    Left = 1,
+    //% block="top"
+    Top = 2,
+    //% block="bottom"
+    Bottom = 3
+}
+
+/** How scrolling text interacts with content already in the RGB buffer. */
+enum MatrixScrollMode {
+    //% block="exclusive (clear display)"
+    Exclusive = 0,
+    //% block="composed (preserve background)"
+    Composed = 1
+}
+
 namespace sarduMatrixInternal {
     // Buffer payload length is a signed C++ int in the current Micro:Bit target.
     // This guards representation only; practical limits remain available RAM and

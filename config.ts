@@ -99,14 +99,6 @@ enum MatrixScrollMode {
     Composed = 1
 }
 
-/** How transparent pixels in a graphic interact with the current matrix content. */
-enum MatrixGraphicMode {
-    //% block="overlay"
-    Overlay = 0,
-    //% block="replace area"
-    ReplaceArea = 1
-}
-
 namespace sarduMatrixInternal {
     // Buffer payload length is a signed C++ int in the current Micro:Bit target.
     // This guards representation only; practical limits remain available RAM and

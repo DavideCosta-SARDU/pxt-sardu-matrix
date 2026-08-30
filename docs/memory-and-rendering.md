@@ -228,7 +228,7 @@ Decisione: non adottato come architettura base. Piccoli scratch buffer potranno 
 
 ### 7.3 Rendering diretto nel buffer NeoPixel
 
-Descrizione: `setPixel`, testo e grafica calcolano l'indice fisico e scrivono tramite l'API pubblica della strip; `show()` trasmette lo stesso buffer.
+Descrizione: `setPixel`, testo e futuro rendering calcolano l'indice fisico e scrivono tramite l'API pubblica della strip; `show()` trasmette lo stesso buffer.
 
 Vantaggi:
 

@@ -287,17 +287,7 @@ matrix.clear(): void
 
 Imposta a nero il buffer e aggiorna immediatamente i LED; non richiede `show()`.
 
-### 9.3 Cancella colonne, righe o area
-
-```typescript
-matrix.clearColumns(startX: number, endX: number): void
-matrix.clearRows(startY: number, endY: number): void
-matrix.clearArea(startX: number, startY: number, endX: number, endY: number): void
-```
-
-I primi due blocchi sono nel gruppo Display; il rettangolo è avanzato. Gli estremi sono inclusivi, possono essere indicati nell'ordine inverso e vengono ritagliati alla matrice. Tutti e tre inviano subito il risultato ai LED.
-
-### 9.4 Svuota buffer
+### 9.3 Svuota buffer
 
 ```typescript
 matrix.clearBuffer(): void
@@ -305,7 +295,7 @@ matrix.clearBuffer(): void
 
 Funzione avanzata che azzera soltanto il buffer in memoria. Per aggiornare i LED serve `show()`.
 
-### 9.5 Interrompi e cancella
+### 9.4 Interrompi e cancella
 
 ```typescript
 matrix.interruptAndClear(): void
@@ -313,7 +303,7 @@ matrix.interruptAndClear(): void
 
 Invalida l'operazione animata in corso, azzera il buffer e trasmette il nero appena possibile. Un invio WS2812 già iniziato deve comunque terminare.
 
-### 9.6 Show
+### 9.5 Show
 
 ```typescript
 matrix.show(): void
@@ -321,7 +311,7 @@ matrix.show(): void
 
 Trasferisce l'intero buffer ai LED. Durata e interferenza temporale crescono col numero configurato di LED.
 
-### 9.7 Luminosità
+### 9.6 Luminosità
 
 ```typescript
 matrix.setBrightness(brightness: number): void
@@ -331,20 +321,7 @@ Intervallo pubblico 0–255, con limitazione esplicita per evitare wrap-around. 
 
 La luminosità iniziale è ora un parametro di tutte le factory e ha default prudente `128`. Il metodo resta disponibile in “Altro” per variazioni durante l'esecuzione. Influenza soltanto i pixel scritti dopo la chiamata.
 
-## 10. Grafica
-
-```typescript
-matrix.drawGraphic(
-    graphic: MatrixGraphic,
-    x: number = 0,
-    y: number = 0,
-    mode: MatrixGraphicMode = MatrixGraphicMode.Overlay
-): void
-```
-
-Disegna una grafica prodotta dall'editor, senza `show()` implicito. `Overlay` mantiene lo sfondo nei pixel trasparenti; `ReplaceArea` porta prima a nero l'intero rettangolo della grafica. Il nero nella grafica è sempre un pixel reale e spegne il LED. Consultare [l'editor grafico](graphics.md).
-
-## 11. Testo statico
+## 10. Testo statico
 
 ```typescript
 matrix.drawText(
@@ -396,7 +373,7 @@ Sono disponibili blocchi distinti per:
 
 Gli estremi invertiti vengono riordinati e quelli esterni vengono ritagliati ai limiti della matrice. La centratura usa larghezza e altezza successive alla rotazione. Le funzioni avanzate `measureTextWidth()`, `measureTextHeight()` e `measureFontHeight()` espongono le stesse metriche usate dal renderer.
 
-## 12. Scrolling
+## 11. Scrolling
 
 ```typescript
 matrix.scrollText(
@@ -446,7 +423,7 @@ Comportamento implementato:
 
 La modalità esclusiva non aggiunge un secondo buffer RGB. La modalità composta crea invece, soltanto per la durata dello scorrimento, una copia del buffer NeoPixel di `width × height × 3` byte. Su Micro:Bit V1 e con matrici grandi va quindi preferita la modalità esclusiva quando la RAM disponibile è ridotta.
 
-## 13. Proprietà informative
+## 12. Proprietà informative
 
 Metodi avanzati di sola lettura:
 
@@ -459,22 +436,21 @@ matrix.rgbBufferBytes(): number
 
 Gli ultimi due rendono trasparente il costo calcolato della configurazione. Non restituiscono RAM libera o buffer interno.
 
-## 14. Organizzazione dei blocchi
+## 13. Organizzazione dei blocchi
 
 Gruppi implementati:
 
 1. Creazione;
-2. Display;
-3. Pixel;
-4. Colori;
-5. Graphics;
-6. Testo statico;
-7. Testo scorrevole;
-8. Altro…/Configurazione avanzata.
+2. Pixel;
+3. Colori;
+4. Testo statico;
+5. Testo scorrevole;
+6. Display;
+7. Altro…/Configurazione avanzata.
 
 I block ID saranno espliciti, prefissati e stabili. Le varianti avanzate non devono duplicare il motore: normalizzano parametri e chiamano lo stesso core.
 
-## 15. Localizzazione
+## 14. Localizzazione
 
 Lingua sorgente: inglese.
 
@@ -498,7 +474,7 @@ Non saranno tradotti:
 
 Le chiavi verranno generate con `pxt gendocs --locs` soltanto dopo aver stabilizzato API e testi inglesi.
 
-## 16. Esempi
+## 15. Esempi
 
 ### Un modulo predefinito
 
@@ -543,14 +519,14 @@ moduleColumns calcolato = 6
 
 Risultato: 96×32, 3072 LED, 9216 byte RGB.
 
-## 17. Verifiche residue
+## 16. Verifiche residue
 
 1. Controllare nell'editor MakeCode l'impaginazione dei nuovi blocchi lunghi e delle combo font/dimensione/orientamento/modalità.
 2. Provare su matrice reale le quattro rotazioni, i quattro bordi, le due modalità, i font, gli ingrandimenti e le centrature.
 3. Riesaminare prima del rilascio definitivo i comportamenti dei blocchi di cancellazione.
 4. Aggiornare e riattivare insieme le altre cinque localizzazioni.
 
-## 18. Criteri prima di congelare l'API
+## 17. Criteri prima di congelare l'API
 
 - compilazione col target Micro:Bit corrente;
 - rendering visuale dei blocchi base e avanzati;

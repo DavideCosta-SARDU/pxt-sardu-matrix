@@ -10,7 +10,6 @@ namespace sarduMatrix {
             this.strip = neopixel.create(pin, config.ledCount, NeoPixelMode.RGB);
             this.strip.setBrightness(sarduMatrixInternal.limitByte(brightness));
             this.operationVersion = 0;
-            sarduMatrixInternal.initializeSimulator();
         }
 
         /** Sets one logical pixel. Call show to update the physical display. */
@@ -30,7 +29,7 @@ namespace sarduMatrix {
         interruptAndClear(): void {
             this.operationVersion++;
             this.strip.clear();
-            this.show();
+            this.strip.show();
         }
 
         /** Clears the RGB buffer and immediately updates the physical display. */
@@ -38,34 +37,7 @@ namespace sarduMatrix {
         //% group="Display" weight=71
         clear(): void {
             this.strip.clear();
-            this.show();
-        }
-
-        /** Clears inclusive logical columns and immediately updates the display. */
-        //% blockId=sardu_matrix_clear_columns block="%matrix clear columns from x %startX to x %endX"
-        //% group="Display" weight=69
-        //% startX.defl=0 endX.defl=15
-        clearColumns(startX: number, endX: number): void {
-            this._clearAreaBuffer(startX, 0, endX, this.config.height - 1);
-            this.show();
-        }
-
-        /** Clears inclusive logical rows and immediately updates the display. */
-        //% blockId=sardu_matrix_clear_rows block="%matrix clear rows from y %startY to y %endY"
-        //% group="Display" weight=68
-        //% startY.defl=0 endY.defl=15
-        clearRows(startY: number, endY: number): void {
-            this._clearAreaBuffer(0, startY, this.config.width - 1, endY);
-            this.show();
-        }
-
-        /** Clears an inclusive logical rectangle and immediately updates the display. */
-        //% blockId=sardu_matrix_clear_area block="%matrix clear area from x %startX y %startY to x %endX y %endY"
-        //% group="More" weight=22 advanced=true
-        //% startX.defl=0 startY.defl=0 endX.defl=15 endY.defl=15
-        clearArea(startX: number, startY: number, endX: number, endY: number): void {
-            this._clearAreaBuffer(startX, startY, endX, endY);
-            this.show();
+            this.strip.show();
         }
 
         /** Clears only the RGB buffer. Call show to update the physical display. */
@@ -80,7 +52,6 @@ namespace sarduMatrix {
         //% group="Display" weight=70
         show(): void {
             this.strip.show();
-            sarduMatrixInternal.sendSimulatorFrame(this.config, this.strip.buf);
         }
 
         /** Sets brightness for pixels written after this call. */
@@ -233,19 +204,6 @@ namespace sarduMatrix {
             this.drawText(text, x, y, color, font, size, brightness, orientation);
         }
 
-        /** Draws a compact editor graphic without showing it automatically. */
-        //% blockId=sardu_matrix_draw_graphic block="%matrix draw graphic %graphic at x %x y %y mode %mode"
-        //% group="Graphics" weight=80
-        //% graphic.shadow=sardu_matrix_graphic_picker x.defl=0 y.defl=0 mode.defl=MatrixGraphicMode.Overlay
-        drawGraphic(
-            graphic: MatrixGraphic,
-            x: number = 0,
-            y: number = 0,
-            mode: MatrixGraphicMode = MatrixGraphicMode.Overlay
-        ): void {
-            sarduMatrix.drawGraphic(this, graphic, x, y, mode);
-        }
-
         /** Scrolls one line left from selected coordinates, clearing or preserving the existing scene. */
         //% blockId=sardu_matrix_scroll_text block="%matrix scroll text %text from x %x y %y|color %color=neopixel_colors every %frameIntervalMs ms font %font size %size brightness %brightness orientation %orientation mode %mode"
         //% group="Scrolling text" weight=75
@@ -321,23 +279,6 @@ namespace sarduMatrix {
         //% blockHidden=true
         _clearBuffer(): void {
             this.strip.clear();
-        }
-
-        private _clearAreaBuffer(startX: number, startY: number, endX: number, endY: number): void {
-            startX = Math.floor(startX);
-            startY = Math.floor(startY);
-            endX = Math.floor(endX);
-            endY = Math.floor(endY);
-            if (startX != startX || startY != startY || endX != endX || endY != endY) return;
-            if (startX > endX) { const swapX = startX; startX = endX; endX = swapX; }
-            if (startY > endY) { const swapY = startY; startY = endY; endY = swapY; }
-            if (endX < 0 || endY < 0 || startX >= this.config.width || startY >= this.config.height) return;
-            if (startX < 0) startX = 0;
-            if (startY < 0) startY = 0;
-            if (endX >= this.config.width) endX = this.config.width - 1;
-            if (endY >= this.config.height) endY = this.config.height - 1;
-            for (let y = startY; y <= endY; y++)
-                for (let x = startX; x <= endX; x++) this.setPixel(x, y, 0);
         }
 
         //% blockHidden=true

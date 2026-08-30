@@ -2,7 +2,7 @@
 
 SARDU-Matrix is a configurable RGB LED matrix extension for Microsoft MakeCode and Micro:Bit. It uses the official Microsoft `pxt-neopixel` extension as its RGB backend.
 
-This is a pre-1.0 implementation. The software builds; real hardware validation remains required before a stable release.
+This is a pre-1.0 implementation. The software builds and its mapping tests pass in the MakeCode simulator; real hardware validation is still required before a stable release.
 
 ## Installation in MakeCode
 
@@ -71,13 +71,7 @@ matrix.drawText(
 matrix.show()
 ```
 
-`clear()` immediately clears both buffer and physical display. `clear columns from X to X`, `clear rows from Y to Y`, and the advanced rectangular clear also update the physical display immediately; reversed endpoints are accepted and all coordinates are clipped safely. `clearBuffer()` only changes memory and is available under advanced blocks. `setPixel()`, `drawText()` and `drawGraphic()` do not call `show()` automatically. Coordinates outside the logical display are safely clipped. The manual `scrollText()` block starts at the selected X/Y coordinates and moves left. The simpler edge block can enter from the right, left, top or bottom and automatically centers the line on the other axis. Either animation can be stopped by `interruptAndClear()` from a button or radio event.
-
-## Graphics and simulator
-
-The **Graphics** block group follows Display and supports reusable graphics in all six supported panel formats. The editor distinguishes transparent pixels from real black pixels and offers overlay or replace-area drawing, so separate graphics can be composed safely. See [the graphics guide](docs/graphics.md).
-
-The project also provides an RGB-matrix simulator and the graphic editor through GitHub Pages. Automatic embedding below the MakeCode Micro:Bit simulator requires MakeCode approval of the repository URLs; see [the simulator guide](docs/simulator.md).
+`clear()` immediately clears both buffer and physical display. `clearBuffer()` only changes memory and is available under advanced blocks. `setPixel()` and `drawText()` do not call `show()` automatically. Coordinates outside the logical display are safely clipped. The manual `scrollText()` block starts at the selected X/Y coordinates and moves left. The simpler edge block can enter from the right, left, top or bottom and automatically centers the line on the other axis. Either animation can be stopped by `interruptAndClear()` from a button or radio event.
 
 The text blocks offer three alternative fonts: SARDU, the extended Micro:Bit system style and SARDU proportional. Each can be rendered at 1×, 2×, 3× or 4×. The SARDU fonts distinguish uppercase and lowercase and support printable ASCII, common accented Latin letters (`À`–`ÿ`, including `Œ/œ` and `Ÿ`) and selected symbols (`€ £ © ® ° × ÷ ¿ ¡`). The extended Micro:Bit choice uses the official 5×5 base glyphs and adds an extra row for accents or cedilla.
 
@@ -113,8 +107,6 @@ See [docs/wiring.md](docs/wiring.md) for diagrams and mapping examples.
 - [Public API](docs/api.md)
 - [Wiring](docs/wiring.md)
 - [Memory and rendering](docs/memory-and-rendering.md)
-- [Graphics editor](docs/graphics.md)
-- [RGB matrix simulator](docs/simulator.md)
 - [Migration from pxt-smartmatrix](docs/migration.md)
 
 ## Languages

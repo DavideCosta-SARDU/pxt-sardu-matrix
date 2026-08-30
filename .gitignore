@@ -9,4 +9,3 @@ tsconfig.json
 *.hex
 *.uf2
 *.log
-web/dist/

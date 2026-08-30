@@ -3,6 +3,7 @@ import "./styles.css"
 type Format = { label: string; width: number; height: number }
 type Graphic = { name: string; width: number; height: number; pixels: (string | null)[] }
 type Store = { version: 1; graphics: Record<string, Graphic> }
+type ExtensionMessage = { type: "pxtpkgext"; action: string; id?: string; body?: { code?: string; json?: string } }
 
 const formats: Format[] = [
   { label: "8 × 8", width: 8, height: 8 },
@@ -14,11 +15,13 @@ const formats: Format[] = [
 ]
 
 const app = document.querySelector<HTMLElement>("#app")!
+const extId = window.location.hash.length > 1 ? window.location.hash.substring(1) : ""
 let store: Store = { version: 1, graphics: {} }
 let currentId = ""
 let selectedColor: string | null = null
 let palette = ["#000000", "#ffffff", "#ff0000", "#00ff00", "#0000ff", "#ffd700"]
 let painting = false
+const pending = new Map<string, string>()
 
 function makeId(name: string): string {
   const base = name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
@@ -95,13 +98,25 @@ function setStatus(message: string) {
   document.querySelector<HTMLElement>("#status")!.textContent = message
 }
 
+function post(action: string, body?: ExtensionMessage["body"]) {
+  if (!extId) return
+  const id = Math.random().toString(36).substring(2)
+  pending.set(id, action)
+  window.parent.postMessage({ type: "pxtpkgext", action, extId, response: true, id, body }, "*")
+}
+
 function save() {
   const graphic = current()
   const input = document.querySelector<HTMLInputElement>("#graphic-name")!
   if (graphic) graphic.name = input.value.trim() || "Grafica"
-  localStorage.setItem("sardu-matrix-graphics", JSON.stringify(store))
-  document.querySelector<HTMLTextAreaElement>("#generated-code")!.value = generatedCode()
-  setStatus("Grafica salvata nel browser. Copia il codice generato nel progetto MakeCode.")
+  const json = JSON.stringify(store)
+  const code = generatedCode()
+  localStorage.setItem("sardu-matrix-graphics", json)
+  document.querySelector<HTMLTextAreaElement>("#generated-code")!.value = code
+  if (extId) {
+    post("extwritecode", { code, json })
+    setStatus("Grafica salvata nel progetto MakeCode.")
+  } else setStatus("Grafica salvata nel browser. Copia il codice generato nel progetto MakeCode.")
   renderAssetOptions()
 }
 
@@ -198,7 +213,7 @@ function render() {
         <section class="panel"><h2>Disegno ${graphic.width} × ${graphic.height}</h2><div class="grid-wrap"><div id="pixel-grid" class="pixel-grid"></div></div></section>
       </div>
       <div class="panel" style="margin-top:14px"><h2>Codice generato</h2><textarea id="generated-code" class="code" readonly></textarea></div>
-      <div id="status" class="statusbar">Modalità autonoma GitHub Pages.</div>
+      <div id="status" class="statusbar">${extId ? "Collegato al progetto MakeCode." : "Modalità autonoma GitHub Pages."}</div>
     </section>`
   renderAssetOptions()
   renderPalette()
@@ -229,7 +244,22 @@ function render() {
 }
 
 window.addEventListener("pointerup", () => { painting = false })
+window.addEventListener("message", event => {
+  const message = event.data as ExtensionMessage
+  if (!message || message.type !== "pxtpkgext" || !message.id) return
+  const action = pending.get(message.id)
+  if (action === "extinit") post("extreadcode")
+  else if (action === "extreadcode") {
+    try {
+      if (message.body?.json) store = JSON.parse(message.body.json) as Store
+    } catch { setStatus("I dati grafici esistenti non sono leggibili; è stata creata una nuova grafica.") }
+    currentId = Object.keys(store.graphics || {})[0] || ""
+    if (!currentId) addGraphic(); else render()
+  }
+  pending.delete(message.id)
+})
 const cached = localStorage.getItem("sardu-matrix-graphics")
 if (cached) try { store = JSON.parse(cached) as Store } catch { /* start empty */ }
 currentId = Object.keys(store.graphics || {})[0] || ""
 if (!currentId) addGraphic(); else render()
+if (extId) post("extinit")

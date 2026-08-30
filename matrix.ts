@@ -234,6 +234,7 @@ namespace sarduMatrix {
         /** Draws a compact graphic without showing it automatically. */
         //% blockId=sardu_matrix_draw_graphic block="%matrix draw graphic %graphic at x %x y %y mode %mode"
         //% group="Graphics" weight=80
+        //% help=github:pxt-sardu-matrix/docs/graphics
         //% graphic.shadow=sardu_matrix_graphic_picker x.defl=0 y.defl=0 mode.defl=MatrixGraphicMode.Overlay
         drawGraphic(
             graphic: MatrixGraphic,

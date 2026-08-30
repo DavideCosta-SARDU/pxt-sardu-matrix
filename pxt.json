@@ -19,6 +19,8 @@
         "text.ts",
         "matrix.ts",
         "main.ts",
+        "docs/graphics.md",
+        "docs/simulator.md",
         "_locales/it/sardu-matrix-strings.json",
         "_locales/it/sardu-matrix-jsdoc-strings.json"
     ],
@@ -26,6 +28,12 @@
         "test.ts"
     ],
     "public": true,
+    "extension": {
+        "namespace": "sarduMatrix",
+        "label": "Editor grafico SARDU Matrix",
+        "url": "https://davidecosta-sardu.github.io/pxt-sardu-matrix/editor.html",
+        "localUrl": "http://127.0.0.1:5173/editor.html"
+    },
     "supportedTargets": [
         "microbit"
     ],

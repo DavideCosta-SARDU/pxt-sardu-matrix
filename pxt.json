@@ -12,8 +12,10 @@
         "README.md",
         "config.ts",
         "mapping.ts",
+        "simulator.ts",
         "font.ts",
         "colors.ts",
+        "graphics.ts",
         "text.ts",
         "matrix.ts",
         "main.ts",
@@ -24,6 +26,12 @@
         "test.ts"
     ],
     "public": true,
+    "extension": {
+        "namespace": "sarduMatrix",
+        "label": "SARDU Matrix Graphic Editor",
+        "url": "https://davidecosta-sardu.github.io/pxt-sardu-matrix/editor.html",
+        "localUrl": "http://127.0.0.1:5173/editor.html"
+    },
     "supportedTargets": [
         "microbit"
     ],

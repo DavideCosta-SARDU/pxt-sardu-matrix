@@ -23,3 +23,6 @@
 - Added distinct lowercase glyphs, common accented Latin letters and selected symbols.
 - Added immediate clear, advanced buffer-only clear and cooperative stop-and-clear operations.
 - Standardized the technical path name as `ZigZag` in every language.
+- Moved the Display group immediately after Creation and added immediate inclusive column, row and advanced-area clear blocks.
+- Added compact reusable graphics for 8×8, 16×16, 32×8, 8×32, 16×8 and 8×16, with distinct transparent and black pixels plus overlay/replace-area modes.
+- Added the SARDU Matrix graphic editor, GitHub Pages publishing workflow and a simulator bridge that mirrors the configured RGB matrix after `show()`.

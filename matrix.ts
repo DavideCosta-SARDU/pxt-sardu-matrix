@@ -40,6 +40,33 @@ namespace sarduMatrix {
             this.strip.show();
         }
 
+        /** Clears inclusive logical columns and immediately updates the display. */
+        //% blockId=sardu_matrix_clear_columns block="%matrix clear columns from x %startX to x %endX"
+        //% group="Display" weight=69
+        //% startX.defl=0 endX.defl=15
+        clearColumns(startX: number, endX: number): void {
+            this._clearAreaBuffer(startX, 0, endX, this.config.height - 1);
+            this.show();
+        }
+
+        /** Clears inclusive logical rows and immediately updates the display. */
+        //% blockId=sardu_matrix_clear_rows block="%matrix clear rows from y %startY to y %endY"
+        //% group="Display" weight=68
+        //% startY.defl=0 endY.defl=15
+        clearRows(startY: number, endY: number): void {
+            this._clearAreaBuffer(0, startY, this.config.width - 1, endY);
+            this.show();
+        }
+
+        /** Clears an inclusive logical rectangle and immediately updates the display. */
+        //% blockId=sardu_matrix_clear_area block="%matrix clear area from x %startX y %startY to x %endX y %endY"
+        //% group="More" weight=22 advanced=true
+        //% startX.defl=0 startY.defl=0 endX.defl=15 endY.defl=15
+        clearArea(startX: number, startY: number, endX: number, endY: number): void {
+            this._clearAreaBuffer(startX, startY, endX, endY);
+            this.show();
+        }
+
         /** Clears only the RGB buffer. Call show to update the physical display. */
         //% blockId=sardu_matrix_clear_buffer block="%matrix clear buffer"
         //% group="More" weight=21 advanced=true
@@ -279,6 +306,23 @@ namespace sarduMatrix {
         //% blockHidden=true
         _clearBuffer(): void {
             this.strip.clear();
+        }
+
+        private _clearAreaBuffer(startX: number, startY: number, endX: number, endY: number): void {
+            startX = Math.floor(startX);
+            startY = Math.floor(startY);
+            endX = Math.floor(endX);
+            endY = Math.floor(endY);
+            if (startX != startX || startY != startY || endX != endX || endY != endY) return;
+            if (startX > endX) { const swapX = startX; startX = endX; endX = swapX; }
+            if (startY > endY) { const swapY = startY; startY = endY; endY = swapY; }
+            if (endX < 0 || endY < 0 || startX >= this.config.width || startY >= this.config.height) return;
+            if (startX < 0) startX = 0;
+            if (startY < 0) startY = 0;
+            if (endX >= this.config.width) endX = this.config.width - 1;
+            if (endY >= this.config.height) endY = this.config.height - 1;
+            for (let y = startY; y <= endY; y++)
+                for (let x = startX; x <= endX; x++) this.setPixel(x, y, 0);
         }
 
         //% blockHidden=true

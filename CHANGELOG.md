@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.1 - 2026-08-30
+
+- Added the standalone six-format graphic editor, RGB simulator page and GitHub Pages publication workflow without attaching them to the PXT toolbox manifest.
+- Added the Graphics and simulator guides, including the Microsoft approval boundary for automatic MakeCode integration.
+
 ## 0.2.0 - 2026-08-30
 
 - Moved the Display blocks directly after Creation and added inclusive clear-columns, clear-rows and advanced clear-area operations.

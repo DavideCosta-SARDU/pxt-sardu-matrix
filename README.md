@@ -81,6 +81,8 @@ Scrolling offers two scene modes. **Exclusive** clears the display for every fra
 
 Colors can come from the MakeCode/NeoPixel picker, from explicit RGB components, or from HSL fields. RGB uses 0–255. HSL uses hue 0–360 and saturation/lightness 0–100. HSL lightness changes the color itself and is distinct from matrix or string brightness.
 
+The **Graphics** group draws compact images in all six module formats. Transparent pixels preserve the existing scene in overlay mode, while black is a real color that explicitly turns a LED off. Replace-area mode clears transparent positions inside the image area. Use the [SARDU Matrix graphic editor](https://davidecosta-sardu.github.io/pxt-sardu-matrix/editor.html) to draw and generate project definitions.
+
 ## Dynamic memory use
 
 There is no arbitrary 1536-LED limit. One RGB NeoPixel buffer is allocated using:
@@ -107,6 +109,8 @@ See [docs/wiring.md](docs/wiring.md) for diagrams and mapping examples.
 - [Public API](docs/api.md)
 - [Wiring](docs/wiring.md)
 - [Memory and rendering](docs/memory-and-rendering.md)
+- [Graphic editor and Graphics blocks](docs/graphics.md)
+- [RGB matrix simulator and approval status](docs/simulator.md)
 - [Migration from pxt-smartmatrix](docs/migration.md)
 
 ## Languages

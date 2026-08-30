@@ -1,6 +1,13 @@
 # Changelog
 
-## 0.1.0 - Unreleased
+## 0.2.0 - 2026-08-30
+
+- Moved the Display blocks directly after Creation and added inclusive clear-columns, clear-rows and advanced clear-area operations.
+- Added compact graphics for all six supported matrix formats: 8×8, 16×16, 32×8, 8×32, 16×8 and 8×16.
+- Added separate transparent and black pixels with overlay and replace-area drawing modes.
+- Added six built-in graphic presets so the Graphics block selector is always populated in MakeCode.
+
+## 0.1.0 - 2026-08-30
 
 - Added direct-size and preset-module creation methods with a one-module 16×16 default.
 - Added advanced origin, scan-axis and progressive/ZigZag configuration for pixels and module grids.

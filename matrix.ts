@@ -25,7 +25,7 @@ namespace sarduMatrix {
 
         /** Stops long-running output, clears the RGB buffer and immediately updates the display. */
         //% blockId=sardu_matrix_interrupt_and_clear block="%matrix stop and clear matrix"
-        //% group="Display" weight=72
+        //% group="Display" weight=70
         interruptAndClear(): void {
             this.operationVersion++;
             this.strip.clear();
@@ -42,7 +42,7 @@ namespace sarduMatrix {
 
         /** Clears inclusive logical columns and immediately updates the display. */
         //% blockId=sardu_matrix_clear_columns block="%matrix clear columns from x %startX to x %endX"
-        //% group="Display" weight=69
+        //% group="More" weight=24 advanced=true
         //% startX.defl=0 endX.defl=15
         clearColumns(startX: number, endX: number): void {
             this._clearAreaBuffer(startX, 0, endX, this.config.height - 1);
@@ -51,7 +51,7 @@ namespace sarduMatrix {
 
         /** Clears inclusive logical rows and immediately updates the display. */
         //% blockId=sardu_matrix_clear_rows block="%matrix clear rows from y %startY to y %endY"
-        //% group="Display" weight=68
+        //% group="More" weight=23 advanced=true
         //% startY.defl=0 endY.defl=15
         clearRows(startY: number, endY: number): void {
             this._clearAreaBuffer(0, startY, this.config.width - 1, endY);
@@ -76,7 +76,7 @@ namespace sarduMatrix {
 
         /** Sends the RGB buffer to the physical display. */
         //% blockId=sardu_matrix_show block="%matrix show"
-        //% group="Display" weight=70
+        //% group="Display" weight=72
         show(): void {
             this.strip.show();
         }
@@ -247,7 +247,7 @@ namespace sarduMatrix {
         /** Scrolls one line left from selected coordinates, clearing or preserving the existing scene. */
         //% blockId=sardu_matrix_scroll_text block="%matrix scroll text %text from x %x y %y|color %color=neopixel_colors every %frameIntervalMs ms font %font size %size brightness %brightness orientation %orientation mode %mode"
         //% group="Scrolling text" weight=75
-        //% text.defl="Hello" x.defl=16 y.defl=0 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 color.defl=NeoPixelColors.White brightness.min=0 brightness.max=255 brightness.defl=255 frameIntervalMs.defl=100 frameIntervalMs.min=0 orientation.defl=MatrixTextOrientation.Normal mode.defl=MatrixScrollMode.Exclusive
+        //% text.defl="Hello" x.shadow=sardu_matrix_width y.defl=0 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 color.defl=NeoPixelColors.White brightness.min=0 brightness.max=255 brightness.defl=255 frameIntervalMs.defl=100 frameIntervalMs.min=0 orientation.defl=MatrixTextOrientation.Normal mode.defl=MatrixScrollMode.Exclusive
         scrollText(
             text: string,
             x: number = 16,

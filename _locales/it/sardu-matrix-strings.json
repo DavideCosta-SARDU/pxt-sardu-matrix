@@ -56,7 +56,7 @@
   "sarduMatrix.Matrix.interruptAndClear|block": "%matrix interrompi e cancella matrice",
   "sarduMatrix.Matrix.ledCount|block": "numero LED di %matrix",
   "sarduMatrix.Matrix.rgbBufferBytes|block": "byte buffer RGB di %matrix",
-  "sarduMatrix.Matrix.scrollTextFromEdge|block": "%matrix fai scorrere testo %text dal bordo %edge|colore %color=neopixel_colors ogni %frameIntervalMs ms font %font dimensione %size luminosità %brightness orientamento %orientation modalità %mode",
+  "sarduMatrix.Matrix.scrollTextFromEdge|block": "%matrix fai scorrere testo %text da bordo %edge|colore %color=neopixel_colors ogni %frameIntervalMs ms font %font dimensione %size luminosità %brightness orientamento %orientation modalità %mode",
   "sarduMatrix.Matrix.scrollTextFromEdge|param|text|defl": "Ciao",
   "sarduMatrix.Matrix.scrollText|block": "%matrix fai scorrere testo %text da x %x y %y|colore %color=neopixel_colors ogni %frameIntervalMs ms font %font dimensione %size luminosità %brightness orientamento %orientation modalità %mode",
   "sarduMatrix.Matrix.scrollText|param|text|defl": "Ciao",

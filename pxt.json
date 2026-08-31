@@ -1,6 +1,6 @@
 {
     "name": "sardu-matrix",
-    "version": "0.5.0",
+    "version": "0.5.1",
     "description": "Configurable RGB matrix support for Microsoft MakeCode and Micro:Bit",
     "license": "MIT",
     "dependencies": {

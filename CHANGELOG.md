@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.1 - 2026-08-31
+
+- Fixed the advanced `... more` toolbox by removing the reserved `More` group and assigning advanced blocks to their functional groups.
+
 ## 0.5.0 - 2026-08-31
 
 - Moved native graphics to MakeCode's official advanced `... more` subcategory and made the six grids draw directly into the matrix buffer.

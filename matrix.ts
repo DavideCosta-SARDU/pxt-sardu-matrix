@@ -42,7 +42,7 @@ namespace sarduMatrix {
 
         /** Clears inclusive logical columns and immediately updates the display. */
         //% blockId=sardu_matrix_clear_columns block="%matrix clear columns from x %startX to x %endX"
-        //% group="More" weight=24 advanced=true
+        //% group="Display" weight=24 advanced=true
         //% startX.defl=0 endX.defl=15
         clearColumns(startX: number, endX: number): void {
             this._clearAreaBuffer(startX, 0, endX, this.config.height - 1);
@@ -51,7 +51,7 @@ namespace sarduMatrix {
 
         /** Clears inclusive logical rows and immediately updates the display. */
         //% blockId=sardu_matrix_clear_rows block="%matrix clear rows from y %startY to y %endY"
-        //% group="More" weight=23 advanced=true
+        //% group="Display" weight=23 advanced=true
         //% startY.defl=0 endY.defl=15
         clearRows(startY: number, endY: number): void {
             this._clearAreaBuffer(0, startY, this.config.width - 1, endY);
@@ -60,7 +60,7 @@ namespace sarduMatrix {
 
         /** Clears an inclusive logical rectangle and immediately updates the display. */
         //% blockId=sardu_matrix_clear_area block="%matrix clear area from x %startX y %startY to x %endX y %endY"
-        //% group="More" weight=22 advanced=true
+        //% group="Display" weight=22 advanced=true
         //% startX.defl=0 startY.defl=0 endX.defl=15 endY.defl=15
         clearArea(startX: number, startY: number, endX: number, endY: number): void {
             this._clearAreaBuffer(startX, startY, endX, endY);
@@ -69,7 +69,7 @@ namespace sarduMatrix {
 
         /** Clears only the RGB buffer. Call show to update the physical display. */
         //% blockId=sardu_matrix_clear_buffer block="%matrix clear buffer"
-        //% group="More" weight=21 advanced=true
+        //% group="Display" weight=21 advanced=true
         clearBuffer(): void {
             this.strip.clear();
         }
@@ -83,7 +83,7 @@ namespace sarduMatrix {
 
         /** Sets brightness for pixels written after this call. */
         //% blockId=sardu_matrix_set_brightness block="%matrix set brightness %brightness"
-        //% group="More" weight=16 advanced=true brightness.min=0 brightness.max=255 brightness.defl=128
+        //% group="Display" weight=16 advanced=true brightness.min=0 brightness.max=255 brightness.defl=128
         setBrightness(brightness: number): void {
             brightness = Math.floor(brightness);
             if (brightness != brightness) brightness = 0;
@@ -179,7 +179,7 @@ namespace sarduMatrix {
 
         /** Draws text horizontally centered between two inclusive X coordinates. */
         //% blockId=sardu_matrix_draw_text_centered_width_range block="%matrix draw static text %text centered from x %startX to x %endX at y %y|color %color=neopixel_colors font %font size %size brightness %brightness orientation %orientation"
-        //% group="More" weight=15 advanced=true
+        //% group="Static text" weight=15 advanced=true
         //% text.defl="Hello" startX.defl=0 endX.defl=15 y.defl=0 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 color.defl=NeoPixelColors.White brightness.min=0 brightness.max=255 brightness.defl=255 orientation.defl=MatrixTextOrientation.Normal
         drawTextCenteredWidthRange(
             text: string, startX: number, endX: number, y: number, color: number,
@@ -196,7 +196,7 @@ namespace sarduMatrix {
 
         /** Draws text vertically centered between two inclusive Y coordinates. */
         //% blockId=sardu_matrix_draw_text_centered_height_range block="%matrix draw static text %text centered from y %startY to y %endY at x %x|color %color=neopixel_colors font %font size %size brightness %brightness orientation %orientation"
-        //% group="More" weight=14 advanced=true
+        //% group="Static text" weight=14 advanced=true
         //% text.defl="Hello" startY.defl=0 endY.defl=15 x.defl=0 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 color.defl=NeoPixelColors.White brightness.min=0 brightness.max=255 brightness.defl=255 orientation.defl=MatrixTextOrientation.Normal
         drawTextCenteredHeightRange(
             text: string, startY: number, endY: number, x: number, color: number,
@@ -213,7 +213,7 @@ namespace sarduMatrix {
 
         /** Draws text centered inside the inclusive rectangle delimited by A and B. */
         //% blockId=sardu_matrix_draw_text_centered_area block="%matrix draw static text %text centered in area A x %startX y %startY B x %endX y %endY|color %color=neopixel_colors font %font size %size brightness %brightness orientation %orientation"
-        //% group="More" weight=13 advanced=true
+        //% group="Static text" weight=13 advanced=true
         //% text.defl="Hello" startX.defl=0 startY.defl=0 endX.defl=15 endY.defl=15 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 color.defl=NeoPixelColors.White brightness.min=0 brightness.max=255 brightness.defl=255 orientation.defl=MatrixTextOrientation.Normal
         drawTextCenteredArea(
             text: string, startX: number, startY: number, endX: number, endY: number, color: number,
@@ -272,28 +272,28 @@ namespace sarduMatrix {
 
         /** Returns the logical display width. */
         //% blockId=sardu_matrix_width block="%matrix width"
-        //% group="More" weight=20 advanced=true
+        //% group="Display" weight=20 advanced=true
         width(): number {
             return this.config.width;
         }
 
         /** Returns the logical display height. */
         //% blockId=sardu_matrix_height block="%matrix height"
-        //% group="More" weight=19 advanced=true
+        //% group="Display" weight=19 advanced=true
         height(): number {
             return this.config.height;
         }
 
         /** Returns the number of configured RGB LEDs. */
         //% blockId=sardu_matrix_led_count block="%matrix LED count"
-        //% group="More" weight=18 advanced=true
+        //% group="Display" weight=18 advanced=true
         ledCount(): number {
             return this.config.ledCount;
         }
 
         /** Returns the exact size of the NeoPixel RGB buffer in bytes. */
         //% blockId=sardu_matrix_rgb_buffer_bytes block="%matrix RGB buffer bytes"
-        //% group="More" weight=17 advanced=true
+        //% group="Display" weight=17 advanced=true
         rgbBufferBytes(): number {
             return this.config.rgbBytes;
         }

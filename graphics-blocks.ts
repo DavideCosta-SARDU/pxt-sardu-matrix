@@ -1,32 +1,47 @@
+/** A directly selectable pixel in a native MakeCode graphic block. */
+enum MatrixGraphicPixel {
+    //% block="◌"
+    Transparent = -1,
+    //% block="⚫"
+    Black = 0x000000,
+    //% block="⚪"
+    White = 0xffffff,
+    //% block="🔴"
+    Red = 0xff0000,
+    //% block="🟠"
+    Orange = 0xff7f00,
+    //% block="🟡"
+    Yellow = 0xffff00,
+    //% block="🟢"
+    Green = 0x00ff00,
+    //% block="🟩"
+    Lime = 0x80ff00,
+    //% block="🔷"
+    Cyan = 0x00ffff,
+    //% block="🔵"
+    Blue = 0x0000ff,
+    //% block="🔹"
+    Navy = 0x000080,
+    //% block="🟣"
+    Purple = 0x8000ff,
+    //% block="🟪"
+    Magenta = 0xff00ff,
+    //% block="◉"
+    Gray = 0x808080,
+    //% block="🟤"
+    Brown = 0x8b4513,
+    //% block="🟨"
+    Gold = 0xffd700
+}
+
 namespace sarduMatrix {
-    const NATIVE_GRAPHIC_TRANSPARENT = -1;
-
-    /** A transparent cell that preserves the underlying pixel in overlay mode. */
-    //% blockId=sardu_matrix_graphic_transparent block="transparent"
-    //% group="Graphics" weight=79
-    export function graphicTransparent(): number {
-        return NATIVE_GRAPHIC_TRANSPARENT;
-    }
-
-    /** A real LED color, including black. */
-    //% blockId=sardu_matrix_graphic_color block="%value"
-    //% group="Graphics" weight=78
-    //% shim=TD_ID colorSecondary="#FFFFFF"
-    //% value.fieldEditor="colornumber" value.fieldOptions.decompileLiterals=true
-    //% value.defl=0xFF0000
-    //% value.fieldOptions.colours='["#000000","#FFFFFF","#FF0000","#FF7F00","#FFFF00","#00FF00","#00FFFF","#0000FF","#8000FF","#FF00FF","#808080","#8B4513","#80FF00","#000080","#FFD700"]'
-    //% value.fieldOptions.columns=5 value.fieldOptions.className='rgbColorPicker'
-    export function graphicColor(value: number): number {
-        return value & 0xffffff;
-    }
-
     function graphicFromNativeRows(width: number, height: number, rows: number[][]): MatrixGraphic {
         const cells: number[] = [];
         const palette: number[] = [];
         for (let y = 0; y < height; y++) {
             const row = y < rows.length ? rows[y] : null;
             for (let x = 0; x < width; x++) {
-                let color = row && x < row.length ? row[x] : NATIVE_GRAPHIC_TRANSPARENT;
+                let color = row && x < row.length ? row[x] : MatrixGraphicPixel.Transparent;
                 if (color >= 0) {
                     color &= 0xffffff;
                     let found = false;
@@ -63,75 +78,19 @@ namespace sarduMatrix {
 
     //% blockId=sardu_matrix_graphic_row8 block="%p1 %p2 %p3 %p4 %p5 %p6 %p7 %p8"
     //% blockHidden=true inlineInputMode=inline
-    //% p1.shadow=sardu_matrix_graphic_transparent
-    //% p2.shadow=sardu_matrix_graphic_transparent
-    //% p3.shadow=sardu_matrix_graphic_transparent
-    //% p4.shadow=sardu_matrix_graphic_transparent
-    //% p5.shadow=sardu_matrix_graphic_transparent
-    //% p6.shadow=sardu_matrix_graphic_transparent
-    //% p7.shadow=sardu_matrix_graphic_transparent
-    //% p8.shadow=sardu_matrix_graphic_transparent
-    export function graphicRow8(p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: number): number[] {
+    export function graphicRow8(p1: MatrixGraphicPixel, p2: MatrixGraphicPixel, p3: MatrixGraphicPixel, p4: MatrixGraphicPixel, p5: MatrixGraphicPixel, p6: MatrixGraphicPixel, p7: MatrixGraphicPixel, p8: MatrixGraphicPixel): number[] {
         return [p1, p2, p3, p4, p5, p6, p7, p8];
     }
 
     //% blockId=sardu_matrix_graphic_row16 block="%p1 %p2 %p3 %p4 %p5 %p6 %p7 %p8 %p9 %p10 %p11 %p12 %p13 %p14 %p15 %p16"
     //% blockHidden=true inlineInputMode=inline
-    //% p1.shadow=sardu_matrix_graphic_transparent
-    //% p2.shadow=sardu_matrix_graphic_transparent
-    //% p3.shadow=sardu_matrix_graphic_transparent
-    //% p4.shadow=sardu_matrix_graphic_transparent
-    //% p5.shadow=sardu_matrix_graphic_transparent
-    //% p6.shadow=sardu_matrix_graphic_transparent
-    //% p7.shadow=sardu_matrix_graphic_transparent
-    //% p8.shadow=sardu_matrix_graphic_transparent
-    //% p9.shadow=sardu_matrix_graphic_transparent
-    //% p10.shadow=sardu_matrix_graphic_transparent
-    //% p11.shadow=sardu_matrix_graphic_transparent
-    //% p12.shadow=sardu_matrix_graphic_transparent
-    //% p13.shadow=sardu_matrix_graphic_transparent
-    //% p14.shadow=sardu_matrix_graphic_transparent
-    //% p15.shadow=sardu_matrix_graphic_transparent
-    //% p16.shadow=sardu_matrix_graphic_transparent
-    export function graphicRow16(p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: number, p9: number, p10: number, p11: number, p12: number, p13: number, p14: number, p15: number, p16: number): number[] {
+    export function graphicRow16(p1: MatrixGraphicPixel, p2: MatrixGraphicPixel, p3: MatrixGraphicPixel, p4: MatrixGraphicPixel, p5: MatrixGraphicPixel, p6: MatrixGraphicPixel, p7: MatrixGraphicPixel, p8: MatrixGraphicPixel, p9: MatrixGraphicPixel, p10: MatrixGraphicPixel, p11: MatrixGraphicPixel, p12: MatrixGraphicPixel, p13: MatrixGraphicPixel, p14: MatrixGraphicPixel, p15: MatrixGraphicPixel, p16: MatrixGraphicPixel): number[] {
         return [p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16];
     }
 
     //% blockId=sardu_matrix_graphic_row32 block="%p1 %p2 %p3 %p4 %p5 %p6 %p7 %p8 %p9 %p10 %p11 %p12 %p13 %p14 %p15 %p16 %p17 %p18 %p19 %p20 %p21 %p22 %p23 %p24 %p25 %p26 %p27 %p28 %p29 %p30 %p31 %p32"
     //% blockHidden=true inlineInputMode=inline
-    //% p1.shadow=sardu_matrix_graphic_transparent
-    //% p2.shadow=sardu_matrix_graphic_transparent
-    //% p3.shadow=sardu_matrix_graphic_transparent
-    //% p4.shadow=sardu_matrix_graphic_transparent
-    //% p5.shadow=sardu_matrix_graphic_transparent
-    //% p6.shadow=sardu_matrix_graphic_transparent
-    //% p7.shadow=sardu_matrix_graphic_transparent
-    //% p8.shadow=sardu_matrix_graphic_transparent
-    //% p9.shadow=sardu_matrix_graphic_transparent
-    //% p10.shadow=sardu_matrix_graphic_transparent
-    //% p11.shadow=sardu_matrix_graphic_transparent
-    //% p12.shadow=sardu_matrix_graphic_transparent
-    //% p13.shadow=sardu_matrix_graphic_transparent
-    //% p14.shadow=sardu_matrix_graphic_transparent
-    //% p15.shadow=sardu_matrix_graphic_transparent
-    //% p16.shadow=sardu_matrix_graphic_transparent
-    //% p17.shadow=sardu_matrix_graphic_transparent
-    //% p18.shadow=sardu_matrix_graphic_transparent
-    //% p19.shadow=sardu_matrix_graphic_transparent
-    //% p20.shadow=sardu_matrix_graphic_transparent
-    //% p21.shadow=sardu_matrix_graphic_transparent
-    //% p22.shadow=sardu_matrix_graphic_transparent
-    //% p23.shadow=sardu_matrix_graphic_transparent
-    //% p24.shadow=sardu_matrix_graphic_transparent
-    //% p25.shadow=sardu_matrix_graphic_transparent
-    //% p26.shadow=sardu_matrix_graphic_transparent
-    //% p27.shadow=sardu_matrix_graphic_transparent
-    //% p28.shadow=sardu_matrix_graphic_transparent
-    //% p29.shadow=sardu_matrix_graphic_transparent
-    //% p30.shadow=sardu_matrix_graphic_transparent
-    //% p31.shadow=sardu_matrix_graphic_transparent
-    //% p32.shadow=sardu_matrix_graphic_transparent
-    export function graphicRow32(p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: number, p9: number, p10: number, p11: number, p12: number, p13: number, p14: number, p15: number, p16: number, p17: number, p18: number, p19: number, p20: number, p21: number, p22: number, p23: number, p24: number, p25: number, p26: number, p27: number, p28: number, p29: number, p30: number, p31: number, p32: number): number[] {
+    export function graphicRow32(p1: MatrixGraphicPixel, p2: MatrixGraphicPixel, p3: MatrixGraphicPixel, p4: MatrixGraphicPixel, p5: MatrixGraphicPixel, p6: MatrixGraphicPixel, p7: MatrixGraphicPixel, p8: MatrixGraphicPixel, p9: MatrixGraphicPixel, p10: MatrixGraphicPixel, p11: MatrixGraphicPixel, p12: MatrixGraphicPixel, p13: MatrixGraphicPixel, p14: MatrixGraphicPixel, p15: MatrixGraphicPixel, p16: MatrixGraphicPixel, p17: MatrixGraphicPixel, p18: MatrixGraphicPixel, p19: MatrixGraphicPixel, p20: MatrixGraphicPixel, p21: MatrixGraphicPixel, p22: MatrixGraphicPixel, p23: MatrixGraphicPixel, p24: MatrixGraphicPixel, p25: MatrixGraphicPixel, p26: MatrixGraphicPixel, p27: MatrixGraphicPixel, p28: MatrixGraphicPixel, p29: MatrixGraphicPixel, p30: MatrixGraphicPixel, p31: MatrixGraphicPixel, p32: MatrixGraphicPixel): number[] {
         return [p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20, p21, p22, p23, p24, p25, p26, p27, p28, p29, p30, p31, p32];
     }
 

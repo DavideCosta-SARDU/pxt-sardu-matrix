@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.4.1 - 2026-08-31
+
+- Replaced verbose transparent reporter blocks with compact, directly clickable native pixel selectors.
+- Added an explicit hollow transparent symbol and separate visible selectors for black and fifteen RGB palette choices.
+
 ## 0.4.0 - 2026-08-31
 
 - Added native MakeCode graphic blocks for all six supported matrix formats, using Pasalt-style rows of selectable cells.

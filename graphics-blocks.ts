@@ -78,6 +78,7 @@ namespace sarduMatrix {
     //% group="Graphics" weight=77 advanced=true inlineInputMode=external
     //% help=github:pxt-sardu-matrix/docs/graphics
     //% matrix.defl=matrix x.defl=0 y.defl=0 mode.defl=MatrixGraphicMode.Overlay
+    //% matrix.shadow=variables_get
     //% r1.shadow=sardu_matrix_graphic_row16
     //% r2.shadow=sardu_matrix_graphic_row16
     //% r3.shadow=sardu_matrix_graphic_row16
@@ -109,6 +110,7 @@ namespace sarduMatrix {
     //% group="Graphics" weight=76 advanced=true inlineInputMode=external
     //% help=github:pxt-sardu-matrix/docs/graphics
     //% matrix.defl=matrix x.defl=0 y.defl=0 mode.defl=MatrixGraphicMode.Overlay
+    //% matrix.shadow=variables_get
     //% r1.shadow=sardu_matrix_graphic_row8
     //% r2.shadow=sardu_matrix_graphic_row8
     //% r3.shadow=sardu_matrix_graphic_row8
@@ -132,6 +134,7 @@ namespace sarduMatrix {
     //% group="Graphics" weight=75 advanced=true inlineInputMode=external
     //% help=github:pxt-sardu-matrix/docs/graphics
     //% matrix.defl=matrix x.defl=0 y.defl=0 mode.defl=MatrixGraphicMode.Overlay
+    //% matrix.shadow=variables_get
     //% r1.shadow=sardu_matrix_graphic_row32
     //% r2.shadow=sardu_matrix_graphic_row32
     //% r3.shadow=sardu_matrix_graphic_row32
@@ -155,6 +158,7 @@ namespace sarduMatrix {
     //% group="Graphics" weight=74 advanced=true inlineInputMode=external
     //% help=github:pxt-sardu-matrix/docs/graphics
     //% matrix.defl=matrix x.defl=0 y.defl=0 mode.defl=MatrixGraphicMode.Overlay
+    //% matrix.shadow=variables_get
     //% r1.shadow=sardu_matrix_graphic_row8
     //% r2.shadow=sardu_matrix_graphic_row8
     //% r3.shadow=sardu_matrix_graphic_row8
@@ -202,6 +206,7 @@ namespace sarduMatrix {
     //% group="Graphics" weight=73 advanced=true inlineInputMode=external
     //% help=github:pxt-sardu-matrix/docs/graphics
     //% matrix.defl=matrix x.defl=0 y.defl=0 mode.defl=MatrixGraphicMode.Overlay
+    //% matrix.shadow=variables_get
     //% r1.shadow=sardu_matrix_graphic_row16
     //% r2.shadow=sardu_matrix_graphic_row16
     //% r3.shadow=sardu_matrix_graphic_row16
@@ -225,6 +230,7 @@ namespace sarduMatrix {
     //% group="Graphics" weight=72 advanced=true inlineInputMode=external
     //% help=github:pxt-sardu-matrix/docs/graphics
     //% matrix.defl=matrix x.defl=0 y.defl=0 mode.defl=MatrixGraphicMode.Overlay
+    //% matrix.shadow=variables_get
     //% r1.shadow=sardu_matrix_graphic_row8
     //% r2.shadow=sardu_matrix_graphic_row8
     //% r3.shadow=sardu_matrix_graphic_row8

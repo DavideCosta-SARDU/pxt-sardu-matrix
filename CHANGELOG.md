@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.2 - 2026-08-31
+
+- Fixed native graphic blocks using a Matrix variable shadow, preventing the advanced toolbox flyout from failing during rendering.
+
 ## 0.5.1 - 2026-08-31
 
 - Fixed the advanced `... more` toolbox by removing the reserved `More` group and assigning advanced blocks to their functional groups.

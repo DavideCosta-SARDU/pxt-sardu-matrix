@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.0 - 2026-08-31
+
+- Moved native graphics to MakeCode's official advanced `... more` subcategory and made the six grids draw directly into the matrix buffer.
+- Removed the six temporary white presets and the obsolete runtime SMG1 selector while retaining the standalone web editor.
+- Added compact transparent/color selectors with accessible labels and block help text.
+- Compressed accented-font lookup data without changing glyph behavior, restoring successful Micro:Bit V1 test compilation.
+- Added the Microsoft approval assets: 300×200 `icon.png`, root `LICENSE.txt` and a compiling `test.ts`.
+
 ## 0.4.1 - 2026-08-31
 
 - Replaced verbose transparent reporter blocks with compact, directly clickable native pixel selectors.

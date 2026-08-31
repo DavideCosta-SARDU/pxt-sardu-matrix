@@ -231,20 +231,6 @@ namespace sarduMatrix {
             this.drawText(text, x, y, color, font, size, brightness, orientation);
         }
 
-        /** Draws a compact graphic without showing it automatically. */
-        //% blockId=sardu_matrix_draw_graphic block="%matrix draw graphic %graphic at x %x y %y mode %mode"
-        //% group="Graphics" weight=80
-        //% help=github:pxt-sardu-matrix/docs/graphics
-        //% graphic.shadow=sardu_matrix_graphic_16x16 x.defl=0 y.defl=0 mode.defl=MatrixGraphicMode.Overlay
-        drawGraphic(
-            graphic: MatrixGraphic,
-            x: number = 0,
-            y: number = 0,
-            mode: MatrixGraphicMode = MatrixGraphicMode.Overlay
-        ): void {
-            sarduMatrix.drawGraphic(this, graphic, x, y, mode);
-        }
-
         /** Scrolls one line left from selected coordinates, clearing or preserving the existing scene. */
         //% blockId=sardu_matrix_scroll_text block="%matrix scroll text %text from x %x y %y|color %color=neopixel_colors every %frameIntervalMs ms font %font size %size brightness %brightness orientation %orientation mode %mode"
         //% group="Scrolling text" weight=75

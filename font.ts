@@ -10,6 +10,12 @@ namespace sarduMatrixInternal {
     // Æ, æ, Œ, œ, ß, Ø, ø, ¿, ¡, °, €, £, ©, ®, ×, ÷
     const SPECIAL = hex`7e09097f4920545478543e41417f493844447c547e090949363e61514946384c54443830484d400000007d00000007060700143e55554148547e51423e4955493e3e4d55493e221408142208002a0008`;
 
+    // Records: character code (little endian), base character, accent kind.
+    const ACCENT_MAP = hex`c0004101c1004102c2004103c3004104c4004105c5004106c7004307c8004501c9004502ca004503cb004505cc004901cd004902ce004903cf004905d1004e04d2004f01d3004f02d4004f03d5004f04d6004f05d9005501da005502db005503dc005505dd00590278015905e0006101e1006102e2006103e3006104e4006105e5006106e7006307e8006501e9006502ea006503eb006505ec006901ed006902ee006903ef006905f1006e04f2006f01f3006f02f4006f03f5006f04f6006f05f9007501fa007502fb007503fc007505fd007902ff007905`;
+    const ACCENT_COLUMNS = hex`00000000000001020000000002010000020102000201020100000100010000020102000000000000`;
+    // Records: character code (little endian), Micro:Bit fallback character.
+    const SPECIAL_MAP = hex`c60041e6006152014f53016fdf0042d8004ff8006fbf003fa10021b0006fac2045a3004ca90043ae0052d70078f7002f`;
+
     // The official Micro:Bit 5x5 system font, as distributed by MakeCode in
     // pxt-common-packages. Each record is a two-byte character code followed
     // by five bitmap columns and one blank advance column.
@@ -46,76 +52,28 @@ namespace sarduMatrixInternal {
         return FONT[glyphIndex(characterCode) * SARDU_GLYPH_WIDTH + column];
     }
 
-    function accentedBase(characterCode: number): number {
-        switch (characterCode) {
-            case 192: case 193: case 194: case 195: case 196: case 197: return 65; // A
-            case 199: return 67; // C
-            case 200: case 201: case 202: case 203: return 69; // E
-            case 204: case 205: case 206: case 207: return 73; // I
-            case 209: return 78; // N
-            case 210: case 211: case 212: case 213: case 214: return 79; // O
-            case 217: case 218: case 219: case 220: return 85; // U
-            case 221: case 376: return 89; // Y
-            case 224: case 225: case 226: case 227: case 228: case 229: return 97; // a
-            case 231: return 99; // c
-            case 232: case 233: case 234: case 235: return 101; // e
-            case 236: case 237: case 238: case 239: return 105; // i
-            case 241: return 110; // n
-            case 242: case 243: case 244: case 245: case 246: return 111; // o
-            case 249: case 250: case 251: case 252: return 117; // u
-            case 253: case 255: return 121; // y
-            default: return 0;
-        }
+    function accentValue(characterCode: number, field: number): number {
+        for (let record = 0; record < ACCENT_MAP.length; record += 4)
+            if ((ACCENT_MAP[record] | (ACCENT_MAP[record + 1] << 8)) == characterCode)
+                return ACCENT_MAP[record + field];
+        return 0;
     }
 
     // 1 grave, 2 acute, 3 circumflex, 4 tilde, 5 diaeresis, 6 ring, 7 cedilla.
     function accentKind(characterCode: number): number {
-        switch (characterCode) {
-            case 192: case 200: case 204: case 210: case 217:
-            case 224: case 232: case 236: case 242: case 249: return 1;
-            case 193: case 201: case 205: case 211: case 218: case 221:
-            case 225: case 233: case 237: case 243: case 250: case 253: return 2;
-            case 194: case 202: case 206: case 212: case 219:
-            case 226: case 234: case 238: case 244: case 251: return 3;
-            case 195: case 209: case 213: case 227: case 241: case 245: return 4;
-            case 196: case 203: case 207: case 214: case 220: case 376:
-            case 228: case 235: case 239: case 246: case 252: case 255: return 5;
-            case 197: case 229: return 6;
-            case 199: case 231: return 7;
-            default: return 0;
-        }
+        return accentValue(characterCode, 3);
     }
 
     function accentColumn(kind: number, column: number): number {
-        if (kind == 1) return column == 1 ? 1 : (column == 2 ? 2 : 0);
-        if (kind == 2) return column == 2 ? 2 : (column == 3 ? 1 : 0);
-        if (kind == 3) return column == 1 || column == 3 ? 2 : (column == 2 ? 1 : 0);
-        if (kind == 4) return column == 0 || column == 2 ? 2 : (column == 1 || column == 3 ? 1 : 0);
-        if (kind == 5) return column == 1 || column == 3 ? 1 : 0;
-        if (kind == 6) return column == 1 || column == 3 ? 2 : (column == 2 ? 1 : 0);
-        return 0;
+        if (kind < 0 || kind > 7 || column < 0 || column >= 5) return 0;
+        return ACCENT_COLUMNS[kind * 5 + column];
     }
 
     function specialIndex(characterCode: number): number {
-        switch (characterCode) {
-            case 198: return 0;  // Æ
-            case 230: return 1;  // æ
-            case 338: return 2;  // Œ
-            case 339: return 3;  // œ
-            case 223: return 4;  // ß
-            case 216: return 5;  // Ø
-            case 248: return 6;  // ø
-            case 191: return 7;  // ¿
-            case 161: return 8;  // ¡
-            case 176: return 9;  // °
-            case 8364: return 10; // €
-            case 163: return 11; // £
-            case 169: return 12; // ©
-            case 174: return 13; // ®
-            case 215: return 14; // ×
-            case 247: return 15; // ÷
-            default: return -1;
-        }
+        for (let record = 0; record < SPECIAL_MAP.length; record += 3)
+            if ((SPECIAL_MAP[record] | (SPECIAL_MAP[record + 1] << 8)) == characterCode)
+                return Math.idiv(record, 3);
+        return -1;
     }
 
     function sarduColumn(characterCode: number, column: number): number {
@@ -123,7 +81,7 @@ namespace sarduMatrixInternal {
         const special = specialIndex(characterCode);
         if (special >= 0) return SPECIAL[special * SARDU_GLYPH_WIDTH + column];
 
-        const base = accentedBase(characterCode);
+        const base = accentValue(characterCode, 2);
         if (base != 0) {
             const kind = accentKind(characterCode);
             const bits = plainColumn(base, column);
@@ -138,29 +96,12 @@ namespace sarduMatrixInternal {
     }
 
     function microBitCharacter(characterCode: number): number {
-        const base = accentedBase(characterCode);
+        const base = accentValue(characterCode, 2);
         if (base != 0) return base;
-        switch (characterCode) {
-            case 198: return 65;  // Æ -> A
-            case 230: return 97;  // æ -> a
-            case 338: return 79;  // Œ -> O
-            case 339: return 111; // œ -> o
-            case 223: return 66;  // ß -> B
-            case 216: return 79;  // Ø -> O
-            case 248: return 111; // ø -> o
-            case 191: return 63;  // ¿ -> ?
-            case 161: return 33;  // ¡ -> !
-            case 176: return 111; // ° -> o
-            case 8364: return 69; // € -> E
-            case 163: return 76;  // £ -> L
-            case 169: return 67;  // © -> C
-            case 174: return 82;  // ® -> R
-            case 215: return 120; // × -> x
-            case 247: return 47;  // ÷ -> /
-            default:
-                if (characterCode >= 32 && characterCode <= 126) return characterCode;
-                return 63;
-        }
+        const special = specialIndex(characterCode);
+        if (special >= 0) return SPECIAL_MAP[special * 3 + 2];
+        if (characterCode >= 32 && characterCode <= 126) return characterCode;
+        return 63;
     }
 
     // Native builds expose five horizontal bitmap rows. The TypeScript body
@@ -191,13 +132,8 @@ namespace sarduMatrixInternal {
             if ((glyph[row] & (1 << (4 - column))) != 0) bits |= 1 << (row + 1);
         }
         const kind = accentKind(characterCode);
-        if (kind == 1 && (column == 1 || column == 2)) bits |= column == 1 ? 1 : 2;
-        else if (kind == 2 && (column == 2 || column == 3)) bits |= column == 2 ? 2 : 1;
-        else if (kind == 3) bits |= column == 1 || column == 3 ? 2 : (column == 2 ? 1 : 0);
-        else if (kind == 4) bits |= column == 0 || column == 2 ? 2 : (column == 1 || column == 3 ? 1 : 0);
-        else if (kind == 5 && (column == 1 || column == 3)) bits |= 1;
-        else if (kind == 6) bits |= column == 1 || column == 3 ? 2 : (column == 2 ? 1 : 0);
-        else if (kind == 7 && column == 2) bits |= 64;
+        if (kind == 7 && column == 2) bits |= 64;
+        else bits |= accentColumn(kind, column);
         return bits;
     }
 

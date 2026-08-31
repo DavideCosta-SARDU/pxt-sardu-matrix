@@ -4,11 +4,11 @@ I blocchi Grafica permettono di disegnare direttamente dentro MakeCode nei forma
 
 ## Disegnare una grafica
 
-Inserire il blocco `disegna grafica`, scegliere il blocco grafica del formato desiderato e impostare le celle direttamente nelle righe visualizzate nel blocco. Non occorrono collegamenti esterni e non bisogna copiare codice.
+Aprire `...altro`, inserire il blocco `disegna ...` del formato desiderato e impostare le celle direttamente nelle righe visualizzate. Non occorrono collegamenti esterni e non bisogna copiare codice.
 
-La tavolozza accetta al massimo 15 colori reali per immagine. Le grafiche con un solo colore usano un bit per pixel; quelle multicolore usano quattro bit per pixel.
+Il simbolo `◌` è la cella trasparente predefinita. `⚫` è invece nero reale e spegne il LED. Le altre scelte rappresentano colori reali.
 
-L'editor web già pubblicato resta uno strumento facoltativo di sviluppo e prova per creare preset, ma non fa parte del normale flusso dell'utente MakeCode.
+L'editor web già pubblicato resta uno strumento facoltativo di sviluppo e prova, ma non fa parte del normale flusso dell'utente MakeCode.
 
 ## Trasparente e nero
 
@@ -19,12 +19,7 @@ Questa distinzione permette di comporre più lavori senza spegnere involontariam
 
 ## Disegnare sulla matrice
 
-Il blocco `disegna grafica ... a x ... y ... modalità ...` si trova nel gruppo **Grafica**. Scrive nel buffer senza inviare subito i LED, quindi `mostra` va chiamato dopo aver composto il fotogramma.
-
-```blocks
-matrix.drawGraphic(sarduMatrix.logo, 0, 0, MatrixGraphicMode.Overlay)
-matrix.show()
-```
+I sei blocchi grafici scrivono direttamente nel buffer senza inviare subito i LED, quindi `mostra` va chiamato dopo aver composto il fotogramma.
 
 - **sovrapponi**: i pixel trasparenti preservano lo sfondo; i colori reali, incluso il nero, vengono scritti.
 - **sostituisci area**: i pixel trasparenti rendono nera la posizione corrispondente, sostituendo quindi tutta l'area della grafica.
@@ -33,4 +28,4 @@ Le coordinate sono logiche e indipendenti dal cablaggio lineare, progressivo o Z
 
 ## Memoria
 
-I dati della grafica risiedono nel programma e non creano un secondo framebuffer RGB. Il framebuffer della matrice resta `larghezza × altezza × 3` byte. Su Micro:Bit V1 è prudente limitare il numero di immagini grandi in un progetto già ricco di funzioni.
+Le righe del blocco sono valori temporanei e non creano un secondo framebuffer RGB permanente. Il framebuffer della matrice resta `larghezza × altezza × 3` byte.

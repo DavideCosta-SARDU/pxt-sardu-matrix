@@ -1,12 +1,14 @@
-# Editor grafico e blocchi Grafica
+# Blocchi grafici nativi ed editor facoltativo
 
-L'editor grafico SARDU Matrix crea immagini RGB compatte riutilizzabili nei blocchi MakeCode. Gestisce tutti i formati fisici supportati: **8×8, 16×16, 32×8, 8×32, 16×8 e 8×16**. Una grafica che supera i bordi della matrice viene ritagliata in sicurezza.
+I blocchi Grafica permettono di disegnare direttamente dentro MakeCode nei formati **8×8, 16×16, 32×8, 8×32, 16×8 e 8×16**. Una grafica che supera i bordi della matrice viene ritagliata in sicurezza.
 
 ## Disegnare una grafica
 
-Aprire l'[editor grafico SARDU Matrix](https://davidecosta-sardu.github.io/pxt-sardu-matrix/editor.html), creare una o più grafiche, assegnare il nome e scegliere il formato. **Salva grafica** conserva il lavoro nel browser; **Copia codice** genera le definizioni da aggiungere al progetto MakeCode.
+Inserire il blocco `disegna grafica`, scegliere il blocco grafica del formato desiderato e impostare le celle direttamente nelle righe visualizzate nel blocco. Non occorrono collegamenti esterni e non bisogna copiare codice.
 
 La tavolozza accetta al massimo 15 colori reali per immagine. Le grafiche con un solo colore usano un bit per pixel; quelle multicolore usano quattro bit per pixel.
+
+L'editor web già pubblicato resta uno strumento facoltativo di sviluppo e prova per creare preset, ma non fa parte del normale flusso dell'utente MakeCode.
 
 ## Trasparente e nero
 

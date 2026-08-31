@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.4.0 - 2026-08-31
+
+- Added native MakeCode graphic blocks for all six supported matrix formats, using Pasalt-style rows of selectable cells.
+- Added explicit transparent cells and real RGB colors, including black, while retaining overlay and replace-area behavior.
+- Reused the existing compact SMG1 graphic representation so native and web-authored graphics share the same renderer.
+- Removed the external-editor button from the normal MakeCode flow; the standalone web editor remains available as an optional development and preset-authoring tool.
+
 ## 0.3.0 - 2026-08-31
 
 - Corrected the Display order to show, clear matrix, then interrupt and clear matrix.

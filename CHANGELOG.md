@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.0 - 2026-08-31
+
+- Corrected the Display order to show, clear matrix, then interrupt and clear matrix.
+- Moved clear-columns and clear-rows to the advanced `... more` toolbox.
+- Prioritized edge-based scrolling and changed manual scrolling's default X position from a fixed 16 to the actual matrix width.
+- Added the official MakeCode editor-extension protocol to the six-format graphic editor while retaining standalone use.
+- Added the graphic-editor manifest entry; public MakeCode now exposes its button, while opening the external iframe remains subject to Microsoft URL approval.
+
 ## 0.2.1 - 2026-08-30
 
 - Added the standalone six-format graphic editor, RGB simulator page and GitHub Pages publication workflow without attaching them to the PXT toolbox manifest.

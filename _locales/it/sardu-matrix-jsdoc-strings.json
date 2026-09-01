@@ -11,6 +11,12 @@
   "MatrixScrollMode": "Modo in cui il testo scorrevole interagisce con il contenuto già presente nel buffer RGB.",
   "MatrixTextOrientation": "Rotazione applicata all'intera riga di testo disegnata.",
   "sarduMatrix.Matrix": "Una matrice LED RGB configurabile.",
+  "sarduMatrix.addScrollingCircle": "Aggiunge il contorno di un cerchio alla composizione scorrevole in attesa.",
+  "sarduMatrix.addScrollingFilledCircle": "Aggiunge un cerchio pieno alla composizione scorrevole in attesa.",
+  "sarduMatrix.addScrollingFilledRectangle": "Aggiunge un rettangolo pieno alla composizione scorrevole in attesa.",
+  "sarduMatrix.addScrollingLine": "Aggiunge una linea alla composizione scorrevole in attesa.",
+  "sarduMatrix.addScrollingRectangle": "Aggiunge il contorno di un rettangolo alla composizione scorrevole in attesa.",
+  "sarduMatrix.addScrollingText": "Aggiunge testo alla composizione scorrevole in attesa.",
   "sarduMatrix.Matrix.clear": "Cancella il buffer RGB e aggiorna immediatamente il display fisico.",
   "sarduMatrix.Matrix.clearArea": "Cancella un rettangolo logico inclusivo e aggiorna immediatamente il display.",
   "sarduMatrix.Matrix.clearBuffer": "Cancella soltanto il buffer RGB. Chiama mostra per aggiornare il display fisico.",
@@ -77,6 +83,7 @@
   "sarduMatrix.measureTextHeight": "Restituisce l'altezza disegnata di una stringa dopo aver applicato il suo orientamento.",
   "sarduMatrix.measureTextWidth": "Restituisce la larghezza disegnata di una stringa dopo aver applicato il suo orientamento.",
   "sarduMatrix.rgbColor": "Crea un colore a partire dalle componenti rosso, verde e blu.",
+  "sarduMatrix.startScrolling": "Avvia la composizione scorrevole in attesa e la svuota automaticamente.",
   "sarduMatrixInternal.pathIndex": "Converte una coordinata logica in una posizione del percorso fisico.",
   "sarduMatrixInternal.physicalIndex": "Converte una coordinata del display nella posizione del LED."
 }

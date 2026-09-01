@@ -17,6 +17,7 @@
         "shapes.ts",
         "graphics-blocks.ts",
         "text.ts",
+        "scroll-content.ts",
         "matrix.ts",
         "main.ts",
         "docs/graphics.md",

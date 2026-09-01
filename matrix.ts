@@ -25,7 +25,7 @@ namespace sarduMatrix {
 
         /** Stops long-running output, clears the RGB buffer and immediately updates the display. */
         //% blockId=sardu_matrix_interrupt_and_clear block="%matrix stop and clear matrix"
-        //% group="Display" weight=70
+        //% group="Display" weight=69
         interruptAndClear(): void {
             this.operationVersion++;
             this.strip.clear();
@@ -34,7 +34,7 @@ namespace sarduMatrix {
 
         /** Clears the RGB buffer and immediately updates the physical display. */
         //% blockId=sardu_matrix_clear block="%matrix clear"
-        //% group="Display" weight=71
+        //% group="Display" weight=70
         clear(): void {
             this.strip.clear();
             this.strip.show();
@@ -104,7 +104,7 @@ namespace sarduMatrix {
             color: number,
             font: MatrixFont = MatrixFont.Sardu,
             size: MatrixFontSize = MatrixFontSize.X1,
-            brightness: number = 255,
+            brightness: number = 128,
             orientation: MatrixTextOrientation = MatrixTextOrientation.Normal
         ): void {
             sarduMatrixInternal.drawText(this, text, x, y, color, font, size, brightness, orientation);
@@ -120,7 +120,7 @@ namespace sarduMatrix {
             color: number,
             font: MatrixFont = MatrixFont.Sardu,
             size: MatrixFontSize = MatrixFontSize.X1,
-            brightness: number = 255,
+            brightness: number = 128,
             orientation: MatrixTextOrientation = MatrixTextOrientation.Normal
         ): void {
             const x = sarduMatrixInternal.centeredCoordinate(
@@ -141,7 +141,7 @@ namespace sarduMatrix {
             color: number,
             font: MatrixFont = MatrixFont.Sardu,
             size: MatrixFontSize = MatrixFontSize.X1,
-            brightness: number = 255,
+            brightness: number = 128,
             orientation: MatrixTextOrientation = MatrixTextOrientation.Normal
         ): void {
             const y = sarduMatrixInternal.centeredCoordinate(
@@ -161,7 +161,7 @@ namespace sarduMatrix {
             color: number,
             font: MatrixFont = MatrixFont.Sardu,
             size: MatrixFontSize = MatrixFontSize.X1,
-            brightness: number = 255,
+            brightness: number = 128,
             orientation: MatrixTextOrientation = MatrixTextOrientation.Normal
         ): void {
             const x = sarduMatrixInternal.centeredCoordinate(
@@ -185,7 +185,7 @@ namespace sarduMatrix {
             text: string, startX: number, endX: number, y: number, color: number,
             font: MatrixFont = MatrixFont.Sardu,
             size: MatrixFontSize = MatrixFontSize.X1,
-            brightness: number = 255,
+            brightness: number = 128,
             orientation: MatrixTextOrientation = MatrixTextOrientation.Normal
         ): void {
             const x = sarduMatrixInternal.centeredCoordinate(
@@ -202,7 +202,7 @@ namespace sarduMatrix {
             text: string, startY: number, endY: number, x: number, color: number,
             font: MatrixFont = MatrixFont.Sardu,
             size: MatrixFontSize = MatrixFontSize.X1,
-            brightness: number = 255,
+            brightness: number = 128,
             orientation: MatrixTextOrientation = MatrixTextOrientation.Normal
         ): void {
             const y = sarduMatrixInternal.centeredCoordinate(
@@ -219,7 +219,7 @@ namespace sarduMatrix {
             text: string, startX: number, startY: number, endX: number, endY: number, color: number,
             font: MatrixFont = MatrixFont.Sardu,
             size: MatrixFontSize = MatrixFontSize.X1,
-            brightness: number = 255,
+            brightness: number = 128,
             orientation: MatrixTextOrientation = MatrixTextOrientation.Normal
         ): void {
             const x = sarduMatrixInternal.centeredCoordinate(
@@ -243,7 +243,7 @@ namespace sarduMatrix {
             frameIntervalMs: number = 100,
             font: MatrixFont = MatrixFont.Sardu,
             size: MatrixFontSize = MatrixFontSize.X1,
-            brightness: number = 255,
+            brightness: number = 128,
             orientation: MatrixTextOrientation = MatrixTextOrientation.Normal,
             mode: MatrixScrollMode = MatrixScrollMode.Exclusive
         ): void {
@@ -261,7 +261,7 @@ namespace sarduMatrix {
             frameIntervalMs: number = 100,
             font: MatrixFont = MatrixFont.Sardu,
             size: MatrixFontSize = MatrixFontSize.X1,
-            brightness: number = 255,
+            brightness: number = 128,
             orientation: MatrixTextOrientation = MatrixTextOrientation.Normal,
             mode: MatrixScrollMode = MatrixScrollMode.Exclusive
         ): void {

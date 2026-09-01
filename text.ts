@@ -100,7 +100,7 @@ namespace sarduMatrixInternal {
         color: number,
         font: MatrixFont = MatrixFont.Sardu,
         size: MatrixFontSize = MatrixFontSize.X1,
-        brightness: number = 255,
+        brightness: number = 128,
         orientation: MatrixTextOrientation = MatrixTextOrientation.Normal
     ): void {
         if (!text || text.length == 0) return;
@@ -189,7 +189,7 @@ namespace sarduMatrixInternal {
         frameIntervalMs: number,
         font: MatrixFont = MatrixFont.Sardu,
         size: MatrixFontSize = MatrixFontSize.X1,
-        brightness: number = 255,
+        brightness: number = 128,
         orientation: MatrixTextOrientation = MatrixTextOrientation.Normal,
         mode: MatrixScrollMode = MatrixScrollMode.Exclusive
     ): void {
@@ -244,7 +244,7 @@ namespace sarduMatrixInternal {
         frameIntervalMs: number,
         font: MatrixFont = MatrixFont.Sardu,
         size: MatrixFontSize = MatrixFontSize.X1,
-        brightness: number = 255,
+        brightness: number = 128,
         orientation: MatrixTextOrientation = MatrixTextOrientation.Normal,
         mode: MatrixScrollMode = MatrixScrollMode.Exclusive
     ): void {
@@ -265,7 +265,7 @@ namespace sarduMatrixInternal {
         frameIntervalMs: number,
         font: MatrixFont = MatrixFont.Sardu,
         size: MatrixFontSize = MatrixFontSize.X1,
-        brightness: number = 255,
+        brightness: number = 128,
         orientation: MatrixTextOrientation = MatrixTextOrientation.Normal,
         mode: MatrixScrollMode = MatrixScrollMode.Exclusive
     ): void {

@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.6.0 - 2026-09-01
+
+- Added static line, rectangle, filled rectangle, circle and filled circle blocks with clipping.
+- Added queued scrolling geometry and text composition with a single `start scrolling` block.
+- Reordered the toolbox into Creation, Display, Static text, Scrolling text, Static geometry, Scrolling geometry, Pixels and Colors; Graphics remains last under advanced blocks.
+- Changed the default brightness of text blocks to 128 while preserving explicit brightness control.
+
 ## 0.5.2 - 2026-08-31
 
 - Fixed native graphic blocks using a Matrix variable shadow, preventing the advanced toolbox flyout from failing during rendering.

@@ -66,7 +66,7 @@ matrix.drawText(
     sarduMatrix.rgbColor(255, 40, 0),
     MatrixFont.Sardu,
     MatrixFontSize.X1,
-    255
+    128
 )
 matrix.show()
 ```
@@ -78,6 +78,8 @@ The text blocks offer three alternative fonts: SARDU, the extended Micro:Bit sys
 Static and scrolling text can rotate the complete rendered line to 0°, 90° clockwise, 180° or 270° clockwise. Rotation is independent from the scrolling edge, so all 16 combinations are available. Static text can use explicit X/Y coordinates, be centered across the complete width, complete height or both, or be centered inside an advanced inclusive X/Y range. Centering uses the dimensions after rotation. Every string also has its own 0–255 brightness, independent from the matrix-wide brightness selected during creation.
 
 Scrolling offers two scene modes. **Exclusive** clears the display for every frame and finishes with a black display. **Composed** preserves the pixels already drawn, restores them behind the moving text and finishes with the original scene visible.
+
+Lines, rectangles and circles, with outline and filled variants, use the same logical coordinates and clipping as pixels and text. Static geometry changes only the buffer and requires `show()`. Scrolling geometry can run by itself or be queued after text; add the desired items and call `startScrolling()` once to move the complete sequence as one composition.
 
 Colors can come from the MakeCode/NeoPixel picker, from explicit RGB components, or from HSL fields. RGB uses 0–255. HSL uses hue 0–360 and saturation/lightness 0–100. HSL lightness changes the color itself and is distinct from matrix or string brightness.
 
@@ -110,6 +112,7 @@ See [docs/wiring.md](docs/wiring.md) for diagrams and mapping examples.
 - [Wiring](docs/wiring.md)
 - [Memory and rendering](docs/memory-and-rendering.md)
 - [Graphic editor and Graphics blocks](docs/graphics.md)
+- [Static and scrolling geometry](docs/shapes.md)
 - [RGB matrix simulator and approval status](docs/simulator.md)
 - [Migration from pxt-smartmatrix](docs/migration.md)
 
@@ -120,3 +123,7 @@ English is the source and fallback language. During the current development phas
 ## License
 
 MIT, Copyright (c) 2026 Davide Costa <davide@sardu.pro>.
+
+## Supported targets
+
+- for PXT/microbit

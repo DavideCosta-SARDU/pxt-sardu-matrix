@@ -4,6 +4,8 @@
 
 - Added isolated fade, blink, color-wipe, static rainbow, animated rainbow and sparkle effects.
 - Added explicit leave, restore and clear final states plus cooperative interruption for animated effects.
+- Made blink and rainbow operate on existing content without increasing its brightness; added selectable wipe origins and opposed two-color wipes.
+- Added a default effect-color brightness of 128 for fade targets, wipes and sparkles.
 - Added an Italian-localized Effects toolbox group without changing existing block APIs or behavior.
 
 ## 0.6.0 - 2026-09-01

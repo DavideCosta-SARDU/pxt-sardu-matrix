@@ -89,10 +89,11 @@
   "MatrixEffectEndState": "Stato lasciato sulla matrice al termine di un effetto.",
   "MatrixRainbowAxis": "Asse lungo il quale cambiano i colori dell'arcobaleno.",
   "MatrixWipeDirection": "Direzione usata da un riempimento progressivo.",
-  "sarduMatrix.blinkColor": "Fa lampeggiare l'intera matrice usando un colore.",
-  "sarduMatrix.colorWipe": "Riempie progressivamente l'intera matrice a partire da un bordo.",
+  "sarduMatrix.blinkContent": "Fa lampeggiare il contenuto già presente conservandone colori e luminosità.",
+  "sarduMatrix.colorWipe": "Riempie progressivamente la matrice da una coordinata logica selezionata.",
   "sarduMatrix.fadeToColor": "Dissolve il contenuto corrente della matrice verso un colore scelto.",
-  "sarduMatrix.rainbowCycle": "Anima un ciclo arcobaleno sull'intera matrice.",
-  "sarduMatrix.showRainbow": "Mostra un arcobaleno statico sull'intera matrice.",
+  "sarduMatrix.opposedColorWipe": "Avanza due colori da bordi opposti fino al loro incontro.",
+  "sarduMatrix.rainbowCycle": "Anima i colori arcobaleno soltanto nel contenuto corrente.",
+  "sarduMatrix.showRainbow": "Ricolora come arcobaleno il contenuto corrente senza illuminare lo sfondo.",
   "sarduMatrix.sparkles": "Mostra scintille casuali da sole o sopra il contenuto corrente."
 }

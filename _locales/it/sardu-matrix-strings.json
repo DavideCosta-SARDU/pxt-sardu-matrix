@@ -151,11 +151,12 @@
   "MatrixWipeDirection.LeftToRight|block": "da sinistra a destra",
   "MatrixWipeDirection.RightToLeft|block": "da destra a sinistra",
   "MatrixWipeDirection.TopToBottom|block": "dall'alto verso il basso",
-  "sarduMatrix.blinkColor|block": "%matrix lampeggia colore %color=neopixel_colors %repetitions volte|acceso %onMs ms spento %offMs ms poi %endState",
-  "sarduMatrix.colorWipe|block": "%matrix riempimento progressivo %color=neopixel_colors direzione %direction ogni %frameIntervalMs ms|poi %endState",
-  "sarduMatrix.fadeToColor|block": "%matrix dissolvi contenuto corrente verso %color=neopixel_colors in %durationMs ms con %frames fotogrammi|poi %endState",
-  "sarduMatrix.rainbowCycle|block": "%matrix ciclo arcobaleno lungo %axis per %frames fotogrammi ogni %frameIntervalMs ms|poi %endState",
-  "sarduMatrix.showRainbow|block": "%matrix mostra arcobaleno lungo %axis",
-  "sarduMatrix.sparkles|block": "%matrix scintille colore %color=neopixel_colors densità %density percento|per %durationMs ms ogni %frameIntervalMs ms modalità %mode poi %endState",
+  "sarduMatrix.blinkContent|block": "%matrix lampeggia contenuto corrente %repetitions volte|acceso %onMs ms spento %offMs ms poi %endState",
+  "sarduMatrix.colorWipe|block": "%matrix riempimento progressivo %color=neopixel_colors direzione %direction partendo da %start ogni %frameIntervalMs ms|poi %endState luminosità %brightness",
+  "sarduMatrix.fadeToColor|block": "%matrix dissolvi contenuto corrente verso %color=neopixel_colors in %durationMs ms con %frames fotogrammi|poi %endState luminosità %brightness",
+  "sarduMatrix.opposedColorWipe|block": "%matrix riempimento contrapposto %firstColor=neopixel_colors e %secondColor=neopixel_colors lungo %axis ogni %frameIntervalMs ms|poi %endState luminosità %brightness",
+  "sarduMatrix.rainbowCycle|block": "%matrix ciclo arcobaleno sul contenuto corrente lungo %axis per %frames fotogrammi ogni %frameIntervalMs ms|poi %endState",
+  "sarduMatrix.showRainbow|block": "%matrix colora contenuto corrente come arcobaleno lungo %axis",
+  "sarduMatrix.sparkles|block": "%matrix scintille colore %color=neopixel_colors densità %density percento|per %durationMs ms ogni %frameIntervalMs ms modalità %mode poi %endState luminosità %brightness",
   "{id:group}Effects": "Effetti"
 }

@@ -28,3 +28,15 @@ const secondEffectRandom = sarduMatrixInternal.nextEffectRandom(1000);
 sarduMatrixInternal.seedEffectRandom(12345);
 expectSarduMatrix(firstEffectRandom == sarduMatrixInternal.nextEffectRandom(1000));
 expectSarduMatrix(secondEffectRandom == sarduMatrixInternal.nextEffectRandom(1000));
+
+const effectContentMask = pins.createBuffer(6);
+effectContentMask[0] = 64;
+effectContentMask[1] = 64;
+effectContentMask[2] = 64;
+const effectRainbowFrame = pins.createBuffer(6);
+effectRainbowFrame[0] = 127;
+effectRainbowFrame[1] = 63;
+effectRainbowFrame[3] = 127;
+sarduMatrixInternal.maskRainbowFrame(effectContentMask, effectRainbowFrame);
+expectSarduMatrix(effectRainbowFrame[0] == 64 && effectRainbowFrame[1] == 32 && effectRainbowFrame[2] == 0);
+expectSarduMatrix(effectRainbowFrame[3] == 0 && effectRainbowFrame[4] == 0 && effectRainbowFrame[5] == 0);

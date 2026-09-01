@@ -84,7 +84,7 @@ namespace sarduMatrix {
         /** Starts and then clears the pending scrolling composition. */
         //% blockId=sardu_matrix_start_scrolling block="%matrix start scrolling every %frameIntervalMs ms mode %mode"
         //% group="Display" weight=71
-        //% frameIntervalMs.min=0 frameIntervalMs.defl=100 mode.defl=MatrixScrollMode.Exclusive
+        //% this.defl=matrix frameIntervalMs.min=0 frameIntervalMs.defl=100 mode.defl=MatrixScrollMode.Exclusive
         startScrolling(frameIntervalMs: number = 100, mode: MatrixScrollMode = MatrixScrollMode.Exclusive): void {
             sarduMatrixInternal.startQueuedScrolling(this, frameIntervalMs, mode);
         }
@@ -242,7 +242,7 @@ namespace sarduMatrix {
         /** Adds text to the pending scrolling composition. */
         //% blockId=sardu_matrix_add_scrolling_text block="%matrix add text %text to scrolling|at y %y color %color=neopixel_colors font %font size %size brightness %brightness orientation %orientation spacing %spacing"
         //% group="Scrolling text" weight=74
-        //% text.defl="Hello" y.defl=0 color.defl=NeoPixelColors.White font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=MatrixTextOrientation.Normal spacing.min=0 spacing.defl=1
+        //% this.defl=matrix text.defl="Hello" y.defl=0 color.defl=NeoPixelColors.White font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=MatrixTextOrientation.Normal spacing.min=0 spacing.defl=1
         addScrollingText(
             text: string, y: number = 0, color: number = NeoPixelColors.White,
             font: MatrixFont = MatrixFont.Sardu, size: MatrixFontSize = MatrixFontSize.X1,

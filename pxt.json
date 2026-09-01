@@ -14,11 +14,13 @@
         "mapping.ts",
         "font.ts",
         "colors.ts",
+        "shapes.ts",
         "graphics-blocks.ts",
         "text.ts",
         "matrix.ts",
         "main.ts",
         "docs/graphics.md",
+        "docs/shapes.md",
         "docs/simulator.md",
         "_locales/it/sardu-matrix-strings.json",
         "_locales/it/sardu-matrix-jsdoc-strings.json"

@@ -69,6 +69,9 @@
   "sarduMatrix.Matrix.clearColumns|block": "%matrix cancella colonne da x %startX a x %endX",
   "sarduMatrix.Matrix.clearRows|block": "%matrix cancella righe da y %startY a y %endY",
   "sarduMatrix.Matrix.clear|block": "%matrix cancella matrice",
+  "sarduMatrix.drawCircle|block": "%matrix disegna cerchio centro x %centerX y %centerY raggio %radius|colore %color=neopixel_colors",
+  "sarduMatrix.drawLine|block": "%matrix disegna linea da x %x1 y %y1 a x %x2 y %y2|colore %color=neopixel_colors",
+  "sarduMatrix.drawRectangle|block": "%matrix disegna rettangolo da x %x1 y %y1 a x %x2 y %y2|colore %color=neopixel_colors",
   "sarduMatrix.Matrix.drawTextCenteredArea|block": "%matrix disegna testo statico %text centrato nell'area A x %startX y %startY B x %endX y %endY|colore %color=neopixel_colors font %font dimensione %size luminosità %brightness orientamento %orientation",
   "sarduMatrix.Matrix.drawTextCenteredArea|param|text|defl": "Ciao",
   "sarduMatrix.Matrix.drawTextCenteredHeightRange|block": "%matrix disegna testo statico %text centrato da y %startY a y %endY alla x %x|colore %color=neopixel_colors font %font dimensione %size luminosità %brightness orientamento %orientation",
@@ -83,6 +86,8 @@
   "sarduMatrix.Matrix.drawTextCentered|param|text|defl": "Ciao",
   "sarduMatrix.Matrix.drawText|block": "%matrix disegna testo statico %text a x %x y %y|colore %color=neopixel_colors font %font dimensione %size luminosità %brightness orientamento %orientation",
   "sarduMatrix.Matrix.drawText|param|text|defl": "Ciao",
+  "sarduMatrix.fillCircle|block": "%matrix riempi cerchio centro x %centerX y %centerY raggio %radius|colore %color=neopixel_colors",
+  "sarduMatrix.fillRectangle|block": "%matrix riempi rettangolo da x %x1 y %y1 a x %x2 y %y2|colore %color=neopixel_colors",
   "sarduMatrix.Matrix.height|block": "altezza di %matrix",
   "sarduMatrix.Matrix.interruptAndClear|block": "%matrix interrompi e cancella matrice",
   "sarduMatrix.Matrix.ledCount|block": "numero LED di %matrix",
@@ -126,5 +131,6 @@
   "{id:group}More": "Altro",
   "{id:group}Pixels": "Pixel",
   "{id:group}Scrolling text": "Testo scorrevole",
+  "{id:group}Shapes": "Geometria",
   "{id:group}Static text": "Testo statico"
 }

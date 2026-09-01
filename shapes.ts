@@ -177,7 +177,7 @@ namespace sarduMatrix {
     /** Draws a line, including both endpoints, without showing it. */
     //% blockId=sardu_matrix_draw_line block="%matrix draw line from x %x1 y %y1 to x %x2 y %y2|color %color=neopixel_colors"
     //% group="Static geometry" weight=90
-    //% matrix.shadow=variables_get x1.defl=0 y1.defl=0 x2.defl=7 y2.defl=7 color.defl=NeoPixelColors.White
+    //% matrix.shadow=variables_get matrix.defl=matrix x1.defl=0 y1.defl=0 x2.defl=7 y2.defl=7 color.defl=NeoPixelColors.White
     export function drawLine(matrix: Matrix, x1: number, y1: number, x2: number, y2: number, color: number): void {
         sarduMatrixInternal.drawLine(matrix, x1, y1, x2, y2, color);
     }
@@ -185,7 +185,7 @@ namespace sarduMatrix {
     /** Draws an inclusive rectangle outline without showing it. */
     //% blockId=sardu_matrix_draw_rectangle block="%matrix draw rectangle from x %x1 y %y1 to x %x2 y %y2|color %color=neopixel_colors"
     //% group="Static geometry" weight=80
-    //% matrix.shadow=variables_get x1.defl=0 y1.defl=0 x2.defl=7 y2.defl=7 color.defl=NeoPixelColors.White
+    //% matrix.shadow=variables_get matrix.defl=matrix x1.defl=0 y1.defl=0 x2.defl=7 y2.defl=7 color.defl=NeoPixelColors.White
     export function drawRectangle(matrix: Matrix, x1: number, y1: number, x2: number, y2: number, color: number): void {
         sarduMatrixInternal.drawRectangle(matrix, x1, y1, x2, y2, color);
     }
@@ -193,7 +193,7 @@ namespace sarduMatrix {
     /** Draws an inclusive filled rectangle without showing it. */
     //% blockId=sardu_matrix_fill_rectangle block="%matrix fill rectangle from x %x1 y %y1 to x %x2 y %y2|color %color=neopixel_colors"
     //% group="Static geometry" weight=70
-    //% matrix.shadow=variables_get x1.defl=0 y1.defl=0 x2.defl=7 y2.defl=7 color.defl=NeoPixelColors.White
+    //% matrix.shadow=variables_get matrix.defl=matrix x1.defl=0 y1.defl=0 x2.defl=7 y2.defl=7 color.defl=NeoPixelColors.White
     export function fillRectangle(matrix: Matrix, x1: number, y1: number, x2: number, y2: number, color: number): void {
         sarduMatrixInternal.fillRectangle(matrix, x1, y1, x2, y2, color);
     }
@@ -201,7 +201,7 @@ namespace sarduMatrix {
     /** Draws a circle outline without showing it. */
     //% blockId=sardu_matrix_draw_circle block="%matrix draw circle center x %centerX y %centerY radius %radius|color %color=neopixel_colors"
     //% group="Static geometry" weight=60
-    //% matrix.shadow=variables_get centerX.defl=7 centerY.defl=7 radius.defl=4 radius.min=0 color.defl=NeoPixelColors.White
+    //% matrix.shadow=variables_get matrix.defl=matrix centerX.defl=7 centerY.defl=7 radius.defl=4 radius.min=0 color.defl=NeoPixelColors.White
     export function drawCircle(matrix: Matrix, centerX: number, centerY: number, radius: number, color: number): void {
         sarduMatrixInternal.drawCircle(matrix, centerX, centerY, radius, color, false);
     }
@@ -209,7 +209,7 @@ namespace sarduMatrix {
     /** Draws a filled circle without showing it. */
     //% blockId=sardu_matrix_fill_circle block="%matrix fill circle center x %centerX y %centerY radius %radius|color %color=neopixel_colors"
     //% group="Static geometry" weight=50
-    //% matrix.shadow=variables_get centerX.defl=7 centerY.defl=7 radius.defl=4 radius.min=0 color.defl=NeoPixelColors.White
+    //% matrix.shadow=variables_get matrix.defl=matrix centerX.defl=7 centerY.defl=7 radius.defl=4 radius.min=0 color.defl=NeoPixelColors.White
     export function fillCircle(matrix: Matrix, centerX: number, centerY: number, radius: number, color: number): void {
         sarduMatrixInternal.drawCircle(matrix, centerX, centerY, radius, color, true);
     }

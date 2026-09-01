@@ -239,6 +239,19 @@ namespace sarduMatrix {
             this.drawText(text, x, y, color, font, size, brightness, orientation);
         }
 
+        /** Adds text to the pending scrolling composition. */
+        //% blockId=sardu_matrix_add_scrolling_text block="%matrix add text %text to scrolling|at y %y color %color=neopixel_colors font %font size %size brightness %brightness orientation %orientation spacing %spacing"
+        //% group="Scrolling text" weight=74
+        //% text.defl="Hello" y.defl=0 color.defl=NeoPixelColors.White font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=MatrixTextOrientation.Normal spacing.min=0 spacing.defl=1
+        addScrollingText(
+            text: string, y: number = 0, color: number = NeoPixelColors.White,
+            font: MatrixFont = MatrixFont.Sardu, size: MatrixFontSize = MatrixFontSize.X1,
+            brightness: number = 128, orientation: MatrixTextOrientation = MatrixTextOrientation.Normal,
+            spacing: number = 1
+        ): void {
+            sarduMatrixInternal.queueScrollingText(this, text, y, color, font, size, brightness, orientation, spacing);
+        }
+
         /** Scrolls one line left from selected coordinates, clearing or preserving the existing scene. */
         //% blockId=sardu_matrix_scroll_text block="%matrix scroll text %text from x %x y %y|color %color=neopixel_colors every %frameIntervalMs ms font %font size %size brightness %brightness orientation %orientation mode %mode"
         //% group="Scrolling text" weight=75

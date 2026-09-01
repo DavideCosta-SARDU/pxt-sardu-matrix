@@ -16,7 +16,7 @@
   "sarduMatrix.addScrollingFilledRectangle": "Aggiunge un rettangolo pieno alla composizione scorrevole in attesa.",
   "sarduMatrix.addScrollingLine": "Aggiunge una linea alla composizione scorrevole in attesa.",
   "sarduMatrix.addScrollingRectangle": "Aggiunge il contorno di un rettangolo alla composizione scorrevole in attesa.",
-  "sarduMatrix.addScrollingText": "Aggiunge testo alla composizione scorrevole in attesa.",
+  "sarduMatrix.Matrix.addScrollingText": "Aggiunge testo alla composizione scorrevole in attesa.",
   "sarduMatrix.Matrix.clear": "Cancella il buffer RGB e aggiorna immediatamente il display fisico.",
   "sarduMatrix.Matrix.clearArea": "Cancella un rettangolo logico inclusivo e aggiorna immediatamente il display.",
   "sarduMatrix.Matrix.clearBuffer": "Cancella soltanto il buffer RGB. Chiama mostra per aggiornare il display fisico.",

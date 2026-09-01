@@ -1,6 +1,6 @@
 {
     "name": "sardu-matrix",
-    "version": "0.7.0",
+    "version": "0.8.0",
     "description": "Configurable RGB matrix support for Microsoft MakeCode and Micro:Bit",
     "license": "MIT",
     "dependencies": {
@@ -19,11 +19,13 @@
         "text.ts",
         "scroll-content.ts",
         "effects.ts",
+        "decorations.ts",
         "matrix.ts",
         "main.ts",
         "docs/graphics.md",
         "docs/shapes.md",
         "docs/effects.md",
+        "docs/gradient-and-icons.md",
         "docs/guida-italiana.md",
         "docs/simulator.md",
         "_locales/it/sardu-matrix-strings.json",

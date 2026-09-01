@@ -1,5 +1,5 @@
 //% color=#003366 icon="\uf00a" block="SARDU Matrix"
-//% groups='["Creation", "Display", "Static text", "Scrolling text", "Static geometry", "Scrolling geometry", "Effects", "Pixels", "Colors", "Graphics"]'
+//% groups='["Creation", "Display", "Static text", "Scrolling text", "Static geometry", "Scrolling geometry", "Icons", "Effects", "Pixels", "Colors", "Graphics"]'
 namespace sarduMatrix {
     /** Creates one matrix using its total logical width and height. */
     //% blockId=sardu_matrix_create block="create matrix width %width height %height on pin %pin brightness %brightness"

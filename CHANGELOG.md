@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.8.0 - candidate
+
+- Added static two-color gradient text in four directions.
+- Added fourteen original scalable 8 x 8 built-in icons.
+- Kept both features in one optional source file without changing existing rendering APIs.
+
 ## 0.7.0 - 2026-09-01
 
 - Added isolated fade, blink, color-wipe, static rainbow, animated rainbow and sparkle effects.

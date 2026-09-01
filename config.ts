@@ -137,6 +137,38 @@ enum MatrixRainbowAxis {
     Vertical = 1
 }
 
+/** Built-in 8 x 8 image drawn in the matrix buffer. */
+enum MatrixIcon {
+    //% block="filled heart"
+    FilledHeart = 0,
+    //% block="heart outline"
+    HeartOutline = 1,
+    //% block="smile"
+    Smile = 2,
+    //% block="sad face"
+    SadFace = 3,
+    //% block="star"
+    Star = 4,
+    //% block="check"
+    Check = 5,
+    //% block="cross"
+    Cross = 6,
+    //% block="arrow up"
+    ArrowUp = 7,
+    //% block="arrow down"
+    ArrowDown = 8,
+    //% block="arrow left"
+    ArrowLeft = 9,
+    //% block="arrow right"
+    ArrowRight = 10,
+    //% block="sun"
+    Sun = 11,
+    //% block="moon"
+    Moon = 12,
+    //% block="lightning"
+    Lightning = 13
+}
+
 namespace sarduMatrixInternal {
     // Buffer payload length is a signed C++ int in the current Micro:Bit target.
     // This guards representation only; practical limits remain available RAM and

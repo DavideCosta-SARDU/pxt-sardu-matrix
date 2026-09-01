@@ -94,5 +94,8 @@
   "sarduMatrix.fadeToColor": "Dissolve il contenuto corrente della matrice verso un colore scelto.",
   "sarduMatrix.opposedColorWipe": "Avanza due colori da bordi opposti fino alla coordinata X o Y scelta, sull'intera matrice o sul contenuto corrente.",
   "sarduMatrix.rainbowCycle": "Colora il contenuto corrente come arcobaleno statico o animato.",
-  "sarduMatrix.sparkles": "Mostra scintille casuali da sole o sopra il contenuto corrente."
+  "sarduMatrix.sparkles": "Mostra scintille casuali da sole o sopra il contenuto corrente.",
+  "MatrixIcon": "Immagine 8 x 8 predefinita disegnata nel buffer della matrice.",
+  "sarduMatrix.drawGradientText": "Disegna testo statico con una sfumatura a due colori senza mostrarlo.",
+  "sarduMatrix.drawIcon": "Disegna un'icona predefinita 8 x 8 senza mostrarla."
 }

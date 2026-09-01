@@ -40,3 +40,7 @@ effectRainbowFrame[3] = 127;
 sarduMatrixInternal.maskRainbowFrame(effectContentMask, effectRainbowFrame);
 expectSarduMatrix(effectRainbowFrame[0] == 64 && effectRainbowFrame[1] == 32 && effectRainbowFrame[2] == 0);
 expectSarduMatrix(effectRainbowFrame[3] == 0 && effectRainbowFrame[4] == 0 && effectRainbowFrame[5] == 0);
+
+expectSarduMatrix(sarduMatrixInternal.gradientColor(0xff0000, 0x0000ff, 0, 4, 255) == 0xff0000);
+expectSarduMatrix(sarduMatrixInternal.gradientColor(0xff0000, 0x0000ff, 2, 4, 255) == 0x800080);
+expectSarduMatrix(sarduMatrixInternal.gradientColor(0xff0000, 0x0000ff, 4, 4, 255) == 0x0000ff);

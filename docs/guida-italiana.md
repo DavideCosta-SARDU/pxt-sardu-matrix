@@ -41,9 +41,10 @@ La categoria usa questo ordine:
 4. **Testo scorrevole**: scorrimento immediato oppure aggiunta a una composizione.
 5. **Geometria statica**: linee, rettangoli e cerchi, vuoti o pieni.
 6. **Geometria scorrevole**: figure da aggiungere alla composizione.
-7. **Effetti**: dissolvenza, lampeggio, riempimenti, arcobaleno e scintille.
-8. **Pixel**: modifica di un singolo punto.
-9. **Colori**: selezione RGB o HSL.
+7. **Icone**: immagini 8×8 predefinite, colorabili e scalabili.
+8. **Effetti**: dissolvenza, lampeggio, riempimenti, arcobaleno e scintille.
+9. **Pixel**: modifica di un singolo punto.
+10. **Colori**: selezione RGB o HSL.
 
 I blocchi **Grafica** molto alti sono collocati per ultimi in `... altro`.
 
@@ -58,6 +59,12 @@ Pixel, testo statico, geometria statica e grafica modificano il buffer in memori
 Puoi scegliere coordinate, colore, font, dimensione, luminosità e orientamento. Sono disponibili le centrature sull'intera larghezza, sull'intera altezza, su entrambi gli assi oppure dentro un intervallo avanzato. Il testo viene disegnato nel buffer e non chiama automaticamente **mostra**.
 
 La luminosità del testo ha default `128` e non modifica la luminosità generale scelta durante la creazione. Le coordinate esterne vengono ritagliate in sicurezza.
+
+Il blocco **testo sfumato** miscela due colori soltanto sui pixel dei caratteri. Puoi scegliere da sinistra a destra, da destra a sinistra, dall'alto al basso o dal basso all'alto. La direzione segue sempre il testo visibile, anche quando è ruotato; dopo il disegno usa **mostra**.
+
+## Icone predefinite
+
+Il gruppo **Icone** contiene cuore pieno e vuoto, sorriso, faccina triste, stella, spunta, croce, quattro frecce, sole, luna e fulmine. Sono maschere originali 8×8: puoi scegliere X, Y, colore, dimensione da 1× a 4× e luminosità con default `128`. Scrivono nel buffer e richiedono **mostra**. Non è incluso alcun logo ufficiale Micro:Bit o di terze parti.
 
 ## Testo scorrevole
 

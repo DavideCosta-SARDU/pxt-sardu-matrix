@@ -87,9 +87,11 @@ The native **Graphics** blocks are available under `... more` in all six module 
 
 ## Block/API overview
 
-The toolbox is ordered as **Creation**, **Display**, **Static text**, **Scrolling text**, **Static geometry**, **Scrolling geometry**, **Effects**, **Pixels** and **Colors**. The tall native Graphics blocks are last under `... more`.
+The toolbox is ordered as **Creation**, **Display**, **Static text**, **Scrolling text**, **Static geometry**, **Scrolling geometry**, **Icons**, **Effects**, **Pixels** and **Colors**. The tall native Graphics blocks are last under `... more`.
 
 Static text, static geometry, pixels and Graphics write to the RGB buffer; compose the scene and call `show()` once. Immediate text scrolling starts at once. To combine text and shapes into one moving sequence, add every item to the scrolling composition and call `startScrolling()` only once. Effects animate the current buffer directly and provide leave, restore and clear final states. Full block behavior, defaults and troubleshooting are documented in the [Italian user guide](docs/guida-italiana.md) and the topic pages below.
+
+Gradient text blends two selected colors across the visible glyphs from left, right, top or bottom. Built-in 8 x 8 icons include hearts, faces, a star, check, cross, arrows, sun, moon and lightning; they can be positioned, colored and scaled without a second framebuffer.
 
 ## Dynamic memory use
 
@@ -123,6 +125,7 @@ See [docs/wiring.md](docs/wiring.md) for diagrams and mapping examples.
 - [Graphic editor and Graphics blocks](docs/graphics.md)
 - [Static and scrolling geometry](docs/shapes.md)
 - [Special effects](docs/effects.md)
+- [Gradient text and built-in icons](docs/gradient-and-icons.md)
 - [RGB matrix simulator and approval status](docs/simulator.md)
 - [Migration from pxt-smartmatrix](docs/migration.md)
 

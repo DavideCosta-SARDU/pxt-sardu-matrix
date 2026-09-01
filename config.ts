@@ -107,6 +107,36 @@ enum MatrixGraphicMode {
     ReplaceArea = 1
 }
 
+/** State left on the matrix when an effect ends. */
+enum MatrixEffectEndState {
+    //% block="leave last frame"
+    Leave = 0,
+    //% block="restore previous content"
+    Restore = 1,
+    //% block="clear matrix"
+    Clear = 2
+}
+
+/** Direction used by a progressive color wipe. */
+enum MatrixWipeDirection {
+    //% block="left to right"
+    LeftToRight = 0,
+    //% block="right to left"
+    RightToLeft = 1,
+    //% block="top to bottom"
+    TopToBottom = 2,
+    //% block="bottom to top"
+    BottomToTop = 3
+}
+
+/** Axis along which rainbow colors change. */
+enum MatrixRainbowAxis {
+    //% block="horizontal"
+    Horizontal = 0,
+    //% block="vertical"
+    Vertical = 1
+}
+
 namespace sarduMatrixInternal {
     // Buffer payload length is a signed C++ int in the current Micro:Bit target.
     // This guards representation only; practical limits remain available RAM and

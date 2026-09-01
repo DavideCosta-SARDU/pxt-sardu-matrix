@@ -141,5 +141,21 @@
   "{id:group}Scrolling geometry": "Geometria scorrevole",
   "{id:group}Scrolling text": "Testo scorrevole",
   "{id:group}Static geometry": "Geometria statica",
-  "{id:group}Static text": "Testo statico"
+  "{id:group}Static text": "Testo statico",
+  "MatrixEffectEndState.Clear|block": "cancella matrice",
+  "MatrixEffectEndState.Leave|block": "lascia ultimo fotogramma",
+  "MatrixEffectEndState.Restore|block": "ripristina contenuto precedente",
+  "MatrixRainbowAxis.Horizontal|block": "orizzontale",
+  "MatrixRainbowAxis.Vertical|block": "verticale",
+  "MatrixWipeDirection.BottomToTop|block": "dal basso verso l'alto",
+  "MatrixWipeDirection.LeftToRight|block": "da sinistra a destra",
+  "MatrixWipeDirection.RightToLeft|block": "da destra a sinistra",
+  "MatrixWipeDirection.TopToBottom|block": "dall'alto verso il basso",
+  "sarduMatrix.blinkColor|block": "%matrix lampeggia colore %color=neopixel_colors %repetitions volte|acceso %onMs ms spento %offMs ms poi %endState",
+  "sarduMatrix.colorWipe|block": "%matrix riempimento progressivo %color=neopixel_colors direzione %direction ogni %frameIntervalMs ms|poi %endState",
+  "sarduMatrix.fadeToColor|block": "%matrix dissolvi contenuto corrente verso %color=neopixel_colors in %durationMs ms con %frames fotogrammi|poi %endState",
+  "sarduMatrix.rainbowCycle|block": "%matrix ciclo arcobaleno lungo %axis per %frames fotogrammi ogni %frameIntervalMs ms|poi %endState",
+  "sarduMatrix.showRainbow|block": "%matrix mostra arcobaleno lungo %axis",
+  "sarduMatrix.sparkles|block": "%matrix scintille colore %color=neopixel_colors densità %density percento|per %durationMs ms ogni %frameIntervalMs ms modalità %mode poi %endState",
+  "{id:group}Effects": "Effetti"
 }

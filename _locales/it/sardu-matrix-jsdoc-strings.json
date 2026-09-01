@@ -85,5 +85,14 @@
   "sarduMatrix.rgbColor": "Crea un colore a partire dalle componenti rosso, verde e blu.",
   "sarduMatrix.Matrix.startScrolling": "Avvia la composizione scorrevole in attesa e la svuota automaticamente.",
   "sarduMatrixInternal.pathIndex": "Converte una coordinata logica in una posizione del percorso fisico.",
-  "sarduMatrixInternal.physicalIndex": "Converte una coordinata del display nella posizione del LED."
+  "sarduMatrixInternal.physicalIndex": "Converte una coordinata del display nella posizione del LED.",
+  "MatrixEffectEndState": "Stato lasciato sulla matrice al termine di un effetto.",
+  "MatrixRainbowAxis": "Asse lungo il quale cambiano i colori dell'arcobaleno.",
+  "MatrixWipeDirection": "Direzione usata da un riempimento progressivo.",
+  "sarduMatrix.blinkColor": "Fa lampeggiare l'intera matrice usando un colore.",
+  "sarduMatrix.colorWipe": "Riempie progressivamente l'intera matrice a partire da un bordo.",
+  "sarduMatrix.fadeToColor": "Dissolve il contenuto corrente della matrice verso un colore scelto.",
+  "sarduMatrix.rainbowCycle": "Anima un ciclo arcobaleno sull'intera matrice.",
+  "sarduMatrix.showRainbow": "Mostra un arcobaleno statico sull'intera matrice.",
+  "sarduMatrix.sparkles": "Mostra scintille casuali da sole o sopra il contenuto corrente."
 }

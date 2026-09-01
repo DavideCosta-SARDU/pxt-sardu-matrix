@@ -113,6 +113,7 @@ See [docs/wiring.md](docs/wiring.md) for diagrams and mapping examples.
 - [Memory and rendering](docs/memory-and-rendering.md)
 - [Graphic editor and Graphics blocks](docs/graphics.md)
 - [Static and scrolling geometry](docs/shapes.md)
+- [Special effects](docs/effects.md)
 - [RGB matrix simulator and approval status](docs/simulator.md)
 - [Migration from pxt-smartmatrix](docs/migration.md)
 

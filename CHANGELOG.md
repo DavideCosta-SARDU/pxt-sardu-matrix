@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.7.0 - 2026-09-01
+
+- Added isolated fade, blink, color-wipe, static rainbow, animated rainbow and sparkle effects.
+- Added explicit leave, restore and clear final states plus cooperative interruption for animated effects.
+- Added an Italian-localized Effects toolbox group without changing existing block APIs or behavior.
+
 ## 0.6.0 - 2026-09-01
 
 - Added static line, rectangle, filled rectangle, circle and filled circle blocks with clipping.

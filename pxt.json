@@ -24,6 +24,7 @@
         "docs/graphics.md",
         "docs/shapes.md",
         "docs/effects.md",
+        "docs/guida-italiana.md",
         "docs/simulator.md",
         "_locales/it/sardu-matrix-strings.json",
         "_locales/it/sardu-matrix-jsdoc-strings.json"

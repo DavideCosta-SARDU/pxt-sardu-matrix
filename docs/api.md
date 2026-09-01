@@ -1,8 +1,8 @@
-# API pubblica della prima implementazione
+# API pubblica
 
 ## 1. Stato
 
-Questa specifica incorpora le decisioni approvate fino al 29 agosto 2026 ed è implementata nei sorgenti della versione 0.1.0 non ancora stabile. Le firme e i block ID compilano con PXT; l'aspetto visuale dei nuovi blocchi deve essere verificato nell'editor MakeCode e sull'hardware reale.
+Questa pagina descrive i principi e le firme fondamentali dell'API. Per l'uso corrente dei blocchi, comprese geometrie ed effetti, consulta anche la [guida italiana](guida-italiana.md).
 
 Obiettivi:
 
@@ -331,7 +331,7 @@ matrix.drawText(
     color: number,
     font: MatrixFont = MatrixFont.Sardu,
     size: MatrixFontSize = MatrixFontSize.X1,
-    brightness: number = 255,
+    brightness: number = 128,
     orientation: MatrixTextOrientation = MatrixTextOrientation.Normal
 ): void
 ```
@@ -384,7 +384,7 @@ matrix.scrollText(
     frameIntervalMs: number = 100,
     font: MatrixFont = MatrixFont.Sardu,
     size: MatrixFontSize = MatrixFontSize.X1,
-    brightness: number = 255,
+    brightness: number = 128,
     orientation: MatrixTextOrientation = MatrixTextOrientation.Normal,
     mode: MatrixScrollMode = MatrixScrollMode.Exclusive
 ): void
@@ -400,7 +400,7 @@ matrix.scrollTextFromEdge(
     frameIntervalMs: number = 100,
     font: MatrixFont = MatrixFont.Sardu,
     size: MatrixFontSize = MatrixFontSize.X1,
-    brightness: number = 255,
+    brightness: number = 128,
     orientation: MatrixTextOrientation = MatrixTextOrientation.Normal,
     mode: MatrixScrollMode = MatrixScrollMode.Exclusive
 ): void
@@ -441,12 +441,16 @@ Gli ultimi due rendono trasparente il costo calcolato della configurazione. Non 
 Gruppi implementati:
 
 1. Creazione;
-2. Pixel;
-3. Colori;
-4. Testo statico;
-5. Testo scorrevole;
-6. Display;
-7. Altro…/Configurazione avanzata.
+2. Display;
+3. Testo statico;
+4. Testo scorrevole;
+5. Geometria statica;
+6. Geometria scorrevole;
+7. Effetti;
+8. Pixel;
+9. Colori.
+
+I blocchi Grafica sono collocati per ultimi in “Altro…”.
 
 I block ID saranno espliciti, prefissati e stabili. Le varianti avanzate non devono duplicare il motore: normalizzano parametri e chiamano lo stesso core.
 

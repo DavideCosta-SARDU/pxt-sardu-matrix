@@ -1,8 +1,8 @@
-# SARDU-Matrix
+# sardu-matrix
 
 SARDU-Matrix is a configurable RGB LED matrix extension for Microsoft MakeCode and Micro:Bit. It uses the official Microsoft `pxt-neopixel` extension as its RGB backend.
 
-This is a pre-1.0 implementation. The software builds and its mapping tests pass in the MakeCode simulator; real hardware validation is still required before a stable release.
+This is a pre-1.0 implementation. The software builds, its mapping tests pass and the extension has been exercised on a real multi-panel display. Every release candidate must still be confirmed on the user's exact hardware before that commit is promoted to a stable release.
 
 ## Installation in MakeCode
 
@@ -85,6 +85,12 @@ Colors can come from the MakeCode/NeoPixel picker, from explicit RGB components,
 
 The native **Graphics** blocks are available under `... more` in all six module formats. Their cells are edited directly in MakeCode: hollow cells are transparent, while black explicitly turns an LED off. Overlay preserves the scene below transparent cells; replace-area clears them. The [standalone web editor](https://davidecosta-sardu.github.io/pxt-sardu-matrix/editor.html) remains an optional design and testing tool, not part of the normal MakeCode workflow.
 
+## Block/API overview
+
+The toolbox is ordered as **Creation**, **Display**, **Static text**, **Scrolling text**, **Static geometry**, **Scrolling geometry**, **Effects**, **Pixels** and **Colors**. The tall native Graphics blocks are last under `... more`.
+
+Static text, static geometry, pixels and Graphics write to the RGB buffer; compose the scene and call `show()` once. Immediate text scrolling starts at once. To combine text and shapes into one moving sequence, add every item to the scrolling composition and call `startScrolling()` only once. Effects animate the current buffer directly and provide leave, restore and clear final states. Full block behavior, defaults and troubleshooting are documented in the [Italian user guide](docs/guida-italiana.md) and the topic pages below.
+
 ## Dynamic memory use
 
 There is no arbitrary 1536-LED limit. One RGB NeoPixel buffer is allocated using:
@@ -109,6 +115,7 @@ See [docs/wiring.md](docs/wiring.md) for diagrams and mapping examples.
 
 ## Documentation
 
+- [Italian user guide](docs/guida-italiana.md)
 - [Display configuration](docs/display-configuration.md)
 - [Public API](docs/api.md)
 - [Wiring](docs/wiring.md)
@@ -121,7 +128,7 @@ See [docs/wiring.md](docs/wiring.md) for diagrams and mapping examples.
 
 ## Languages
 
-English is the source and fallback language. During the current development phase the package includes Italian only; German, Spanish (Spain), French, Japanese and Chinese will be updated together before the stable release.
+English is the source and fallback language. Italian is included in the package. Additional translations may be added in later releases; they are not required for the current stable candidate.
 
 ## License
 

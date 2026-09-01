@@ -6,6 +6,8 @@
 - Added explicit leave, restore and clear final states plus cooperative interruption for animated effects.
 - Made blink and rainbow operate on existing content without increasing its brightness; added selectable wipe origins and opposed two-color wipes.
 - Added a default effect-color brightness of 128 for fade targets, wipes and sparkles.
+- Added a selectable X/Y meeting coordinate and whole-matrix/content-mask mode to opposed wipes.
+- Made secondary effect parameters expandable to keep block labels compact and documented Micro:Bit V2 as the recommended effects platform.
 - Added an Italian-localized Effects toolbox group without changing existing block APIs or behavior.
 
 ## 0.6.0 - 2026-09-01

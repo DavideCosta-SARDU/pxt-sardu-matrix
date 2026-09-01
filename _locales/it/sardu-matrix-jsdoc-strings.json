@@ -92,8 +92,7 @@
   "sarduMatrix.blinkContent": "Fa lampeggiare il contenuto già presente conservandone colori e luminosità.",
   "sarduMatrix.colorWipe": "Riempie progressivamente la matrice da una coordinata logica selezionata.",
   "sarduMatrix.fadeToColor": "Dissolve il contenuto corrente della matrice verso un colore scelto.",
-  "sarduMatrix.opposedColorWipe": "Avanza due colori da bordi opposti fino al loro incontro.",
-  "sarduMatrix.rainbowCycle": "Anima i colori arcobaleno soltanto nel contenuto corrente.",
-  "sarduMatrix.showRainbow": "Ricolora come arcobaleno il contenuto corrente senza illuminare lo sfondo.",
+  "sarduMatrix.opposedColorWipe": "Avanza due colori da bordi opposti fino alla coordinata X o Y scelta, sull'intera matrice o sul contenuto corrente.",
+  "sarduMatrix.rainbowCycle": "Colora il contenuto corrente come arcobaleno statico o animato.",
   "sarduMatrix.sparkles": "Mostra scintille casuali da sole o sopra il contenuto corrente."
 }

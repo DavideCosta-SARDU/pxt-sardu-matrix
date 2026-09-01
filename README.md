@@ -97,6 +97,8 @@ The actual maximum depends on the Micro:Bit revision, MakeCode runtime, the rest
 
 Exclusive scrolling adds no second RGB scene buffer. Composed scrolling temporarily copies the existing NeoPixel buffer, so during that animation it requires another `width × height × 3` bytes. This copy is released when scrolling ends. On Micro:Bit V1, prefer exclusive mode or small matrices when memory is tight.
 
+Micro:Bit V2 is recommended for special effects, especially on large matrices. Fade, content-masked effects and animated rainbows use temporary RGB snapshots while running; V1 has substantially less firmware and RAM margin.
+
 ## Wiring and power safety
 
 Connect the Micro:Bit data pin to `DIN` of the first panel, then connect each panel's `DOUT` to the next panel's `DIN` in the configured order.

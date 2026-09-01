@@ -6,12 +6,6 @@ namespace sarduMatrixInternal {
         return value;
     }
 
-    function effectEndState(value: MatrixEffectEndState): MatrixEffectEndState {
-        if (value < MatrixEffectEndState.Leave || value > MatrixEffectEndState.Clear)
-            return MatrixEffectEndState.Leave;
-        return value;
-    }
-
     function fillEffectFrame(matrix: sarduMatrix.Matrix, color: number): void {
         for (let y = 0; y < matrix.height(); y++)
             for (let x = 0; x < matrix.width(); x++) matrix.setPixel(x, y, color);
@@ -30,7 +24,6 @@ namespace sarduMatrixInternal {
         background: Buffer, endState: MatrixEffectEndState
     ): void {
         if (!matrix._operationIsActive(operation)) return;
-        endState = effectEndState(endState);
         if (endState == MatrixEffectEndState.Restore) {
             matrix._restoreBuffer(background);
             matrix.show();
@@ -57,11 +50,9 @@ namespace sarduMatrixInternal {
 
     export function seedEffectRandom(seed: number): void {
         effectRandomState = seed | 0;
-        if (effectRandomState == 0) effectRandomState = 0x13579bdf;
     }
 
     export function nextEffectRandom(maxExclusive: number): number {
-        maxExclusive = effectInteger(maxExclusive, 1, 0x7fffffff);
         effectRandomState = (effectRandomState * 1664525 + 1013904223) | 0;
         return (effectRandomState & 0x7fffffff) % maxExclusive;
     }
@@ -146,8 +137,8 @@ namespace sarduMatrixInternal {
 
     export function opposedWipeEffect(
         matrix: sarduMatrix.Matrix, firstColor: number, secondColor: number,
-        axis: MatrixRainbowAxis, frameIntervalMs: number,
-        endState: MatrixEffectEndState, brightness: number
+        vertical: boolean, meeting: number, contentOnly: boolean,
+        frameIntervalMs: number, endState: MatrixEffectEndState, brightness: number
     ): void {
         if (!matrix) return;
         frameIntervalMs = effectInteger(frameIntervalMs, 0, 600000);
@@ -155,17 +146,21 @@ namespace sarduMatrixInternal {
         secondColor = scaleColor(secondColor, brightness);
         const background = matrix._captureBuffer();
         const operation = matrix._beginOperation();
-        matrix._clearBuffer();
-        const vertical = axis == MatrixRainbowAxis.Vertical;
         const size = vertical ? matrix.height() : matrix.width();
-        const steps = Math.idiv(size + 1, 2);
-        for (let step = 0; step < steps; step++) {
+        meeting = effectInteger(meeting, 0, size - 1);
+        let first = 0;
+        let second = size - 1;
+        matrix._clearBuffer();
+        while (first <= meeting || second > meeting) {
             if (!matrix._operationIsActive(operation)) return;
             const started = control.millis();
-            const first = step;
-            const second = size - 1 - step;
-            drawEffectLine(matrix, vertical, first, firstColor);
-            if (second != first) drawEffectLine(matrix, vertical, second, secondColor);
+            if (first <= meeting) drawEffectLine(matrix, vertical, first++, firstColor);
+            if (second > meeting) drawEffectLine(matrix, vertical, second--, secondColor);
+            if (contentOnly) {
+                const maskedFrame = matrix._captureBuffer();
+                maskRainbowFrame(background, maskedFrame);
+                matrix._restoreBuffer(maskedFrame);
+            }
             matrix.show();
             if (!effectPause(matrix, operation, started, frameIntervalMs)) return;
         }
@@ -261,58 +256,56 @@ namespace sarduMatrixInternal {
 
 namespace sarduMatrix {
     /** Fades the current matrix content to a selected color. */
-    //% blockId=sardu_matrix_fade_to_color block="%matrix fade current content to %color=neopixel_colors over %durationMs ms in %frames frames|then %endState brightness %brightness"
+    //% blockId=sardu_matrix_fade_to_color block="$matrix fade content to $color=neopixel_colors in $durationMs ms|| frames $frames end $endState brightness $brightness"
     //% group="Effects" weight=90
+    //% compileHiddenArguments=true inlineInputMode="variable" inlineInputModeLimit=3 expandableArgumentBreaks="3"
     //% matrix.shadow=variables_get matrix.defl=matrix color.defl=NeoPixelColors.Black durationMs.min=0 durationMs.defl=1000 frames.min=1 frames.max=255 frames.defl=20 endState.defl=MatrixEffectEndState.Leave brightness.min=0 brightness.max=255 brightness.defl=128
     export function fadeToColor(matrix: Matrix, color: number = NeoPixelColors.Black, durationMs: number = 1000, frames: number = 20, endState: MatrixEffectEndState = MatrixEffectEndState.Leave, brightness: number = 128): void {
         sarduMatrixInternal.fadeEffect(matrix, color, durationMs, frames, endState, brightness);
     }
 
     /** Blinks the content already present in the matrix buffer. */
-    //% blockId=sardu_matrix_blink_color block="%matrix blink current content %repetitions times|on %onMs ms off %offMs ms then %endState"
+    //% blockId=sardu_matrix_blink_color block="$matrix blink content $repetitions times|| on $onMs ms off $offMs ms end $endState"
     //% group="Effects" weight=80
+    //% compileHiddenArguments=true inlineInputMode="variable" inlineInputModeLimit=2 expandableArgumentBreaks="3"
     //% matrix.shadow=variables_get matrix.defl=matrix repetitions.min=1 repetitions.defl=3 onMs.min=0 onMs.defl=300 offMs.min=0 offMs.defl=300 endState.defl=MatrixEffectEndState.Restore
     export function blinkContent(matrix: Matrix, repetitions: number = 3, onMs: number = 300, offMs: number = 300, endState: MatrixEffectEndState = MatrixEffectEndState.Restore): void {
         sarduMatrixInternal.blinkEffect(matrix, repetitions, onMs, offMs, endState);
     }
 
     /** Progressively fills the matrix from a selected logical coordinate. */
-    //% blockId=sardu_matrix_color_wipe block="%matrix color wipe %color=neopixel_colors direction %direction starting at %start every %frameIntervalMs ms|then %endState brightness %brightness"
+    //% blockId=sardu_matrix_color_wipe block="$matrix wipe $color=neopixel_colors $direction from $start|| every $frameIntervalMs ms end $endState brightness $brightness"
     //% group="Effects" weight=70
+    //% compileHiddenArguments=true inlineInputMode="variable" inlineInputModeLimit=4 expandableArgumentBreaks="3"
     //% matrix.shadow=variables_get matrix.defl=matrix color.defl=NeoPixelColors.White direction.defl=MatrixWipeDirection.LeftToRight start.min=0 start.defl=0 frameIntervalMs.min=0 frameIntervalMs.defl=50 endState.defl=MatrixEffectEndState.Leave brightness.min=0 brightness.max=255 brightness.defl=128
     export function colorWipe(matrix: Matrix, color: number = NeoPixelColors.White, direction: MatrixWipeDirection = MatrixWipeDirection.LeftToRight, start: number = 0, frameIntervalMs: number = 50, endState: MatrixEffectEndState = MatrixEffectEndState.Leave, brightness: number = 128): void {
         sarduMatrixInternal.wipeEffect(matrix, color, direction, start, frameIntervalMs, endState, brightness);
     }
 
-    /** Recolors the current content as a static rainbow without lighting the background. */
-    //% blockId=sardu_matrix_show_rainbow block="%matrix color current content as rainbow along %axis"
+    /** Colors current content as a static or animated rainbow. */
+    //% blockId=sardu_matrix_rainbow_cycle block="$matrix rainbow content $axis $frames frames|| every $frameIntervalMs ms end $endState"
     //% group="Effects" weight=60
-    //% matrix.shadow=variables_get matrix.defl=matrix axis.defl=MatrixRainbowAxis.Horizontal
-    export function showRainbow(matrix: Matrix, axis: MatrixRainbowAxis = MatrixRainbowAxis.Horizontal): void {
-        sarduMatrixInternal.rainbowCycleEffect(matrix, axis, 1, 0, MatrixEffectEndState.Leave);
-    }
-
-    /** Animates rainbow colors only inside the current content. */
-    //% blockId=sardu_matrix_rainbow_cycle block="%matrix rainbow cycle on current content along %axis for %frames frames every %frameIntervalMs ms|then %endState"
-    //% group="Effects" weight=50
-    //% matrix.shadow=variables_get matrix.defl=matrix axis.defl=MatrixRainbowAxis.Horizontal frames.min=1 frames.defl=30 frameIntervalMs.min=0 frameIntervalMs.defl=50 endState.defl=MatrixEffectEndState.Leave
-    export function rainbowCycle(matrix: Matrix, axis: MatrixRainbowAxis = MatrixRainbowAxis.Horizontal, frames: number = 30, frameIntervalMs: number = 50, endState: MatrixEffectEndState = MatrixEffectEndState.Leave): void {
+    //% compileHiddenArguments=true inlineInputMode="variable" inlineInputModeLimit=3 expandableArgumentBreaks="2"
+    //% matrix.shadow=variables_get matrix.defl=matrix axis.defl=MatrixRainbowAxis.Horizontal frames.min=1 frames.defl=1 frameIntervalMs.min=0 frameIntervalMs.defl=50 endState.defl=MatrixEffectEndState.Leave
+    export function rainbowCycle(matrix: Matrix, axis: MatrixRainbowAxis = MatrixRainbowAxis.Horizontal, frames: number = 1, frameIntervalMs: number = 50, endState: MatrixEffectEndState = MatrixEffectEndState.Leave): void {
         sarduMatrixInternal.rainbowCycleEffect(matrix, axis, frames, frameIntervalMs, endState);
     }
 
     /** Shows random sparkles, alone or over the current matrix content. */
-    //% blockId=sardu_matrix_sparkles block="%matrix sparkles color %color=neopixel_colors density %density percent|for %durationMs ms every %frameIntervalMs ms mode %mode then %endState brightness %brightness"
+    //% blockId=sardu_matrix_sparkles block="$matrix sparkles $color=neopixel_colors density $density %|| duration $durationMs ms every $frameIntervalMs ms mode $mode end $endState brightness $brightness"
     //% group="Effects" weight=40
+    //% compileHiddenArguments=true inlineInputMode="variable" inlineInputModeLimit=3 expandableArgumentBreaks="5"
     //% matrix.shadow=variables_get matrix.defl=matrix color.defl=NeoPixelColors.White density.min=1 density.max=100 density.defl=10 durationMs.min=0 durationMs.defl=2000 frameIntervalMs.min=1 frameIntervalMs.defl=100 mode.defl=MatrixScrollMode.Exclusive endState.defl=MatrixEffectEndState.Restore brightness.min=0 brightness.max=255 brightness.defl=128
     export function sparkles(matrix: Matrix, color: number = NeoPixelColors.White, density: number = 10, durationMs: number = 2000, frameIntervalMs: number = 100, mode: MatrixScrollMode = MatrixScrollMode.Exclusive, endState: MatrixEffectEndState = MatrixEffectEndState.Restore, brightness: number = 128): void {
         sarduMatrixInternal.sparklesEffect(matrix, color, density, durationMs, frameIntervalMs, mode, endState, brightness);
     }
 
-    /** Fills from opposite edges with two colors that meet at the center. */
-    //% blockId=sardu_matrix_opposed_color_wipe block="%matrix opposed color wipe %firstColor=neopixel_colors and %secondColor=neopixel_colors along %axis every %frameIntervalMs ms|then %endState brightness %brightness"
+    /** Fills from opposite edges to a selected X or Y meeting coordinate. */
+    //% blockId=sardu_matrix_opposed_color_wipe block="$matrix collision $firstColor=neopixel_colors $secondColor=neopixel_colors $axis meet at X/Y $meeting only content $contentOnly|| every $frameIntervalMs ms end $endState brightness $brightness"
     //% group="Effects" weight=65
-    //% matrix.shadow=variables_get matrix.defl=matrix firstColor.defl=NeoPixelColors.Red secondColor.defl=NeoPixelColors.Blue axis.defl=MatrixRainbowAxis.Horizontal frameIntervalMs.min=0 frameIntervalMs.defl=50 endState.defl=MatrixEffectEndState.Leave brightness.min=0 brightness.max=255 brightness.defl=128
-    export function opposedColorWipe(matrix: Matrix, firstColor: number = NeoPixelColors.Red, secondColor: number = NeoPixelColors.Blue, axis: MatrixRainbowAxis = MatrixRainbowAxis.Horizontal, frameIntervalMs: number = 50, endState: MatrixEffectEndState = MatrixEffectEndState.Leave, brightness: number = 128): void {
-        sarduMatrixInternal.opposedWipeEffect(matrix, firstColor, secondColor, axis, frameIntervalMs, endState, brightness);
+    //% compileHiddenArguments=true inlineInputMode="variable" inlineInputModeLimit=6 expandableArgumentBreaks="3"
+    //% matrix.shadow=variables_get matrix.defl=matrix firstColor.defl=NeoPixelColors.Red secondColor.defl=NeoPixelColors.Blue axis.defl=MatrixRainbowAxis.Horizontal meeting.min=0 meeting.defl=7 contentOnly.defl=false frameIntervalMs.min=0 frameIntervalMs.defl=50 endState.defl=MatrixEffectEndState.Leave brightness.min=0 brightness.max=255 brightness.defl=128
+    export function opposedColorWipe(matrix: Matrix, firstColor: number = NeoPixelColors.Red, secondColor: number = NeoPixelColors.Blue, axis: MatrixRainbowAxis = MatrixRainbowAxis.Horizontal, meeting: number = 7, contentOnly: boolean = false, frameIntervalMs: number = 50, endState: MatrixEffectEndState = MatrixEffectEndState.Leave, brightness: number = 128): void {
+        sarduMatrixInternal.opposedWipeEffect(matrix, firstColor, secondColor, axis == MatrixRainbowAxis.Vertical, meeting, contentOnly, frameIntervalMs, endState, brightness);
     }
 }

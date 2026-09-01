@@ -81,6 +81,14 @@ namespace sarduMatrix {
             this.strip.show();
         }
 
+        /** Starts and then clears the pending scrolling composition. */
+        //% blockId=sardu_matrix_start_scrolling block="%matrix start scrolling every %frameIntervalMs ms mode %mode"
+        //% group="Display" weight=71
+        //% frameIntervalMs.min=0 frameIntervalMs.defl=100 mode.defl=MatrixScrollMode.Exclusive
+        startScrolling(frameIntervalMs: number = 100, mode: MatrixScrollMode = MatrixScrollMode.Exclusive): void {
+            sarduMatrixInternal.startQueuedScrolling(this, frameIntervalMs, mode);
+        }
+
         /** Sets brightness for pixels written after this call. */
         //% blockId=sardu_matrix_set_brightness block="%matrix set brightness %brightness"
         //% group="Display" weight=16 advanced=true brightness.min=0 brightness.max=255 brightness.defl=128

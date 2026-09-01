@@ -127,7 +127,7 @@
   "sarduMatrix.measureTextWidth|block": "larghezza testo %text font %font dimensione %size orientamento %orientation",
   "sarduMatrix.measureTextWidth|param|text|defl": "Ciao",
   "sarduMatrix.rgbColor|block": "colore RGB rosso %red verde %green blu %blue",
-  "sarduMatrix.startScrolling|block": "%matrix avvia scorrimento ogni %frameIntervalMs ms modalità %mode",
+  "sarduMatrix.Matrix.startScrolling|block": "%matrix avvia scorrimento ogni %frameIntervalMs ms modalità %mode",
   "sarduMatrixInternal|block": "sarduMatrixInternal",
   "sarduMatrix|block": "SARDU Matrix",
   "{id:category}SarduMatrix": "SARDU Matrix",

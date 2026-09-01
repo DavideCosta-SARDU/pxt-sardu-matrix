@@ -83,7 +83,7 @@
   "sarduMatrix.measureTextHeight": "Restituisce l'altezza disegnata di una stringa dopo aver applicato il suo orientamento.",
   "sarduMatrix.measureTextWidth": "Restituisce la larghezza disegnata di una stringa dopo aver applicato il suo orientamento.",
   "sarduMatrix.rgbColor": "Crea un colore a partire dalle componenti rosso, verde e blu.",
-  "sarduMatrix.startScrolling": "Avvia la composizione scorrevole in attesa e la svuota automaticamente.",
+  "sarduMatrix.Matrix.startScrolling": "Avvia la composizione scorrevole in attesa e la svuota automaticamente.",
   "sarduMatrixInternal.pathIndex": "Converte una coordinata logica in una posizione del percorso fisico.",
   "sarduMatrixInternal.physicalIndex": "Converte una coordinata del display nella posizione del LED."
 }

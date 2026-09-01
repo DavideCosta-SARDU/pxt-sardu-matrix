@@ -212,11 +212,4 @@ namespace sarduMatrix {
         sarduMatrixInternal.queueScrollingCircle(matrix, radius, centerY, color, true, spacing);
     }
 
-    /** Starts and then clears the pending scrolling composition. */
-    //% blockId=sardu_matrix_start_scrolling block="%matrix start scrolling every %frameIntervalMs ms mode %mode"
-    //% group="Display" weight=71
-    //% matrix.shadow=variables_get frameIntervalMs.min=0 frameIntervalMs.defl=100 mode.defl=MatrixScrollMode.Exclusive
-    export function startScrolling(matrix: Matrix, frameIntervalMs: number = 100, mode: MatrixScrollMode = MatrixScrollMode.Exclusive): void {
-        sarduMatrixInternal.startQueuedScrolling(matrix, frameIntervalMs, mode);
-    }
 }

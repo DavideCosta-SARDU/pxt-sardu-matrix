@@ -50,6 +50,7 @@
   "sarduMatrix.createAdvanced": "Creates one matrix with an explicitly configured physical pixel path.",
   "sarduMatrix.createModules": "Creates a horizontal row of identical matrix modules.",
   "sarduMatrix.createModulesAdvanced": "Creates a rectangular grid of modules with explicit physical paths.",
+  "sarduMatrix.drawBrightnessGradientText": "Draws static text with one color fading between two brightness levels without showing it.",
   "sarduMatrix.drawCircle": "Draws a circle outline without showing it.",
   "sarduMatrix.drawGradientText": "Draws static text filled with a two-color gradient without showing it.",
   "sarduMatrix.drawIcon": "Draws a built-in 8 x 8 icon without showing it.",

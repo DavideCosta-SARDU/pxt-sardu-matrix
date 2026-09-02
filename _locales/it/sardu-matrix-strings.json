@@ -175,5 +175,7 @@
   "MatrixIcon.Lightning|block": "fulmine",
   "sarduMatrix.drawGradientText|block": "$matrix disegna testo sfumato $text a x $x y $y da $firstColor=neopixel_colors a $secondColor=neopixel_colors $direction|| font $font dimensione $size luminosità $brightness orientamento $orientation",
   "sarduMatrix.drawGradientText|param|text|defl": "Ciao",
+  "sarduMatrix.drawBrightnessGradientText|block": "$matrix disegna testo sfumato in luminosità $text a x $x y $y colore $color=neopixel_colors da $firstBrightness a $finalBrightness $direction|| font $font dimensione $size orientamento $orientation",
+  "sarduMatrix.drawBrightnessGradientText|param|text|defl": "Ciao",
   "sarduMatrix.drawIcon|block": "$matrix disegna icona $icon a x $x y $y colore $color=neopixel_colors|| dimensione $size luminosità $brightness"
 }

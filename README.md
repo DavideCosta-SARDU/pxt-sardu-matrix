@@ -91,7 +91,7 @@ The toolbox is ordered as **Creation**, **Display**, **Static text**, **Scrollin
 
 Static text, static geometry, pixels and Graphics write to the RGB buffer; compose the scene and call `show()` once. Immediate text scrolling starts at once. To combine text and shapes into one moving sequence, add every item to the scrolling composition and call `startScrolling()` only once. Effects animate the current buffer directly and provide leave, restore and clear final states. Full block behavior, defaults and troubleshooting are documented in the [Italian user guide](docs/guida-italiana.md) and the topic pages below.
 
-Gradient text blends two selected colors across the visible glyphs from left, right, top or bottom. Built-in 8 x 8 icons include hearts, faces, a star, check, cross, arrows, sun, moon and lightning; they can be positioned, colored and scaled without a second framebuffer.
+Gradient text can either blend two selected colors or keep one color while blending between independently selected initial and final brightness levels. Both variants work across the visible glyphs from left, right, top or bottom and are placed after the standard static-text blocks. Built-in 8 x 8 icons include hearts, faces, a star, check, cross, arrows, sun, moon and lightning; they can be positioned, colored and scaled without a second framebuffer.
 
 ## Dynamic memory use
 

@@ -132,6 +132,8 @@
   "sarduMatrix.createModulesAdvanced|block": "create matrix with %moduleCount modules of type %moduleType in %moduleRows rows|pixels start %pixelOrigin scan %pixelAxis path %pixelPath|modules start %moduleOrigin scan %moduleAxis path %modulePath|on pin %pin brightness %brightness",
   "sarduMatrix.createModules|block": "create matrix with %moduleCount modules of type %moduleType on pin %pin brightness %brightness",
   "sarduMatrix.create|block": "create matrix width %width height %height on pin %pin brightness %brightness",
+  "sarduMatrix.drawBrightnessGradientText|block": "$matrix draw brightness gradient text $text at x $x y $y color $color=neopixel_colors from $firstBrightness to $finalBrightness $direction|| font $font size $size orientation $orientation",
+  "sarduMatrix.drawBrightnessGradientText|param|text|defl": "Hello",
   "sarduMatrix.drawCircle|block": "%matrix draw circle center x %centerX y %centerY radius %radius|color %color=neopixel_colors",
   "sarduMatrix.drawGradientText|block": "$matrix draw gradient text $text at x $x y $y from $firstColor=neopixel_colors to $secondColor=neopixel_colors $direction|| font $font size $size brightness $brightness orientation $orientation",
   "sarduMatrix.drawGradientText|param|text|defl": "Hello",

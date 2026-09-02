@@ -44,3 +44,6 @@ expectSarduMatrix(effectRainbowFrame[3] == 0 && effectRainbowFrame[4] == 0 && ef
 expectSarduMatrix(sarduMatrixInternal.gradientColor(0xff0000, 0x0000ff, 0, 4, 255) == 0xff0000);
 expectSarduMatrix(sarduMatrixInternal.gradientColor(0xff0000, 0x0000ff, 2, 4, 255) == 0x800080);
 expectSarduMatrix(sarduMatrixInternal.gradientColor(0xff0000, 0x0000ff, 4, 4, 255) == 0x0000ff);
+expectSarduMatrix(sarduMatrixInternal.brightnessGradientColor(0xff0000, 200, 20, 0, 4) == 0xc80000);
+expectSarduMatrix(sarduMatrixInternal.brightnessGradientColor(0xff0000, 200, 20, 2, 4) == 0x6e0000);
+expectSarduMatrix(sarduMatrixInternal.brightnessGradientColor(0xff0000, 200, 20, 4, 4) == 0x140000);

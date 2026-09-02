@@ -3,6 +3,7 @@
 ## 0.8.0 - candidate
 
 - Added static two-color gradient text in four directions.
+- Added single-color text gradients with independent initial and final brightness.
 - Added fourteen original scalable 8 x 8 built-in icons.
 - Kept both features in one optional source file without changing existing rendering APIs.
 

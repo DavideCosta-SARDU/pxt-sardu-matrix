@@ -161,8 +161,28 @@ namespace sarduMatrixInternal {
         return characterCode == 32 ? 2 : 0;
     }
 
+    function compactColumn(characterCode: number, column: number): number {
+        if (column < 0 || column >= 4) return 0;
+        if (column == 0) return sarduColumn(characterCode, 0);
+        if (column == 1) return sarduColumn(characterCode, 1) | sarduColumn(characterCode, 2);
+        if (column == 2) return sarduColumn(characterCode, 2) | sarduColumn(characterCode, 3);
+        return sarduColumn(characterCode, 4);
+    }
+
+    function compactProportionalLeft(characterCode: number): number {
+        for (let column = 0; column < 4; column++)
+            if (compactColumn(characterCode, column) != 0) return column;
+        return 0;
+    }
+
+    function compactProportionalRight(characterCode: number): number {
+        for (let column = 3; column >= 0; column--)
+            if (compactColumn(characterCode, column) != 0) return column;
+        return characterCode == 32 ? 1 : 0;
+    }
+
     export function normalizedFont(font: MatrixFont): MatrixFont {
-        if (font == MatrixFont.MicroBitExtended || font == MatrixFont.SarduProportional || font == MatrixFont.MicroBitProportional) return font;
+        if (font == MatrixFont.MicroBitExtended || font == MatrixFont.SarduProportional || font == MatrixFont.MicroBitProportional || font == MatrixFont.SarduCompact || font == MatrixFont.SarduCompactProportional) return font;
         return MatrixFont.Sardu;
     }
 
@@ -189,6 +209,9 @@ namespace sarduMatrixInternal {
             const glyph = microBitGlyph(characterCode);
             return microBitProportionalRight(characterCode, glyph) - microBitProportionalLeft(characterCode, glyph) + 1;
         }
+        if (font == MatrixFont.SarduCompactProportional)
+            return compactProportionalRight(characterCode) - compactProportionalLeft(characterCode) + 1;
+        if (font == MatrixFont.SarduCompact) return 4;
         return 5;
     }
 
@@ -211,6 +234,10 @@ namespace sarduMatrixInternal {
         }
         if (font == MatrixFont.SarduProportional)
             return sarduColumn(characterCode, proportionalLeft(characterCode) + column);
+        if (font == MatrixFont.SarduCompactProportional)
+            return compactColumn(characterCode, compactProportionalLeft(characterCode) + column);
+        if (font == MatrixFont.SarduCompact)
+            return compactColumn(characterCode, column);
         return sarduColumn(characterCode, column);
     }
 }

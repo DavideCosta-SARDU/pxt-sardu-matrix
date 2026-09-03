@@ -2,6 +2,8 @@
   "MatrixFont.MicroBitExtended|block": "Micro:Bit esteso",
   "MatrixFont.SarduProportional|block": "SARDU proporzionale",
   "MatrixFont.MicroBitProportional|block": "Micro:Bit proporzionale",
+  "MatrixFont.SarduCompact|block": "SARDU Compact",
+  "MatrixFont.SarduCompactProportional|block": "SARDU Compact proporzionale",
   "MatrixFont.Sardu|block": "SARDU",
   "MatrixFontSize.X1|block": "1x",
   "MatrixFontSize.X2|block": "2x",

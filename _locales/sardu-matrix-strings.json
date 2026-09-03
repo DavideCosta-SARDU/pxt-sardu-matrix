@@ -4,6 +4,8 @@
   "MatrixEffectEndState.Restore|block": "restore previous content",
   "MatrixFont.MicroBitExtended|block": "Micro:Bit extended",
   "MatrixFont.MicroBitProportional|block": "Micro:Bit proportional",
+  "MatrixFont.SarduCompactProportional|block": "SARDU Compact proportional",
+  "MatrixFont.SarduCompact|block": "SARDU Compact",
   "MatrixFont.SarduProportional|block": "SARDU proportional",
   "MatrixFont.Sardu|block": "SARDU",
   "MatrixFontSize.X1|block": "1x",

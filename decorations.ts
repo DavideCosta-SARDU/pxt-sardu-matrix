@@ -270,7 +270,7 @@ namespace sarduMatrix {
         brightness: number = 128,
         orientation: MatrixTextOrientation = MatrixTextOrientation.Normal
     ): void {
-        sarduMatrixInternal.drawGradientText(matrix, text, x, y, firstColor, secondColor, direction, font, size, brightness, orientation);
+        sarduMatrixInternal.drawGradientText(matrix, text, x, y, firstColor, secondColor, direction, font, size, brightness, orientation, -1);
     }
 
     /** Draws static text with one color fading between two brightness levels without showing it. */

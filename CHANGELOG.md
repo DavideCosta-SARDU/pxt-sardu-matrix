@@ -4,6 +4,7 @@
 
 - Added the Micro:Bit proportional font while preserving all existing font enum values and behavior.
 - Added exact start/end X/Y paths for normal, two-color gradient and brightness-gradient scrolling text.
+- Added fixed-width and proportional SARDU Compact font variants without another glyph table.
 
 ## 0.8.1 - candidate
 

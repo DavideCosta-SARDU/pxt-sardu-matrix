@@ -76,7 +76,9 @@ enum MatrixFont {
     Sardu,
     MicroBitExtended,
     SarduProportional,
-    MicroBitProportional
+    MicroBitProportional,
+    SarduCompact,
+    SarduCompactProportional
 }
 
 enum MatrixFontSize {
@@ -363,6 +365,8 @@ Il font standard supporta:
 - `Æ æ Œ œ ß ¿ ¡ ° € £ © ® × ÷`.
 
 Ogni altro carattere viene rappresentato con `?`. `MicroBitExtended` usa i glifi 5×5 ufficiali Micro:Bit dentro una metrica alta 7 pixel, riservando spazio ad accenti e cediglia. `SarduProportional` e `MicroBitProportional` eliminano le colonne laterali vuote dei rispettivi glifi e calcolano la larghezza effettiva carattere per carattere.
+
+`SarduCompact` ricompone gli stessi caratteri originali SARDU in quattro colonne per ridurre la lunghezza delle scritte, conservando maiuscole, minuscole, accenti e simboli. `SarduCompactProportional` elimina inoltre le colonne laterali vuote.
 
 Lo scorrimento a percorso libero permette di impostare X/Y iniziali e X/Y finali. Sono ammessi percorsi orizzontali, verticali e diagonali; sono disponibili testo normale, sfumato fra due colori e sfumato in luminosità.
 

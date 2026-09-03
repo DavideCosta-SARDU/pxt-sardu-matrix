@@ -43,6 +43,8 @@ expectSarduMatrix(sarduMatrixInternal.physicalIndex(modularTestConfig, 16, 0) ==
 expectSarduMatrix(sarduMatrixInternal.fontColumn(70, 3, MatrixFont.MicroBitExtended) == 2);
 expectSarduMatrix(sarduMatrixInternal.fontBaseHeight(MatrixFont.MicroBitProportional) == 7);
 expectSarduMatrix(sarduMatrixInternal.glyphWidth(MatrixFont.MicroBitProportional, 73) < sarduMatrixInternal.glyphWidth(MatrixFont.MicroBitProportional, 87));
+expectSarduMatrix(sarduMatrixInternal.glyphWidth(MatrixFont.SarduCompact, 87) == 4);
+expectSarduMatrix(sarduMatrixInternal.glyphWidth(MatrixFont.SarduCompactProportional, 73) < sarduMatrixInternal.glyphWidth(MatrixFont.SarduCompactProportional, 87));
 
 const currentEffectBuffer = pins.createBuffer(3);
 currentEffectBuffer[0] = 0;

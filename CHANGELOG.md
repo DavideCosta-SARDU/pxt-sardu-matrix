@@ -3,6 +3,7 @@
 ## 0.8.2 - candidate
 
 - Added the Micro:Bit proportional font while preserving all existing font enum values and behavior.
+- Added exact start/end X/Y paths for normal, two-color gradient and brightness-gradient scrolling text.
 
 ## 0.8.1 - candidate
 

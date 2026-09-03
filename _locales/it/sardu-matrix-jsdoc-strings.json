@@ -99,6 +99,9 @@
   "sarduMatrix.drawGradientText": "Disegna testo statico con una sfumatura a due colori senza mostrarlo.",
   "sarduMatrix.scrollGradientTextFromEdge": "Fa scorrere dal bordo un testo con sfumatura a due colori legata alle lettere.",
   "sarduMatrix.scrollBrightnessGradientTextFromEdge": "Fa scorrere dal bordo un testo dello stesso colore con sfumatura di luminosità legata alle lettere.",
+  "sarduMatrix.scrollTextBetween": "Fa scorrere il testo fra due coordinate liberamente selezionate.",
+  "sarduMatrix.scrollGradientTextBetween": "Fa scorrere il testo sfumato a due colori fra due coordinate liberamente selezionate.",
+  "sarduMatrix.scrollBrightnessGradientTextBetween": "Fa scorrere il testo sfumato in luminosità fra due coordinate liberamente selezionate.",
   "sarduMatrix.drawBrightnessGradientText": "Disegna testo statico di un solo colore sfumato tra due livelli di luminosità senza mostrarlo.",
   "sarduMatrix.drawIcon": "Disegna un'icona predefinita 8 x 8 senza mostrarla."
 }

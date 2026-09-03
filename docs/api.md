@@ -364,6 +364,8 @@ Il font standard supporta:
 
 Ogni altro carattere viene rappresentato con `?`. `MicroBitExtended` usa i glifi 5×5 ufficiali Micro:Bit dentro una metrica alta 7 pixel, riservando spazio ad accenti e cediglia. `SarduProportional` e `MicroBitProportional` eliminano le colonne laterali vuote dei rispettivi glifi e calcolano la larghezza effettiva carattere per carattere.
 
+Lo scorrimento a percorso libero permette di impostare X/Y iniziali e X/Y finali. Sono ammessi percorsi orizzontali, verticali e diagonali; sono disponibili testo normale, sfumato fra due colori e sfumato in luminosità.
+
 Sono disponibili blocchi distinti per:
 
 - X e Y manuali;

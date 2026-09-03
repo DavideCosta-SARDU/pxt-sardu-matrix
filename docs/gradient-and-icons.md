@@ -10,6 +10,8 @@ A separate brightness-gradient block keeps one selected color and blends from an
 
 The Scrolling text group provides the same two gradient choices for text entering from any matrix edge. The gradient is attached to the glyphs and moves with the text; it does not remain fixed on the display. Both exclusive and composed scrolling modes are supported.
 
+Path variants let the user select the exact initial X/Y and final X/Y coordinates. Horizontal, vertical and diagonal movement are supported, and both gradient types remain attached to the moving glyphs.
+
 ## Built-in icons
 
 The Icons group provides fourteen original 8 x 8 monochrome masks: filled and outline hearts, smile, sad face, star, check, cross, four arrows, sun, moon and lightning. Each icon can be placed at X/Y, colored, scaled from 1x to 4x and drawn with brightness default 128.

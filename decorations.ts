@@ -138,19 +138,7 @@ namespace sarduMatrixInternal {
         if (!matrix) return;
         edge = Math.floor(edge) as MatrixScrollEdge;
         if (edge < MatrixScrollEdge.Right || edge > MatrixScrollEdge.Bottom) edge = MatrixScrollEdge.Right;
-        frameIntervalMs = Math.floor(frameIntervalMs);
-        if (frameIntervalMs != frameIntervalMs || frameIntervalMs < 0) frameIntervalMs = 0;
         orientation = normalizedTextOrientation(orientation);
-        mode = mode == MatrixScrollMode.Composed ? MatrixScrollMode.Composed : MatrixScrollMode.Exclusive;
-
-        const operation = matrix._beginOperation();
-        if (!text || text.length == 0) {
-            if (mode == MatrixScrollMode.Exclusive) {
-                matrix._clearBuffer();
-                matrix.show();
-            }
-            return;
-        }
 
         const contentWidth = renderedTextWidth(text, font, size, orientation);
         const contentHeight = renderedTextHeight(text, font, size, orientation);
@@ -160,24 +148,66 @@ namespace sarduMatrixInternal {
         let startY = centeredY;
         let endX = centeredX;
         let endY = centeredY;
-        let stepX = 0;
-        let stepY = 0;
         if (edge == MatrixScrollEdge.Left) {
-            startX = -contentWidth; endX = matrix.width(); stepX = 1;
+            startX = -contentWidth; endX = matrix.width();
         } else if (edge == MatrixScrollEdge.Top) {
-            startY = -contentHeight; endY = matrix.height(); stepY = 1;
+            startY = -contentHeight; endY = matrix.height();
         } else if (edge == MatrixScrollEdge.Bottom) {
-            startY = matrix.height(); endY = -contentHeight; stepY = -1;
+            startY = matrix.height(); endY = -contentHeight;
         } else {
-            startX = matrix.width(); endX = -contentWidth; stepX = -1;
+            startX = matrix.width(); endX = -contentWidth;
         }
 
+        scrollGradientTextBetween(
+            matrix, text, startX, startY, endX, endY,
+            firstColor, secondColor, direction, frameIntervalMs,
+            font, size, brightness, orientation, mode, finalBrightness
+        );
+    }
+
+    export function scrollGradientTextBetween(
+        matrix: sarduMatrix.Matrix,
+        text: string,
+        startX: number,
+        startY: number,
+        endX: number,
+        endY: number,
+        firstColor: number,
+        secondColor: number,
+        direction: MatrixWipeDirection,
+        frameIntervalMs: number,
+        font: MatrixFont,
+        size: MatrixFontSize,
+        brightness: number,
+        orientation: MatrixTextOrientation,
+        mode: MatrixScrollMode,
+        finalBrightness: number = -1
+    ): void {
+        startX = Math.floor(startX);
+        startY = Math.floor(startY);
+        endX = Math.floor(endX);
+        endY = Math.floor(endY);
+        frameIntervalMs = Math.floor(frameIntervalMs);
+        if (frameIntervalMs != frameIntervalMs || frameIntervalMs < 0) frameIntervalMs = 0;
+        orientation = normalizedTextOrientation(orientation);
+        mode = mode == MatrixScrollMode.Composed ? MatrixScrollMode.Composed : MatrixScrollMode.Exclusive;
+        const operation = matrix._beginOperation();
+        if (!text || text.length == 0) {
+            if (mode == MatrixScrollMode.Exclusive) {
+                matrix._clearBuffer();
+                matrix.show();
+            }
+            return;
+        }
         const background = mode == MatrixScrollMode.Composed ? matrix._captureBuffer() : null;
-        let x = startX;
-        let y = startY;
-        while (true) {
+        const deltaX = endX - startX;
+        const deltaY = endY - startY;
+        const frameCount = Math.max(Math.abs(deltaX), Math.abs(deltaY));
+        for (let frame = 0; frame <= frameCount; frame++) {
             if (!matrix._operationIsActive(operation)) return;
             const started = control.millis();
+            const x = frameCount == 0 ? endX : Math.round(startX + deltaX * frame / frameCount);
+            const y = frameCount == 0 ? endY : Math.round(startY + deltaY * frame / frameCount);
             if (mode == MatrixScrollMode.Composed) matrix._restoreBuffer(background);
             else matrix._clearBuffer();
             drawGradientText(
@@ -187,9 +217,6 @@ namespace sarduMatrixInternal {
             matrix.show();
             const remaining = frameIntervalMs - (control.millis() - started);
             basic.pause(remaining > 0 ? remaining : 0);
-            if (x == endX && y == endY) break;
-            x += stepX;
-            y += stepY;
         }
     }
 
@@ -316,6 +343,66 @@ namespace sarduMatrix {
     ): void {
         sarduMatrixInternal.scrollGradientTextFromEdge(
             matrix, text, edge, color, color, direction, frameIntervalMs,
+            font, size, firstBrightness, orientation, mode, finalBrightness
+        );
+    }
+
+    /** Scrolls two-color gradient text between two freely selected coordinates. */
+    //% blockId=sardu_matrix_scroll_gradient_text_between block="$matrix scroll gradient text $text from x $startX y $startY to x $endX y $endY|| from $firstColor=neopixel_colors to $secondColor=neopixel_colors $direction every $frameIntervalMs ms font $font size $size brightness $brightness orientation $orientation mode $mode"
+    //% group="Scrolling text" weight=68 help=github:pxt-sardu-matrix/docs/gradient-and-icons
+    //% compileHiddenArguments=true inlineInputMode="variable" inlineInputModeLimit=7 expandableArgumentBreaks="5"
+    //% matrix.shadow=variables_get matrix.defl=matrix text.defl="Hello" startX.defl=16 startY.defl=0 endX.defl=-16 endY.defl=0 firstColor.defl=NeoPixelColors.Red secondColor.defl=NeoPixelColors.Blue direction.defl=MatrixWipeDirection.LeftToRight frameIntervalMs.min=0 frameIntervalMs.defl=100 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=MatrixTextOrientation.Normal mode.defl=MatrixScrollMode.Exclusive
+    export function scrollGradientTextBetween(
+        matrix: Matrix,
+        text: string,
+        startX: number = 16,
+        startY: number = 0,
+        endX: number = -16,
+        endY: number = 0,
+        firstColor: number = NeoPixelColors.Red,
+        secondColor: number = NeoPixelColors.Blue,
+        direction: MatrixWipeDirection = MatrixWipeDirection.LeftToRight,
+        frameIntervalMs: number = 100,
+        font: MatrixFont = MatrixFont.Sardu,
+        size: MatrixFontSize = MatrixFontSize.X1,
+        brightness: number = 128,
+        orientation: MatrixTextOrientation = MatrixTextOrientation.Normal,
+        mode: MatrixScrollMode = MatrixScrollMode.Exclusive
+    ): void {
+        if (!matrix) return;
+        sarduMatrixInternal.scrollGradientTextBetween(
+            matrix, text, startX, startY, endX, endY,
+            firstColor, secondColor, direction, frameIntervalMs,
+            font, size, brightness, orientation, mode, -1
+        );
+    }
+
+    /** Scrolls one-color brightness-gradient text between two freely selected coordinates. */
+    //% blockId=sardu_matrix_scroll_brightness_gradient_text_between block="$matrix scroll brightness gradient text $text from x $startX y $startY to x $endX y $endY|| color $color=neopixel_colors from $firstBrightness to $finalBrightness $direction every $frameIntervalMs ms font $font size $size orientation $orientation mode $mode"
+    //% group="Scrolling text" weight=67 help=github:pxt-sardu-matrix/docs/gradient-and-icons
+    //% compileHiddenArguments=true inlineInputMode="variable" inlineInputModeLimit=7 expandableArgumentBreaks="5"
+    //% matrix.shadow=variables_get matrix.defl=matrix text.defl="Hello" startX.defl=16 startY.defl=0 endX.defl=-16 endY.defl=0 color.defl=NeoPixelColors.White firstBrightness.min=0 firstBrightness.max=255 firstBrightness.defl=128 finalBrightness.min=0 finalBrightness.max=255 finalBrightness.defl=8 direction.defl=MatrixWipeDirection.LeftToRight frameIntervalMs.min=0 frameIntervalMs.defl=100 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 orientation.defl=MatrixTextOrientation.Normal mode.defl=MatrixScrollMode.Exclusive
+    export function scrollBrightnessGradientTextBetween(
+        matrix: Matrix,
+        text: string,
+        startX: number = 16,
+        startY: number = 0,
+        endX: number = -16,
+        endY: number = 0,
+        color: number = NeoPixelColors.White,
+        firstBrightness: number = 128,
+        finalBrightness: number = 8,
+        direction: MatrixWipeDirection = MatrixWipeDirection.LeftToRight,
+        frameIntervalMs: number = 100,
+        font: MatrixFont = MatrixFont.Sardu,
+        size: MatrixFontSize = MatrixFontSize.X1,
+        orientation: MatrixTextOrientation = MatrixTextOrientation.Normal,
+        mode: MatrixScrollMode = MatrixScrollMode.Exclusive
+    ): void {
+        if (!matrix) return;
+        sarduMatrixInternal.scrollGradientTextBetween(
+            matrix, text, startX, startY, endX, endY,
+            color, color, direction, frameIntervalMs,
             font, size, firstBrightness, orientation, mode, finalBrightness
         );
     }

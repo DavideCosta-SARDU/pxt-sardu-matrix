@@ -134,7 +134,7 @@ namespace sarduMatrixInternal {
         for (let characterIndex = 0; characterIndex < text.length; characterIndex++) {
             const code = text.charCodeAt(characterIndex);
             const width = glyphWidth(font, code);
-            const microBitBuffer = font == MatrixFont.MicroBitExtended ? microBitGlyph(code) : null;
+            const microBitBuffer = isMicroBitFont(font) ? microBitGlyph(code) : null;
             for (let column = 0; column < width; column++) {
                 const bits = fontColumn(code, column, font, microBitBuffer);
                 if (bits == 0) continue;

@@ -41,6 +41,8 @@ for (let y = 0; y < 16; y++) {
 }
 expectSarduMatrix(sarduMatrixInternal.physicalIndex(modularTestConfig, 16, 0) == -1);
 expectSarduMatrix(sarduMatrixInternal.fontColumn(70, 3, MatrixFont.MicroBitExtended) == 2);
+expectSarduMatrix(sarduMatrixInternal.fontBaseHeight(MatrixFont.MicroBitProportional) == 7);
+expectSarduMatrix(sarduMatrixInternal.glyphWidth(MatrixFont.MicroBitProportional, 73) < sarduMatrixInternal.glyphWidth(MatrixFont.MicroBitProportional, 87));
 
 const currentEffectBuffer = pins.createBuffer(3);
 currentEffectBuffer[0] = 0;

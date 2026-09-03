@@ -137,6 +137,18 @@ namespace sarduMatrixInternal {
         return bits;
     }
 
+    function microBitProportionalLeft(characterCode: number, glyph: Buffer): number {
+        for (let column = 0; column < 5; column++)
+            if (microBitColumn(characterCode, column, glyph) != 0) return column;
+        return 0;
+    }
+
+    function microBitProportionalRight(characterCode: number, glyph: Buffer): number {
+        for (let column = 4; column >= 0; column--)
+            if (microBitColumn(characterCode, column, glyph) != 0) return column;
+        return characterCode == 32 ? 2 : 0;
+    }
+
     function proportionalLeft(characterCode: number): number {
         for (let column = 0; column < SARDU_GLYPH_WIDTH; column++)
             if (sarduColumn(characterCode, column) != 0) return column;
@@ -150,8 +162,12 @@ namespace sarduMatrixInternal {
     }
 
     export function normalizedFont(font: MatrixFont): MatrixFont {
-        if (font == MatrixFont.MicroBitExtended || font == MatrixFont.SarduProportional) return font;
+        if (font == MatrixFont.MicroBitExtended || font == MatrixFont.SarduProportional || font == MatrixFont.MicroBitProportional) return font;
         return MatrixFont.Sardu;
+    }
+
+    export function isMicroBitFont(font: MatrixFont): boolean {
+        return font == MatrixFont.MicroBitExtended || font == MatrixFont.MicroBitProportional;
     }
 
     export function normalizedFontSize(size: MatrixFontSize): number {
@@ -162,13 +178,17 @@ namespace sarduMatrixInternal {
     }
 
     export function fontBaseHeight(font: MatrixFont): number {
-        return normalizedFont(font) == MatrixFont.MicroBitExtended ? 7 : 8;
+        return isMicroBitFont(normalizedFont(font)) ? 7 : 8;
     }
 
     export function glyphWidth(font: MatrixFont, characterCode: number): number {
         font = normalizedFont(font);
         if (font == MatrixFont.SarduProportional)
             return proportionalRight(characterCode) - proportionalLeft(characterCode) + 1;
+        if (font == MatrixFont.MicroBitProportional) {
+            const glyph = microBitGlyph(characterCode);
+            return microBitProportionalRight(characterCode, glyph) - microBitProportionalLeft(characterCode, glyph) + 1;
+        }
         return 5;
     }
 
@@ -183,8 +203,10 @@ namespace sarduMatrixInternal {
         microBitBuffer: Buffer = null
     ): number {
         font = normalizedFont(font);
-        if (font == MatrixFont.MicroBitExtended) {
+        if (isMicroBitFont(font)) {
             if (!microBitBuffer) microBitBuffer = microBitGlyph(characterCode);
+            if (font == MatrixFont.MicroBitProportional)
+                column += microBitProportionalLeft(characterCode, microBitBuffer);
             return microBitColumn(characterCode, column, microBitBuffer);
         }
         if (font == MatrixFont.SarduProportional)

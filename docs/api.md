@@ -75,7 +75,8 @@ I nomi TypeScript saranno inglesi e stabili; i valori della combo verranno local
 enum MatrixFont {
     Sardu,
     MicroBitExtended,
-    SarduProportional
+    SarduProportional,
+    MicroBitProportional
 }
 
 enum MatrixFontSize {
@@ -361,7 +362,7 @@ Il font standard supporta:
 - `à á â ã ä å ç è é ê ë ì í î ï ñ ò ó ô õ ö ø ù ú û ü ý ÿ`;
 - `Æ æ Œ œ ß ¿ ¡ ° € £ © ® × ÷`.
 
-Ogni altro carattere viene rappresentato con `?`. `MicroBitExtended` usa i glifi 5×5 ufficiali Micro:Bit dentro una metrica alta 7 pixel, riservando spazio ad accenti e cediglia. `SarduProportional` elimina le colonne laterali vuote di ogni glifo SARDU e calcola la larghezza effettiva carattere per carattere.
+Ogni altro carattere viene rappresentato con `?`. `MicroBitExtended` usa i glifi 5×5 ufficiali Micro:Bit dentro una metrica alta 7 pixel, riservando spazio ad accenti e cediglia. `SarduProportional` e `MicroBitProportional` eliminano le colonne laterali vuote dei rispettivi glifi e calcolano la larghezza effettiva carattere per carattere.
 
 Sono disponibili blocchi distinti per:
 

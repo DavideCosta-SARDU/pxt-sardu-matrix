@@ -3,6 +3,7 @@
   "MatrixEffectEndState.Leave|block": "leave last frame",
   "MatrixEffectEndState.Restore|block": "restore previous content",
   "MatrixFont.MicroBitExtended|block": "Micro:Bit extended",
+  "MatrixFont.MicroBitProportional|block": "Micro:Bit proportional",
   "MatrixFont.SarduProportional|block": "SARDU proportional",
   "MatrixFont.Sardu|block": "SARDU",
   "MatrixFontSize.X1|block": "1x",

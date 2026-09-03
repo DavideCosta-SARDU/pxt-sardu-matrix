@@ -52,7 +52,9 @@ enum MatrixFont {
     //% block="Micro:Bit extended"
     MicroBitExtended = 1,
     //% block="SARDU proportional"
-    SarduProportional = 2
+    SarduProportional = 2,
+    //% block="Micro:Bit proportional"
+    MicroBitProportional = 3
 }
 
 /** Integer scale applied to a text font. */

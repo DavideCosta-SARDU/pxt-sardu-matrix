@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.8.2 - candidate
+
+- Added the Micro:Bit proportional font while preserving all existing font enum values and behavior.
+
 ## 0.8.1 - candidate
 
 - Added two-color and single-color brightness gradients to edge-based scrolling text.

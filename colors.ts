@@ -57,7 +57,7 @@ namespace sarduMatrixInternal {
 namespace sarduMatrix {
     /** Creates a color from red, green and blue components. */
     //% blockId=sardu_matrix_rgb_color block="RGB color red %red green %green blue %blue"
-    //% group="Colors" weight=90
+    //% group="Colors" weight=90 help=github:pxt-sardu-matrix/docs/api
     //% red.min=0 red.max=255 red.defl=255 green.min=0 green.max=255 green.defl=255 blue.min=0 blue.max=255 blue.defl=255
     export function rgbColor(red: number, green: number, blue: number): number {
         return sarduMatrixInternal.packRgb(
@@ -69,7 +69,7 @@ namespace sarduMatrix {
 
     /** Creates a color using hue, saturation and HSL lightness. */
     //% blockId=sardu_matrix_hsl_color block="HSL color hue %hue saturation %saturation lightness %lightness"
-    //% group="Colors" weight=89
+    //% group="Colors" weight=89 help=github:pxt-sardu-matrix/docs/api
     //% hue.min=0 hue.max=360 hue.defl=0 saturation.min=0 saturation.max=100 saturation.defl=100 lightness.min=0 lightness.max=100 lightness.defl=50
     export function hslColor(hue: number, saturation: number, lightness: number): number {
         return sarduMatrixInternal.hslToColor(hue, saturation, lightness);

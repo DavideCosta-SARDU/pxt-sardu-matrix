@@ -27,6 +27,8 @@
         "docs/effects.md",
         "docs/gradient-and-icons.md",
         "docs/guida-italiana.md",
+        "docs/project-and-education.md",
+        "docs/testing.md",
         "docs/simulator.md",
         "_locales/it/sardu-matrix-strings.json",
         "_locales/it/sardu-matrix-jsdoc-strings.json"

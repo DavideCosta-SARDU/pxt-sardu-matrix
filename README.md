@@ -93,6 +93,18 @@ Static text, static geometry, pixels and Graphics write to the RGB buffer; compo
 
 Gradient text can either blend two selected colors or keep one color while blending between independently selected initial and final brightness levels. Both variants work across the visible glyphs from left, right, top or bottom and are placed after the standard static-text blocks. Built-in 8 x 8 icons include hearts, faces, a star, check, cross, arrows, sun, moon and lightning; they can be positioned, colored and scaled without a second framebuffer.
 
+### Complete example
+
+```typescript
+// Create one 16 x 16 panel with a prudent global brightness.
+let matrix = sarduMatrix.createModules(1, MatrixModuleType.Matrix16x16, DigitalPin.P1, 128)
+
+// Compose two elements in memory, then update the LEDs once.
+matrix.drawTextCenteredWidth("Hi", 0, NeoPixelColors.White, MatrixFont.Sardu, MatrixFontSize.X1, 128, MatrixTextOrientation.Normal)
+sarduMatrix.drawIcon(matrix, MatrixIcon.FilledHeart, 4, 8, NeoPixelColors.Red, 1, 128)
+matrix.show()
+```
+
 ## Dynamic memory use
 
 There is no arbitrary 1536-LED limit. One RGB NeoPixel buffer is allocated using:
@@ -118,6 +130,8 @@ See [docs/wiring.md](docs/wiring.md) for diagrams and mapping examples.
 ## Documentation
 
 - [Italian user guide](docs/guida-italiana.md)
+- [Project and educational use](docs/project-and-education.md)
+- [Documented test procedure](docs/testing.md)
 - [Display configuration](docs/display-configuration.md)
 - [Public API](docs/api.md)
 - [Wiring](docs/wiring.md)
@@ -136,6 +150,8 @@ English is the source and fallback language. Italian is included in the package.
 ## License
 
 MIT, Copyright (c) 2026 Davide Costa <davide@sardu.pro>.
+
+Project website: [SARDU](https://www.sardu.pro/). SARDU-Matrix itself is a free educational project for generic commercial WS2812B/NeoPixel panels; it is not bundled with a proprietary accessory.
 
 ## Supported targets
 

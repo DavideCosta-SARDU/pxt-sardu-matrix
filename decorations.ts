@@ -154,7 +154,7 @@ namespace sarduMatrixInternal {
 namespace sarduMatrix {
     /** Draws static text filled with a two-color gradient without showing it. */
     //% blockId=sardu_matrix_draw_gradient_text block="$matrix draw gradient text $text at x $x y $y from $firstColor=neopixel_colors to $secondColor=neopixel_colors $direction|| font $font size $size brightness $brightness orientation $orientation"
-    //% group="Static text" weight=70
+    //% group="Static text" weight=70 help=github:pxt-sardu-matrix/docs/gradient-and-icons
     //% compileHiddenArguments=true inlineInputMode="variable" inlineInputModeLimit=7 expandableArgumentBreaks="4"
     //% matrix.shadow=variables_get matrix.defl=matrix text.defl="Hello" x.defl=0 y.defl=0 firstColor.defl=NeoPixelColors.Red secondColor.defl=NeoPixelColors.Blue direction.defl=MatrixWipeDirection.LeftToRight font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=MatrixTextOrientation.Normal
     export function drawGradientText(
@@ -175,9 +175,9 @@ namespace sarduMatrix {
 
     /** Draws static text with one color fading between two brightness levels without showing it. */
     //% blockId=sardu_matrix_draw_brightness_gradient_text block="$matrix draw brightness gradient text $text at x $x y $y color $color=neopixel_colors from $firstBrightness to $finalBrightness $direction|| font $font size $size orientation $orientation"
-    //% group="Static text" weight=69
+    //% group="Static text" weight=69 help=github:pxt-sardu-matrix/docs/gradient-and-icons
     //% compileHiddenArguments=true inlineInputMode="variable" inlineInputModeLimit=8 expandableArgumentBreaks="3"
-    //% matrix.shadow=variables_get matrix.defl=matrix text.defl="Hello" x.defl=0 y.defl=0 color.defl=NeoPixelColors.White firstBrightness.min=0 firstBrightness.max=255 firstBrightness.defl=128 finalBrightness.min=0 finalBrightness.max=255 finalBrightness.defl=0 direction.defl=MatrixWipeDirection.LeftToRight font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 orientation.defl=MatrixTextOrientation.Normal
+    //% matrix.shadow=variables_get matrix.defl=matrix text.defl="Hello" x.defl=0 y.defl=0 color.defl=NeoPixelColors.White firstBrightness.min=0 firstBrightness.max=255 firstBrightness.defl=128 finalBrightness.min=0 finalBrightness.max=255 finalBrightness.defl=8 direction.defl=MatrixWipeDirection.LeftToRight font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 orientation.defl=MatrixTextOrientation.Normal
     export function drawBrightnessGradientText(
         matrix: Matrix,
         text: string,
@@ -185,7 +185,7 @@ namespace sarduMatrix {
         y: number = 0,
         color: number = NeoPixelColors.White,
         firstBrightness: number = 128,
-        finalBrightness: number = 0,
+        finalBrightness: number = 8,
         direction: MatrixWipeDirection = MatrixWipeDirection.LeftToRight,
         font: MatrixFont = MatrixFont.Sardu,
         size: MatrixFontSize = MatrixFontSize.X1,
@@ -199,7 +199,7 @@ namespace sarduMatrix {
 
     /** Draws a built-in 8 x 8 icon without showing it. */
     //% blockId=sardu_matrix_draw_icon block="$matrix draw icon $icon at x $x y $y color $color=neopixel_colors|| size $size brightness $brightness"
-    //% group="Icons" weight=90
+    //% group="Icons" weight=90 help=github:pxt-sardu-matrix/docs/gradient-and-icons
     //% compileHiddenArguments=true inlineInputMode="variable" inlineInputModeLimit=5 expandableArgumentBreaks="2"
     //% matrix.shadow=variables_get matrix.defl=matrix icon.defl=MatrixIcon.FilledHeart x.defl=0 y.defl=0 color.defl=NeoPixelColors.Red size.min=1 size.max=4 size.defl=1 brightness.min=0 brightness.max=255 brightness.defl=128
     export function drawIcon(matrix: Matrix, icon: MatrixIcon, x: number = 0, y: number = 0, color: number = NeoPixelColors.Red, size: number = 1, brightness: number = 128): void {

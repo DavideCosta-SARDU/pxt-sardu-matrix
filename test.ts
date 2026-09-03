@@ -5,6 +5,41 @@ function expectSarduMatrix(condition: boolean): void {
 expectSarduMatrix(sarduMatrixInternal.pathIndex(
     0, 0, 8, 8, MatrixOrigin.TopLeft, MatrixScanAxis.Columns, MatrixPath.ZigZag
 ) == 0);
+
+for (let origin = 0; origin < 4; origin++) {
+    for (let axis = 0; axis < 2; axis++) {
+        for (let path = 0; path < 2; path++) {
+            const seenPathPixels = pins.createBuffer(64);
+            for (let y = 0; y < 8; y++) {
+                for (let x = 0; x < 8; x++) {
+                    const index = sarduMatrixInternal.pathIndex(
+                        x, y, 8, 8,
+                        origin as MatrixOrigin,
+                        axis as MatrixScanAxis,
+                        path as MatrixPath
+                    );
+                    expectSarduMatrix(index >= 0 && index < 64 && seenPathPixels[index] == 0);
+                    seenPathPixels[index] = 1;
+                }
+            }
+        }
+    }
+}
+
+const modularTestConfig = sarduMatrixInternal.modularConfig(
+    4, MatrixModuleType.Matrix8x8, 2,
+    MatrixOrigin.BottomRight, MatrixScanAxis.Columns, MatrixPath.ZigZag,
+    MatrixOrigin.TopRight, MatrixScanAxis.Rows, MatrixPath.ZigZag
+);
+const seenModularPixels = pins.createBuffer(256);
+for (let y = 0; y < 16; y++) {
+    for (let x = 0; x < 16; x++) {
+        const index = sarduMatrixInternal.physicalIndex(modularTestConfig, x, y);
+        expectSarduMatrix(index >= 0 && index < 256 && seenModularPixels[index] == 0);
+        seenModularPixels[index] = 1;
+    }
+}
+expectSarduMatrix(sarduMatrixInternal.physicalIndex(modularTestConfig, 16, 0) == -1);
 expectSarduMatrix(sarduMatrixInternal.fontColumn(70, 3, MatrixFont.MicroBitExtended) == 2);
 
 const currentEffectBuffer = pins.createBuffer(3);

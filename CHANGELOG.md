@@ -4,6 +4,8 @@
 
 - Added static two-color gradient text in four directions.
 - Added single-color text gradients with independent initial and final brightness.
+- Set the brightness-gradient defaults to 128 and 8 while keeping the full 0-255 range selectable.
+- Added MakeCode online-help links to every public block.
 - Added fourteen original scalable 8 x 8 built-in icons.
 - Kept both features in one optional source file without changing existing rendering APIs.
 

@@ -6,7 +6,7 @@ The gradient text block draws a static line into the current RGB buffer. Choose 
 
 Only glyph pixels are changed; the background remains transparent. Font, scale, brightness (default 128) and orientation are expandable parameters. Call `show()` after composing the complete scene.
 
-A separate brightness-gradient block keeps one selected color and blends from an initial 0–255 brightness to a final 0–255 brightness. The direction identifies the edge containing the initial value; the opposite edge reaches the final value. Its defaults are 128 and 0. Both gradient blocks are placed after the standard static-text blocks.
+A separate brightness-gradient block keeps one selected color and blends from an initial 0–255 brightness to a final 0–255 brightness. The direction identifies the edge containing the initial value; the opposite edge reaches the final value. Its defaults are 128 and 8, so the far edge remains faintly visible; zero remains available for an intentional fade to black. Both gradient blocks are placed after the standard static-text blocks.
 
 ## Built-in icons
 

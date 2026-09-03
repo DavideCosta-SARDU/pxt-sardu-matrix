@@ -60,7 +60,7 @@ Puoi scegliere coordinate, colore, font, dimensione, luminosità e orientamento.
 
 La luminosità del testo ha default `128` e non modifica la luminosità generale scelta durante la creazione. Le coordinate esterne vengono ritagliate in sicurezza.
 
-Il blocco **testo sfumato** miscela due colori soltanto sui pixel dei caratteri. Il blocco separato **testo sfumato in luminosità** mantiene invece un solo colore e passa dalla luminosità iniziale a quella finale, entrambe regolabili da 0 a 255. Puoi scegliere da sinistra a destra, da destra a sinistra, dall'alto al basso o dal basso all'alto: il lato di partenza usa il valore iniziale e il lato opposto raggiunge quello finale. La direzione segue sempre il testo visibile, anche quando è ruotato; dopo il disegno usa **mostra**. I due blocchi sfumati sono collocati dopo i normali blocchi del testo statico.
+Il blocco **testo sfumato** miscela due colori soltanto sui pixel dei caratteri. Il blocco separato **testo sfumato in luminosità** mantiene invece un solo colore e passa dalla luminosità iniziale a quella finale, entrambe regolabili da 0 a 255. I default sono 128 e 8, così il lato meno luminoso resta visibile; scegli 0 soltanto quando vuoi spegnerlo intenzionalmente. Puoi scegliere da sinistra a destra, da destra a sinistra, dall'alto al basso o dal basso all'alto: il lato di partenza usa il valore iniziale e il lato opposto raggiunge quello finale. La direzione segue sempre il testo visibile, anche quando è ruotato; dopo il disegno usa **mostra**. I due blocchi sfumati sono collocati dopo i normali blocchi del testo statico.
 
 ## Icone predefinite
 

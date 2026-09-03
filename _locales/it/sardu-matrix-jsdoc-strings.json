@@ -97,6 +97,8 @@
   "sarduMatrix.sparkles": "Mostra scintille casuali da sole o sopra il contenuto corrente.",
   "MatrixIcon": "Immagine 8 x 8 predefinita disegnata nel buffer della matrice.",
   "sarduMatrix.drawGradientText": "Disegna testo statico con una sfumatura a due colori senza mostrarlo.",
+  "sarduMatrix.scrollGradientTextFromEdge": "Fa scorrere dal bordo un testo con sfumatura a due colori legata alle lettere.",
+  "sarduMatrix.scrollBrightnessGradientTextFromEdge": "Fa scorrere dal bordo un testo dello stesso colore con sfumatura di luminosità legata alle lettere.",
   "sarduMatrix.drawBrightnessGradientText": "Disegna testo statico di un solo colore sfumato tra due livelli di luminosità senza mostrarlo.",
   "sarduMatrix.drawIcon": "Disegna un'icona predefinita 8 x 8 senza mostrarla."
 }

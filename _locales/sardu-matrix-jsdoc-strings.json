@@ -96,6 +96,8 @@
   "sarduMatrix.opposedColorWipe": "Fills from opposite edges to a selected X or Y meeting coordinate.",
   "sarduMatrix.rainbowCycle": "Colors current content as a static or animated rainbow.",
   "sarduMatrix.rgbColor": "Creates a color from red, green and blue components.",
+  "sarduMatrix.scrollBrightnessGradientTextFromEdge": "Scrolls one-color text from an edge with a brightness gradient attached to the moving glyphs.",
+  "sarduMatrix.scrollGradientTextFromEdge": "Scrolls text from an edge with a two-color gradient attached to the moving glyphs.",
   "sarduMatrix.sparkles": "Shows random sparkles, alone or over the current matrix content.",
   "sarduMatrixInternal.drawCircle": "Draws a clipped circle into the matrix buffer, with work bounded by the visible area.",
   "sarduMatrixInternal.drawLine": "Draws a clipped integer line into the matrix buffer.",

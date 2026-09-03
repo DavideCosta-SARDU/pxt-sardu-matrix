@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.8.1 - candidate
+
+- Added two-color and single-color brightness gradients to edge-based scrolling text.
+- Kept each gradient attached to the moving glyphs and preserved exclusive/composed scrolling modes.
+- Left all existing static text, standard scrolling, icons, geometry, effects and mapping APIs unchanged.
+
 ## 0.8.0 - candidate
 
 - Added static two-color gradient text in four directions.

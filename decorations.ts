@@ -351,7 +351,7 @@ namespace sarduMatrix {
     //% blockId=sardu_matrix_scroll_gradient_text_between block="$matrix scroll gradient text $text from x $startX y $startY to x $endX y $endY|| from $firstColor=neopixel_colors to $secondColor=neopixel_colors $direction every $frameIntervalMs ms font $font size $size brightness $brightness orientation $orientation mode $mode"
     //% group="Scrolling text" weight=68 help=github:pxt-sardu-matrix/docs/gradient-and-icons
     //% compileHiddenArguments=true inlineInputMode="variable" inlineInputModeLimit=7 expandableArgumentBreaks="5"
-    //% matrix.shadow=variables_get matrix.defl=matrix text.defl="Hello" startX.shadow=sardu_matrix_width startY.defl=0 endX.defl=0 endY.defl=0 firstColor.defl=NeoPixelColors.Red secondColor.defl=NeoPixelColors.Blue direction.defl=MatrixWipeDirection.LeftToRight frameIntervalMs.min=0 frameIntervalMs.defl=100 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=MatrixTextOrientation.Normal mode.defl=MatrixScrollMode.Exclusive
+    //% matrix.shadow=variables_get matrix.defl=matrix text.defl="Hello" startX.defl=-1 startY.defl=0 endX.defl=0 endY.defl=0 firstColor.defl=NeoPixelColors.Red secondColor.defl=NeoPixelColors.Blue direction.defl=MatrixWipeDirection.LeftToRight frameIntervalMs.min=0 frameIntervalMs.defl=100 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=MatrixTextOrientation.Normal mode.defl=MatrixScrollMode.Exclusive
     export function scrollGradientTextBetween(
         matrix: Matrix,
         text: string,
@@ -370,6 +370,7 @@ namespace sarduMatrix {
         mode: MatrixScrollMode = MatrixScrollMode.Exclusive
     ): void {
         if (!matrix) return;
+        if (startX == -1) startX = matrix.width();
         sarduMatrixInternal.scrollGradientTextBetween(
             matrix, text, startX, startY, endX, endY,
             firstColor, secondColor, direction, frameIntervalMs,
@@ -381,7 +382,7 @@ namespace sarduMatrix {
     //% blockId=sardu_matrix_scroll_brightness_gradient_text_between block="$matrix scroll brightness gradient text $text from x $startX y $startY to x $endX y $endY|| color $color=neopixel_colors from $firstBrightness to $finalBrightness $direction every $frameIntervalMs ms font $font size $size orientation $orientation mode $mode"
     //% group="Scrolling text" weight=67 help=github:pxt-sardu-matrix/docs/gradient-and-icons
     //% compileHiddenArguments=true inlineInputMode="variable" inlineInputModeLimit=7 expandableArgumentBreaks="5"
-    //% matrix.shadow=variables_get matrix.defl=matrix text.defl="Hello" startX.shadow=sardu_matrix_width startY.defl=0 endX.defl=0 endY.defl=0 color.defl=NeoPixelColors.White firstBrightness.min=0 firstBrightness.max=255 firstBrightness.defl=128 finalBrightness.min=0 finalBrightness.max=255 finalBrightness.defl=8 direction.defl=MatrixWipeDirection.LeftToRight frameIntervalMs.min=0 frameIntervalMs.defl=100 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 orientation.defl=MatrixTextOrientation.Normal mode.defl=MatrixScrollMode.Exclusive
+    //% matrix.shadow=variables_get matrix.defl=matrix text.defl="Hello" startX.defl=-1 startY.defl=0 endX.defl=0 endY.defl=0 color.defl=NeoPixelColors.White firstBrightness.min=0 firstBrightness.max=255 firstBrightness.defl=128 finalBrightness.min=0 finalBrightness.max=255 finalBrightness.defl=8 direction.defl=MatrixWipeDirection.LeftToRight frameIntervalMs.min=0 frameIntervalMs.defl=100 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 orientation.defl=MatrixTextOrientation.Normal mode.defl=MatrixScrollMode.Exclusive
     export function scrollBrightnessGradientTextBetween(
         matrix: Matrix,
         text: string,
@@ -400,6 +401,7 @@ namespace sarduMatrix {
         mode: MatrixScrollMode = MatrixScrollMode.Exclusive
     ): void {
         if (!matrix) return;
+        if (startX == -1) startX = matrix.width();
         sarduMatrixInternal.scrollGradientTextBetween(
             matrix, text, startX, startY, endX, endY,
             color, color, direction, frameIntervalMs,

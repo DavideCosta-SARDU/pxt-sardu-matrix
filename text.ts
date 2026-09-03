@@ -300,7 +300,7 @@ namespace sarduMatrix {
     //% blockId=sardu_matrix_scroll_text_between block="$matrix scroll text $text from x $startX y $startY to x $endX y $endY|| color $color=neopixel_colors every $frameIntervalMs ms font $font size $size brightness $brightness orientation $orientation mode $mode"
     //% group="Scrolling text" weight=73 help=github:pxt-sardu-matrix/docs/api
     //% compileHiddenArguments=true inlineInputMode="variable" inlineInputModeLimit=7 expandableArgumentBreaks="5"
-    //% matrix.shadow=variables_get matrix.defl=matrix text.defl="Hello" startX.shadow=sardu_matrix_width startY.defl=0 endX.defl=0 endY.defl=0 color.defl=NeoPixelColors.White frameIntervalMs.min=0 frameIntervalMs.defl=100 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=MatrixTextOrientation.Normal mode.defl=MatrixScrollMode.Exclusive
+    //% matrix.shadow=variables_get matrix.defl=matrix text.defl="Hello" startX.defl=-1 startY.defl=0 endX.defl=0 endY.defl=0 color.defl=NeoPixelColors.White frameIntervalMs.min=0 frameIntervalMs.defl=100 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=MatrixTextOrientation.Normal mode.defl=MatrixScrollMode.Exclusive
     export function scrollTextBetween(
         matrix: Matrix,
         text: string,
@@ -317,6 +317,7 @@ namespace sarduMatrix {
         mode: MatrixScrollMode = MatrixScrollMode.Exclusive
     ): void {
         if (!matrix) return;
+        if (startX == -1) startX = matrix.width();
         sarduMatrixInternal.scrollTextBetween(
             matrix, text, startX, startY, endX, endY,
             color, frameIntervalMs, font, size, brightness, orientation, mode

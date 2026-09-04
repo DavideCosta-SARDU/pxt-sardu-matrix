@@ -381,11 +381,11 @@ Coordinate fuori schermo non producono un indice e non modificano il buffer. In 
 Blocchi base concettuali:
 
 ```text
-crea matrice larghezza [16] altezza [16] su pin [P0]
+crea matrice larghezza [16] altezza [16] su pin [P1]
 ```
 
 ```text
-crea matrice con [1] moduli di tipo [16×16] sul pin [P0] luminosità [128]
+crea matrice con [1] moduli di tipo [16×16] sul pin [P1] luminosità [128]
 ```
 
 Le opzioni non necessarie al caso comune devono essere collocate in “Altro…” mediante blocchi avanzati o, se il prototipo MakeCode risulta chiaro, parametri espandibili.

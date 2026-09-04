@@ -44,6 +44,7 @@
   "sarduMatrix.addScrollingFilledRectangle": "Adds a filled rectangle to the pending scrolling composition.",
   "sarduMatrix.addScrollingLine": "Adds a line to the pending scrolling composition.",
   "sarduMatrix.addScrollingRectangle": "Adds a rectangle outline to the pending scrolling composition.",
+  "sarduMatrix.addScrollingTextPath": "Adds a text path that starts only when start scrolling is called.",
   "sarduMatrix.blinkContent": "Blinks the content already present in the matrix buffer.",
   "sarduMatrix.colorWipe": "Progressively fills the matrix from a selected logical coordinate.",
   "sarduMatrix.create": "Creates one matrix using its total logical width and height.",

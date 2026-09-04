@@ -78,7 +78,8 @@ enum MatrixFont {
     SarduProportional,
     MicroBitProportional,
     SarduCompact,
-    SarduCompactProportional
+    SarduCompactProportional,
+    SarduItalic
 }
 
 enum MatrixFontSize {
@@ -124,7 +125,7 @@ Firma base:
 sarduMatrix.create(
     width: number = 16,
     height: number = 16,
-    pin: DigitalPin = DigitalPin.P0,
+    pin: DigitalPin = DigitalPin.P1,
     brightness: number = 128
 ): Matrix
 ```
@@ -132,7 +133,7 @@ sarduMatrix.create(
 Blocco base:
 
 ```text
-crea matrice larghezza [16] altezza [16] sul pin [P0] luminosità [128]
+crea matrice larghezza [16] altezza [16] sul pin [P1] luminosità [128]
 ```
 
 Mapping di default:
@@ -153,7 +154,7 @@ Firma base:
 sarduMatrix.createModules(
     moduleCount: number = 1,
     moduleType: MatrixModuleType = MatrixModuleType.Matrix16x16,
-    pin: DigitalPin = DigitalPin.P0,
+    pin: DigitalPin = DigitalPin.P1,
     brightness: number = 128
 ): Matrix
 ```
@@ -161,7 +162,7 @@ sarduMatrix.createModules(
 Blocco base:
 
 ```text
-crea matrice con [1] moduli di tipo [16×16] sul pin [P0] luminosità [128]
+crea matrice con [1] moduli di tipo [16×16] sul pin [P1] luminosità [128]
 ```
 
 `moduleCount` è un campo numerico, non una combo. `moduleType` è la combo dei sei formati approvati.
@@ -415,6 +416,8 @@ matrix.scrollTextFromEdge(
 
 Il testo entra completamente da destra, sinistra, alto o basso ed esce dal lato opposto. Viene centrato automaticamente sull'asse perpendicolare al movimento, usando le dimensioni successive alla rotazione.
 
+Il blocco `aggiungi testo con percorso` memorizza invece testo, coordinate iniziali e finali senza avviare l'animazione. Uno o più percorsi preparati vengono eseguiti in ordine soltanto dalla successiva chiamata a `matrix.startScrolling()`. X iniziale `-1` indica la larghezza reale della matrice; qualsiasi altro valore viene usato direttamente.
+
 `frameIntervalMs` rappresenta la durata obiettivo fra l'inizio di due fotogrammi. Il tempo di rendering e `show()` è incluso; si attende soltanto il residuo. Se il trasferimento richiede più tempo, non si aggiunge pausa.
 
 Comportamento implementato:
@@ -427,6 +430,8 @@ Comportamento implementato:
 6. stringa vuota: clear e show soltanto in modalità esclusiva;
 7. chiamata bloccante/cooperativa, non background;
 8. controllo a ogni fotogramma dell'eventuale richiesta di `interruptAndClear()`.
+
+`SarduItalic` inclina algoritmicamente i glifi SARDU senza modificare la tabella originale. Conserva altezza 8 e usa sette colonne per includere lo spostamento verso destra delle righe superiori.
 
 La modalità esclusiva non aggiunge un secondo buffer RGB. La modalità composta crea invece, soltanto per la durata dello scorrimento, una copia del buffer NeoPixel di `width × height × 3` byte. Su Micro:Bit V1 e con matrici grandi va quindi preferita la modalità esclusiva quando la RAM disponibile è ridotta.
 

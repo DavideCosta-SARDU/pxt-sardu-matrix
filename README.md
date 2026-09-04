@@ -79,7 +79,7 @@ Static and scrolling text can rotate the complete rendered line to 0°, 90° clo
 
 Scrolling offers two scene modes. **Exclusive** clears the display for every frame and finishes with a black display. **Composed** preserves the pixels already drawn, restores them behind the moving text and finishes with the original scene visible.
 
-Lines, rectangles and circles, with outline and filled variants, use the same logical coordinates and clipping as pixels and text. Static geometry changes only the buffer and requires `show()`. Scrolling geometry can run by itself or be queued after text; add the desired items and call `startScrolling()` once to move the complete sequence as one composition.
+Lines, rectangles and circles, with outline and filled variants, use the same logical coordinates and clipping as pixels and text. Static geometry changes only the buffer and requires `show()`. Scrolling geometry can run by itself or be queued after text; add the desired items and call `startScrolling()` once to move the complete sequence as one composition. Custom text paths can also be queued and start only when `startScrolling()` is called.
 
 Colors can come from the MakeCode/NeoPixel picker, from explicit RGB components, or from HSL fields. RGB uses 0–255. HSL uses hue 0–360 and saturation/lightness 0–100. HSL lightness changes the color itself and is distinct from matrix or string brightness.
 

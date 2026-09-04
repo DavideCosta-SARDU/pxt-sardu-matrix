@@ -181,8 +181,18 @@ namespace sarduMatrixInternal {
         return characterCode == 32 ? 1 : 0;
     }
 
+    function italicColumn(characterCode: number, column: number): number {
+        let bits = 0;
+        for (let row = 0; row < 8; row++) {
+            const sourceColumn = column - Math.idiv(7 - row, 3);
+            if ((sarduColumn(characterCode, sourceColumn) & (1 << row)) != 0)
+                bits |= 1 << row;
+        }
+        return bits;
+    }
+
     export function normalizedFont(font: MatrixFont): MatrixFont {
-        if (font == MatrixFont.MicroBitExtended || font == MatrixFont.SarduProportional || font == MatrixFont.MicroBitProportional || font == MatrixFont.SarduCompact || font == MatrixFont.SarduCompactProportional) return font;
+        if (font == MatrixFont.MicroBitExtended || font == MatrixFont.SarduProportional || font == MatrixFont.MicroBitProportional || font == MatrixFont.SarduCompact || font == MatrixFont.SarduCompactProportional || font == MatrixFont.SarduItalic) return font;
         return MatrixFont.Sardu;
     }
 
@@ -211,6 +221,7 @@ namespace sarduMatrixInternal {
         }
         if (font == MatrixFont.SarduCompactProportional)
             return compactProportionalRight(characterCode) - compactProportionalLeft(characterCode) + 1;
+        if (font == MatrixFont.SarduItalic) return 7;
         if (font == MatrixFont.SarduCompact) return 4;
         return 5;
     }
@@ -238,6 +249,8 @@ namespace sarduMatrixInternal {
             return compactColumn(characterCode, compactProportionalLeft(characterCode) + column);
         if (font == MatrixFont.SarduCompact)
             return compactColumn(characterCode, column);
+        if (font == MatrixFont.SarduItalic)
+            return italicColumn(characterCode, column);
         return sarduColumn(characterCode, column);
     }
 }

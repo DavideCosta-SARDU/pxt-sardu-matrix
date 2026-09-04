@@ -5,6 +5,7 @@ namespace sarduMatrixInternal {
     const scrollFilledRectangleItem = 4;
     const scrollCircleItem = 5;
     const scrollFilledCircleItem = 6;
+    const scrollTextPathItem = 7;
     const maximumScrollItems = 32;
 
     class ScrollItem {
@@ -17,6 +18,8 @@ namespace sarduMatrixInternal {
         p3: number;
         p4: number;
         p5: number;
+        p6: number;
+        p7: number;
     }
 
     let pendingScrollMatrix: sarduMatrix.Matrix = null;
@@ -73,6 +76,28 @@ namespace sarduMatrixInternal {
         appendScrollItem(matrix, item, renderedTextWidth(text, font, size, orientation), spacing);
     }
 
+    export function queueScrollingTextPath(
+        matrix: sarduMatrix.Matrix, text: string,
+        startX: number, startY: number, endX: number, endY: number,
+        color: number, font: MatrixFont, size: MatrixFontSize,
+        brightness: number, orientation: MatrixTextOrientation
+    ): void {
+        if (!text || text.length == 0 || !prepareScrollQueue(matrix)) return;
+        const item = new ScrollItem();
+        item.kind = scrollTextPathItem;
+        item.text = text;
+        item.color = color;
+        item.x = scrollCoordinate(startX == -1 ? matrix.width() : startX);
+        item.p1 = scrollCoordinate(startY);
+        item.p2 = scrollCoordinate(endX);
+        item.p3 = scrollCoordinate(endY);
+        item.p4 = font;
+        item.p5 = size;
+        item.p6 = limitByte(brightness);
+        item.p7 = orientation;
+        pendingScrollItems.push(item);
+    }
+
     export function queueScrollingLine(
         matrix: sarduMatrix.Matrix, width: number, startY: number, endY: number,
         color: number, spacing: number
@@ -122,7 +147,7 @@ namespace sarduMatrixInternal {
                 fillRectangle(matrix, x, item.p3, x + item.p1 - 1, item.p3 + item.p2 - 1, item.color);
             else
                 drawRectangle(matrix, x, item.p3, x + item.p1 - 1, item.p3 + item.p2 - 1, item.color);
-        } else {
+        } else if (item.kind == scrollCircleItem || item.kind == scrollFilledCircleItem) {
             drawCircle(matrix, x + item.p1, item.p2, item.p1, item.color, item.kind == scrollFilledCircleItem);
         }
     }
@@ -145,20 +170,56 @@ namespace sarduMatrixInternal {
 
         const operation = matrix._beginOperation();
         const background = mode == MatrixScrollMode.Composed ? matrix._captureBuffer() : null;
-        for (let offsetX = matrix.width(); offsetX >= -contentWidth; offsetX--) {
-            if (!matrix._operationIsActive(operation)) return;
-            const started = control.millis();
-            if (mode == MatrixScrollMode.Composed) matrix._restoreBuffer(background);
-            else matrix._clearBuffer();
-            for (let i = 0; i < items.length; i++) drawScrollItem(matrix, items[i], offsetX);
-            matrix.show();
-            const remaining = frameIntervalMs - (control.millis() - started);
-            basic.pause(remaining > 0 ? remaining : 0);
+        let hasComposition = false;
+        for (let i = 0; i < items.length; i++)
+            if (items[i].kind != scrollTextPathItem) hasComposition = true;
+
+        if (hasComposition) {
+            for (let offsetX = matrix.width(); offsetX >= -contentWidth; offsetX--) {
+                if (!matrix._operationIsActive(operation)) return;
+                const started = control.millis();
+                if (mode == MatrixScrollMode.Composed) matrix._restoreBuffer(background);
+                else matrix._clearBuffer();
+                for (let i = 0; i < items.length; i++)
+                    if (items[i].kind != scrollTextPathItem) drawScrollItem(matrix, items[i], offsetX);
+                matrix.show();
+                const remaining = frameIntervalMs - (control.millis() - started);
+                basic.pause(remaining > 0 ? remaining : 0);
+            }
+        }
+
+        for (let itemIndex = 0; itemIndex < items.length; itemIndex++) {
+            const item = items[itemIndex];
+            if (item.kind != scrollTextPathItem) continue;
+            if (!scrollTextBetween(
+                matrix, item.text, item.x, item.p1, item.p2, item.p3,
+                item.color, frameIntervalMs, item.p4, item.p5, item.p6, item.p7, mode
+            )) return;
         }
     }
 }
 
 namespace sarduMatrix {
+    /** Adds a text path that starts only when start scrolling is called. */
+    //% blockId=sardu_matrix_add_scrolling_text_path block="$matrix add text $text with path from x $startX y $startY to x $endX y $endY|| color $color=neopixel_colors font $font size $size brightness $brightness orientation $orientation"
+    //% group="Scrolling text" weight=72 help=github:pxt-sardu-matrix/docs/api
+    //% compileHiddenArguments=true inlineInputMode="variable" inlineInputModeLimit=7 expandableArgumentBreaks="6"
+    //% matrix.shadow=variables_get matrix.defl=matrix text.defl="Hello" startX.defl=-1 startY.defl=0 endX.defl=0 endY.defl=0 color.defl=NeoPixelColors.White font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=MatrixTextOrientation.Normal
+    export function addScrollingTextPath(
+        matrix: Matrix, text: string,
+        startX: number, startY: number, endX: number, endY: number,
+        color: number = NeoPixelColors.White,
+        font: MatrixFont = MatrixFont.Sardu,
+        size: MatrixFontSize = MatrixFontSize.X1,
+        brightness: number = 128,
+        orientation: MatrixTextOrientation = MatrixTextOrientation.Normal
+    ): void {
+        sarduMatrixInternal.queueScrollingTextPath(
+            matrix, text, startX, startY, endX, endY,
+            color, font, size, brightness, orientation
+        );
+    }
+
     /** Adds a line to the pending scrolling composition. */
     //% blockId=sardu_matrix_add_scrolling_line block="%matrix add scrolling line width %width from y %startY to y %endY|color %color=neopixel_colors spacing %spacing"
     //% group="Scrolling geometry" weight=90 help=github:pxt-sardu-matrix/docs/shapes

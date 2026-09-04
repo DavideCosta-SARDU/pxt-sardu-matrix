@@ -45,6 +45,8 @@ expectSarduMatrix(sarduMatrixInternal.fontBaseHeight(MatrixFont.MicroBitProporti
 expectSarduMatrix(sarduMatrixInternal.glyphWidth(MatrixFont.MicroBitProportional, 73) < sarduMatrixInternal.glyphWidth(MatrixFont.MicroBitProportional, 87));
 expectSarduMatrix(sarduMatrixInternal.glyphWidth(MatrixFont.SarduCompact, 87) == 4);
 expectSarduMatrix(sarduMatrixInternal.glyphWidth(MatrixFont.SarduCompactProportional, 73) < sarduMatrixInternal.glyphWidth(MatrixFont.SarduCompactProportional, 87));
+expectSarduMatrix(sarduMatrixInternal.glyphWidth(MatrixFont.SarduItalic, 65) == 7);
+expectSarduMatrix(sarduMatrixInternal.fontColumn(65, 6, MatrixFont.SarduItalic) == 2);
 
 const currentEffectBuffer = pins.createBuffer(3);
 currentEffectBuffer[0] = 0;

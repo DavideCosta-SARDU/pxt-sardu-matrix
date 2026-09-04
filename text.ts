@@ -190,7 +190,7 @@ namespace sarduMatrixInternal {
         brightness: number = 128,
         orientation: MatrixTextOrientation = MatrixTextOrientation.Normal,
         mode: MatrixScrollMode = MatrixScrollMode.Exclusive
-    ): boolean {
+    ): void {
         startX = Math.floor(startX);
         startY = Math.floor(startY);
         endX = Math.floor(endX);
@@ -206,7 +206,7 @@ namespace sarduMatrixInternal {
                 matrix._clearBuffer();
                 matrix.show();
             }
-            return true;
+            return;
         }
 
         const background = mode == MatrixScrollMode.Composed
@@ -217,7 +217,7 @@ namespace sarduMatrixInternal {
         const deltaY = endY - startY;
         const frameCount = Math.max(Math.abs(deltaX), Math.abs(deltaY));
         for (let frame = 0; frame <= frameCount; frame++) {
-            if (!matrix._operationIsActive(operation)) return false;
+            if (!matrix._operationIsActive(operation)) return;
             const started = control.millis();
             const x = frameCount == 0 ? endX : Math.round(startX + deltaX * frame / frameCount);
             const y = frameCount == 0 ? endY : Math.round(startY + deltaY * frame / frameCount);
@@ -231,7 +231,6 @@ namespace sarduMatrixInternal {
             // Always yield so button and radio handlers can stop the animation.
             basic.pause(remaining > 0 ? remaining : 0);
         }
-        return true;
     }
 
     export function scrollText(

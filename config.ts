@@ -58,9 +58,7 @@ enum MatrixFont {
     //% block="SARDU Compact"
     SarduCompact = 4,
     //% block="SARDU Compact proportional"
-    SarduCompactProportional = 5,
-    //% block="SARDU italic"
-    SarduItalic = 6
+    SarduCompactProportional = 5
 }
 
 /** Integer scale applied to a text font. */

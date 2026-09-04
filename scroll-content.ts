@@ -188,13 +188,37 @@ namespace sarduMatrixInternal {
             }
         }
 
-        for (let itemIndex = 0; itemIndex < items.length; itemIndex++) {
-            const item = items[itemIndex];
+        let hasPaths = false;
+        let pathFrameCount = 0;
+        for (let i = 0; i < items.length; i++) {
+            const item = items[i];
             if (item.kind != scrollTextPathItem) continue;
-            if (!scrollTextBetween(
-                matrix, item.text, item.x, item.p1, item.p2, item.p3,
-                item.color, frameIntervalMs, item.p4, item.p5, item.p6, item.p7, mode
-            )) return;
+            hasPaths = true;
+            pathFrameCount = Math.max(
+                pathFrameCount,
+                Math.max(Math.abs(item.p2 - item.x), Math.abs(item.p3 - item.p1))
+            );
+        }
+
+        if (hasPaths) {
+            for (let frame = 0; frame <= pathFrameCount; frame++) {
+                if (!matrix._operationIsActive(operation)) return;
+                const started = control.millis();
+                if (mode == MatrixScrollMode.Composed) matrix._restoreBuffer(background);
+                else matrix._clearBuffer();
+                for (let i = 0; i < items.length; i++) {
+                    const item = items[i];
+                    if (item.kind != scrollTextPathItem) continue;
+                    const itemFrames = Math.max(Math.abs(item.p2 - item.x), Math.abs(item.p3 - item.p1));
+                    const itemFrame = Math.min(frame, itemFrames);
+                    const x = itemFrames == 0 ? item.p2 : Math.round(item.x + (item.p2 - item.x) * itemFrame / itemFrames);
+                    const y = itemFrames == 0 ? item.p3 : Math.round(item.p1 + (item.p3 - item.p1) * itemFrame / itemFrames);
+                    drawText(matrix, item.text, x, y, item.color, item.p4, item.p5, item.p6, item.p7);
+                }
+                matrix.show();
+                const remaining = frameIntervalMs - (control.millis() - started);
+                basic.pause(remaining > 0 ? remaining : 0);
+            }
         }
     }
 }

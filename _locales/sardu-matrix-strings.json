@@ -109,7 +109,7 @@
   "sarduMatrix.Matrix.drawTextCenteredWidth|param|text|defl": "Hello",
   "sarduMatrix.Matrix.drawTextCentered|block": "%matrix draw static text %text centered in width and height|color %color=neopixel_colors font %font size %size brightness %brightness orientation %orientation",
   "sarduMatrix.Matrix.drawTextCentered|param|text|defl": "Hello",
-  "sarduMatrix.Matrix.drawText|block": "%matrix draw static text %text at x %x y %y|color %color=neopixel_colors font %font size %size brightness %brightness orientation %orientation",
+  "sarduMatrix.Matrix.drawText|block": "$this draw static text $text at x $x y $y|color $color=neopixel_colors font $font size $size brightness $brightness orientation $orientation",
   "sarduMatrix.Matrix.drawText|param|text|defl": "Hello",
   "sarduMatrix.Matrix.height|block": "%matrix height",
   "sarduMatrix.Matrix.interruptAndClear|block": "%matrix stop and clear matrix",

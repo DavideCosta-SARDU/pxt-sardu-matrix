@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.8.3 - 2026-09-07
+
+- Fixed MakeCode Matrix block metadata so code written in JavaScript or Python decompiles with the original matrix instance variable.
+- Restored the standard replaceable color dropdown shadow for color parameters, including RGB block compatibility.
+- Kept runtime behavior, public function signatures and block logic unchanged.
+
 ## 0.8.2 - candidate
 
 - Added the Micro:Bit proportional font while preserving all existing font enum values and behavior.

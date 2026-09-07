@@ -11,4 +11,6 @@ def on_forever():
         128,
         MatrixTextOrientation.NORMAL)
     matrix.show()
+    sarduMatrix.add_scrolling_circle(matrix, 4, 7, NeoPixelColors.WHITE, 1)
+    sarduMatrix.add_scrolling_rectangle(matrix, 8, 8, 0, neopixel.colors(NeoPixelColors.WHITE), 1)
 basic.forever(on_forever)

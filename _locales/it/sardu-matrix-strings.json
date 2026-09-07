@@ -87,7 +87,7 @@
   "sarduMatrix.Matrix.drawTextCenteredWidth|param|text|defl": "Ciao",
   "sarduMatrix.Matrix.drawTextCentered|block": "%matrix disegna testo statico %text centrato in larghezza e altezza|colore %color=neopixel_colors font %font dimensione %size luminosità %brightness orientamento %orientation",
   "sarduMatrix.Matrix.drawTextCentered|param|text|defl": "Ciao",
-  "sarduMatrix.Matrix.drawText|block": "$this disegna testo statico $text a x $x y $y|colore $color=neopixel_colors font $font dimensione $size luminosità $brightness orientamento $orientation",
+  "sarduMatrix.Matrix.drawText|block": "$this=variables_get(matrix) disegna testo statico $text a x $x y $y|colore $color=neopixel_colors font $font dimensione $size luminosità $brightness orientamento $orientation",
   "sarduMatrix.Matrix.drawText|param|text|defl": "Ciao",
   "sarduMatrix.fillCircle|block": "%matrix riempi cerchio centro x %centerX y %centerY raggio %radius|colore %color=neopixel_colors",
   "sarduMatrix.fillRectangle|block": "%matrix riempi rettangolo da x %x1 y %y1 a x %x2 y %y2|colore %color=neopixel_colors",

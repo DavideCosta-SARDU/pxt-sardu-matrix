@@ -78,9 +78,9 @@ namespace sarduMatrix {
         }
 
         /** Sends the RGB buffer to the physical display. */
-        //% blockId=sardu_matrix_show block="%matrix show"
+        //% blockId=sardu_matrix_show block="$this show"
         //% group="Display" weight=72 help=github:pxt-sardu-matrix/docs/api
-        //% this.defl=matrix
+        //% this.shadow=variables_get this.defl=matrix
         show(): void {
             this.strip.show();
         }
@@ -107,9 +107,9 @@ namespace sarduMatrix {
 
         /** Draws static text at explicit coordinates without showing it. */
         // Keep block placeholders in the same order as the TypeScript parameters.
-        //% blockId=sardu_matrix_draw_text block="%matrix draw static text %text at x %x y %y|color %color=neopixel_colors font %font size %size brightness %brightness orientation %orientation"
+        //% blockId=sardu_matrix_draw_text block="$this draw static text $text at x $x y $y|color $color=neopixel_colors font $font size $size brightness $brightness orientation $orientation"
         //% group="Static text" weight=80 help=github:pxt-sardu-matrix/docs/api
-        //% this.defl=matrix text.defl="Hello" x.defl=0 y.defl=0 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 color.shadow=neopixel_colors color.defl=NeoPixelColors.White brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=MatrixTextOrientation.Normal
+        //% this.shadow=variables_get this.defl=matrix text.defl="Hello" x.defl=0 y.defl=0 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 color.shadow=neopixel_colors brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=MatrixTextOrientation.Normal
         drawText(
             text: string,
             x: number,

@@ -228,7 +228,7 @@ namespace sarduMatrix {
     //% blockId=sardu_matrix_add_scrolling_text_path block="$matrix add text $text with path from x $startX y $startY to x $endX y $endY|| color $color=neopixel_colors font $font size $size brightness $brightness orientation $orientation"
     //% group="Scrolling text" weight=72 help=github:pxt-sardu-matrix/docs/api
     //% compileHiddenArguments=true inlineInputMode="variable" inlineInputModeLimit=7 expandableArgumentBreaks="6"
-    //% matrix.shadow=variables_get matrix.defl=matrix text.defl="Hello" startX.defl=-1 startY.defl=0 endX.defl=0 endY.defl=0 color.defl=NeoPixelColors.White font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=MatrixTextOrientation.Normal
+    //% matrix.shadow=variables_get matrix.defl=matrix text.defl="Hello" startX.defl=-1 startY.defl=0 endX.defl=0 endY.defl=0 color.shadow=neopixel_colors color.defl=NeoPixelColors.White font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=MatrixTextOrientation.Normal
     export function addScrollingTextPath(
         matrix: Matrix, text: string,
         startX: number, startY: number, endX: number, endY: number,

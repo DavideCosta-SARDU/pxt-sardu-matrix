@@ -13,9 +13,9 @@ namespace sarduMatrix {
         }
 
         /** Sets one logical pixel. Call show to update the physical display. */
-        //% blockId=sardu_matrix_set_pixel block="%matrix set pixel x %x y %y to %color=neopixel_colors"
+        //% blockId=sardu_matrix_set_pixel block="$this set pixel x $x y $y to $color=neopixel_colors"
         //% group="Pixels" weight=90 help=github:pxt-sardu-matrix/docs/api
-        //% this.defl=matrix x.defl=0 y.defl=0 color.shadow=neopixel_colors color.defl=NeoPixelColors.White
+        //% this.shadow=variables_get this.defl=matrix x.defl=0 y.defl=0 color.shadow=neopixel_colors
         setPixel(x: number, y: number, color: number): void {
             x = Math.floor(x);
             y = Math.floor(y);
@@ -24,9 +24,9 @@ namespace sarduMatrix {
         }
 
         /** Stops long-running output, clears the RGB buffer and immediately updates the display. */
-        //% blockId=sardu_matrix_interrupt_and_clear block="%matrix stop and clear matrix"
+        //% blockId=sardu_matrix_interrupt_and_clear block="$this stop and clear matrix"
         //% group="Display" weight=69 help=github:pxt-sardu-matrix/docs/api
-        //% this.defl=matrix
+        //% this.shadow=variables_get this.defl=matrix
         interruptAndClear(): void {
             this.operationVersion++;
             this.strip.clear();
@@ -34,45 +34,45 @@ namespace sarduMatrix {
         }
 
         /** Clears the RGB buffer and immediately updates the physical display. */
-        //% blockId=sardu_matrix_clear block="%matrix clear"
+        //% blockId=sardu_matrix_clear block="$this clear"
         //% group="Display" weight=70 help=github:pxt-sardu-matrix/docs/api
-        //% this.defl=matrix
+        //% this.shadow=variables_get this.defl=matrix
         clear(): void {
             this.strip.clear();
             this.strip.show();
         }
 
         /** Clears inclusive logical columns and immediately updates the display. */
-        //% blockId=sardu_matrix_clear_columns block="%matrix clear columns from x %startX to x %endX"
+        //% blockId=sardu_matrix_clear_columns block="$this clear columns from x $startX to x $endX"
         //% group="Display" weight=24 advanced=true help=github:pxt-sardu-matrix/docs/api
-        //% this.defl=matrix startX.defl=0 endX.defl=15
+        //% this.shadow=variables_get this.defl=matrix startX.defl=0 endX.defl=15
         clearColumns(startX: number, endX: number): void {
             this._clearAreaBuffer(startX, 0, endX, this.config.height - 1);
             this.show();
         }
 
         /** Clears inclusive logical rows and immediately updates the display. */
-        //% blockId=sardu_matrix_clear_rows block="%matrix clear rows from y %startY to y %endY"
+        //% blockId=sardu_matrix_clear_rows block="$this clear rows from y $startY to y $endY"
         //% group="Display" weight=23 advanced=true help=github:pxt-sardu-matrix/docs/api
-        //% this.defl=matrix startY.defl=0 endY.defl=15
+        //% this.shadow=variables_get this.defl=matrix startY.defl=0 endY.defl=15
         clearRows(startY: number, endY: number): void {
             this._clearAreaBuffer(0, startY, this.config.width - 1, endY);
             this.show();
         }
 
         /** Clears an inclusive logical rectangle and immediately updates the display. */
-        //% blockId=sardu_matrix_clear_area block="%matrix clear area from x %startX y %startY to x %endX y %endY"
+        //% blockId=sardu_matrix_clear_area block="$this clear area from x $startX y $startY to x $endX y $endY"
         //% group="Display" weight=22 advanced=true help=github:pxt-sardu-matrix/docs/api
-        //% this.defl=matrix startX.defl=0 startY.defl=0 endX.defl=15 endY.defl=15
+        //% this.shadow=variables_get this.defl=matrix startX.defl=0 startY.defl=0 endX.defl=15 endY.defl=15
         clearArea(startX: number, startY: number, endX: number, endY: number): void {
             this._clearAreaBuffer(startX, startY, endX, endY);
             this.show();
         }
 
         /** Clears only the RGB buffer. Call show to update the physical display. */
-        //% blockId=sardu_matrix_clear_buffer block="%matrix clear buffer"
+        //% blockId=sardu_matrix_clear_buffer block="$this clear buffer"
         //% group="Display" weight=21 advanced=true help=github:pxt-sardu-matrix/docs/api
-        //% this.defl=matrix
+        //% this.shadow=variables_get this.defl=matrix
         clearBuffer(): void {
             this.strip.clear();
         }
@@ -86,17 +86,17 @@ namespace sarduMatrix {
         }
 
         /** Starts and then clears the pending scrolling composition. */
-        //% blockId=sardu_matrix_start_scrolling block="%matrix start scrolling every %frameIntervalMs ms mode %mode"
+        //% blockId=sardu_matrix_start_scrolling block="$this start scrolling every $frameIntervalMs ms mode $mode"
         //% group="Display" weight=71 help=github:pxt-sardu-matrix/docs/shapes
-        //% this.defl=matrix frameIntervalMs.min=0 frameIntervalMs.defl=100 mode.defl=MatrixScrollMode.Exclusive
+        //% this.shadow=variables_get this.defl=matrix frameIntervalMs.min=0 frameIntervalMs.defl=100 mode.defl=MatrixScrollMode.Exclusive
         startScrolling(frameIntervalMs: number = 100, mode: MatrixScrollMode = MatrixScrollMode.Exclusive): void {
             sarduMatrixInternal.startQueuedScrolling(this, frameIntervalMs, mode);
         }
 
         /** Sets brightness for pixels written after this call. */
-        //% blockId=sardu_matrix_set_brightness block="%matrix set brightness %brightness"
+        //% blockId=sardu_matrix_set_brightness block="$this set brightness $brightness"
         //% group="Display" weight=16 advanced=true brightness.min=0 brightness.max=255 brightness.defl=128 help=github:pxt-sardu-matrix/docs/api
-        //% this.defl=matrix
+        //% this.shadow=variables_get this.defl=matrix
         setBrightness(brightness: number): void {
             brightness = Math.floor(brightness);
             if (brightness != brightness) brightness = 0;
@@ -124,9 +124,9 @@ namespace sarduMatrix {
         }
 
         /** Draws static text centered across the matrix width at an explicit Y coordinate. */
-        //% blockId=sardu_matrix_draw_text_centered_width block="%matrix draw static text %text centered in width at y %y|color %color=neopixel_colors font %font size %size brightness %brightness orientation %orientation"
+        //% blockId=sardu_matrix_draw_text_centered_width block="$this draw static text $text centered in width at y $y|color $color=neopixel_colors font $font size $size brightness $brightness orientation $orientation"
         //% group="Static text" weight=79 help=github:pxt-sardu-matrix/docs/api
-        //% this.defl=matrix text.defl="Hello" y.defl=0 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 color.shadow=neopixel_colors color.defl=NeoPixelColors.White brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=MatrixTextOrientation.Normal
+        //% this.shadow=variables_get this.defl=matrix text.defl="Hello" y.defl=0 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 color.shadow=neopixel_colors brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=MatrixTextOrientation.Normal
         drawTextCenteredWidth(
             text: string,
             y: number,
@@ -145,9 +145,9 @@ namespace sarduMatrix {
         }
 
         /** Draws static text centered across the matrix height at an explicit X coordinate. */
-        //% blockId=sardu_matrix_draw_text_centered_height block="%matrix draw static text %text centered in height at x %x|color %color=neopixel_colors font %font size %size brightness %brightness orientation %orientation"
+        //% blockId=sardu_matrix_draw_text_centered_height block="$this draw static text $text centered in height at x $x|color $color=neopixel_colors font $font size $size brightness $brightness orientation $orientation"
         //% group="Static text" weight=78 help=github:pxt-sardu-matrix/docs/api
-        //% this.defl=matrix text.defl="Hello" x.defl=0 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 color.shadow=neopixel_colors color.defl=NeoPixelColors.White brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=MatrixTextOrientation.Normal
+        //% this.shadow=variables_get this.defl=matrix text.defl="Hello" x.defl=0 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 color.shadow=neopixel_colors brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=MatrixTextOrientation.Normal
         drawTextCenteredHeight(
             text: string,
             x: number,
@@ -166,9 +166,9 @@ namespace sarduMatrix {
         }
 
         /** Draws static text centered both horizontally and vertically. */
-        //% blockId=sardu_matrix_draw_text_centered block="%matrix draw static text %text centered in width and height|color %color=neopixel_colors font %font size %size brightness %brightness orientation %orientation"
+        //% blockId=sardu_matrix_draw_text_centered block="$this draw static text $text centered in width and height|color $color=neopixel_colors font $font size $size brightness $brightness orientation $orientation"
         //% group="Static text" weight=77 help=github:pxt-sardu-matrix/docs/api
-        //% this.defl=matrix text.defl="Hello" font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 color.shadow=neopixel_colors color.defl=NeoPixelColors.White brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=MatrixTextOrientation.Normal
+        //% this.shadow=variables_get this.defl=matrix text.defl="Hello" font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 color.shadow=neopixel_colors brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=MatrixTextOrientation.Normal
         drawTextCentered(
             text: string,
             color: number,
@@ -191,9 +191,9 @@ namespace sarduMatrix {
         }
 
         /** Draws text horizontally centered between two inclusive X coordinates. */
-        //% blockId=sardu_matrix_draw_text_centered_width_range block="%matrix draw static text %text centered from x %startX to x %endX at y %y|color %color=neopixel_colors font %font size %size brightness %brightness orientation %orientation"
+        //% blockId=sardu_matrix_draw_text_centered_width_range block="$this draw static text $text centered from x $startX to x $endX at y $y|color $color=neopixel_colors font $font size $size brightness $brightness orientation $orientation"
         //% group="Static text" weight=15 advanced=true help=github:pxt-sardu-matrix/docs/api
-        //% this.defl=matrix text.defl="Hello" startX.defl=0 endX.defl=15 y.defl=0 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 color.shadow=neopixel_colors color.defl=NeoPixelColors.White brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=MatrixTextOrientation.Normal
+        //% this.shadow=variables_get this.defl=matrix text.defl="Hello" startX.defl=0 endX.defl=15 y.defl=0 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 color.shadow=neopixel_colors brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=MatrixTextOrientation.Normal
         drawTextCenteredWidthRange(
             text: string, startX: number, endX: number, y: number, color: number,
             font: MatrixFont = MatrixFont.Sardu,
@@ -208,9 +208,9 @@ namespace sarduMatrix {
         }
 
         /** Draws text vertically centered between two inclusive Y coordinates. */
-        //% blockId=sardu_matrix_draw_text_centered_height_range block="%matrix draw static text %text centered from y %startY to y %endY at x %x|color %color=neopixel_colors font %font size %size brightness %brightness orientation %orientation"
+        //% blockId=sardu_matrix_draw_text_centered_height_range block="$this draw static text $text centered from y $startY to y $endY at x $x|color $color=neopixel_colors font $font size $size brightness $brightness orientation $orientation"
         //% group="Static text" weight=14 advanced=true help=github:pxt-sardu-matrix/docs/api
-        //% this.defl=matrix text.defl="Hello" startY.defl=0 endY.defl=15 x.defl=0 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 color.shadow=neopixel_colors color.defl=NeoPixelColors.White brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=MatrixTextOrientation.Normal
+        //% this.shadow=variables_get this.defl=matrix text.defl="Hello" startY.defl=0 endY.defl=15 x.defl=0 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 color.shadow=neopixel_colors brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=MatrixTextOrientation.Normal
         drawTextCenteredHeightRange(
             text: string, startY: number, endY: number, x: number, color: number,
             font: MatrixFont = MatrixFont.Sardu,
@@ -225,9 +225,9 @@ namespace sarduMatrix {
         }
 
         /** Draws text centered inside the inclusive rectangle delimited by A and B. */
-        //% blockId=sardu_matrix_draw_text_centered_area block="%matrix draw static text %text centered in area A x %startX y %startY B x %endX y %endY|color %color=neopixel_colors font %font size %size brightness %brightness orientation %orientation"
+        //% blockId=sardu_matrix_draw_text_centered_area block="$this draw static text $text centered in area A x $startX y $startY B x $endX y $endY|color $color=neopixel_colors font $font size $size brightness $brightness orientation $orientation"
         //% group="Static text" weight=13 advanced=true help=github:pxt-sardu-matrix/docs/api
-        //% this.defl=matrix text.defl="Hello" startX.defl=0 startY.defl=0 endX.defl=15 endY.defl=15 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 color.shadow=neopixel_colors color.defl=NeoPixelColors.White brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=MatrixTextOrientation.Normal
+        //% this.shadow=variables_get this.defl=matrix text.defl="Hello" startX.defl=0 startY.defl=0 endX.defl=15 endY.defl=15 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 color.shadow=neopixel_colors brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=MatrixTextOrientation.Normal
         drawTextCenteredArea(
             text: string, startX: number, startY: number, endX: number, endY: number, color: number,
             font: MatrixFont = MatrixFont.Sardu,
@@ -245,9 +245,9 @@ namespace sarduMatrix {
         }
 
         /** Adds text to the pending scrolling composition. */
-        //% blockId=sardu_matrix_add_scrolling_text block="%matrix add text %text to scrolling|at y %y color %color=neopixel_colors font %font size %size brightness %brightness orientation %orientation spacing %spacing"
+        //% blockId=sardu_matrix_add_scrolling_text block="$this add text $text to scrolling|at y $y color $color=neopixel_colors font $font size $size brightness $brightness orientation $orientation spacing $spacing"
         //% group="Scrolling text" weight=74 help=github:pxt-sardu-matrix/docs/shapes
-        //% this.defl=matrix text.defl="Hello" y.defl=0 color.shadow=neopixel_colors color.defl=NeoPixelColors.White font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=MatrixTextOrientation.Normal spacing.min=0 spacing.defl=1
+        //% this.shadow=variables_get this.defl=matrix text.defl="Hello" y.defl=0 color.shadow=neopixel_colors font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=MatrixTextOrientation.Normal spacing.min=0 spacing.defl=1
         addScrollingText(
             text: string, y: number = 0, color: number = NeoPixelColors.White,
             font: MatrixFont = MatrixFont.Sardu, size: MatrixFontSize = MatrixFontSize.X1,
@@ -258,9 +258,9 @@ namespace sarduMatrix {
         }
 
         /** Scrolls one line left from selected coordinates, clearing or preserving the existing scene. */
-        //% blockId=sardu_matrix_scroll_text block="%matrix scroll text %text from x %x y %y|color %color=neopixel_colors every %frameIntervalMs ms font %font size %size brightness %brightness orientation %orientation mode %mode"
+        //% blockId=sardu_matrix_scroll_text block="$this scroll text $text from x $x y $y|color $color=neopixel_colors every $frameIntervalMs ms font $font size $size brightness $brightness orientation $orientation mode $mode"
         //% group="Scrolling text" weight=75 help=github:pxt-sardu-matrix/docs/api
-        //% this.defl=matrix text.defl="Hello" x.shadow=sardu_matrix_width y.defl=0 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 color.shadow=neopixel_colors color.defl=NeoPixelColors.White brightness.min=0 brightness.max=255 brightness.defl=128 frameIntervalMs.defl=100 frameIntervalMs.min=0 orientation.defl=MatrixTextOrientation.Normal mode.defl=MatrixScrollMode.Exclusive
+        //% this.shadow=variables_get this.defl=matrix text.defl="Hello" x.shadow=sardu_matrix_width y.defl=0 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 color.shadow=neopixel_colors brightness.min=0 brightness.max=255 brightness.defl=128 frameIntervalMs.defl=100 frameIntervalMs.min=0 orientation.defl=MatrixTextOrientation.Normal mode.defl=MatrixScrollMode.Exclusive
         scrollText(
             text: string,
             x: number = 16,
@@ -277,9 +277,9 @@ namespace sarduMatrix {
         }
 
         /** Scrolls a centered text line from one matrix edge, clearing or preserving the existing scene. */
-        //% blockId=sardu_matrix_scroll_text_from_edge block="%matrix scroll text %text from edge %edge|color %color=neopixel_colors every %frameIntervalMs ms font %font size %size brightness %brightness orientation %orientation mode %mode"
+        //% blockId=sardu_matrix_scroll_text_from_edge block="$this scroll text $text from edge $edge|color $color=neopixel_colors every $frameIntervalMs ms font $font size $size brightness $brightness orientation $orientation mode $mode"
         //% group="Scrolling text" weight=76 help=github:pxt-sardu-matrix/docs/api
-        //% this.defl=matrix text.defl="Hello" edge.defl=MatrixScrollEdge.Right color.shadow=neopixel_colors color.defl=NeoPixelColors.White frameIntervalMs.defl=100 frameIntervalMs.min=0 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=MatrixTextOrientation.Normal mode.defl=MatrixScrollMode.Exclusive
+        //% this.shadow=variables_get this.defl=matrix text.defl="Hello" edge.defl=MatrixScrollEdge.Right color.shadow=neopixel_colors frameIntervalMs.defl=100 frameIntervalMs.min=0 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=MatrixTextOrientation.Normal mode.defl=MatrixScrollMode.Exclusive
         scrollTextFromEdge(
             text: string,
             edge: MatrixScrollEdge = MatrixScrollEdge.Right,
@@ -297,33 +297,33 @@ namespace sarduMatrix {
         }
 
         /** Returns the logical display width. */
-        //% blockId=sardu_matrix_width block="%matrix width"
+        //% blockId=sardu_matrix_width block="$this width"
         //% group="Display" weight=20 advanced=true help=github:pxt-sardu-matrix/docs/api
-        //% this.defl=matrix
+        //% this.shadow=variables_get this.defl=matrix
         width(): number {
             return this.config.width;
         }
 
         /** Returns the logical display height. */
-        //% blockId=sardu_matrix_height block="%matrix height"
+        //% blockId=sardu_matrix_height block="$this height"
         //% group="Display" weight=19 advanced=true help=github:pxt-sardu-matrix/docs/api
-        //% this.defl=matrix
+        //% this.shadow=variables_get this.defl=matrix
         height(): number {
             return this.config.height;
         }
 
         /** Returns the number of configured RGB LEDs. */
-        //% blockId=sardu_matrix_led_count block="%matrix LED count"
+        //% blockId=sardu_matrix_led_count block="$this LED count"
         //% group="Display" weight=18 advanced=true help=github:pxt-sardu-matrix/docs/api
-        //% this.defl=matrix
+        //% this.shadow=variables_get this.defl=matrix
         ledCount(): number {
             return this.config.ledCount;
         }
 
         /** Returns the exact size of the NeoPixel RGB buffer in bytes. */
-        //% blockId=sardu_matrix_rgb_buffer_bytes block="%matrix RGB buffer bytes"
+        //% blockId=sardu_matrix_rgb_buffer_bytes block="$this RGB buffer bytes"
         //% group="Display" weight=17 advanced=true help=github:pxt-sardu-matrix/docs/api
-        //% this.defl=matrix
+        //% this.shadow=variables_get this.defl=matrix
         rgbBufferBytes(): number {
             return this.config.rgbBytes;
         }

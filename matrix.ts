@@ -104,7 +104,7 @@ namespace sarduMatrix {
         // Keep block placeholders in the same order as the TypeScript parameters.
         //% blockId=sardu_matrix_draw_text block="$this=variables_get(matrix) draw static text $text at x $x y $y|color $color=neopixel_colors font $font size $size brightness $brightness orientation $orientation"
         //% group="Static text" weight=80 help=github:pxt-sardu-matrix/docs/api
-        //% this.shadow=variables_get this.defl=matrix text.defl="Hello" x.defl=0 y.defl=0 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 color.shadow=neopixel_colors brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=MatrixTextOrientation.Normal
+        //% this.shadow=variables_get this.defl=matrix text.defl="Hello" x.defl=0 y.defl=0 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 color.shadow=neopixel_colors color.snippet="neopixel.colors(NeoPixelColors.White)" color.pySnippet="neopixel.colors(NeoPixelColors.WHITE)" brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=MatrixTextOrientation.Normal
         drawText(
             text: string,
             x: number,

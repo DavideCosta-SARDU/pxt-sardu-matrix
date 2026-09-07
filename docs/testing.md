@@ -52,3 +52,9 @@ For a physical chain, repeat the mapping checks on at least one single panel and
 ## Pass/fail record
 
 Record the exact commit or tag, Micro:Bit revision, matrix arrangement, data pin and power configuration. A pass requires all tested pixels and frames to match the expected positions, colors and final states. Any unexplained pixel, missing group, compile failure or incorrect final state is a failure and blocks promotion of that commit.
+
+## Python compatibility check
+
+Python compatibility is tested in the separate `projects/python-compatibility` project. It is not included in the extension runtime and therefore cannot change the behavior or size of the stable package.
+
+Before promotion, compile that project for Micro:Bit V1 and V2, then perform one round trip in a fresh MakeCode project: Blocks or TypeScript to Python and back to Blocks. Compare the generated Python with `docs/python-compatibility.md` and record any renamed API, unsupported parameter or grey JavaScript block as a failure.

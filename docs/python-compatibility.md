@@ -1,0 +1,9 @@
+# MakeCode Python compatibility test
+
+The isolated project in `projects/python-compatibility` checks the Python names and types exposed by SARDU-Matrix without changing the extension runtime.
+
+It covers creation, static text, `show`, two queued text paths, matrix width, font enums and one `start scrolling` call. The project must compile for Micro:Bit V1 and V2 before a Python candidate is offered for manual testing.
+
+For the final editor check, import the exact candidate URL into a fresh MakeCode project, open `Python`, and compare the generated program with `projects/python-compatibility/main.py`. Then switch back to Blocks and confirm that no block is lost or replaced by a grey JavaScript block.
+
+Hardware and MakeCode visual testing remain separate from the stable release. Promotion is allowed only after the candidate commit is confirmed by the tester.

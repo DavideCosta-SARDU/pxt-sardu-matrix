@@ -1,0 +1,20 @@
+{
+    "name": "sardu-matrix-python-compatibility",
+    "version": "0.0.1",
+    "description": "Isolated MakeCode Python compatibility smoke test for SARDU-Matrix",
+    "dependencies": {
+        "core": "*",
+        "microphone": "*",
+        "sardu-matrix": "file:../.."
+    },
+    "files": [
+        "main.py"
+    ],
+    "targetVersions": {
+        "branch": "v9.1.1",
+        "tag": "v9.1.1",
+        "target": "9.1.1",
+        "pxt": "13.0.1"
+    },
+    "preferredEditor": "pythonprj"
+}

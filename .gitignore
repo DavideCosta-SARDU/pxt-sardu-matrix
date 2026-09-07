@@ -2,7 +2,10 @@ built/
 pxt_modules/
 node_modules/
 .pxt/
-projects/
+projects/*
+!projects/python-compatibility/
+!projects/python-compatibility/main.py
+!projects/python-compatibility/pxt.json
 package.json
 package-lock.json
 tsconfig.json

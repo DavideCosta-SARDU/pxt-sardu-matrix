@@ -245,7 +245,7 @@ namespace sarduMatrix {
     }
 
     /** Adds a line to the pending scrolling composition. */
-    //% blockId=sardu_matrix_add_scrolling_line block="%matrix add scrolling line width %width from y %startY to y %endY|color %color=neopixel_colors spacing %spacing"
+    //% blockId=sardu_matrix_add_scrolling_line block="%matrix add scrolling line width %width from y %startY to y %endY|color %color spacing %spacing"
     //% group="Scrolling geometry" weight=90 help=github:pxt-sardu-matrix/docs/shapes
     //% matrix.shadow=variables_get matrix.defl=matrix width.min=1 width.defl=8 startY.defl=0 endY.defl=7 color.defl=NeoPixelColors.White spacing.min=0 spacing.defl=1
     export function addScrollingLine(matrix: Matrix, width: number = 8, startY: number = 0, endY: number = 7, color: NeoPixelColors = NeoPixelColors.White, spacing: number = 1): void {
@@ -253,7 +253,7 @@ namespace sarduMatrix {
     }
 
     /** Adds a rectangle outline to the pending scrolling composition. */
-    //% blockId=sardu_matrix_add_scrolling_rectangle block="%matrix add scrolling rectangle width %width height %height at y %y|color %color=neopixel_colors spacing %spacing"
+    //% blockId=sardu_matrix_add_scrolling_rectangle block="%matrix add scrolling rectangle width %width height %height at y %y|color %color spacing %spacing"
     //% group="Scrolling geometry" weight=80 help=github:pxt-sardu-matrix/docs/shapes
     //% matrix.shadow=variables_get matrix.defl=matrix width.min=1 width.defl=8 height.min=1 height.defl=8 y.defl=0 color.defl=NeoPixelColors.White spacing.min=0 spacing.defl=1
     export function addScrollingRectangle(matrix: Matrix, width: number = 8, height: number = 8, y: number = 0, color: NeoPixelColors = NeoPixelColors.White, spacing: number = 1): void {
@@ -261,7 +261,7 @@ namespace sarduMatrix {
     }
 
     /** Adds a filled rectangle to the pending scrolling composition. */
-    //% blockId=sardu_matrix_add_scrolling_filled_rectangle block="%matrix add scrolling filled rectangle width %width height %height at y %y|color %color=neopixel_colors spacing %spacing"
+    //% blockId=sardu_matrix_add_scrolling_filled_rectangle block="%matrix add scrolling filled rectangle width %width height %height at y %y|color %color spacing %spacing"
     //% group="Scrolling geometry" weight=70 help=github:pxt-sardu-matrix/docs/shapes
     //% matrix.shadow=variables_get matrix.defl=matrix width.min=1 width.defl=8 height.min=1 height.defl=8 y.defl=0 color.defl=NeoPixelColors.White spacing.min=0 spacing.defl=1
     export function addScrollingFilledRectangle(matrix: Matrix, width: number = 8, height: number = 8, y: number = 0, color: NeoPixelColors = NeoPixelColors.White, spacing: number = 1): void {
@@ -269,7 +269,7 @@ namespace sarduMatrix {
     }
 
     /** Adds a circle outline to the pending scrolling composition. */
-    //% blockId=sardu_matrix_add_scrolling_circle block="%matrix add scrolling circle radius %radius center y %centerY|color %color=neopixel_colors spacing %spacing"
+    //% blockId=sardu_matrix_add_scrolling_circle block="%matrix add scrolling circle radius %radius center y %centerY|color %color spacing %spacing"
     //% group="Scrolling geometry" weight=60 help=github:pxt-sardu-matrix/docs/shapes
     //% matrix.shadow=variables_get matrix.defl=matrix radius.min=0 radius.defl=4 centerY.defl=7 color.defl=NeoPixelColors.White spacing.min=0 spacing.defl=1
     export function addScrollingCircle(matrix: Matrix, radius: number = 4, centerY: number = 7, color: NeoPixelColors = NeoPixelColors.White, spacing: number = 1): void {
@@ -277,7 +277,7 @@ namespace sarduMatrix {
     }
 
     /** Adds a filled circle to the pending scrolling composition. */
-    //% blockId=sardu_matrix_add_scrolling_filled_circle block="%matrix add scrolling filled circle radius %radius center y %centerY|color %color=neopixel_colors spacing %spacing"
+    //% blockId=sardu_matrix_add_scrolling_filled_circle block="%matrix add scrolling filled circle radius %radius center y %centerY|color %color spacing %spacing"
     //% group="Scrolling geometry" weight=50 help=github:pxt-sardu-matrix/docs/shapes
     //% matrix.shadow=variables_get matrix.defl=matrix radius.min=0 radius.defl=4 centerY.defl=7 color.defl=NeoPixelColors.White spacing.min=0 spacing.defl=1
     export function addScrollingFilledCircle(matrix: Matrix, radius: number = 4, centerY: number = 7, color: NeoPixelColors = NeoPixelColors.White, spacing: number = 1): void {

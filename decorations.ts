@@ -257,6 +257,7 @@ namespace sarduMatrix {
     //% group="Static text" weight=70 help=github:pxt-sardu-matrix/docs/gradient-and-icons
     //% compileHiddenArguments=true inlineInputMode="variable" inlineInputModeLimit=7 expandableArgumentBreaks="4"
     //% matrix.shadow=variables_get matrix.defl=matrix text.defl="Hello" x.defl=0 y.defl=0 firstColor.defl=NeoPixelColors.Red secondColor.defl=NeoPixelColors.Blue direction.defl=MatrixWipeDirection.LeftToRight font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=MatrixTextOrientation.Normal
+    //% firstColor.snippet="neopixel.colors(NeoPixelColors.Red)" firstColor.pySnippet="neopixel.colors(NeoPixelColors.RED)" secondColor.snippet="neopixel.colors(NeoPixelColors.Blue)" secondColor.pySnippet="neopixel.colors(NeoPixelColors.BLUE)"
     export function drawGradientText(
         matrix: Matrix,
         text: string,
@@ -278,6 +279,7 @@ namespace sarduMatrix {
     //% group="Static text" weight=69 help=github:pxt-sardu-matrix/docs/gradient-and-icons
     //% compileHiddenArguments=true inlineInputMode="variable" inlineInputModeLimit=8 expandableArgumentBreaks="3"
     //% matrix.shadow=variables_get matrix.defl=matrix text.defl="Hello" x.defl=0 y.defl=0 color.defl=NeoPixelColors.White firstBrightness.min=0 firstBrightness.max=255 firstBrightness.defl=128 finalBrightness.min=0 finalBrightness.max=255 finalBrightness.defl=8 direction.defl=MatrixWipeDirection.LeftToRight font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 orientation.defl=MatrixTextOrientation.Normal
+    //% color.snippet="neopixel.colors(NeoPixelColors.White)" color.pySnippet="neopixel.colors(NeoPixelColors.WHITE)"
     export function drawBrightnessGradientText(
         matrix: Matrix,
         text: string,
@@ -302,6 +304,7 @@ namespace sarduMatrix {
     //% group="Scrolling text" weight=70 help=github:pxt-sardu-matrix/docs/gradient-and-icons
     //% compileHiddenArguments=true inlineInputMode="variable" inlineInputModeLimit=8 expandableArgumentBreaks="4"
     //% matrix.shadow=variables_get matrix.defl=matrix text.defl="Hello" edge.defl=MatrixScrollEdge.Right firstColor.defl=NeoPixelColors.Red secondColor.defl=NeoPixelColors.Blue direction.defl=MatrixWipeDirection.LeftToRight frameIntervalMs.min=0 frameIntervalMs.defl=100 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=MatrixTextOrientation.Normal mode.defl=MatrixScrollMode.Exclusive
+    //% firstColor.snippet="neopixel.colors(NeoPixelColors.Red)" firstColor.pySnippet="neopixel.colors(NeoPixelColors.RED)" secondColor.snippet="neopixel.colors(NeoPixelColors.Blue)" secondColor.pySnippet="neopixel.colors(NeoPixelColors.BLUE)"
     export function scrollGradientTextFromEdge(
         matrix: Matrix,
         text: string,
@@ -327,6 +330,7 @@ namespace sarduMatrix {
     //% group="Scrolling text" weight=69 help=github:pxt-sardu-matrix/docs/gradient-and-icons
     //% compileHiddenArguments=true inlineInputMode="variable" inlineInputModeLimit=9 expandableArgumentBreaks="4"
     //% matrix.shadow=variables_get matrix.defl=matrix text.defl="Hello" edge.defl=MatrixScrollEdge.Right color.defl=NeoPixelColors.White firstBrightness.min=0 firstBrightness.max=255 firstBrightness.defl=128 finalBrightness.min=0 finalBrightness.max=255 finalBrightness.defl=8 direction.defl=MatrixWipeDirection.LeftToRight frameIntervalMs.min=0 frameIntervalMs.defl=100 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 orientation.defl=MatrixTextOrientation.Normal mode.defl=MatrixScrollMode.Exclusive
+    //% color.snippet="neopixel.colors(NeoPixelColors.White)" color.pySnippet="neopixel.colors(NeoPixelColors.WHITE)"
     export function scrollBrightnessGradientTextFromEdge(
         matrix: Matrix,
         text: string,
@@ -352,6 +356,7 @@ namespace sarduMatrix {
     //% group="Scrolling text" weight=68 help=github:pxt-sardu-matrix/docs/gradient-and-icons
     //% compileHiddenArguments=true inlineInputMode="variable" inlineInputModeLimit=7 expandableArgumentBreaks="5"
     //% matrix.shadow=variables_get matrix.defl=matrix text.defl="Hello" startX.defl=-1 startY.defl=0 endX.defl=0 endY.defl=0 firstColor.defl=NeoPixelColors.Red secondColor.defl=NeoPixelColors.Blue direction.defl=MatrixWipeDirection.LeftToRight frameIntervalMs.min=0 frameIntervalMs.defl=100 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=MatrixTextOrientation.Normal mode.defl=MatrixScrollMode.Exclusive
+    //% firstColor.snippet="neopixel.colors(NeoPixelColors.Red)" firstColor.pySnippet="neopixel.colors(NeoPixelColors.RED)" secondColor.snippet="neopixel.colors(NeoPixelColors.Blue)" secondColor.pySnippet="neopixel.colors(NeoPixelColors.BLUE)"
     export function scrollGradientTextBetween(
         matrix: Matrix,
         text: string,
@@ -383,6 +388,7 @@ namespace sarduMatrix {
     //% group="Scrolling text" weight=67 help=github:pxt-sardu-matrix/docs/gradient-and-icons
     //% compileHiddenArguments=true inlineInputMode="variable" inlineInputModeLimit=7 expandableArgumentBreaks="5"
     //% matrix.shadow=variables_get matrix.defl=matrix text.defl="Hello" startX.defl=-1 startY.defl=0 endX.defl=0 endY.defl=0 color.defl=NeoPixelColors.White firstBrightness.min=0 firstBrightness.max=255 firstBrightness.defl=128 finalBrightness.min=0 finalBrightness.max=255 finalBrightness.defl=8 direction.defl=MatrixWipeDirection.LeftToRight frameIntervalMs.min=0 frameIntervalMs.defl=100 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 orientation.defl=MatrixTextOrientation.Normal mode.defl=MatrixScrollMode.Exclusive
+    //% color.snippet="neopixel.colors(NeoPixelColors.White)" color.pySnippet="neopixel.colors(NeoPixelColors.WHITE)"
     export function scrollBrightnessGradientTextBetween(
         matrix: Matrix,
         text: string,
@@ -414,6 +420,7 @@ namespace sarduMatrix {
     //% group="Icons" weight=90 help=github:pxt-sardu-matrix/docs/gradient-and-icons
     //% compileHiddenArguments=true inlineInputMode="variable" inlineInputModeLimit=5 expandableArgumentBreaks="2"
     //% matrix.shadow=variables_get matrix.defl=matrix icon.defl=MatrixIcon.FilledHeart x.defl=0 y.defl=0 color.defl=NeoPixelColors.Red size.min=1 size.max=4 size.defl=1 brightness.min=0 brightness.max=255 brightness.defl=128
+    //% color.snippet="neopixel.colors(NeoPixelColors.Red)" color.pySnippet="neopixel.colors(NeoPixelColors.RED)"
     export function drawIcon(matrix: Matrix, icon: MatrixIcon, x: number = 0, y: number = 0, color: number = NeoPixelColors.Red, size: number = 1, brightness: number = 128): void {
         sarduMatrixInternal.drawBuiltInIcon(matrix, icon, x, y, color, size, brightness);
     }

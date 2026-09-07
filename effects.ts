@@ -260,6 +260,7 @@ namespace sarduMatrix {
     //% group="Effects" weight=90 help=github:pxt-sardu-matrix/docs/effects
     //% compileHiddenArguments=true inlineInputMode="variable" inlineInputModeLimit=3 expandableArgumentBreaks="3"
     //% matrix.shadow=variables_get matrix.defl=matrix color.defl=NeoPixelColors.Black durationMs.min=0 durationMs.defl=1000 frames.min=1 frames.max=255 frames.defl=20 endState.defl=MatrixEffectEndState.Leave brightness.min=0 brightness.max=255 brightness.defl=128
+    //% color.snippet="neopixel.colors(NeoPixelColors.Black)" color.pySnippet="neopixel.colors(NeoPixelColors.BLACK)"
     export function fadeToColor(matrix: Matrix, color: number = NeoPixelColors.Black, durationMs: number = 1000, frames: number = 20, endState: MatrixEffectEndState = MatrixEffectEndState.Leave, brightness: number = 128): void {
         sarduMatrixInternal.fadeEffect(matrix, color, durationMs, frames, endState, brightness);
     }
@@ -278,6 +279,7 @@ namespace sarduMatrix {
     //% group="Effects" weight=70 help=github:pxt-sardu-matrix/docs/effects
     //% compileHiddenArguments=true inlineInputMode="variable" inlineInputModeLimit=4 expandableArgumentBreaks="3"
     //% matrix.shadow=variables_get matrix.defl=matrix color.defl=NeoPixelColors.White direction.defl=MatrixWipeDirection.LeftToRight start.min=0 start.defl=0 frameIntervalMs.min=0 frameIntervalMs.defl=50 endState.defl=MatrixEffectEndState.Leave brightness.min=0 brightness.max=255 brightness.defl=128
+    //% color.snippet="neopixel.colors(NeoPixelColors.White)" color.pySnippet="neopixel.colors(NeoPixelColors.WHITE)"
     export function colorWipe(matrix: Matrix, color: number = NeoPixelColors.White, direction: MatrixWipeDirection = MatrixWipeDirection.LeftToRight, start: number = 0, frameIntervalMs: number = 50, endState: MatrixEffectEndState = MatrixEffectEndState.Leave, brightness: number = 128): void {
         sarduMatrixInternal.wipeEffect(matrix, color, direction, start, frameIntervalMs, endState, brightness);
     }
@@ -296,6 +298,7 @@ namespace sarduMatrix {
     //% group="Effects" weight=40 help=github:pxt-sardu-matrix/docs/effects
     //% compileHiddenArguments=true inlineInputMode="variable" inlineInputModeLimit=3 expandableArgumentBreaks="5"
     //% matrix.shadow=variables_get matrix.defl=matrix color.defl=NeoPixelColors.White density.min=1 density.max=100 density.defl=10 durationMs.min=0 durationMs.defl=2000 frameIntervalMs.min=1 frameIntervalMs.defl=100 mode.defl=MatrixScrollMode.Exclusive endState.defl=MatrixEffectEndState.Restore brightness.min=0 brightness.max=255 brightness.defl=128
+    //% color.snippet="neopixel.colors(NeoPixelColors.White)" color.pySnippet="neopixel.colors(NeoPixelColors.WHITE)"
     export function sparkles(matrix: Matrix, color: number = NeoPixelColors.White, density: number = 10, durationMs: number = 2000, frameIntervalMs: number = 100, mode: MatrixScrollMode = MatrixScrollMode.Exclusive, endState: MatrixEffectEndState = MatrixEffectEndState.Restore, brightness: number = 128): void {
         sarduMatrixInternal.sparklesEffect(matrix, color, density, durationMs, frameIntervalMs, mode, endState, brightness);
     }
@@ -305,6 +308,7 @@ namespace sarduMatrix {
     //% group="Effects" weight=65 help=github:pxt-sardu-matrix/docs/effects
     //% compileHiddenArguments=true inlineInputMode="variable" inlineInputModeLimit=6 expandableArgumentBreaks="3"
     //% matrix.shadow=variables_get matrix.defl=matrix firstColor.defl=NeoPixelColors.Red secondColor.defl=NeoPixelColors.Blue axis.defl=MatrixRainbowAxis.Horizontal meeting.min=0 meeting.defl=7 contentOnly.defl=false frameIntervalMs.min=0 frameIntervalMs.defl=50 endState.defl=MatrixEffectEndState.Leave brightness.min=0 brightness.max=255 brightness.defl=128
+    //% firstColor.snippet="neopixel.colors(NeoPixelColors.Red)" firstColor.pySnippet="neopixel.colors(NeoPixelColors.RED)" secondColor.snippet="neopixel.colors(NeoPixelColors.Blue)" secondColor.pySnippet="neopixel.colors(NeoPixelColors.BLUE)"
     export function opposedColorWipe(matrix: Matrix, firstColor: number = NeoPixelColors.Red, secondColor: number = NeoPixelColors.Blue, axis: MatrixRainbowAxis = MatrixRainbowAxis.Horizontal, meeting: number = 7, contentOnly: boolean = false, frameIntervalMs: number = 50, endState: MatrixEffectEndState = MatrixEffectEndState.Leave, brightness: number = 128): void {
         sarduMatrixInternal.opposedWipeEffect(matrix, firstColor, secondColor, axis == MatrixRainbowAxis.Vertical, meeting, contentOnly, frameIntervalMs, endState, brightness);
     }

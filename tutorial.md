@@ -1,5 +1,7 @@
 # Your first SARDU-Matrix message
 
+[Italiano](_locales/it/tutorial.md)
+
 ## Introduction @unplugged
 
 Create a 16×16 RGB matrix, display a static message and then make another message scroll from right to left.
@@ -50,7 +52,3 @@ matrix.scrollTextFromEdge("HELLO", MatrixScrollEdge.Right, neopixel.colors(NeoPi
 ## Download
 
 Connect the Micro:Bit, select **Download** and transfer the program. The static `HI` appears first; after one second, `HELLO` enters from the right and leaves from the left.
-
-```package
-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#v0.8.4
-```

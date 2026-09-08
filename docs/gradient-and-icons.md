@@ -1,5 +1,7 @@
 # Gradient text and built-in icons
 
+[Italiano](_locales/it/gradient-and-icons.md)
+
 ## Gradient text
 
 The gradient text block draws a static line into the current RGB buffer. Choose the first and second color and one of four directions: left to right, right to left, top to bottom or bottom to top. The direction always refers to the final visible text, even when the line is rotated.

@@ -1,0 +1,354 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+<block id="#MUs)0zP;yto}`n@K~/5" type="device_forever">
+<statement name="HANDLER">
+<block id="Z3fca[r;kQ,{3%S6~[r;" type="variables_set">
+<field name="VAR">smoothedLight</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="math_js_op">
+<mutation op-type="infix" />
+<field name="OP">idiv</field>
+<value name="ARG0">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="math_arithmetic">
+<field name="OP">ADD</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="math_arithmetic">
+<field name="OP">MULTIPLY</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">smoothedLight</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">3</field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="device_get_light_level">
+</block>
+</value>
+</block>
+</value>
+<value name="ARG1">
+<shadow type="math_number">
+<field name="NUM">4</field>
+</shadow>
+</value>
+</block>
+</value>
+<next>
+<block id=",1~gQ/./lhL5y5{[4NPs" type="variables_set">
+<field name="VAR">darkness</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="math_arithmetic">
+<field name="OP">MINUS</field>
+<value name="A">
+<shadow type="math_number">
+<field name="NUM">255</field>
+</shadow>
+</value>
+<value name="B">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">smoothedLight</field>
+</block>
+</value>
+</block>
+</value>
+<next>
+<block id="k|D/|/AI.t*sMd.XmwR5" type="variables_set">
+<field name="VAR">illuminatedLines</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="math_js_round">
+<field name="OP">round</field>
+<value name="ARG0">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="math_map">
+<value name="value">
+<block type="variables_get">
+<field name="VAR">darkness</field>
+</block>
+</value>
+<value name="fromLow">
+<shadow type="math_number">
+<field name="NUM">0</field>
+</shadow>
+</value>
+<value name="fromHigh">
+<shadow type="math_number">
+<field name="NUM">255</field>
+</shadow>
+</value>
+<value name="toLow">
+<shadow type="math_number">
+<field name="NUM">0</field>
+</shadow>
+</value>
+<value name="toHigh">
+<block type="sardu_matrix_height">
+<value name="this">
+<shadow type="variables_get">
+<field name="VAR">matrix</field>
+</shadow>
+</value>
+</block>
+</value>
+</block>
+</value>
+</block>
+</value>
+<next>
+<block id="|21?y.d~BhkzVCA2VdJ$" type="variables_set">
+<field name="VAR">brightness</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="math_js_round">
+<field name="OP">round</field>
+<value name="ARG0">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="math_map">
+<value name="value">
+<block type="variables_get">
+<field name="VAR">darkness</field>
+</block>
+</value>
+<value name="fromLow">
+<shadow type="math_number">
+<field name="NUM">0</field>
+</shadow>
+</value>
+<value name="fromHigh">
+<shadow type="math_number">
+<field name="NUM">255</field>
+</shadow>
+</value>
+<value name="toLow">
+<shadow type="math_number">
+<field name="NUM">16</field>
+</shadow>
+</value>
+<value name="toHigh">
+<shadow type="math_number">
+<field name="NUM">128</field>
+</shadow>
+</value>
+</block>
+</value>
+</block>
+</value>
+<next>
+<block id="Yxu2p*Ye~;7y$SU6;n@)" type="sardu_matrix_set_brightness">
+<value name="this">
+<shadow type="variables_get">
+<field name="VAR">matrix</field>
+</shadow>
+</value>
+<value name="brightness">
+<shadow type="math_number_minmax">
+<mutation min="0" max="255" label="Brightness" />
+<field name="SLIDER">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">brightness</field>
+</block>
+</value>
+<next>
+<block id="wPtMI~wo12tHb)gaY+La" type="sardu_matrix_clear_buffer">
+<value name="this">
+<shadow type="variables_get">
+<field name="VAR">matrix</field>
+</shadow>
+</value>
+<next>
+<block id="J[w2I]J35dAw?bKD;Y+8" type="pxt_controls_for">
+<value name="VAR">
+<block type="variables_get_reporter">
+<mutation duplicateondrag="true" />
+<field name="VAR">line</field>
+</block>
+</value>
+<value name="TO">
+<shadow type="math_whole_number"><field name="NUM">0</field></shadow>
+<block type="math_arithmetic">
+<field name="OP">MINUS</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">illuminatedLines</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">1</field>
+</shadow>
+</value>
+</block>
+</value>
+<statement name="DO">
+<block id="_Uz(ZoO~v)A`4:s9n,M0" type="variables_set">
+<field name="VAR">y</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="math_arithmetic">
+<field name="OP">MINUS</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="math_arithmetic">
+<field name="OP">MINUS</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="sardu_matrix_height">
+<value name="this">
+<shadow type="variables_get">
+<field name="VAR">matrix</field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">1</field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">line</field>
+</block>
+</value>
+</block>
+</value>
+<next>
+<block id="rwBOWVO;_$s3.qnLwq1y" type="sardu_matrix_draw_line">
+<value name="matrix">
+<shadow type="variables_get">
+<field name="VAR">matrix</field>
+</shadow>
+</value>
+<value name="x1">
+<shadow type="math_number">
+<field name="NUM">0</field>
+</shadow>
+</value>
+<value name="y1">
+<block type="variables_get">
+<field name="VAR">y</field>
+</block>
+</value>
+<value name="x2">
+<block type="math_arithmetic">
+<field name="OP">MINUS</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="sardu_matrix_width">
+<value name="this">
+<shadow type="variables_get">
+<field name="VAR">matrix</field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">1</field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="y2">
+<block type="variables_get">
+<field name="VAR">y</field>
+</block>
+</value>
+<value name="color">
+<shadow type="neopixel_colors">
+<field name="color">NeoPixelColors.Yellow</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</statement>
+<next>
+<block id="=riSzyls2/dMvg{/nkb," type="sardu_matrix_show">
+<value name="this">
+<shadow type="variables_get">
+<field name="VAR">matrix</field>
+</shadow>
+</value>
+<next>
+<block id="U|ca4[Uuum`w8o{YjMZC" type="device_pause">
+<value name="pause">
+<shadow type="timePicker">
+<field name="ms">100</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+</block>
+<block id="xRRgvHNlG#rZ^u`HECiY" type="pxt-on-start">
+<statement name="HANDLER">
+<block id="b#iq5~[Meuf0CwnZVf9M" type="variables_set">
+<field name="VAR">matrix</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="sardu_matrix_create">
+<field name="pin">DigitalPin.P1</field>
+<value name="width">
+<shadow type="math_number">
+<field name="NUM">16</field>
+</shadow>
+</value>
+<value name="height">
+<shadow type="math_number">
+<field name="NUM">16</field>
+</shadow>
+</value>
+<value name="brightness">
+<shadow type="math_number_minmax">
+<mutation min="0" max="255" label="Brightness" />
+<field name="SLIDER">128</field>
+</shadow>
+</value>
+</block>
+</value>
+<next>
+<block id="~D[CoGz,(cqk4U.b(?6V" type="variables_set">
+<field name="VAR">smoothedLight</field>
+<value name="VALUE">
+<shadow type="math_number">
+<field name="NUM">128</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</statement>
+</block>
+</xml>

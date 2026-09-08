@@ -1,5 +1,7 @@
 # Public API
 
+[Italiano](_locales/it/api.md)
+
 SARDU-Matrix exposes the `sarduMatrix` namespace and returns a `Matrix` object from every creation function. The object owns the physical mapping, NeoPixel strip and RGB buffer; applications work with logical X/Y coordinates whose origin is always the top-left corner.
 
 ## Create a matrix
@@ -52,6 +54,8 @@ matrix.show()
 ```
 
 Available font families are SARDU, Micro:Bit Extended, SARDU Proportional, Micro:Bit Proportional, SARDU Compact and SARDU Compact Proportional. Text can be scaled from 1× to 4× and rotated by 0°, 90°, 180° or 270°.
+
+Their exact pixel heights, line-positioning examples and measurement rules are documented in [fonts and text measurements](fonts.md).
 
 Centered-text blocks can center across the matrix or within selected bounds. `measureTextWidth()`, `measureTextHeight()` and `measureFontHeight()` expose the same measurements used by the renderer.
 

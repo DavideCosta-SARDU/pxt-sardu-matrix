@@ -1,4 +1,6 @@
-# Blocchi grafici nativi ed editor facoltativo
+# Blocchi grafici nativi
+
+[English](../../graphics.md)
 
 I blocchi Grafica permettono di disegnare direttamente dentro MakeCode nei formati **8×8, 16×16, 32×8, 8×32, 16×8 e 8×16**. Una grafica che supera i bordi della matrice viene ritagliata in sicurezza.
 
@@ -7,8 +9,6 @@ I blocchi Grafica permettono di disegnare direttamente dentro MakeCode nei forma
 Aprire `...altro`, inserire il blocco `disegna ...` del formato desiderato e impostare le celle direttamente nelle righe visualizzate. Non occorrono collegamenti esterni e non bisogna copiare codice.
 
 Il simbolo `◌` è la cella trasparente predefinita. `⚫` è invece nero reale e spegne il LED. Le altre scelte rappresentano colori reali.
-
-L'editor web già pubblicato resta uno strumento facoltativo di sviluppo e prova, ma non fa parte del normale flusso dell'utente MakeCode.
 
 ## Trasparente e nero
 

@@ -1,5 +1,7 @@
 # Effetti speciali
 
+[English](../../effects.md)
+
 Il gruppo **Effetti** contiene animazioni che aggiornano automaticamente la matrice fisica e non richiedono un blocco `mostra` separato.
 
 - **Dissolvenza** sfuma il buffer RGB corrente verso il nero o un altro colore.
@@ -17,7 +19,3 @@ La luminosità generata dagli effetti usa l'intervallo 0–255 e il default 128.
 Micro:Bit V2 è consigliato per effetti e matrici grandi perché offre maggiore margine di memoria programma e RAM. I progetti realistici degli effetti compilano anche per V1, che resta adatta alle configurazioni più piccole; per dissolvenze, collisioni mascherate e arcobaleni animati su superfici grandi è preferibile V2.
 
 I blocchi mostrano inizialmente i parametri essenziali. Il controllo `+` espone temporizzazione, stato finale e luminosità.
-
-```package
-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#v0.8.4
-```

@@ -1,4 +1,6 @@
-# Test procedure
+# Verification and test procedure
+
+[Italiano](_locales/it/testing.md)
 
 This page defines the automated, compilation, simulator and physical checks for SARDU-Matrix. A release passes only when every applicable check finishes without a compiler error, panic, unexpected pixel or visual mismatch.
 
@@ -73,4 +75,4 @@ Use an externally powered matrix with common ground and test at least one single
 
 Record the exact commit or tag, Micro:Bit revision, matrix arrangement, data pin and power configuration. A pass requires all compiled projects and tested frames to match the expected result. Any compiler error, panic, unexplained pixel, missing group, broken conversion or incorrect final state is a failure and blocks promotion of that commit.
 
-The stable `v0.8.3` release was verified on a real 96×16 six-panel chain. Every later candidate must repeat the checks affected by its changes.
+The `v0.8.4` release keeps the runtime verified in `v0.8.3` and adds documentation, tutorials and the structured test suite. Its candidate was verified by the user, and the runtime was tested on a real 96×16 six-panel chain. Every later candidate must repeat the checks affected by its changes.

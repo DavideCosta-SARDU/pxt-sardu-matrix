@@ -1,45 +1,50 @@
 # Display configuration
 
-SARDU-Matrix supports direct logical dimensions and predefined physical modules. Both methods produce the same logical coordinate system used by pixels, text, graphics, scrolling and effects.
+[Italiano](_locales/it/display-configuration.md)
+
+SARDU-Matrix can configure the display from its overall dimensions or from a grid of identical physical modules. Both methods create the same logical coordinate system for pixels, text, graphics, scrolling and effects.
 
 ## Direct dimensions
 
-Use `create(width, height, pin, brightness)` when the complete display can be described as one rectangular surface. The standard physical path starts at the top-left corner, scans columns and follows a ZigZag path.
+Use `create(width, height, pin, brightness)` when the complete display is one rectangular surface. The default data pin is P1 and the default brightness is 128; both remain editable.
 
 ```blocks
 let matrix = sarduMatrix.create(32, 16, DigitalPin.P1, 128)
 ```
 
-Use `createAdvanced` when the physical origin, scan axis or progressive/ZigZag path differs.
+Use `createAdvanced` when the first pixel, scan axis or progressive/ZigZag path differs from the standard layout.
 
 ## Predefined modules
 
-Use `createModules` for a horizontal chain of equal panels. Available module sizes are 8×8, 16×16, 32×8, 8×32, 16×8 and 8×16.
+Use `createModules` for a horizontal chain of identical panels. The available module sizes are 8×8, 16×16, 32×8, 8×32, 16×8 and 8×16.
 
 ```blocks
 let matrix = sarduMatrix.createModules(6, MatrixModuleType.Matrix16x16, DigitalPin.P1, 128)
 ```
 
-This example creates a 96×16 logical display. The module count is not a maximum.
+This creates a 96×16 logical display. Use `createModulesAdvanced` for a rectangular module grid or to configure the pixel path and module path independently.
 
-Use `createModulesAdvanced` for a rectangular module grid or when pixel order inside each module and module order across the grid need separate configuration.
+## Origin, scan axis and path
 
-## Origins, scan axes and paths
+- **Origin** identifies the corner containing the first LED.
+- **Scan axis** selects rows or columns as the primary direction.
+- **Path** selects progressive or alternating ZigZag wiring.
 
-- Origin: top-left, top-right, bottom-left or bottom-right.
-- Scan axis: rows or columns.
-- Path: progressive or ZigZag.
+Pixel-path settings describe the wiring inside a module. Module-path settings describe how modules are connected to each other. The configuration should reproduce the physical wiring; drawing coordinates should remain logical.
 
-Pixel-path settings describe wiring inside each module. Module-path settings describe how modules are connected to one another. Do not compensate for incorrect wiring by changing logical drawing coordinates.
+## Common layouts
 
-## Validation
+- One 16×16 module produces a 16×16 display.
+- Two 16×16 modules in one row produce 32×16.
+- Six 16×16 modules in one row produce 96×16.
+- Twelve 16×16 modules in two rows produce 96×32.
 
-Widths, heights, module counts and module rows must be positive integers. The module count must divide evenly by the selected number of module rows. Invalid configuration stops with panic code `920` instead of allocating a partial or misleading buffer.
+## Invalid configurations
 
-## Pin and brightness
+Widths, heights, module counts and module rows must be positive integers. The module count must divide evenly by the number of module rows. Invalid values stop with panic code `920` instead of creating a partial buffer.
 
-The data pin is selectable; the default is P1. It is used as the WS2812B/NeoPixel digital data output. Initial brightness defaults to 128 and remains adjustable.
+## Memory and board choice
 
-```package
-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#v0.8.4
-```
+Memory use grows with the total number of LEDs. Micro:Bit V1 remains suitable for normal projects with smaller displays and selected feature families; Micro:Bit V2 is recommended for large matrices and memory-intensive effects. See [Memory, rendering and physical limits](memory-and-rendering.md).
+
+After configuration, verify the first pixel, opposite corner and every module boundary by following the [wiring guide](wiring.md).

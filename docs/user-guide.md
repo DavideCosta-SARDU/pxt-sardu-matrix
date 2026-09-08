@@ -1,5 +1,7 @@
 # SARDU-Matrix user guide
 
+[Italiano](_locales/it/user-guide.md)
+
 SARDU-Matrix controls configurable WS2812B/NeoPixel matrix panels from Microsoft MakeCode for Micro:Bit. It supports direct dimensions, modular panels, multiple physical wiring paths, text, geometry, scrolling compositions, gradients, icons and effects.
 
 ## Before connecting hardware
@@ -54,6 +56,8 @@ Exclusive mode clears the background for each frame. Composed mode restores the 
 
 Six font choices are available: SARDU, Micro:Bit Extended, proportional versions of both, SARDU Compact and SARDU Compact Proportional. Font sizes range from 1× to 4×. The orientation rotates the complete rendered line.
 
+See [fonts and text measurements](fonts.md) for exact pixel heights and examples of positioning multiple lines on a matrix.
+
 Text-measurement blocks report the exact width and height used by rendering. They are useful for positioning a fully visible string or calculating a bounce path.
 
 ## Gradients, icons and effects
@@ -74,7 +78,3 @@ Micro:Bit V1 supports normal projects and the extension is compiled in separate 
 - Queued items run separately: add all items before one `startScrolling()` call.
 
 For exact signatures see the [public API](api.md). For release verification see the [test procedure](testing.md).
-
-```package
-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#v0.8.4
-```

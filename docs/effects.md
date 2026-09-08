@@ -1,5 +1,7 @@
 # Special effects
 
+[Italiano](_locales/it/effects.md)
+
 The **Effects** group contains animations that update the physical display automatically. They do not require a separate `show` block.
 
 - **Fade** blends the current RGB buffer toward black or another color.
@@ -24,8 +26,4 @@ Effect blocks show only their essential parameters initially. Use the `+` contro
 let matrix = sarduMatrix.create(16, 16, DigitalPin.P1, 128)
 sarduMatrix.rainbowCycle(matrix, MatrixRainbowAxis.Horizontal, 1, 50, MatrixEffectEndState.Leave)
 sarduMatrix.fadeToColor(matrix, neopixel.colors(NeoPixelColors.Black), 1000, 20, MatrixEffectEndState.Leave, 128)
-```
-
-```package
-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix
 ```

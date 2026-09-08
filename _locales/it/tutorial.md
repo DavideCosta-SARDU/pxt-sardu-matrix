@@ -1,5 +1,7 @@
 # Il tuo primo messaggio SARDU-Matrix
 
+[English](../../tutorial.md)
+
 ## Introduzione @unplugged
 
 Crea una matrice RGB 16×16, mostra un messaggio statico e poi fai scorrere un secondo messaggio da destra a sinistra.
@@ -50,7 +52,3 @@ matrix.scrollTextFromEdge("CIAO", MatrixScrollEdge.Right, neopixel.colors(NeoPix
 ## Scarica
 
 Collega il Micro:Bit, seleziona **Scarica** e trasferisci il programma. Il messaggio statico appare per primo; dopo un secondo, `CIAO` entra da destra ed esce a sinistra.
-
-```package
-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#v0.8.4
-```

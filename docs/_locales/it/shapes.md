@@ -1,4 +1,6 @@
-# Geometria statica
+# Geometria statica e scorrevole
+
+[English](../../shapes.md)
 
 I blocchi del gruppo **Geometria statica** disegnano nel buffer RGB della matrice:
 

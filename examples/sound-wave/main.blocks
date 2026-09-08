@@ -1,0 +1,436 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+<block id="y}WWZ+I^WLE0_hLxi436" type="device_forever">
+<statement name="HANDLER">
+<block id="t=e%[O|uss!+I){0,*Or" type="variables_set">
+<field name="VAR">smoothedLevel</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="math_js_round">
+<field name="OP">round</field>
+<value name="ARG0">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="math_arithmetic">
+<field name="OP">DIVIDE</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="math_arithmetic">
+<field name="OP">ADD</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="math_arithmetic">
+<field name="OP">MULTIPLY</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">smoothedLevel</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">3</field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="device_get_sound_level">
+</block>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">4</field>
+</shadow>
+</value>
+</block>
+</value>
+</block>
+</value>
+<next>
+<block id="!;k*w%8j:GLv0bvkxQ=e" type="controls_if">
+<mutation elseif="0" else="0" />
+<value name="IF0">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">GT</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">smoothedLevel</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">8</field>
+</shadow>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block id="sb`Utz0ai%4tt*zB~/C4" type="variables_set">
+<field name="VAR">amplitude</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="math_js_round">
+<field name="OP">round</field>
+<value name="ARG0">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="math_map">
+<value name="value">
+<block type="variables_get">
+<field name="VAR">smoothedLevel</field>
+</block>
+</value>
+<value name="fromLow">
+<shadow type="math_number">
+<field name="NUM">8</field>
+</shadow>
+</value>
+<value name="fromHigh">
+<shadow type="math_number">
+<field name="NUM">255</field>
+</shadow>
+</value>
+<value name="toLow">
+<shadow type="math_number">
+<field name="NUM">1</field>
+</shadow>
+</value>
+<value name="toHigh">
+<block type="variables_get">
+<field name="VAR">centerY</field>
+</block>
+</value>
+</block>
+</value>
+</block>
+</value>
+</block>
+</statement>
+<next>
+<block id="qtKBG3,R%fY7lt~E$jv0" type="variables_set">
+<field name="VAR">pointDirection</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">waveDirection</field>
+</block>
+</value>
+<next>
+<block id=":AaY7Ikubvvu=P4^QAw%" type="variables_set">
+<field name="VAR">previousY</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">centerY</field>
+</block>
+</value>
+<next>
+<block id="~X2{AX_w:[$f8eRbO)sU" type="sardu_matrix_clear_buffer">
+<value name="this">
+<shadow type="variables_get">
+<field name="VAR">matrix</field>
+</shadow>
+</value>
+<next>
+<block id="OGOG=$JcufG4%p4bQ|3X" type="pxt_controls_for">
+<value name="VAR">
+<block type="variables_get_reporter">
+<mutation duplicateondrag="true" />
+<field name="VAR">x</field>
+</block>
+</value>
+<value name="TO">
+<shadow type="math_whole_number"><field name="NUM">0</field></shadow>
+<block type="math_arithmetic">
+<field name="OP">MINUS</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="sardu_matrix_width">
+<value name="this">
+<shadow type="variables_get">
+<field name="VAR">matrix</field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">1</field>
+</shadow>
+</value>
+</block>
+</value>
+<statement name="DO">
+<block id="AZBHl%Wyg@d=-tY@Xf]s" type="variables_set">
+<field name="VAR">y</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="math_arithmetic">
+<field name="OP">ADD</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">centerY</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="math_arithmetic">
+<field name="OP">MULTIPLY</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">pointDirection</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">amplitude</field>
+</block>
+</value>
+</block>
+</value>
+</block>
+</value>
+<next>
+<block id="+RdA;0v5J-k]6hV+)YG5" type="controls_if">
+<mutation elseif="0" else="0" />
+<value name="IF0">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">GT</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">x</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">0</field>
+</shadow>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block id="H-LdL6xAUod!W3ffm)mE" type="sardu_matrix_draw_line">
+<value name="matrix">
+<shadow type="variables_get">
+<field name="VAR">matrix</field>
+</shadow>
+</value>
+<value name="x1">
+<block type="math_arithmetic">
+<field name="OP">MINUS</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">x</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">1</field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="y1">
+<block type="variables_get">
+<field name="VAR">previousY</field>
+</block>
+</value>
+<value name="x2">
+<block type="variables_get">
+<field name="VAR">x</field>
+</block>
+</value>
+<value name="y2">
+<block type="variables_get">
+<field name="VAR">y</field>
+</block>
+</value>
+<value name="color">
+<shadow type="neopixel_colors">
+<field name="color">NeoPixelColors.Blue</field>
+</shadow>
+</value>
+</block>
+</statement>
+<next>
+<block id="cbnoweuD/SczO|!hN9i9" type="variables_set">
+<field name="VAR">previousY</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">y</field>
+</block>
+</value>
+<next>
+<block id="I0K!NZXuAQ*Y6/*#oV4A" type="variables_set">
+<field name="VAR">pointDirection</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="math_arithmetic">
+<field name="OP">MULTIPLY</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">pointDirection</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">-1</field>
+</shadow>
+</value>
+</block>
+</value>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+<next>
+<block id="3z;$Q87:X?rd%p8-oy!7" type="variables_set">
+<field name="VAR">waveDirection</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="math_arithmetic">
+<field name="OP">MULTIPLY</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">waveDirection</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">-1</field>
+</shadow>
+</value>
+</block>
+</value>
+<next>
+<block id="`U*b^TS[#@e8+/Y}C@r]" type="sardu_matrix_show">
+<value name="this">
+<shadow type="variables_get">
+<field name="VAR">matrix</field>
+</shadow>
+</value>
+<next>
+<block id="H[N1+qk{[8F*)b$pcT%S" type="device_pause">
+<value name="pause">
+<shadow type="timePicker">
+<field name="ms">40</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+</block>
+<block id="xRRgvHNlG#rZ^u`HECiY" type="pxt-on-start">
+<statement name="HANDLER">
+<block id="N/`C~jB=E,iFXnwqip^4" type="variables_set">
+<field name="VAR">matrix</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="sardu_matrix_create">
+<field name="pin">DigitalPin.P1</field>
+<value name="width">
+<shadow type="math_number">
+<field name="NUM">16</field>
+</shadow>
+</value>
+<value name="height">
+<shadow type="math_number">
+<field name="NUM">16</field>
+</shadow>
+</value>
+<value name="brightness">
+<shadow type="math_number_minmax">
+<mutation min="0" max="255" label="Brightness" />
+<field name="SLIDER">128</field>
+</shadow>
+</value>
+</block>
+</value>
+<next>
+<block id="CF?[T:4Jz*Y5Rhi^z/+^" type="variables_set">
+<field name="VAR">centerY</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="math_js_round">
+<field name="OP">round</field>
+<value name="ARG0">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="math_arithmetic">
+<field name="OP">DIVIDE</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="math_arithmetic">
+<field name="OP">MINUS</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="sardu_matrix_height">
+<value name="this">
+<shadow type="variables_get">
+<field name="VAR">matrix</field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">1</field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">2</field>
+</shadow>
+</value>
+</block>
+</value>
+</block>
+</value>
+<next>
+<block id="oUIN4~L{9W:VQe^U/5HM" type="variables_set">
+<field name="VAR">waveDirection</field>
+<value name="VALUE">
+<shadow type="math_number">
+<field name="NUM">1</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+</block>
+</xml>

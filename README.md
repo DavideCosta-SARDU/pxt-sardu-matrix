@@ -83,7 +83,7 @@ Lines, rectangles and circles, with outline and filled variants, use the same lo
 
 Colors can come from the MakeCode/NeoPixel picker, from explicit RGB components, or from HSL fields. RGB uses 0–255. HSL uses hue 0–360 and saturation/lightness 0–100. HSL lightness changes the color itself and is distinct from matrix or string brightness.
 
-The native **Graphics** blocks are available under `... more` in all six module formats. Their cells are edited directly in MakeCode: hollow cells are transparent, while black explicitly turns an LED off. Overlay preserves the scene below transparent cells; replace-area clears them. The [standalone web editor](https://davidecosta-sardu.github.io/pxt-sardu-matrix/editor.html) remains an optional design and testing tool, not part of the normal MakeCode workflow.
+The native **Graphics** blocks are available under `... more` in all six module formats. Their cells are edited directly in MakeCode: hollow cells are transparent, while black explicitly turns an LED off. Overlay preserves the scene below transparent cells; replace-area clears them.
 
 ## Block/API overview
 
@@ -138,12 +138,11 @@ See [docs/wiring.md](docs/wiring.md) for diagrams and mapping examples.
 - [Public API](docs/api.md)
 - [Wiring](docs/wiring.md)
 - [Memory and rendering](docs/memory-and-rendering.md)
-- [Graphic editor and Graphics blocks](docs/graphics.md)
+- [Fonts and text measurements](docs/fonts.md)
+- [Native Graphics blocks](docs/graphics.md)
 - [Static and scrolling geometry](docs/shapes.md)
 - [Special effects](docs/effects.md)
 - [Gradient text and built-in icons](docs/gradient-and-icons.md)
-- [RGB matrix simulator and approval status](docs/simulator.md)
-- [Migration from pxt-smartmatrix](docs/migration.md)
 
 ## Languages
 

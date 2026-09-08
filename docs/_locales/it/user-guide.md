@@ -1,5 +1,7 @@
 # Guida italiana a SARDU-Matrix
 
+[English](../../user-guide.md)
+
 Questa guida descrive l'uso dell'estensione SARDU-Matrix in Microsoft MakeCode per Micro:Bit.
 
 ## Installazione
@@ -60,6 +62,8 @@ Puoi scegliere coordinate, colore, font, dimensione, luminosità e orientamento.
 
 La luminosità del testo ha default `128` e non modifica la luminosità generale scelta durante la creazione. Le coordinate esterne vengono ritagliate in sicurezza.
 
+Per le altezze esatte in pixel e gli esempi di posizionamento su più righe, consulta [font e misure del testo](fonts.md).
+
 Il blocco **testo sfumato** miscela due colori soltanto sui pixel dei caratteri. Il blocco separato **testo sfumato in luminosità** mantiene invece un solo colore e passa dalla luminosità iniziale a quella finale, entrambe regolabili da 0 a 255. I default sono 128 e 8, così il lato meno luminoso resta visibile; scegli 0 soltanto quando vuoi spegnerlo intenzionalmente. Puoi scegliere da sinistra a destra, da destra a sinistra, dall'alto al basso o dal basso all'alto: il lato di partenza usa il valore iniziale e il lato opposto raggiunge quello finale. La direzione segue sempre il testo visibile, anche quando è ruotato; dopo il disegno usa **mostra**. I due blocchi sfumati sono collocati dopo i normali blocchi del testo statico.
 
 ## Icone predefinite
@@ -110,4 +114,4 @@ Se MakeCode mostra **Richiesta di rete non riuscita**, verifica di avere incolla
 
 Se un pixel di un pannello non configurato si accende all'alimentazione, prima verifica alimentazione, massa, ingresso dati e stato elettrico del pannello: il software aggiorna soltanto il numero di LED configurato e non può azzerare LED esclusi dalla configurazione.
 
-Per mapping, memoria e collegamenti dettagliati consulta la [documentazione completa](../README.md#documentation).
+Per approfondire consulta [configurazione del display](display-configuration.md), [font e misure del testo](fonts.md), [memoria e rendering](memory-and-rendering.md) e [cablaggio](wiring.md).

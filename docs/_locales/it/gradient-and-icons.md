@@ -1,5 +1,7 @@
 # Testo sfumato e icone integrate
 
+[English](../../gradient-and-icons.md)
+
 ## Testo sfumato
 
 Il blocco di testo sfumato statico disegna una riga nel buffer RGB corrente. È possibile scegliere due colori e una delle quattro direzioni: sinistra-destra, destra-sinistra, alto-basso o basso-alto. La direzione si riferisce sempre al testo visibile finale, anche quando la riga è ruotata.
@@ -15,4 +17,3 @@ Il gruppo Testo scorrevole offre entrambe le sfumature con ingresso da qualsiasi
 Sono disponibili quattordici maschere monocromatiche originali 8×8: cuore pieno e vuoto, sorriso, volto triste, stella, spunta, croce, quattro frecce, sole, luna e fulmine. Ogni icona può essere posizionata, colorata e ingrandita da 1× a 4× con luminosità predefinita 128.
 
 Le icone scrivono soltanto i pixel attivi nel buffer, con ritaglio sicuro ai bordi. Dopo il disegno occorre chiamare `show()`. Non sono inclusi loghi Micro:Bit o di terze parti.
-

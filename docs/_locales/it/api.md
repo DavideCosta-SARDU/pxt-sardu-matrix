@@ -1,5 +1,7 @@
 # API pubblica
 
+[English](../../api.md)
+
 SARDU-Matrix espone il namespace `sarduMatrix`. Tutte le funzioni di creazione restituiscono un oggetto `Matrix`, che gestisce mapping fisico, strip NeoPixel e buffer RGB. Il programma usa sempre coordinate logiche X/Y con origine in alto a sinistra.
 
 ## Creazione
@@ -50,6 +52,8 @@ matrix.show()
 ```
 
 I font disponibili sono SARDU, Micro:Bit Esteso, SARDU Proporzionale, Micro:Bit Proporzionale, SARDU Compatto e SARDU Compatto Proporzionale. Le dimensioni vanno da 1× a 4×; gli orientamenti disponibili sono 0°, 90°, 180° e 270°.
+
+Le altezze esatte in pixel, gli esempi per posizionare più righe e le regole di misurazione sono documentati in [font e misure del testo](fonts.md).
 
 I blocchi di centratura operano sull'intera matrice oppure entro limiti scelti. `measureTextWidth()`, `measureTextHeight()` e `measureFontHeight()` espongono le stesse misure usate dal renderer.
 

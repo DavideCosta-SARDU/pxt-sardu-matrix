@@ -1,5 +1,7 @@
 # Static and scrolling geometry
 
+[Italiano](_locales/it/shapes.md)
+
 ## Static geometry
 
 SARDU-Matrix includes line, rectangle, filled rectangle, circle and filled-circle blocks. Static geometry writes to the RGB buffer without updating the physical LEDs. Compose the complete scene and call `matrix.show()` once.
@@ -28,8 +30,4 @@ let matrix = sarduMatrix.create(32, 16, DigitalPin.P1, 128)
 matrix.addScrollingText("HELLO", 0, neopixel.colors(NeoPixelColors.White), MatrixFont.Sardu, MatrixFontSize.X1, 128, MatrixTextOrientation.Normal, 1)
 sarduMatrix.addScrollingCircle(matrix, 4, 7, neopixel.colors(NeoPixelColors.Red), 1)
 matrix.startScrolling(100, MatrixScrollMode.Exclusive)
-```
-
-```package
-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#v0.8.4
 ```

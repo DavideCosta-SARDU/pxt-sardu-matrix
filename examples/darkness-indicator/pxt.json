@@ -1,0 +1,17 @@
+{
+    "name": "sardu-matrix-darkness-indicator",
+    "description": "Light-level darkness indicator for a SARDU-Matrix display",
+    "dependencies": {
+        "core": "*",
+        "sardu-matrix": "file:../..",
+        "microphone": "*"
+    },
+    "files": [
+        "main.blocks",
+        "main.ts"
+    ],
+    "supportedTargets": [
+        "microbit"
+    ],
+    "preferredEditor": "blocksprj"
+}

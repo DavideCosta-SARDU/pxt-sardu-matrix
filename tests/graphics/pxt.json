@@ -1,0 +1,16 @@
+{
+    "name": "sardu-matrix-graphics-test",
+    "description": "Independent compile test for all six native graphic formats",
+    "dependencies": {
+        "core": "*",
+        "sardu-matrix": "file:../..",
+        "microphone": "*"
+    },
+    "files": [
+        "main.ts"
+    ],
+    "supportedTargets": [
+        "microbit"
+    ],
+    "preferredEditor": "tsprj"
+}

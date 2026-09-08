@@ -1,0 +1,11 @@
+const matrix = sarduMatrix.create(16, 16, DigitalPin.P1, 64)
+const white = neopixel.colors(NeoPixelColors.White)
+
+matrix.addScrollingText("A", 0, white, MatrixFont.Sardu, MatrixFontSize.X1, 128, MatrixTextOrientation.Normal, 1)
+sarduMatrix.addScrollingTextPath(matrix, "B", 16, 8, -6, 8, white, MatrixFont.Sardu, MatrixFontSize.X1, 128, MatrixTextOrientation.Normal)
+sarduMatrix.addScrollingLine(matrix, 8, 0, 7, white, 1)
+sarduMatrix.addScrollingRectangle(matrix, 8, 8, 0, white, 1)
+sarduMatrix.addScrollingFilledRectangle(matrix, 8, 8, 0, white, 1)
+sarduMatrix.addScrollingCircle(matrix, 3, 7, white, 1)
+sarduMatrix.addScrollingFilledCircle(matrix, 3, 7, white, 1)
+matrix.startScrolling(0, MatrixScrollMode.Exclusive)

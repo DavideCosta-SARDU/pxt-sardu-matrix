@@ -1,0 +1,16 @@
+{
+    "name": "sardu-matrix-scrolling-test",
+    "description": "Independent compile test for immediate text scrolling",
+    "dependencies": {
+        "core": "*",
+        "sardu-matrix": "file:../..",
+        "microphone": "*"
+    },
+    "files": [
+        "main.ts"
+    ],
+    "supportedTargets": [
+        "microbit"
+    ],
+    "preferredEditor": "tsprj"
+}

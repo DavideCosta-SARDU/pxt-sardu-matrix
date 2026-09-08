@@ -1,0 +1,5 @@
+let matrix = sarduMatrix.create(16, 16, DigitalPin.P1, 128)
+matrix.drawTextCenteredWidth("HI", 0, neopixel.colors(NeoPixelColors.White), MatrixFont.Sardu, MatrixFontSize.X1, 128, MatrixTextOrientation.Normal)
+matrix.show()
+basic.pause(1000)
+matrix.scrollTextFromEdge("HELLO", MatrixScrollEdge.Right, neopixel.colors(NeoPixelColors.White), 100, MatrixFont.Sardu, MatrixFontSize.X1, 128, MatrixTextOrientation.Normal, MatrixScrollMode.Exclusive)

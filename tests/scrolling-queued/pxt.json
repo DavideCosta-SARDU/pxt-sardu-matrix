@@ -1,0 +1,16 @@
+{
+    "name": "sardu-matrix-scrolling-queued-test",
+    "description": "Independent compile test for queued text and geometry composition",
+    "dependencies": {
+        "core": "*",
+        "sardu-matrix": "file:../..",
+        "microphone": "*"
+    },
+    "files": [
+        "main.ts"
+    ],
+    "supportedTargets": [
+        "microbit"
+    ],
+    "preferredEditor": "tsprj"
+}

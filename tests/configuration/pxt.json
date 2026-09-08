@@ -1,0 +1,16 @@
+{
+    "name": "sardu-matrix-configuration-test",
+    "description": "Independent compile test for all public creation methods",
+    "dependencies": {
+        "core": "*",
+        "sardu-matrix": "file:../..",
+        "microphone": "*"
+    },
+    "files": [
+        "main.ts"
+    ],
+    "supportedTargets": [
+        "microbit"
+    ],
+    "preferredEditor": "tsprj"
+}

@@ -1,0 +1,16 @@
+{
+    "name": "sardu-matrix-effects-test",
+    "description": "Independent deterministic and compile tests for effects",
+    "dependencies": {
+        "core": "*",
+        "sardu-matrix": "file:../..",
+        "microphone": "*"
+    },
+    "files": [
+        "main.ts"
+    ],
+    "supportedTargets": [
+        "microbit"
+    ],
+    "preferredEditor": "tsprj"
+}

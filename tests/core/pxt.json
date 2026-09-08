@@ -1,0 +1,16 @@
+{
+    "name": "sardu-matrix-core-test",
+    "description": "Deterministic mapping, configuration, font and color tests",
+    "dependencies": {
+        "core": "*",
+        "sardu-matrix": "file:../..",
+        "microphone": "*"
+    },
+    "files": [
+        "main.ts"
+    ],
+    "supportedTargets": [
+        "microbit"
+    ],
+    "preferredEditor": "tsprj"
+}

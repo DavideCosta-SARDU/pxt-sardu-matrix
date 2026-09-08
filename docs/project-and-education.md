@@ -24,7 +24,8 @@ An appropriate external power supply is required for LED panels. The Micro:Bit, 
 ## Project resources
 
 - [Installation and API overview](../README.md)
-- [Italian user guide](guida-italiana.md)
+- [English user guide](user-guide.md)
+- [Italian user guide](_locales/it/user-guide.md)
 - [Documented test procedure](testing.md)
 - [Optional graphic editor](https://davidecosta-sardu.github.io/pxt-sardu-matrix/editor.html)
 - [Optional matrix simulator](https://davidecosta-sardu.github.io/pxt-sardu-matrix/simulator.html)

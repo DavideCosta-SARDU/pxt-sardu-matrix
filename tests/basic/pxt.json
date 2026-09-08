@@ -1,0 +1,16 @@
+{
+    "name": "sardu-matrix-basic-test",
+    "description": "Independent V1/V2 compile test for creation and display primitives",
+    "dependencies": {
+        "core": "*",
+        "sardu-matrix": "file:../..",
+        "microphone": "*"
+    },
+    "files": [
+        "main.ts"
+    ],
+    "supportedTargets": [
+        "microbit"
+    ],
+    "preferredEditor": "tsprj"
+}

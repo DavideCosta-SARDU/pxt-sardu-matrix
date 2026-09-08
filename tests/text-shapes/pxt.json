@@ -1,0 +1,16 @@
+{
+    "name": "sardu-matrix-text-shapes-test",
+    "description": "Static text, geometry, icon and native graphic compile test",
+    "dependencies": {
+        "core": "*",
+        "sardu-matrix": "file:../..",
+        "microphone": "*"
+    },
+    "files": [
+        "main.ts"
+    ],
+    "supportedTargets": [
+        "microbit"
+    ],
+    "preferredEditor": "tsprj"
+}

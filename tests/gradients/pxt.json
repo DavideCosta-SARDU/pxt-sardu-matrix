@@ -1,0 +1,16 @@
+{
+    "name": "sardu-matrix-gradients-test",
+    "description": "Independent deterministic and compile tests for text gradients",
+    "dependencies": {
+        "core": "*",
+        "sardu-matrix": "file:../..",
+        "microphone": "*"
+    },
+    "files": [
+        "main.ts"
+    ],
+    "supportedTargets": [
+        "microbit"
+    ],
+    "preferredEditor": "tsprj"
+}

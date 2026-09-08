@@ -2,7 +2,7 @@
 
 SARDU-Matrix is a configurable RGB LED matrix extension for Microsoft MakeCode and Micro:Bit. It uses the official Microsoft `pxt-neopixel` extension as its RGB backend.
 
-This is a pre-1.0 implementation. The software builds, its mapping tests pass and the extension has been exercised on a real multi-panel display. Every release candidate must still be confirmed on the user's exact hardware before that commit is promoted to a stable release.
+The current stable release is verified on a real six-panel 96×16 display. Its pre-1.0 semantic version identifies an evolving public API, not an untested beta: each release candidate is compiled for Micro:Bit V1 and V2 and is confirmed on the affected hardware before promotion.
 
 ## Installation in MakeCode
 
@@ -28,7 +28,7 @@ SARDU-Matrix offers two alternative creation methods.
 Use the logical width and height of the complete display. The default is 16×16.
 
 ```blocks
-let matrix = sarduMatrix.create(16, 16, DigitalPin.P0, 128)
+let matrix = sarduMatrix.create(16, 16, DigitalPin.P1, 128)
 ```
 
 This method is independent of module sizes and module rows.
@@ -41,7 +41,7 @@ Choose the number and physical type of identical modules. The default is one 16�
 let matrix = sarduMatrix.createModules(
     2,
     MatrixModuleType.Matrix16x16,
-    DigitalPin.P0,
+    DigitalPin.P1,
     128
 )
 ```
@@ -73,7 +73,7 @@ matrix.show()
 
 `clear()` immediately clears both buffer and physical display. `clearBuffer()` only changes memory and is available under advanced blocks. `setPixel()` and `drawText()` do not call `show()` automatically. Coordinates outside the logical display are safely clipped. The manual `scrollText()` block starts at the selected X/Y coordinates and moves left. The simpler edge block can enter from the right, left, top or bottom and automatically centers the line on the other axis. Either animation can be stopped by `interruptAndClear()` from a button or radio event.
 
-The text blocks offer three alternative fonts: SARDU, the extended Micro:Bit system style and SARDU proportional. Each can be rendered at 1×, 2×, 3× or 4×. The SARDU fonts distinguish uppercase and lowercase and support printable ASCII, common accented Latin letters (`À`–`ÿ`, including `Œ/œ` and `Ÿ`) and selected symbols (`€ £ © ® ° × ÷ ¿ ¡`). The extended Micro:Bit choice uses the official 5×5 base glyphs and adds an extra row for accents or cedilla.
+The text blocks offer six fonts: SARDU, Micro:Bit Extended, proportional versions of both, SARDU Compact and SARDU Compact Proportional. Each can be rendered at 1×, 2×, 3× or 4×. The SARDU fonts distinguish uppercase and lowercase and support printable ASCII, common accented Latin letters (`À`–`ÿ`, including `Œ/œ` and `Ÿ`) and selected symbols (`€ £ © ® ° × ÷ ¿ ¡`). The Micro:Bit choices use the official 5×5 base glyphs and add room for accents or cedilla.
 
 Static and scrolling text can rotate the complete rendered line to 0°, 90° clockwise, 180° or 270° clockwise. Rotation is independent from the scrolling edge, so all 16 combinations are available. Static text can use explicit X/Y coordinates, be centered across the complete width, complete height or both, or be centered inside an advanced inclusive X/Y range. Centering uses the dimensions after rotation. Every string also has its own 0–255 brightness, independent from the matrix-wide brightness selected during creation.
 
@@ -89,7 +89,7 @@ The native **Graphics** blocks are available under `... more` in all six module 
 
 The toolbox is ordered as **Creation**, **Display**, **Static text**, **Scrolling text**, **Static geometry**, **Scrolling geometry**, **Icons**, **Effects**, **Pixels** and **Colors**. The tall native Graphics blocks are last under `... more`.
 
-Static text, static geometry, pixels and Graphics write to the RGB buffer; compose the scene and call `show()` once. Immediate text scrolling starts at once. To combine text and shapes into one moving sequence, add every item to the scrolling composition and call `startScrolling()` only once. Effects animate the current buffer directly and provide leave, restore and clear final states. Full block behavior, defaults and troubleshooting are documented in the [Italian user guide](docs/guida-italiana.md) and the topic pages below.
+Static text, static geometry, pixels and Graphics write to the RGB buffer; compose the scene and call `show()` once. Immediate text scrolling starts at once. To combine text and shapes into one moving sequence, add every item to the scrolling composition and call `startScrolling()` only once. Effects animate the current buffer directly and provide leave, restore and clear final states. Full block behavior, defaults and troubleshooting are documented in the [English user guide](docs/user-guide.md), the [Italian user guide](docs/_locales/it/user-guide.md) and the topic pages below.
 
 Gradient text can either blend two selected colors or keep one color while blending between independently selected initial and final brightness levels. Both variants work across the visible glyphs from left, right, top or bottom and are placed after the standard static-text blocks. Built-in 8 x 8 icons include hearts, faces, a star, check, cross, arrows, sun, moon and lightning; they can be positioned, colored and scaled without a second framebuffer.
 
@@ -129,7 +129,9 @@ See [docs/wiring.md](docs/wiring.md) for diagrams and mapping examples.
 
 ## Documentation
 
-- [Italian user guide](docs/guida-italiana.md)
+- [English user guide](docs/user-guide.md)
+- [Italian user guide](docs/_locales/it/user-guide.md)
+- [Interactive MakeCode tutorial](tutorial.md)
 - [Project and educational use](docs/project-and-education.md)
 - [Documented test procedure](docs/testing.md)
 - [Display configuration](docs/display-configuration.md)
@@ -145,7 +147,7 @@ See [docs/wiring.md](docs/wiring.md) for diagrams and mapping examples.
 
 ## Languages
 
-English is the source and fallback language. Italian is included in the package. Additional translations may be added in later releases; they are not required for the current stable candidate.
+English is the source and fallback language. Italian block strings, API help pages and the interactive tutorial are included in the package. Additional block-string translations remain available and can be reviewed for a later release.
 
 ## License
 

@@ -21,7 +21,7 @@ Micro:Bit V2 is recommended for effects. Micro:Bit V1 can compile realistic smal
 Effect blocks show only their essential parameters initially. Use the `+` control on a block to reveal timing, final-state and brightness options.
 
 ```blocks
-let matrix = sarduMatrix.create(16, 16, DigitalPin.P0, 128)
+let matrix = sarduMatrix.create(16, 16, DigitalPin.P1, 128)
 sarduMatrix.rainbowCycle(matrix, MatrixRainbowAxis.Horizontal, 1, 50, MatrixEffectEndState.Leave)
 sarduMatrix.fadeToColor(matrix, neopixel.colors(NeoPixelColors.Black), 1000, 20, MatrixEffectEndState.Leave, 128)
 ```

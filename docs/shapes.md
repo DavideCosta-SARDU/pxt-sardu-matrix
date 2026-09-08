@@ -1,17 +1,35 @@
-# Geometria statica
+# Static and scrolling geometry
 
-I blocchi del gruppo **Geometria statica** disegnano nel buffer RGB della matrice:
+## Static geometry
 
-- linea tra due punti, estremi inclusi;
-- contorno o riempimento di un rettangolo;
-- contorno o riempimento di un cerchio.
+SARDU-Matrix includes line, rectangle, filled rectangle, circle and filled-circle blocks. Static geometry writes to the RGB buffer without updating the physical LEDs. Compose the complete scene and call `matrix.show()` once.
 
-Le coordinate esterne alla matrice vengono ritagliate automaticamente. I rettangoli accettano i due punti anche in ordine inverso e il colore nero cancella i pixel interessati.
+All coordinates are logical Matrix coordinates. Lines and shapes are clipped at the display boundary, so partially visible geometry is safe.
 
-I blocchi non aggiornano subito i LED fisici: dopo avere composto la scena usa `mostra` una sola volta.
+```blocks
+let matrix = sarduMatrix.create(16, 16, DigitalPin.P1, 128)
+sarduMatrix.drawRectangle(matrix, 1, 1, 14, 14, neopixel.colors(NeoPixelColors.Blue))
+sarduMatrix.fillCircle(matrix, 8, 8, 3, neopixel.colors(NeoPixelColors.Red))
+matrix.show()
+```
 
-## Geometria scorrevole
+## Scrolling geometry
 
-I blocchi `aggiungi ... allo scorrimento` costruiscono una composizione leggera in sequenza. È possibile, per esempio, aggiungere il testo `CIAO` e poi un cerchio. Il blocco `avvia scorrimento`, nel gruppo Display subito sotto `mostra`, anima l'intera composizione e la svuota al termine.
+The scrolling-geometry blocks add shapes to a pending composition. They do not start an animation immediately.
 
-La composizione conserva comandi di disegno, non un secondo framebuffer RGB: testo e geometrie vengono ridisegnati insieme con lo stesso spostamento e una sola chiamata `show()` per fotogramma.
+1. Add text and/or one or more shapes.
+2. Call `matrix.startScrolling()` once.
+3. Every queued item moves in the same animation.
+
+Calling `startScrolling()` between two additions intentionally creates two separate animations.
+
+```blocks
+let matrix = sarduMatrix.create(32, 16, DigitalPin.P1, 128)
+matrix.addScrollingText("HELLO", 0, neopixel.colors(NeoPixelColors.White), MatrixFont.Sardu, MatrixFontSize.X1, 128, MatrixTextOrientation.Normal, 1)
+sarduMatrix.addScrollingCircle(matrix, 4, 7, neopixel.colors(NeoPixelColors.Red), 1)
+matrix.startScrolling(100, MatrixScrollMode.Exclusive)
+```
+
+```package
+sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#v0.8.4
+```

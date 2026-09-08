@@ -1,31 +1,28 @@
-# Blocchi grafici nativi ed editor facoltativo
+# Native Graphics blocks and optional editor
 
-I blocchi Grafica permettono di disegnare direttamente dentro MakeCode nei formati **8×8, 16×16, 32×8, 8×32, 16×8 e 8×16**. Una grafica che supera i bordi della matrice viene ritagliata in sicurezza.
+SARDU-Matrix provides native MakeCode Graphics blocks for 8×8, 16×16, 32×8, 8×32, 16×8 and 8×16 areas. They are available under `... more` because the editable grids are intentionally tall.
 
-## Disegnare una grafica
+## Drawing a graphic
 
-Aprire `...altro`, inserire il blocco `disegna ...` del formato desiderato e impostare le celle direttamente nelle righe visualizzate. Non occorrono collegamenti esterni e non bisogna copiare codice.
+Select the block matching the required dimensions and click each cell to choose its value. The graphic is written into the Matrix RGB buffer at the selected X/Y position. Call `show()` after composing all static content.
 
-Il simbolo `◌` è la cella trasparente predefinita. `⚫` è invece nero reale e spegne il LED. Le altre scelte rappresentano colori reali.
+## Transparent and black cells
 
-L'editor web già pubblicato resta uno strumento facoltativo di sviluppo e prova, ma non fa parte del normale flusso dell'utente MakeCode.
+- **Transparent** preserves the existing pixel in overlay mode.
+- **Black** is the real color `#000000` and explicitly turns the LED off.
+- **Overlay** changes only non-transparent cells.
+- **Replace area** clears transparent cells inside the selected graphic area.
 
-## Trasparente e nero
+Coordinates outside the logical matrix are clipped safely.
 
-- **TRASP.** indica che il pixel non ha un colore. In modalità `sovrapponi` lascia invariato ciò che era già presente.
-- **NERO** è un colore reale `#000000` e spegne esplicitamente il LED.
+## Colors and memory
 
-Questa distinzione permette di comporre più lavori senza spegnere involontariamente i pixel non usati dal secondo disegno.
+The native blocks use the predefined RGB cell palette. They draw directly into the existing Matrix buffer and do not allocate a second framebuffer.
 
-## Disegnare sulla matrice
+## Optional web editor
 
-I sei blocchi grafici scrivono direttamente nel buffer senza inviare subito i LED, quindi `mostra` va chiamato dopo aver composto il fotogramma.
+The [standalone graphic editor](https://davidecosta-sardu.github.io/pxt-sardu-matrix/editor.html) can be used to design and export graphics. It is optional and is not required for the normal native-block workflow. Integration of an external editor inside MakeCode remains subject to separate URL approval.
 
-- **sovrapponi**: i pixel trasparenti preservano lo sfondo; i colori reali, incluso il nero, vengono scritti.
-- **sostituisci area**: i pixel trasparenti rendono nera la posizione corrispondente, sostituendo quindi tutta l'area della grafica.
-
-Le coordinate sono logiche e indipendenti dal cablaggio lineare, progressivo o ZigZag.
-
-## Memoria
-
-Le righe del blocco sono valori temporanei e non creano un secondo framebuffer RGB permanente. Il framebuffer della matrice resta `larghezza × altezza × 3` byte.
+```package
+sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#v0.8.4
+```

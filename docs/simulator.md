@@ -1,16 +1,17 @@
-# Simulatore della matrice RGB
+# RGB matrix simulator
 
-La pagina simulatore SARDU Matrix è predisposta per mostrare una matrice RGB accanto al simulatore Micro:Bit. Riceve il buffer NeoPixel quando il programma esegue `mostra` e applica la stessa configurazione logica e fisica: dimensioni, moduli, angolo iniziale, scansione per righe o colonne e percorso progressivo/ZigZag.
+## Current status
 
-## Stato dell'integrazione pubblica
+The repository includes a standalone RGB matrix simulator published through GitHub Pages. It is a development and demonstration tool and is not automatically embedded in the public MakeCode editor.
 
-Editor grafico e pagina simulatore sono pubblicati separatamente su GitHub Pages e non fanno parte del manifest PXT che genera i blocchi. Questa separazione evita che possano modificare o svuotare la categoria **SARDU Matrix**.
+[Open the standalone simulator](https://davidecosta-sardu.github.io/pxt-sardu-matrix/simulator.html)
 
-Per incorporare automaticamente la pagina sotto il simulatore Micro:Bit del MakeCode pubblico, Microsoft deve approvare il repository e l'URL esterno nel `targetconfig.json` di MakeCode. Fino a quell'approvazione il firmware, i blocchi e l'editor grafico funzionano indipendentemente; la pagina simulatore resta predisposta, ma non riceve i fotogrammi del progetto pubblico.
+The MakeCode extension itself can still be compiled and its control flow can be exercised in the normal micro:bit simulator. Physical LED order, power delivery, signal integrity and real animation timing must be verified on hardware.
 
-## Verifica dopo l'approvazione
+## After extension approval
 
-1. Creare una matrice con la configurazione dei pannelli reali.
-2. Disegnare pixel di colori diversi vicino agli angoli.
-3. Eseguire `mostra` e confrontare simulatore e pannello.
-4. Se l'ordine non coincide, correggere il percorso di pixel o moduli senza cambiare le coordinate del disegno.
+Approval of the SARDU-Matrix repository makes the extension searchable in MakeCode. It does not automatically approve an external iframe or simulator URL. Embedding the standalone simulator would require separate target configuration and Microsoft approval.
+
+```package
+sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#v0.8.4
+```

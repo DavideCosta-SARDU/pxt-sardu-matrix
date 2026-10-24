@@ -1,3 +1,4 @@
+/** Private - do not use. Internal matrix implementation. */
 namespace sarduMatrixInternal {
     /** Maps a logical coordinate to a position in one physical scan path. */
     export function pathIndex(
@@ -5,22 +6,22 @@ namespace sarduMatrixInternal {
         y: number,
         width: number,
         height: number,
-        origin: MatrixOrigin,
-        axis: MatrixScanAxis,
-        path: MatrixPath
+        origin: SarduMatrixOrigin,
+        axis: SarduMatrixScanAxis,
+        path: SarduMatrixPath
     ): number {
-        const scanX = origin == MatrixOrigin.TopRight || origin == MatrixOrigin.BottomRight
+        const scanX = origin == SarduMatrixOrigin.TopRight || origin == SarduMatrixOrigin.BottomRight
             ? width - 1 - x : x;
-        const scanY = origin == MatrixOrigin.BottomLeft || origin == MatrixOrigin.BottomRight
+        const scanY = origin == SarduMatrixOrigin.BottomLeft || origin == SarduMatrixOrigin.BottomRight
             ? height - 1 - y : y;
 
-        if (axis == MatrixScanAxis.Columns) {
-            if (path == MatrixPath.ZigZag && scanX % 2 != 0)
+        if (axis == SarduMatrixScanAxis.Columns) {
+            if (path == SarduMatrixPath.ZigZag && scanX % 2 != 0)
                 return scanX * height + height - 1 - scanY;
             return scanX * height + scanY;
         }
 
-        if (path == MatrixPath.ZigZag && scanY % 2 != 0)
+        if (path == SarduMatrixPath.ZigZag && scanY % 2 != 0)
             return scanY * width + width - 1 - scanX;
         return scanY * width + scanX;
     }

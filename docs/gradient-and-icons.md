@@ -18,4 +18,8 @@ Path variants let the user select the exact initial X/Y and final X/Y coordinate
 
 The Icons group provides fourteen original 8 x 8 monochrome masks: filled and outline hearts, smile, sad face, star, check, cross, four arrows, sun, moon and lightning. Each icon can be placed at X/Y, colored, scaled from 1x to 4x and drawn with brightness default 128.
 
-Icons write only their active pixels into the current buffer and are safely clipped at the matrix edges. Call `show()` after drawing. No Micro:Bit or third-party logo is included.
+Icons write only their active pixels into the current buffer and are safely clipped at the matrix edges. Call `show()` after drawing. No micro:bit or third-party logo is included.
+
+```package
+sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
+```

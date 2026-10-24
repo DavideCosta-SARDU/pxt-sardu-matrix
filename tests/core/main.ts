@@ -10,9 +10,9 @@ for (let origin = 0; origin < 4; origin++) {
                 for (let x = 0; x < 8; x++) {
                     const index = sarduMatrixInternal.pathIndex(
                         x, y, 8, 8,
-                        origin as MatrixOrigin,
-                        axis as MatrixScanAxis,
-                        path as MatrixPath
+                        origin as SarduMatrixOrigin,
+                        axis as SarduMatrixScanAxis,
+                        path as SarduMatrixPath
                     )
                     expectCore(index >= 0 && index < 64 && seen[index] == 0)
                     seen[index] = 1
@@ -23,9 +23,9 @@ for (let origin = 0; origin < 4; origin++) {
 }
 
 const config = sarduMatrixInternal.modularConfig(
-    4, MatrixModuleType.Matrix8x8, 2,
-    MatrixOrigin.BottomRight, MatrixScanAxis.Columns, MatrixPath.ZigZag,
-    MatrixOrigin.TopRight, MatrixScanAxis.Rows, MatrixPath.ZigZag
+    4, SarduMatrixModuleType.Matrix8x8, 2,
+    SarduMatrixOrigin.BottomRight, SarduMatrixScanAxis.Columns, SarduMatrixPath.ZigZag,
+    SarduMatrixOrigin.TopRight, SarduMatrixScanAxis.Rows, SarduMatrixPath.ZigZag
 )
 const seenModules = pins.createBuffer(256)
 for (let y = 0; y < 16; y++) {
@@ -42,15 +42,15 @@ expectCore(sarduMatrixInternal.physicalIndex(config, 16, 0) == -1)
 const moduleWidths = [8, 16, 32, 8, 16, 8]
 const moduleHeights = [8, 16, 8, 32, 8, 16]
 for (let moduleType = 0; moduleType < moduleWidths.length; moduleType++) {
-    expectCore(sarduMatrixInternal.moduleWidth(moduleType as MatrixModuleType) == moduleWidths[moduleType])
-    expectCore(sarduMatrixInternal.moduleHeight(moduleType as MatrixModuleType) == moduleHeights[moduleType])
+    expectCore(sarduMatrixInternal.moduleWidth(moduleType as SarduMatrixModuleType) == moduleWidths[moduleType])
+    expectCore(sarduMatrixInternal.moduleHeight(moduleType as SarduMatrixModuleType) == moduleHeights[moduleType])
 }
 
-expectCore(sarduMatrixInternal.fontColumn(70, 3, MatrixFont.MicroBitExtended) == 2)
-expectCore(sarduMatrixInternal.fontBaseHeight(MatrixFont.MicroBitProportional) == 7)
-expectCore(sarduMatrixInternal.glyphWidth(MatrixFont.MicroBitProportional, 73) < sarduMatrixInternal.glyphWidth(MatrixFont.MicroBitProportional, 87))
-expectCore(sarduMatrixInternal.glyphWidth(MatrixFont.SarduCompact, 87) == 4)
-expectCore(sarduMatrixInternal.glyphWidth(MatrixFont.SarduCompactProportional, 73) < sarduMatrixInternal.glyphWidth(MatrixFont.SarduCompactProportional, 87))
+expectCore(sarduMatrixInternal.fontColumn(70, 3, SarduMatrixFont.MicroBitExtended) == 2)
+expectCore(sarduMatrixInternal.fontBaseHeight(SarduMatrixFont.MicroBitProportional) == 7)
+expectCore(sarduMatrixInternal.glyphWidth(SarduMatrixFont.MicroBitProportional, 73) < sarduMatrixInternal.glyphWidth(SarduMatrixFont.MicroBitProportional, 87))
+expectCore(sarduMatrixInternal.glyphWidth(SarduMatrixFont.SarduCompact, 87) == 4)
+expectCore(sarduMatrixInternal.glyphWidth(SarduMatrixFont.SarduCompactProportional, 73) < sarduMatrixInternal.glyphWidth(SarduMatrixFont.SarduCompactProportional, 87))
 
 expectCore(sarduMatrixInternal.limitByte(-1) == 0)
 expectCore(sarduMatrixInternal.limitByte(300) == 255)

@@ -1,12 +1,11 @@
 {
     "name": "sardu-matrix",
     "version": "0.8.4",
-    "description": "Configurable RGB matrix support for Microsoft MakeCode and Micro:Bit",
+    "description": "Configurable RGB LED matrices, text, graphics and effects",
     "license": "MIT",
     "dependencies": {
         "core": "*",
-        "neopixel": "github:microsoft/pxt-neopixel#v0.7.6",
-        "microphone": "*"
+        "neopixel": "github:microsoft/pxt-neopixel#v0.7.6"
     },
     "files": [
         "README.md",

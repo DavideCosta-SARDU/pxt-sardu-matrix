@@ -17,3 +17,7 @@ I blocchi non aggiornano subito i LED fisici: dopo avere composto la scena usa `
 I blocchi `aggiungi ... allo scorrimento` costruiscono una composizione leggera in sequenza. È possibile, per esempio, aggiungere il testo `CIAO` e poi un cerchio. Il blocco `avvia scorrimento`, nel gruppo Display subito sotto `mostra`, anima l'intera composizione e la svuota al termine.
 
 La composizione conserva comandi di disegno, non un secondo framebuffer RGB: testo e geometrie vengono ridisegnati insieme con lo stesso spostamento e una sola chiamata `show()` per fotogramma.
+
+```package
+sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
+```

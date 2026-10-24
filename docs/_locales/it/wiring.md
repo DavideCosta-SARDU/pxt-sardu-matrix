@@ -4,11 +4,11 @@
 
 ## Prima la sicurezza
 
-Non alimentare una matrice dal pin 3 V del Micro:Bit. Usa un alimentatore esterno adeguato alla corrente dei pannelli. Collega insieme la massa dell'alimentatore, quella della matrice e GND del Micro:Bit, adottando cablaggio, protezioni e punti di alimentazione adeguati.
+Non alimentare una matrice dal pin 3 V del micro:bit. Usa un alimentatore esterno adeguato alla corrente dei pannelli. Collega insieme la massa dell'alimentatore, quella della matrice e GND del micro:bit, adottando cablaggio, protezioni e punti di alimentazione adeguati.
 
 ## Collegamento dati
 
-Collega il pin dati Micro:Bit selezionato al `DIN` del primo pannello. P1 è il valore predefinito, ma i blocchi di creazione permettono di scegliere un altro pin digitale utilizzabile. Collega il `DOUT` di ogni pannello al `DIN` del successivo; non invertire `DIN` e `DOUT`.
+Collega il pin dati micro:bit selezionato al `DIN` del primo pannello. P1 è il valore predefinito, ma i blocchi di creazione permettono di scegliere un altro pin digitale utilizzabile. Collega il `DOUT` di ogni pannello al `DIN` del successivo; non invertire `DIN` e `DOUT`.
 
 ## Percorso dei pixel nel modulo
 
@@ -38,3 +38,7 @@ Prima di provare testo o effetti:
 Se un pannello collegato ma non utilizzato si accende in modo inatteso, controlla le dimensioni configurate, la catena fisica e lo stato dell'alimentazione. L'estensione trasmette dati soltanto per il numero di LED configurato.
 
 Consulta [Configurazione del display](display-configuration.md) per i metodi di creazione e [Memoria, rendering e limiti fisici](memory-and-rendering.md) per le catene grandi.
+
+```package
+sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
+```

@@ -2,11 +2,11 @@
 
 [English](../../user-guide.md)
 
-Questa guida descrive l'uso dell'estensione SARDU-Matrix in Microsoft MakeCode per Micro:Bit.
+Questa guida descrive l'uso dell'estensione SARDU-Matrix in Microsoft MakeCode per micro:bit.
 
 ## Installazione
 
-1. Apri [MakeCode per Micro:Bit](https://makecode.microbit.org/).
+1. Apri [MakeCode per micro:bit](https://makecode.microbit.org/).
 2. Crea un progetto e scegli **Estensioni**.
 3. Incolla l'indirizzo completo del repository:
 
@@ -20,9 +20,9 @@ Finché Microsoft non avrà approvato l'estensione, è normale dover usare l'ind
 
 ## Collegamento e alimentazione
 
-Collega il pin dati scelto al `DIN` del primo pannello e collega ogni `DOUT` al `DIN` del pannello successivo. Tutti i pannelli, l'alimentatore esterno e la Micro:Bit devono avere la massa in comune.
+Collega il pin dati scelto al `DIN` del primo pannello e collega ogni `DOUT` al `DIN` del pannello successivo. Tutti i pannelli, l'alimentatore esterno e la micro:bit devono avere la massa in comune.
 
-Non alimentare la matrice dal pin 3 V della Micro:Bit. Dimensiona alimentatore, cavi, protezioni e punti di iniezione in base al numero reale di LED. La luminosità software riduce la luce emessa, ma non sostituisce un impianto elettrico corretto.
+Non alimentare la matrice dal pin 3 V della micro:bit. Dimensiona alimentatore, cavi, protezioni e punti di iniezione in base al numero reale di LED. La luminosità software riduce la luce emessa, ma non sostituisce un impianto elettrico corretto.
 
 ## Creazione della matrice
 
@@ -68,7 +68,7 @@ Il blocco **testo sfumato** miscela due colori soltanto sui pixel dei caratteri.
 
 ## Icone predefinite
 
-Il gruppo **Icone** contiene cuore pieno e vuoto, sorriso, faccina triste, stella, spunta, croce, quattro frecce, sole, luna e fulmine. Sono maschere originali 8×8: puoi scegliere X, Y, colore, dimensione da 1× a 4× e luminosità con default `128`. Scrivono nel buffer e richiedono **mostra**. Non è incluso alcun logo ufficiale Micro:Bit o di terze parti.
+Il gruppo **Icone** contiene cuore pieno e vuoto, sorriso, faccina triste, stella, spunta, croce, quattro frecce, sole, luna e fulmine. Sono maschere originali 8×8: puoi scegliere X, Y, colore, dimensione da 1× a 4× e luminosità con default `128`. Scrivono nel buffer e richiedono **mostra**. Non è incluso alcun logo ufficiale micro:bit o di terze parti.
 
 ## Testo scorrevole
 
@@ -98,7 +98,7 @@ Gli effetti lavorano sul contenuto corrente e aggiornano automaticamente i LED; 
 
 Lo stato finale può lasciare l'ultimo fotogramma, ripristinare il contenuto precedente oppure cancellare la matrice. I colori generati dagli effetti hanno luminosità predefinita `128`. La dissolvenza parte dai valori realmente presenti nel buffer; lampeggio e arcobaleno non aumentano la luminosità del contenuto sorgente.
 
-Per gli effetti è consigliata Micro:Bit V2, soprattutto con matrici grandi, dissolvenze, maschere sul contenuto e arcobaleni animati. V1 può funzionare con progetti piccoli, ma dispone di margini di memoria e firmware molto inferiori.
+Per gli effetti è consigliata micro:bit V2, soprattutto con matrici grandi, dissolvenze, maschere sul contenuto e arcobaleni animati. V1 può funzionare con progetti piccoli, ma dispone di margini di memoria e firmware molto inferiori.
 
 ## Grafica, pixel e colori
 
@@ -108,10 +108,14 @@ I blocchi **Grafica** permettono di disegnare griglie 8×8, 16×16, 32×8, 8×32
 
 ## Memoria e problemi comuni
 
-Il buffer RGB principale usa `larghezza × altezza × 3` byte. Gli scorrimenti composti e alcuni effetti richiedono copie temporanee. Se un progetto grande non compila o non parte, prova Micro:Bit V2, riduci la matrice o usa lo scorrimento esclusivo.
+Il buffer RGB principale usa `larghezza × altezza × 3` byte. Gli scorrimenti composti e alcuni effetti richiedono copie temporanee. Se un progetto grande non compila o non parte, prova micro:bit V2, riduci la matrice o usa lo scorrimento esclusivo.
 
 Se MakeCode mostra **Richiesta di rete non riuscita**, verifica di avere incollato un URL pubblico esatto e, per una prova candidata, anche il riferimento finale dopo `#`. Dopo l'aggiornamento di una versione può essere necessario rimuovere l'estensione dal progetto, ricaricare MakeCode e importarla di nuovo.
 
 Se un pixel di un pannello non configurato si accende all'alimentazione, prima verifica alimentazione, massa, ingresso dati e stato elettrico del pannello: il software aggiorna soltanto il numero di LED configurato e non può azzerare LED esclusi dalla configurazione.
 
 Per approfondire consulta [configurazione del display](display-configuration.md), [font e misure del testo](fonts.md), [memoria e rendering](memory-and-rendering.md) e [cablaggio](wiring.md).
+
+```package
+sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
+```

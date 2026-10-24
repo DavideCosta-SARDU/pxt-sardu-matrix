@@ -2,7 +2,7 @@
 
 SARDU-Matrix uses independent MakeCode projects so every feature family can be compiled for both Micro:Bit V1 and V2 without creating one unrealistic firmware containing every renderer and animation at once.
 
-The root `test.ts` is the lightweight package-checker entry point. Executable coverage is divided as follows:
+The root `test.ts` is a representative public API smoke program for V1/V2, including static text, geometry, both immediate text scrolling APIs and sparkles. Build it from the extension root with `pxt build` and `pxt build --hwvariant v2`; load it in the MakeCode simulator without hardware. It must finish without a panic or simulator error. Executable coverage is divided as follows:
 
 | Project | Coverage |
 | --- | --- |
@@ -19,6 +19,8 @@ The root `test.ts` is the lightweight package-checker entry point. Executable co
 
 ## Compile procedure
 
+Run `python tests/check-metadata.py` from the extension root to check block signatures, English/Italian placeholders, shadow references and Help paths without additional Python dependencies.
+
 Run these commands inside every project directory:
 
 ```shell
@@ -33,7 +35,7 @@ A compile pass requires both builds to finish without an error. A deterministic 
 
 ## Current candidate result
 
-On 2026-09-08, all nine independent projects compiled successfully for both Micro:Bit V1 and V2. The candidate changes do not alter the verified `v0.8.3` runtime. The package configuration check and root package build also passed. These results must be repeated after any later source change.
+On 2026-09-08, all independent projects compiled successfully for both Micro:Bit V1 and V2. The candidate changes do not alter the verified `v0.8.3` runtime. The package configuration check and root package build also passed. These results must be repeated after any later source change.
 
 The monolithic `pxt test` command is not used as the feature runner because it links the complete extension package and its own harness into one synthetic V1 image regardless of how few entry-point instructions are present. That artificial image exceeds the V1 program-size limit; ordinary V1 projects are not affected. The independent projects prove this by compiling creation, configuration, text, geometry, scrolling, gradients, effects and graphics separately for both V1 and V2.
 

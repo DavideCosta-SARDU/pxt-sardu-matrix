@@ -1,8 +1,12 @@
+/** Private - do not use. Internal matrix implementation. */
 namespace sarduMatrixInternal {
+    /**
+     * Private - do not use. Internal matrix implementation.
+     */
     export function textWidth(
         text: string,
-        font: MatrixFont = MatrixFont.Sardu,
-        size: MatrixFontSize = MatrixFontSize.X1
+        font: SarduMatrixFont = SarduMatrixFont.Sardu,
+        size: SarduMatrixFontSize = SarduMatrixFontSize.X1
     ): number {
         if (!text || text.length == 0) return 0;
         font = normalizedFont(font);
@@ -15,51 +19,66 @@ namespace sarduMatrixInternal {
         return width * scale;
     }
 
+    /**
+     * Private - do not use. Internal matrix implementation.
+     */
     export function renderedFontHeight(
-        font: MatrixFont = MatrixFont.Sardu,
-        size: MatrixFontSize = MatrixFontSize.X1
+        font: SarduMatrixFont = SarduMatrixFont.Sardu,
+        size: SarduMatrixFontSize = SarduMatrixFontSize.X1
     ): number {
         return fontBaseHeight(font) * normalizedFontSize(size);
     }
 
-    export function normalizedTextOrientation(orientation: MatrixTextOrientation): MatrixTextOrientation {
-        orientation = Math.floor(orientation) as MatrixTextOrientation;
-        if (orientation != orientation || orientation < MatrixTextOrientation.Normal || orientation > MatrixTextOrientation.Clockwise270)
-            return MatrixTextOrientation.Normal;
+    /**
+     * Private - do not use. Internal matrix implementation.
+     */
+    export function normalizedTextOrientation(orientation: SarduMatrixTextOrientation): SarduMatrixTextOrientation {
+        orientation = Math.floor(orientation) as SarduMatrixTextOrientation;
+        if (orientation != orientation || orientation < SarduMatrixTextOrientation.Normal || orientation > SarduMatrixTextOrientation.Clockwise270)
+            return SarduMatrixTextOrientation.Normal;
         return orientation;
     }
 
+    /**
+     * Private - do not use. Internal matrix implementation.
+     */
     export function renderedTextWidth(
         text: string,
-        font: MatrixFont = MatrixFont.Sardu,
-        size: MatrixFontSize = MatrixFontSize.X1,
-        orientation: MatrixTextOrientation = MatrixTextOrientation.Normal
+        font: SarduMatrixFont = SarduMatrixFont.Sardu,
+        size: SarduMatrixFontSize = SarduMatrixFontSize.X1,
+        orientation: SarduMatrixTextOrientation = SarduMatrixTextOrientation.Normal
     ): number {
         if (!text || text.length == 0) return 0;
         orientation = normalizedTextOrientation(orientation);
-        if (orientation == MatrixTextOrientation.Clockwise90 || orientation == MatrixTextOrientation.Clockwise270)
+        if (orientation == SarduMatrixTextOrientation.Clockwise90 || orientation == SarduMatrixTextOrientation.Clockwise270)
             return renderedFontHeight(font, size);
         return textWidth(text, font, size);
     }
 
+    /**
+     * Private - do not use. Internal matrix implementation.
+     */
     export function renderedTextHeight(
         text: string,
-        font: MatrixFont = MatrixFont.Sardu,
-        size: MatrixFontSize = MatrixFontSize.X1,
-        orientation: MatrixTextOrientation = MatrixTextOrientation.Normal
+        font: SarduMatrixFont = SarduMatrixFont.Sardu,
+        size: SarduMatrixFontSize = SarduMatrixFontSize.X1,
+        orientation: SarduMatrixTextOrientation = SarduMatrixTextOrientation.Normal
     ): number {
         if (!text || text.length == 0) return 0;
         orientation = normalizedTextOrientation(orientation);
-        if (orientation == MatrixTextOrientation.Clockwise90 || orientation == MatrixTextOrientation.Clockwise270)
+        if (orientation == SarduMatrixTextOrientation.Clockwise90 || orientation == SarduMatrixTextOrientation.Clockwise270)
             return textWidth(text, font, size);
         return renderedFontHeight(font, size);
     }
 
+    /**
+     * Private - do not use. Internal matrix implementation.
+     */
     export function firstVisibleGlyph(
         text: string,
         x: number,
-        font: MatrixFont = MatrixFont.Sardu,
-        size: MatrixFontSize = MatrixFontSize.X1
+        font: SarduMatrixFont = SarduMatrixFont.Sardu,
+        size: SarduMatrixFontSize = SarduMatrixFontSize.X1
     ): number {
         if (!text || text.length == 0) return 0;
         const scale = normalizedFontSize(size);
@@ -72,12 +91,15 @@ namespace sarduMatrixInternal {
         return text.length;
     }
 
+    /**
+     * Private - do not use. Internal matrix implementation.
+     */
     export function lastVisibleGlyph(
         text: string,
         x: number,
         displayWidth: number,
-        font: MatrixFont = MatrixFont.Sardu,
-        size: MatrixFontSize = MatrixFontSize.X1
+        font: SarduMatrixFont = SarduMatrixFont.Sardu,
+        size: SarduMatrixFontSize = SarduMatrixFontSize.X1
     ): number {
         if (!text || text.length == 0 || displayWidth <= 0) return -1;
         const scale = normalizedFontSize(size);
@@ -92,16 +114,19 @@ namespace sarduMatrixInternal {
         return last;
     }
 
+    /**
+     * Private - do not use. Internal matrix implementation.
+     */
     export function drawText(
         matrix: sarduMatrix.Matrix,
         text: string,
         x: number,
         y: number,
         color: number,
-        font: MatrixFont = MatrixFont.Sardu,
-        size: MatrixFontSize = MatrixFontSize.X1,
+        font: SarduMatrixFont = SarduMatrixFont.Sardu,
+        size: SarduMatrixFontSize = SarduMatrixFontSize.X1,
         brightness: number = 128,
-        orientation: MatrixTextOrientation = MatrixTextOrientation.Normal
+        orientation: SarduMatrixTextOrientation = SarduMatrixTextOrientation.Normal
     ): void {
         if (!text || text.length == 0) return;
         x = Math.floor(x);
@@ -119,13 +144,13 @@ namespace sarduMatrixInternal {
         let yx = 0;
         let yy = 1;
         let yOffset = 0;
-        if (orientation == MatrixTextOrientation.Clockwise90) {
+        if (orientation == SarduMatrixTextOrientation.Clockwise90) {
             xx = 0; xy = -1; xOffset = baseHeight - 1;
             yx = 1; yy = 0;
-        } else if (orientation == MatrixTextOrientation.UpsideDown180) {
+        } else if (orientation == SarduMatrixTextOrientation.UpsideDown180) {
             xx = -1; xOffset = baseWidth - 1;
             yy = -1; yOffset = baseHeight - 1;
-        } else if (orientation == MatrixTextOrientation.Clockwise270) {
+        } else if (orientation == SarduMatrixTextOrientation.Clockwise270) {
             xx = 0; xy = 1;
             yx = -1; yy = 0; yOffset = baseWidth - 1;
         }
@@ -164,6 +189,9 @@ namespace sarduMatrixInternal {
         return value;
     }
 
+    /**
+     * Private - do not use. Internal matrix implementation.
+     */
     export function centeredCoordinate(start: number, end: number, contentSize: number, maximum: number): number {
         if (maximum < 0) return 0;
         start = clampCoordinate(start, maximum);
@@ -176,6 +204,9 @@ namespace sarduMatrixInternal {
         return start + Math.floor((end - start + 1 - contentSize) / 2);
     }
 
+    /**
+     * Private - do not use. Internal matrix implementation.
+     */
     export function scrollTextBetween(
         matrix: sarduMatrix.Matrix,
         text: string,
@@ -185,11 +216,11 @@ namespace sarduMatrixInternal {
         endY: number,
         color: number,
         frameIntervalMs: number,
-        font: MatrixFont = MatrixFont.Sardu,
-        size: MatrixFontSize = MatrixFontSize.X1,
+        font: SarduMatrixFont = SarduMatrixFont.Sardu,
+        size: SarduMatrixFontSize = SarduMatrixFontSize.X1,
         brightness: number = 128,
-        orientation: MatrixTextOrientation = MatrixTextOrientation.Normal,
-        mode: MatrixScrollMode = MatrixScrollMode.Exclusive
+        orientation: SarduMatrixTextOrientation = SarduMatrixTextOrientation.Normal,
+        mode: SarduMatrixScrollMode = SarduMatrixScrollMode.Exclusive
     ): void {
         startX = Math.floor(startX);
         startY = Math.floor(startY);
@@ -198,18 +229,18 @@ namespace sarduMatrixInternal {
         frameIntervalMs = Math.floor(frameIntervalMs);
         if (frameIntervalMs != frameIntervalMs || frameIntervalMs < 0) frameIntervalMs = 0;
         orientation = normalizedTextOrientation(orientation);
-        mode = mode == MatrixScrollMode.Composed ? MatrixScrollMode.Composed : MatrixScrollMode.Exclusive;
+        mode = mode == SarduMatrixScrollMode.Composed ? SarduMatrixScrollMode.Composed : SarduMatrixScrollMode.Exclusive;
 
         const operation = matrix._beginOperation();
         if (!text || text.length == 0) {
-            if (mode == MatrixScrollMode.Exclusive) {
+            if (mode == SarduMatrixScrollMode.Exclusive) {
                 matrix._clearBuffer();
                 matrix.show();
             }
             return;
         }
 
-        const background = mode == MatrixScrollMode.Composed
+        const background = mode == SarduMatrixScrollMode.Composed
             ? matrix._captureBuffer()
             : null;
 
@@ -221,7 +252,7 @@ namespace sarduMatrixInternal {
             const started = control.millis();
             const x = frameCount == 0 ? endX : Math.round(startX + deltaX * frame / frameCount);
             const y = frameCount == 0 ? endY : Math.round(startY + deltaY * frame / frameCount);
-            if (mode == MatrixScrollMode.Composed)
+            if (mode == SarduMatrixScrollMode.Composed)
                 matrix._restoreBuffer(background);
             else
                 matrix._clearBuffer();
@@ -233,6 +264,9 @@ namespace sarduMatrixInternal {
         }
     }
 
+    /**
+     * Private - do not use. Internal matrix implementation.
+     */
     export function scrollText(
         matrix: sarduMatrix.Matrix,
         text: string,
@@ -240,11 +274,11 @@ namespace sarduMatrixInternal {
         y: number,
         color: number,
         frameIntervalMs: number,
-        font: MatrixFont = MatrixFont.Sardu,
-        size: MatrixFontSize = MatrixFontSize.X1,
+        font: SarduMatrixFont = SarduMatrixFont.Sardu,
+        size: SarduMatrixFontSize = SarduMatrixFontSize.X1,
         brightness: number = 128,
-        orientation: MatrixTextOrientation = MatrixTextOrientation.Normal,
-        mode: MatrixScrollMode = MatrixScrollMode.Exclusive
+        orientation: SarduMatrixTextOrientation = SarduMatrixTextOrientation.Normal,
+        mode: SarduMatrixScrollMode = SarduMatrixScrollMode.Exclusive
     ): void {
         const finalX = -renderedTextWidth(text, font, size, orientation);
         startX = Math.floor(startX);
@@ -255,20 +289,23 @@ namespace sarduMatrixInternal {
         );
     }
 
+    /**
+     * Private - do not use. Internal matrix implementation.
+     */
     export function scrollTextFromEdge(
         matrix: sarduMatrix.Matrix,
         text: string,
-        edge: MatrixScrollEdge,
+        edge: SarduMatrixScrollEdge,
         color: number,
         frameIntervalMs: number,
-        font: MatrixFont = MatrixFont.Sardu,
-        size: MatrixFontSize = MatrixFontSize.X1,
+        font: SarduMatrixFont = SarduMatrixFont.Sardu,
+        size: SarduMatrixFontSize = SarduMatrixFontSize.X1,
         brightness: number = 128,
-        orientation: MatrixTextOrientation = MatrixTextOrientation.Normal,
-        mode: MatrixScrollMode = MatrixScrollMode.Exclusive
+        orientation: SarduMatrixTextOrientation = SarduMatrixTextOrientation.Normal,
+        mode: SarduMatrixScrollMode = SarduMatrixScrollMode.Exclusive
     ): void {
-        edge = Math.floor(edge) as MatrixScrollEdge;
-        if (edge < MatrixScrollEdge.Right || edge > MatrixScrollEdge.Bottom) edge = MatrixScrollEdge.Right;
+        edge = Math.floor(edge) as SarduMatrixScrollEdge;
+        if (edge < SarduMatrixScrollEdge.Right || edge > SarduMatrixScrollEdge.Bottom) edge = SarduMatrixScrollEdge.Right;
         orientation = normalizedTextOrientation(orientation);
         const contentWidth = renderedTextWidth(text, font, size, orientation);
         const contentHeight = renderedTextHeight(text, font, size, orientation);
@@ -279,11 +316,11 @@ namespace sarduMatrixInternal {
         let startY = centeredY;
         let endX = centeredX;
         let endY = centeredY;
-        if (edge == MatrixScrollEdge.Left) {
+        if (edge == SarduMatrixScrollEdge.Left) {
             startX = -contentWidth; endX = matrix.width();
-        } else if (edge == MatrixScrollEdge.Top) {
+        } else if (edge == SarduMatrixScrollEdge.Top) {
             startY = -contentHeight; endY = matrix.height();
-        } else if (edge == MatrixScrollEdge.Bottom) {
+        } else if (edge == SarduMatrixScrollEdge.Bottom) {
             startY = matrix.height(); endY = -contentHeight;
         } else {
             startX = matrix.width(); endX = -contentWidth;
@@ -295,12 +332,28 @@ namespace sarduMatrixInternal {
     }
 }
 
+/** Configurable RGB matrix creation, drawing and animation. */
 namespace sarduMatrix {
-    /** Scrolls text between two freely selected coordinates. */
-    //% blockId=sardu_matrix_scroll_text_between block="$matrix scroll text $text from x $startX y $startY to x $endX y $endY|| color $color=neopixel_colors every $frameIntervalMs ms font $font size $size brightness $brightness orientation $orientation mode $mode"
-    //% group="Scrolling text" weight=73 help=github:pxt-sardu-matrix/docs/api
+    /**
+     * Scrolls text between two freely selected coordinates.
+     * @param matrix target matrix
+     * @param text text to render
+     * @param startX initial horizontal coordinate in pixels
+     * @param startY initial vertical coordinate in pixels
+     * @param endX final horizontal coordinate in pixels
+     * @param endY final vertical coordinate in pixels
+     * @param color RGB color, chosen with the color picker or an RGB/HSL block
+     * @param frameIntervalMs pause between animation frames in milliseconds
+     * @param font font used to render the text
+     * @param size integer scale from 1 to 4
+     * @param brightness brightness from 0 to 255
+     * @param orientation rotation of the rendered text
+     * @param mode how the operation interacts with the existing background
+     */
+    //% blockId=sardu_matrix_scroll_text_between block="$matrix scroll text $text from x $startX y $startY to x $endX y $endY||color $color=neopixel_colors every (ms) $frameIntervalMs|font $font size $size brightness $brightness orientation $orientation mode $mode"
+    //% group="Scrolling text" weight=73 help=github:sardu-matrix/docs/api
     //% compileHiddenArguments=true inlineInputMode="variable" inlineInputModeLimit=7 expandableArgumentBreaks="5"
-    //% matrix.shadow=variables_get matrix.defl=matrix text.defl="Hello" startX.defl=-1 startY.defl=0 endX.defl=0 endY.defl=0 color.defl=NeoPixelColors.White frameIntervalMs.min=0 frameIntervalMs.defl=100 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=MatrixTextOrientation.Normal mode.defl=MatrixScrollMode.Exclusive
+    //% matrix.shadow=variables_get matrix.defl=matrix text.defl="Hello" startX.defl=-1 startY.defl=0 endX.defl=0 endY.defl=0 color.defl=NeoPixelColors.White frameIntervalMs.min=0 frameIntervalMs.defl=100 font.defl=SarduMatrixFont.Sardu size.defl=SarduMatrixFontSize.X1 brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=SarduMatrixTextOrientation.Normal mode.defl=SarduMatrixScrollMode.Exclusive
     //% color.snippet="neopixel.colors(NeoPixelColors.White)" color.pySnippet="neopixel.colors(NeoPixelColors.WHITE)"
     export function scrollTextBetween(
         matrix: Matrix,
@@ -311,11 +364,11 @@ namespace sarduMatrix {
         endY: number,
         color: number = NeoPixelColors.White,
         frameIntervalMs: number = 100,
-        font: MatrixFont = MatrixFont.Sardu,
-        size: MatrixFontSize = MatrixFontSize.X1,
+        font: SarduMatrixFont = SarduMatrixFont.Sardu,
+        size: SarduMatrixFontSize = SarduMatrixFontSize.X1,
         brightness: number = 128,
-        orientation: MatrixTextOrientation = MatrixTextOrientation.Normal,
-        mode: MatrixScrollMode = MatrixScrollMode.Exclusive
+        orientation: SarduMatrixTextOrientation = SarduMatrixTextOrientation.Normal,
+        mode: SarduMatrixScrollMode = SarduMatrixScrollMode.Exclusive
     ): void {
         if (!matrix) return;
         if (startX == -1) startX = matrix.width();

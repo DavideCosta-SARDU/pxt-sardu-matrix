@@ -1,5 +1,5 @@
 /** Physical size of one matrix module. */
-enum MatrixModuleType {
+enum SarduMatrixModuleType {
     //% block="8 x 8"
     Matrix8x8 = 0,
     //% block="16 x 16"
@@ -15,7 +15,7 @@ enum MatrixModuleType {
 }
 
 /** Physical corner where the data chain starts. */
-enum MatrixOrigin {
+enum SarduMatrixOrigin {
     //% block="top left"
     TopLeft = 0,
     //% block="top right"
@@ -27,7 +27,7 @@ enum MatrixOrigin {
 }
 
 /** Primary direction followed by the data chain. */
-enum MatrixScanAxis {
+enum SarduMatrixScanAxis {
     //% block="rows"
     Rows = 0,
     //% block="columns"
@@ -35,10 +35,10 @@ enum MatrixScanAxis {
 }
 
 /** Shape of the data path. */
-enum MatrixPath {
+enum SarduMatrixPath {
     //% block="progressive"
     Progressive = 0,
-    //% block="ZigZag"
+    //% block="zigzag"
     ZigZag = 1,
     // Kept as a hidden alias so existing TypeScript projects still compile.
     //% blockHidden=true
@@ -46,23 +46,23 @@ enum MatrixPath {
 }
 
 /** Font used to draw text on the matrix. */
-enum MatrixFont {
+enum SarduMatrixFont {
     //% block="SARDU"
     Sardu = 0,
-    //% block="Micro:Bit extended"
+    //% block="micro:bit extended"
     MicroBitExtended = 1,
     //% block="SARDU proportional"
     SarduProportional = 2,
-    //% block="Micro:Bit proportional"
+    //% block="micro:bit proportional"
     MicroBitProportional = 3,
-    //% block="SARDU Compact"
+    //% block="SARDU compact"
     SarduCompact = 4,
-    //% block="SARDU Compact proportional"
+    //% block="SARDU compact proportional"
     SarduCompactProportional = 5
 }
 
 /** Integer scale applied to a text font. */
-enum MatrixFontSize {
+enum SarduMatrixFontSize {
     //% block="1x"
     X1 = 1,
     //% block="2x"
@@ -74,7 +74,7 @@ enum MatrixFontSize {
 }
 
 /** Rotation applied to the complete rendered text line. */
-enum MatrixTextOrientation {
+enum SarduMatrixTextOrientation {
     //% block="normal (0 degrees)"
     Normal = 0,
     //% block="90 degrees clockwise"
@@ -86,7 +86,7 @@ enum MatrixTextOrientation {
 }
 
 /** Edge from which an automatically positioned text line enters the matrix. */
-enum MatrixScrollEdge {
+enum SarduMatrixScrollEdge {
     //% block="right"
     Right = 0,
     //% block="left"
@@ -98,7 +98,7 @@ enum MatrixScrollEdge {
 }
 
 /** How scrolling text interacts with content already in the RGB buffer. */
-enum MatrixScrollMode {
+enum SarduMatrixScrollMode {
     //% block="exclusive (clear display)"
     Exclusive = 0,
     //% block="composed (preserve background)"
@@ -106,7 +106,7 @@ enum MatrixScrollMode {
 }
 
 /** How transparent pixels in a graphic interact with the current matrix content. */
-enum MatrixGraphicMode {
+enum SarduMatrixGraphicMode {
     //% block="overlay"
     Overlay = 0,
     //% block="replace area"
@@ -114,7 +114,7 @@ enum MatrixGraphicMode {
 }
 
 /** State left on the matrix when an effect ends. */
-enum MatrixEffectEndState {
+enum SarduMatrixEffectEndState {
     //% block="leave last frame"
     Leave = 0,
     //% block="restore previous content"
@@ -124,7 +124,7 @@ enum MatrixEffectEndState {
 }
 
 /** Direction used by a progressive color wipe. */
-enum MatrixWipeDirection {
+enum SarduMatrixWipeDirection {
     //% block="left to right"
     LeftToRight = 0,
     //% block="right to left"
@@ -136,7 +136,7 @@ enum MatrixWipeDirection {
 }
 
 /** Axis along which rainbow colors change. */
-enum MatrixRainbowAxis {
+enum SarduMatrixRainbowAxis {
     //% block="horizontal"
     Horizontal = 0,
     //% block="vertical"
@@ -144,7 +144,7 @@ enum MatrixRainbowAxis {
 }
 
 /** Built-in 8 x 8 image drawn in the matrix buffer. */
-enum MatrixIcon {
+enum SarduMatrixIcon {
     //% block="filled heart"
     FilledHeart = 0,
     //% block="heart outline"
@@ -175,8 +175,9 @@ enum MatrixIcon {
     Lightning = 13
 }
 
+/** Private - do not use. Internal matrix implementation. */
 namespace sarduMatrixInternal {
-    // Buffer payload length is a signed C++ int in the current Micro:Bit target.
+    // Buffer payload length is a signed C++ int in the current micro:bit target.
     // This guards representation only; practical limits remain available RAM and
     // the maximum single allocation supported by the selected runtime.
     export const MAX_REPRESENTABLE_BUFFER_BYTES = 0x7fffffff;
@@ -192,12 +193,12 @@ namespace sarduMatrixInternal {
         moduleColumns: number;
         moduleRows: number;
         modular: boolean;
-        pixelOrigin: MatrixOrigin;
-        pixelAxis: MatrixScanAxis;
-        pixelPath: MatrixPath;
-        moduleOrigin: MatrixOrigin;
-        moduleAxis: MatrixScanAxis;
-        modulePath: MatrixPath;
+        pixelOrigin: SarduMatrixOrigin;
+        pixelAxis: SarduMatrixScanAxis;
+        pixelPath: SarduMatrixPath;
+        moduleOrigin: SarduMatrixOrigin;
+        moduleAxis: SarduMatrixScanAxis;
+        modulePath: SarduMatrixPath;
     }
 
     function fail(): void {
@@ -208,19 +209,19 @@ namespace sarduMatrixInternal {
         return value > 0 && Math.floor(value) == value;
     }
 
-    function validOrigin(value: MatrixOrigin): boolean {
-        return value >= MatrixOrigin.TopLeft && value <= MatrixOrigin.BottomRight;
+    function validOrigin(value: SarduMatrixOrigin): boolean {
+        return value >= SarduMatrixOrigin.TopLeft && value <= SarduMatrixOrigin.BottomRight;
     }
 
-    function validAxis(value: MatrixScanAxis): boolean {
-        return value == MatrixScanAxis.Rows || value == MatrixScanAxis.Columns;
+    function validAxis(value: SarduMatrixScanAxis): boolean {
+        return value == SarduMatrixScanAxis.Rows || value == SarduMatrixScanAxis.Columns;
     }
 
-    function validPath(value: MatrixPath): boolean {
-        return value == MatrixPath.Progressive || value == MatrixPath.ZigZag;
+    function validPath(value: SarduMatrixPath): boolean {
+        return value == SarduMatrixPath.Progressive || value == SarduMatrixPath.ZigZag;
     }
 
-    function validatePath(origin: MatrixOrigin, axis: MatrixScanAxis, path: MatrixPath): void {
+    function validatePath(origin: SarduMatrixOrigin, axis: SarduMatrixScanAxis, path: SarduMatrixPath): void {
         if (!validOrigin(origin) || !validAxis(axis) || !validPath(path)) fail();
     }
 
@@ -231,36 +232,45 @@ namespace sarduMatrixInternal {
         return width * height;
     }
 
-    export function moduleWidth(matrixType: MatrixModuleType): number {
+    /**
+     * Private - do not use. Internal matrix implementation.
+     */
+    export function moduleWidth(matrixType: SarduMatrixModuleType): number {
         switch (matrixType) {
-            case MatrixModuleType.Matrix8x8: return 8;
-            case MatrixModuleType.Matrix16x16: return 16;
-            case MatrixModuleType.Matrix32x8: return 32;
-            case MatrixModuleType.Matrix8x32: return 8;
-            case MatrixModuleType.Matrix16x8: return 16;
-            case MatrixModuleType.Matrix8x16: return 8;
+            case SarduMatrixModuleType.Matrix8x8: return 8;
+            case SarduMatrixModuleType.Matrix16x16: return 16;
+            case SarduMatrixModuleType.Matrix32x8: return 32;
+            case SarduMatrixModuleType.Matrix8x32: return 8;
+            case SarduMatrixModuleType.Matrix16x8: return 16;
+            case SarduMatrixModuleType.Matrix8x16: return 8;
             default: fail(); return 0;
         }
     }
 
-    export function moduleHeight(matrixType: MatrixModuleType): number {
+    /**
+     * Private - do not use. Internal matrix implementation.
+     */
+    export function moduleHeight(matrixType: SarduMatrixModuleType): number {
         switch (matrixType) {
-            case MatrixModuleType.Matrix8x8: return 8;
-            case MatrixModuleType.Matrix16x16: return 16;
-            case MatrixModuleType.Matrix32x8: return 8;
-            case MatrixModuleType.Matrix8x32: return 32;
-            case MatrixModuleType.Matrix16x8: return 8;
-            case MatrixModuleType.Matrix8x16: return 16;
+            case SarduMatrixModuleType.Matrix8x8: return 8;
+            case SarduMatrixModuleType.Matrix16x16: return 16;
+            case SarduMatrixModuleType.Matrix32x8: return 8;
+            case SarduMatrixModuleType.Matrix8x32: return 32;
+            case SarduMatrixModuleType.Matrix16x8: return 8;
+            case SarduMatrixModuleType.Matrix8x16: return 16;
             default: fail(); return 0;
         }
     }
 
+    /**
+     * Private - do not use. Internal matrix implementation.
+     */
     export function directConfig(
         width: number,
         height: number,
-        origin: MatrixOrigin,
-        axis: MatrixScanAxis,
-        path: MatrixPath
+        origin: SarduMatrixOrigin,
+        axis: SarduMatrixScanAxis,
+        path: SarduMatrixPath
     ): MatrixConfig {
         validatePath(origin, axis, path);
         const config = new MatrixConfig();
@@ -276,22 +286,25 @@ namespace sarduMatrixInternal {
         config.pixelOrigin = origin;
         config.pixelAxis = axis;
         config.pixelPath = path;
-        config.moduleOrigin = MatrixOrigin.TopLeft;
-        config.moduleAxis = MatrixScanAxis.Rows;
-        config.modulePath = MatrixPath.Progressive;
+        config.moduleOrigin = SarduMatrixOrigin.TopLeft;
+        config.moduleAxis = SarduMatrixScanAxis.Rows;
+        config.modulePath = SarduMatrixPath.Progressive;
         return config;
     }
 
+    /**
+     * Private - do not use. Internal matrix implementation.
+     */
     export function modularConfig(
         matrixCount: number,
-        matrixType: MatrixModuleType,
+        matrixType: SarduMatrixModuleType,
         matrixRows: number,
-        pixelOrigin: MatrixOrigin,
-        pixelAxis: MatrixScanAxis,
-        pixelPath: MatrixPath,
-        moduleOrigin: MatrixOrigin,
-        moduleAxis: MatrixScanAxis,
-        modulePath: MatrixPath
+        pixelOrigin: SarduMatrixOrigin,
+        pixelAxis: SarduMatrixScanAxis,
+        pixelPath: SarduMatrixPath,
+        moduleOrigin: SarduMatrixOrigin,
+        moduleAxis: SarduMatrixScanAxis,
+        modulePath: SarduMatrixPath
     ): MatrixConfig {
         if (!isPositiveInteger(matrixCount) || !isPositiveInteger(matrixRows)) fail();
         if (matrixCount % matrixRows != 0) fail();

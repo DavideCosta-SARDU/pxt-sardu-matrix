@@ -1,3 +1,4 @@
+/** Private - do not use. Internal matrix implementation. */
 namespace sarduMatrixInternal {
     const scrollTextItem = 1;
     const scrollLineItem = 2;
@@ -58,10 +59,13 @@ namespace sarduMatrixInternal {
         pendingScrollWidth += width + scrollDimension(spacing, 0);
     }
 
+    /**
+     * Private - do not use. Internal matrix implementation.
+     */
     export function queueScrollingText(
         matrix: sarduMatrix.Matrix, text: string, y: number, color: number,
-        font: MatrixFont, size: MatrixFontSize, brightness: number,
-        orientation: MatrixTextOrientation, spacing: number
+        font: SarduMatrixFont, size: SarduMatrixFontSize, brightness: number,
+        orientation: SarduMatrixTextOrientation, spacing: number
     ): void {
         if (!text || text.length == 0) return;
         const item = new ScrollItem();
@@ -76,11 +80,14 @@ namespace sarduMatrixInternal {
         appendScrollItem(matrix, item, renderedTextWidth(text, font, size, orientation), spacing);
     }
 
+    /**
+     * Private - do not use. Internal matrix implementation.
+     */
     export function queueScrollingTextPath(
         matrix: sarduMatrix.Matrix, text: string,
         startX: number, startY: number, endX: number, endY: number,
-        color: number, font: MatrixFont, size: MatrixFontSize,
-        brightness: number, orientation: MatrixTextOrientation
+        color: number, font: SarduMatrixFont, size: SarduMatrixFontSize,
+        brightness: number, orientation: SarduMatrixTextOrientation
     ): void {
         if (!text || text.length == 0 || !prepareScrollQueue(matrix)) return;
         const item = new ScrollItem();
@@ -98,6 +105,9 @@ namespace sarduMatrixInternal {
         pendingScrollItems.push(item);
     }
 
+    /**
+     * Private - do not use. Internal matrix implementation.
+     */
     export function queueScrollingLine(
         matrix: sarduMatrix.Matrix, width: number, startY: number, endY: number,
         color: number, spacing: number
@@ -111,6 +121,9 @@ namespace sarduMatrixInternal {
         appendScrollItem(matrix, item, item.p1, spacing);
     }
 
+    /**
+     * Private - do not use. Internal matrix implementation.
+     */
     export function queueScrollingRectangle(
         matrix: sarduMatrix.Matrix, width: number, height: number, y: number,
         color: number, filled: boolean, spacing: number
@@ -124,6 +137,9 @@ namespace sarduMatrixInternal {
         appendScrollItem(matrix, item, item.p1, spacing);
     }
 
+    /**
+     * Private - do not use. Internal matrix implementation.
+     */
     export function queueScrollingCircle(
         matrix: sarduMatrix.Matrix, radius: number, centerY: number,
         color: number, filled: boolean, spacing: number
@@ -152,15 +168,18 @@ namespace sarduMatrixInternal {
         }
     }
 
+    /**
+     * Private - do not use. Internal matrix implementation.
+     */
     export function startQueuedScrolling(
         matrix: sarduMatrix.Matrix,
         frameIntervalMs: number,
-        mode: MatrixScrollMode
+        mode: SarduMatrixScrollMode
     ): void {
         if (!matrix || pendingScrollMatrix != matrix || pendingScrollItems.length == 0) return;
         frameIntervalMs = Math.floor(frameIntervalMs);
         if (frameIntervalMs != frameIntervalMs || frameIntervalMs < 0) frameIntervalMs = 0;
-        mode = mode == MatrixScrollMode.Composed ? MatrixScrollMode.Composed : MatrixScrollMode.Exclusive;
+        mode = mode == SarduMatrixScrollMode.Composed ? SarduMatrixScrollMode.Composed : SarduMatrixScrollMode.Exclusive;
 
         const items = pendingScrollItems;
         const contentWidth = pendingScrollWidth;
@@ -169,7 +188,7 @@ namespace sarduMatrixInternal {
         pendingScrollWidth = 0;
 
         const operation = matrix._beginOperation();
-        const background = mode == MatrixScrollMode.Composed ? matrix._captureBuffer() : null;
+        const background = mode == SarduMatrixScrollMode.Composed ? matrix._captureBuffer() : null;
         let hasComposition = false;
         for (let i = 0; i < items.length; i++)
             if (items[i].kind != scrollTextPathItem) hasComposition = true;
@@ -178,7 +197,7 @@ namespace sarduMatrixInternal {
             for (let offsetX = matrix.width(); offsetX >= -contentWidth; offsetX--) {
                 if (!matrix._operationIsActive(operation)) return;
                 const started = control.millis();
-                if (mode == MatrixScrollMode.Composed) matrix._restoreBuffer(background);
+                if (mode == SarduMatrixScrollMode.Composed) matrix._restoreBuffer(background);
                 else matrix._clearBuffer();
                 for (let i = 0; i < items.length; i++)
                     if (items[i].kind != scrollTextPathItem) drawScrollItem(matrix, items[i], offsetX);
@@ -204,7 +223,7 @@ namespace sarduMatrixInternal {
             for (let frame = 0; frame <= pathFrameCount; frame++) {
                 if (!matrix._operationIsActive(operation)) return;
                 const started = control.millis();
-                if (mode == MatrixScrollMode.Composed) matrix._restoreBuffer(background);
+                if (mode == SarduMatrixScrollMode.Composed) matrix._restoreBuffer(background);
                 else matrix._clearBuffer();
                 for (let i = 0; i < items.length; i++) {
                     const item = items[i];
@@ -223,21 +242,35 @@ namespace sarduMatrixInternal {
     }
 }
 
+/** Configurable RGB matrix creation, drawing and animation. */
 namespace sarduMatrix {
-    /** Adds a text path that starts only when start scrolling is called. */
-    //% blockId=sardu_matrix_add_scrolling_text_path block="$matrix add text $text with path from x $startX y $startY to x $endX y $endY|| color $color=neopixel_colors font $font size $size brightness $brightness orientation $orientation"
-    //% group="Scrolling text" weight=72 help=github:pxt-sardu-matrix/docs/api
+    /**
+     * Adds a text path that starts only when start scrolling is called.
+     * @param matrix target matrix
+     * @param text text to render
+     * @param startX initial horizontal coordinate in pixels
+     * @param startY initial vertical coordinate in pixels
+     * @param endX final horizontal coordinate in pixels
+     * @param endY final vertical coordinate in pixels
+     * @param color RGB color, chosen with the color picker or an RGB/HSL block
+     * @param font font used to render the text
+     * @param size integer scale from 1 to 4
+     * @param brightness brightness from 0 to 255
+     * @param orientation rotation of the rendered text
+     */
+    //% blockId=sardu_matrix_add_scrolling_text_path block="$matrix add text $text with path from x $startX y $startY to x $endX y $endY||color $color=neopixel_colors font $font size $size brightness $brightness orientation $orientation"
+    //% group="Scrolling text" weight=72 help=github:sardu-matrix/docs/api
     //% compileHiddenArguments=true inlineInputMode="variable" inlineInputModeLimit=7 expandableArgumentBreaks="6"
-    //% matrix.shadow=variables_get matrix.defl=matrix text.defl="Hello" startX.defl=-1 startY.defl=0 endX.defl=0 endY.defl=0 color.defl=NeoPixelColors.White font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=MatrixTextOrientation.Normal
+    //% matrix.shadow=variables_get matrix.defl=matrix text.defl="Hello" startX.defl=-1 startY.defl=0 endX.defl=0 endY.defl=0 color.defl=NeoPixelColors.White font.defl=SarduMatrixFont.Sardu size.defl=SarduMatrixFontSize.X1 brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=SarduMatrixTextOrientation.Normal
     //% color.snippet="neopixel.colors(NeoPixelColors.White)" color.pySnippet="neopixel.colors(NeoPixelColors.WHITE)"
     export function addScrollingTextPath(
         matrix: Matrix, text: string,
         startX: number, startY: number, endX: number, endY: number,
         color: number = NeoPixelColors.White,
-        font: MatrixFont = MatrixFont.Sardu,
-        size: MatrixFontSize = MatrixFontSize.X1,
+        font: SarduMatrixFont = SarduMatrixFont.Sardu,
+        size: SarduMatrixFontSize = SarduMatrixFontSize.X1,
         brightness: number = 128,
-        orientation: MatrixTextOrientation = MatrixTextOrientation.Normal
+        orientation: SarduMatrixTextOrientation = SarduMatrixTextOrientation.Normal
     ): void {
         sarduMatrixInternal.queueScrollingTextPath(
             matrix, text, startX, startY, endX, endY,
@@ -245,45 +278,83 @@ namespace sarduMatrix {
         );
     }
 
-    /** Adds a line to the pending scrolling composition. */
+    /**
+     * Adds a line to the pending scrolling composition.
+     * @param matrix target matrix
+     * @param width logical width in pixels
+     * @param startY initial vertical coordinate in pixels
+     * @param endY final vertical coordinate in pixels
+     * @param color RGB color, chosen with the color picker or an RGB/HSL block
+     * @param spacing blank pixels after this scrolling item
+     */
     //% blockId=sardu_matrix_add_scrolling_line block="%matrix add scrolling line width %width from y %startY to y %endY|color %color=neopixel_colors spacing %spacing"
-    //% group="Scrolling geometry" weight=90 help=github:pxt-sardu-matrix/docs/shapes
+    //% group="Scrolling geometry" weight=90 help=github:sardu-matrix/docs/shapes
     //% matrix.shadow=variables_get matrix.defl=matrix width.min=1 width.defl=8 startY.defl=0 endY.defl=7 color.defl=NeoPixelColors.White spacing.min=0 spacing.defl=1
     //% color.snippet="neopixel.colors(NeoPixelColors.White)" color.pySnippet="neopixel.colors(NeoPixelColors.WHITE)"
     export function addScrollingLine(matrix: Matrix, width: number = 8, startY: number = 0, endY: number = 7, color: number = NeoPixelColors.White, spacing: number = 1): void {
         sarduMatrixInternal.queueScrollingLine(matrix, width, startY, endY, color, spacing);
     }
 
-    /** Adds a rectangle outline to the pending scrolling composition. */
+    /**
+     * Adds a rectangle outline to the pending scrolling composition.
+     * @param matrix target matrix
+     * @param width logical width in pixels
+     * @param height logical height in pixels
+     * @param y vertical coordinate in pixels; zero is the top edge
+     * @param color RGB color, chosen with the color picker or an RGB/HSL block
+     * @param spacing blank pixels after this scrolling item
+     */
     //% blockId=sardu_matrix_add_scrolling_rectangle block="%matrix add scrolling rectangle width %width height %height at y %y|color %color=neopixel_colors spacing %spacing"
-    //% group="Scrolling geometry" weight=80 help=github:pxt-sardu-matrix/docs/shapes
+    //% group="Scrolling geometry" weight=80 help=github:sardu-matrix/docs/shapes
     //% matrix.shadow=variables_get matrix.defl=matrix width.min=1 width.defl=8 height.min=1 height.defl=8 y.defl=0 color.defl=NeoPixelColors.White spacing.min=0 spacing.defl=1
     //% color.snippet="neopixel.colors(NeoPixelColors.White)" color.pySnippet="neopixel.colors(NeoPixelColors.WHITE)"
     export function addScrollingRectangle(matrix: Matrix, width: number = 8, height: number = 8, y: number = 0, color: number = NeoPixelColors.White, spacing: number = 1): void {
         sarduMatrixInternal.queueScrollingRectangle(matrix, width, height, y, color, false, spacing);
     }
 
-    /** Adds a filled rectangle to the pending scrolling composition. */
+    /**
+     * Adds a filled rectangle to the pending scrolling composition.
+     * @param matrix target matrix
+     * @param width logical width in pixels
+     * @param height logical height in pixels
+     * @param y vertical coordinate in pixels; zero is the top edge
+     * @param color RGB color, chosen with the color picker or an RGB/HSL block
+     * @param spacing blank pixels after this scrolling item
+     */
     //% blockId=sardu_matrix_add_scrolling_filled_rectangle block="%matrix add scrolling filled rectangle width %width height %height at y %y|color %color=neopixel_colors spacing %spacing"
-    //% group="Scrolling geometry" weight=70 help=github:pxt-sardu-matrix/docs/shapes
+    //% group="Scrolling geometry" weight=70 help=github:sardu-matrix/docs/shapes
     //% matrix.shadow=variables_get matrix.defl=matrix width.min=1 width.defl=8 height.min=1 height.defl=8 y.defl=0 color.defl=NeoPixelColors.White spacing.min=0 spacing.defl=1
     //% color.snippet="neopixel.colors(NeoPixelColors.White)" color.pySnippet="neopixel.colors(NeoPixelColors.WHITE)"
     export function addScrollingFilledRectangle(matrix: Matrix, width: number = 8, height: number = 8, y: number = 0, color: number = NeoPixelColors.White, spacing: number = 1): void {
         sarduMatrixInternal.queueScrollingRectangle(matrix, width, height, y, color, true, spacing);
     }
 
-    /** Adds a circle outline to the pending scrolling composition. */
+    /**
+     * Adds a circle outline to the pending scrolling composition.
+     * @param matrix target matrix
+     * @param radius circle radius in pixels
+     * @param centerY vertical coordinate of the circle center
+     * @param color RGB color, chosen with the color picker or an RGB/HSL block
+     * @param spacing blank pixels after this scrolling item
+     */
     //% blockId=sardu_matrix_add_scrolling_circle block="%matrix add scrolling circle radius %radius center y %centerY|color %color=neopixel_colors spacing %spacing"
-    //% group="Scrolling geometry" weight=60 help=github:pxt-sardu-matrix/docs/shapes
+    //% group="Scrolling geometry" weight=60 help=github:sardu-matrix/docs/shapes
     //% matrix.shadow=variables_get matrix.defl=matrix radius.min=0 radius.defl=4 centerY.defl=7 color.defl=NeoPixelColors.White spacing.min=0 spacing.defl=1
     //% color.snippet="neopixel.colors(NeoPixelColors.White)" color.pySnippet="neopixel.colors(NeoPixelColors.WHITE)"
     export function addScrollingCircle(matrix: Matrix, radius: number = 4, centerY: number = 7, color: number = NeoPixelColors.White, spacing: number = 1): void {
         sarduMatrixInternal.queueScrollingCircle(matrix, radius, centerY, color, false, spacing);
     }
 
-    /** Adds a filled circle to the pending scrolling composition. */
+    /**
+     * Adds a filled circle to the pending scrolling composition.
+     * @param matrix target matrix
+     * @param radius circle radius in pixels
+     * @param centerY vertical coordinate of the circle center
+     * @param color RGB color, chosen with the color picker or an RGB/HSL block
+     * @param spacing blank pixels after this scrolling item
+     */
     //% blockId=sardu_matrix_add_scrolling_filled_circle block="%matrix add scrolling filled circle radius %radius center y %centerY|color %color=neopixel_colors spacing %spacing"
-    //% group="Scrolling geometry" weight=50 help=github:pxt-sardu-matrix/docs/shapes
+    //% group="Scrolling geometry" weight=50 help=github:sardu-matrix/docs/shapes
     //% matrix.shadow=variables_get matrix.defl=matrix radius.min=0 radius.defl=4 centerY.defl=7 color.defl=NeoPixelColors.White spacing.min=0 spacing.defl=1
     //% color.snippet="neopixel.colors(NeoPixelColors.White)" color.pySnippet="neopixel.colors(NeoPixelColors.WHITE)"
     export function addScrollingFilledCircle(matrix: Matrix, radius: number = 4, centerY: number = 7, color: number = NeoPixelColors.White, spacing: number = 1): void {

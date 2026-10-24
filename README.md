@@ -1,12 +1,20 @@
 # sardu-matrix
 
-SARDU-Matrix is a configurable RGB LED matrix extension for Microsoft MakeCode and Micro:Bit. It uses the official Microsoft `pxt-neopixel` extension as its RGB backend.
+SARDU-Matrix is a configurable RGB LED matrix extension for Microsoft MakeCode and micro:bit. It uses the official Microsoft `pxt-neopixel` extension as its RGB backend.
 
-The current stable release is verified on a real six-panel 96×16 display. Its pre-1.0 semantic version identifies an evolving public API, not an untested beta: each release candidate is compiled for Micro:Bit V1 and V2 and is confirmed on the affected hardware before promotion.
+The current stable release is verified on a real six-panel 96×16 display. Its pre-1.0 semantic version identifies an evolving public API, not an untested beta: each release candidate is compiled for micro:bit V1 and V2 and is confirmed on the affected hardware before promotion.
+
+## micro:bit V1 and V2
+
+Both boards support the extension. V1 has less program memory and RAM: a program combining all blocks can exceed its firmware limit even when individual features compile. The RGB buffer alone needs `width × height × 3` bytes; composed scrolling and some effects also need temporary copies. Large displays or programs combining many effects should use V2. See [memory and rendering](docs/memory-and-rendering.md).
+
+The coordinate-based scrolling block starts at X = 16 by default. For a different display width, connect the matrix width block to X as a normal value block, or use **scroll text from edge** to position text automatically.
+
+Existing JavaScript/Python projects must update enum type names from `Matrix…` to `SarduMatrix…`. For Blocks projects, follow the [update procedure](docs/api.md#updating-existing-projects) before changing the extension version.
 
 ## Installation in MakeCode
 
-1. Open [MakeCode for Micro:Bit](https://makecode.microbit.org/).
+1. Open [MakeCode for micro:bit](https://makecode.microbit.org/).
 2. Create or open a project.
 3. Select **Extensions** in the toolbox.
 4. Paste this repository URL into the search box:
@@ -40,7 +48,7 @@ Choose the number and physical type of identical modules. The default is one 16�
 ```blocks
 let matrix = sarduMatrix.createModules(
     2,
-    MatrixModuleType.Matrix16x16,
+    SarduMatrixModuleType.Matrix16x16,
     DigitalPin.P1,
     128
 )
@@ -64,8 +72,8 @@ matrix.clearBuffer()
 matrix.drawText(
     "Hello, città!", 0, 4,
     sarduMatrix.rgbColor(255, 40, 0),
-    MatrixFont.Sardu,
-    MatrixFontSize.X1,
+    SarduMatrixFont.Sardu,
+    SarduMatrixFontSize.X1,
     128
 )
 matrix.show()
@@ -73,7 +81,7 @@ matrix.show()
 
 `clear()` immediately clears both buffer and physical display. `clearBuffer()` only changes memory and is available under advanced blocks. `setPixel()` and `drawText()` do not call `show()` automatically. Coordinates outside the logical display are safely clipped. The manual `scrollText()` block starts at the selected X/Y coordinates and moves left. The simpler edge block can enter from the right, left, top or bottom and automatically centers the line on the other axis. Either animation can be stopped by `interruptAndClear()` from a button or radio event.
 
-The text blocks offer six fonts: SARDU, Micro:Bit Extended, proportional versions of both, SARDU Compact and SARDU Compact Proportional. Each can be rendered at 1×, 2×, 3× or 4×. The SARDU fonts distinguish uppercase and lowercase and support printable ASCII, common accented Latin letters (`À`–`ÿ`, including `Œ/œ` and `Ÿ`) and selected symbols (`€ £ © ® ° × ÷ ¿ ¡`). The Micro:Bit choices use the official 5×5 base glyphs and add room for accents or cedilla.
+The text blocks offer six fonts: SARDU, micro:bit Extended, proportional versions of both, SARDU Compact and SARDU Compact Proportional. Each can be rendered at 1×, 2×, 3× or 4×. The SARDU fonts distinguish uppercase and lowercase and support printable ASCII, common accented Latin letters (`À`–`ÿ`, including `Œ/œ` and `Ÿ`) and selected symbols (`€ £ © ® ° × ÷ ¿ ¡`). The micro:bit choices use the official 5×5 base glyphs and add room for accents or cedilla.
 
 Static and scrolling text can rotate the complete rendered line to 0°, 90° clockwise, 180° or 270° clockwise. Rotation is independent from the scrolling edge, so all 16 combinations are available. Static text can use explicit X/Y coordinates, be centered across the complete width, complete height or both, or be centered inside an advanced inclusive X/Y range. Centering uses the dimensions after rotation. Every string also has its own 0–255 brightness, independent from the matrix-wide brightness selected during creation.
 
@@ -97,11 +105,11 @@ Gradient text can either blend two selected colors or keep one color while blend
 
 ```typescript
 // Create one 16 x 16 panel with a prudent global brightness.
-let matrix = sarduMatrix.createModules(1, MatrixModuleType.Matrix16x16, DigitalPin.P1, 128)
+let matrix = sarduMatrix.createModules(1, SarduMatrixModuleType.Matrix16x16, DigitalPin.P1, 128)
 
 // Compose two elements in memory, then update the LEDs once.
-matrix.drawTextCenteredWidth("Hi", 0, NeoPixelColors.White, MatrixFont.Sardu, MatrixFontSize.X1, 128, MatrixTextOrientation.Normal)
-sarduMatrix.drawIcon(matrix, MatrixIcon.FilledHeart, 4, 8, NeoPixelColors.Red, 1, 128)
+matrix.drawTextCenteredWidth("Hi", 0, NeoPixelColors.White, SarduMatrixFont.Sardu, SarduMatrixFontSize.X1, 128, SarduMatrixTextOrientation.Normal)
+sarduMatrix.drawIcon(matrix, SarduMatrixIcon.FilledHeart, 4, 8, NeoPixelColors.Red, 1, 128)
 matrix.show()
 ```
 
@@ -113,17 +121,17 @@ There is no arbitrary 1536-LED limit. One RGB NeoPixel buffer is allocated using
 RGB bytes = width × height × 3
 ```
 
-The actual maximum depends on the Micro:Bit revision, MakeCode runtime, the rest of the program and other extensions. An allocation that does not fit fails explicitly; the library does not silently reduce dimensions.
+The actual maximum depends on the micro:bit revision, MakeCode runtime, the rest of the program and other extensions. An allocation that does not fit fails explicitly; the library does not silently reduce dimensions.
 
-Exclusive scrolling adds no second RGB scene buffer. Composed scrolling temporarily copies the existing NeoPixel buffer, so during that animation it requires another `width × height × 3` bytes. This copy is released when scrolling ends. On Micro:Bit V1, prefer exclusive mode or small matrices when memory is tight.
+Exclusive scrolling adds no second RGB scene buffer. Composed scrolling temporarily copies the existing NeoPixel buffer, so during that animation it requires another `width × height × 3` bytes. This copy is released when scrolling ends. On micro:bit V1, prefer exclusive mode or small matrices when memory is tight.
 
-Micro:Bit V2 is recommended for special effects, especially on large matrices. Fade, content-masked effects and animated rainbows use temporary RGB snapshots while running; V1 has substantially less firmware and RAM margin.
+micro:bit V2 is recommended for special effects, especially on large matrices. Fade, content-masked effects and animated rainbows use temporary RGB snapshots while running; V1 has substantially less firmware and RAM margin.
 
 ## Wiring and power safety
 
-Connect the Micro:Bit data pin to `DIN` of the first panel, then connect each panel's `DOUT` to the next panel's `DIN` in the configured order.
+Connect the micro:bit data pin to `DIN` of the first panel, then connect each panel's `DOUT` to the next panel's `DIN` in the configured order.
 
-Do not power a matrix from the Micro:Bit 3V pin. Use an external supply suitable for the real panels and connect a common ground between the supply, every panel and the Micro:Bit. Power sizing, wiring, injection points, fusing and installation compliance remain the user's responsibility. Software brightness is not a substitute for correct electrical design.
+Do not power a matrix from the micro:bit 3V pin. Use an external supply suitable for the real panels and connect a common ground between the supply, every panel and the micro:bit. Power sizing, wiring, injection points, fusing and installation compliance remain the user's responsibility. Software brightness is not a substitute for correct electrical design.
 
 See [docs/wiring.md](docs/wiring.md) for diagrams and mapping examples.
 
@@ -131,7 +139,8 @@ See [docs/wiring.md](docs/wiring.md) for diagrams and mapping examples.
 
 - [English user guide](docs/user-guide.md)
 - [Italian user guide](docs/_locales/it/user-guide.md)
-- [Interactive MakeCode tutorial](tutorial.md)
+- [Interactive MakeCode tutorial](https://makecode.microbit.org/#tutorial:https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/tutorial) — [read the steps](tutorial.md)
+- [Tutorial in italiano](https://makecode.microbit.org/?lang=it#tutorial:https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/tutorial)
 - [Project and educational use](docs/project-and-education.md)
 - [Documented test procedure](docs/testing.md)
 - [Display configuration](docs/display-configuration.md)

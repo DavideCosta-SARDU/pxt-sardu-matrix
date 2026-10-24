@@ -6,7 +6,7 @@
 
 Crea una matrice RGB 16×16, mostra un messaggio statico e poi fai scorrere un secondo messaggio da destra a sinistra.
 
-Collega l'ingresso dati della matrice a P1. Alimenta i LED con un alimentatore esterno adeguato e collega la sua massa sia alla matrice sia alla massa del Micro:Bit.
+Collega l'ingresso dati della matrice a P1. Alimenta i LED con un alimentatore esterno adeguato e collega la sua massa sia alla matrice sia alla massa del micro:bit.
 
 ## Crea la matrice
 
@@ -22,7 +22,7 @@ Da **SARDU Matrix → Testo statico**, aggiungi il blocco del testo centrato in 
 
 ```blocks
 let matrix = sarduMatrix.create(16, 16, DigitalPin.P1, 128)
-matrix.drawTextCenteredWidth("OK", 0, neopixel.colors(NeoPixelColors.White), MatrixFont.Sardu, MatrixFontSize.X1, 128, MatrixTextOrientation.Normal)
+matrix.drawTextCenteredWidth("OK", 0, neopixel.colors(NeoPixelColors.White), SarduMatrixFont.Sardu, SarduMatrixFontSize.X1, 128, SarduMatrixTextOrientation.Normal)
 ```
 
 Il disegno è ora nel buffer RGB, ma non è ancora stato inviato ai LED.
@@ -33,7 +33,7 @@ Da **SARDU Matrix → Display**, aggiungi **mostra matrice**.
 
 ```blocks
 let matrix = sarduMatrix.create(16, 16, DigitalPin.P1, 128)
-matrix.drawTextCenteredWidth("OK", 0, neopixel.colors(NeoPixelColors.White), MatrixFont.Sardu, MatrixFontSize.X1, 128, MatrixTextOrientation.Normal)
+matrix.drawTextCenteredWidth("OK", 0, neopixel.colors(NeoPixelColors.White), SarduMatrixFont.Sardu, SarduMatrixFontSize.X1, 128, SarduMatrixTextOrientation.Normal)
 matrix.show()
 ```
 
@@ -43,12 +43,12 @@ Aggiungi una pausa di un secondo, quindi scegli **scorri testo dal bordo** da **
 
 ```blocks
 let matrix = sarduMatrix.create(16, 16, DigitalPin.P1, 128)
-matrix.drawTextCenteredWidth("OK", 0, neopixel.colors(NeoPixelColors.White), MatrixFont.Sardu, MatrixFontSize.X1, 128, MatrixTextOrientation.Normal)
+matrix.drawTextCenteredWidth("OK", 0, neopixel.colors(NeoPixelColors.White), SarduMatrixFont.Sardu, SarduMatrixFontSize.X1, 128, SarduMatrixTextOrientation.Normal)
 matrix.show()
 basic.pause(1000)
-matrix.scrollTextFromEdge("CIAO", MatrixScrollEdge.Right, neopixel.colors(NeoPixelColors.White), 100, MatrixFont.Sardu, MatrixFontSize.X1, 128, MatrixTextOrientation.Normal, MatrixScrollMode.Exclusive)
+matrix.scrollTextFromEdge("CIAO", SarduMatrixScrollEdge.Right, neopixel.colors(NeoPixelColors.White), 100, SarduMatrixFont.Sardu, SarduMatrixFontSize.X1, 128, SarduMatrixTextOrientation.Normal, SarduMatrixScrollMode.Exclusive)
 ```
 
 ## Scarica
 
-Collega il Micro:Bit, seleziona **Scarica** e trasferisci il programma. Il messaggio statico appare per primo; dopo un secondo, `CIAO` entra da destra ed esce a sinistra.
+Collega il micro:bit, seleziona **Scarica** e trasferisci il programma. Il messaggio statico appare per primo; dopo un secondo, `CIAO` entra da destra ed esce a sinistra.

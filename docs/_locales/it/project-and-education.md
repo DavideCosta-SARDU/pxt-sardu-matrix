@@ -2,7 +2,7 @@
 
 [English](../../project-and-education.md)
 
-SARDU-Matrix è un'estensione MakeCode gratuita con licenza MIT per controllare comuni pannelli RGB WS2812B/NeoPixel tramite Micro:Bit. Non è legata a un accessorio proprietario: gli studenti possono usare pannelli compatibili di produttori diversi configurandone dimensioni e cablaggio reali.
+SARDU-Matrix è un'estensione MakeCode gratuita con licenza MIT per controllare comuni pannelli RGB WS2812B/NeoPixel tramite micro:bit. Non è legata a un accessorio proprietario: gli studenti possono usare pannelli compatibili di produttori diversi configurandone dimensioni e cablaggio reali.
 
 ## Finalità educativa
 
@@ -12,18 +12,18 @@ L'estensione permette di affrontare:
 - colori RGB/HSL, luminosità e sfumature;
 - testo, font, rotazione e animazione;
 - geometrie, icone e composizione grafica;
-- temporizzazione, memoria e differenze tra Micro:Bit V1 e V2;
+- temporizzazione, memoria e differenze tra micro:bit V1 e V2;
 - alimentazione esterna sicura e massa comune.
 
 Si può iniziare da un pannello 8×8 o 16×16 e passare a display con più moduli. I blocchi presentano prima i default semplici e collocano mapping fisico e informazioni di memoria nelle sezioni avanzate.
 
 ## Dati dei sensori e progetti didattici
 
-La matrice può presentare misure provenienti da sensori esterni, come temperatura, umidità o distanza, e dagli ingressi del Micro:Bit, come livello sonoro, accelerazione, inclinazione, pulsanti e intensità luminosa. Una misura può essere mostrata come testo, trasformata in una barra o figura oppure usata per controllare colore, animazione e luminosità. In un solo progetto si collegano così acquisizione dei dati, intervalli numerici, coordinate e comunicazione visiva.
+La matrice può presentare misure provenienti da sensori esterni, come temperatura, umidità o distanza, e dagli ingressi del micro:bit, come livello sonoro, accelerazione, inclinazione, pulsanti e intensità luminosa. Una misura può essere mostrata come testo, trasformata in una barra o figura oppure usata per controllare colore, animazione e luminosità. In un solo progetto si collegano così acquisizione dei dati, intervalli numerici, coordinate e comunicazione visiva.
 
 ### Onda del livello sonoro
 
-Con Micro:Bit V2, il microfono integrato può controllare un'onda animata: un suono più forte produce picchi più alti, mentre il silenzio riporta la linea verso il centro verticale. MakeCode restituisce un livello sonoro relativo, non decibel calibrati; senza una calibrazione con strumenti di riferimento il progetto va quindi descritto come visualizzatore del livello sonoro.
+Con micro:bit V2, il microfono integrato può controllare un'onda animata: un suono più forte produce picchi più alti, mentre il silenzio riporta la linea verso il centro verticale. MakeCode restituisce un livello sonoro relativo, non decibel calibrati; senza una calibrazione con strumenti di riferimento il progetto va quindi descritto come visualizzatore del livello sonoro.
 
 Passaggi suggeriti:
 
@@ -34,13 +34,13 @@ Passaggi suggeriti:
 5. svuotare il buffer RGB, disegnare le nuove linee o i pixel e usare `show()` una sola volta;
 6. aggiungere una media o una soglia minima per evitare che il rumore di fondo renda instabile l'immagine.
 
-L'attività introduce campionamento, conversione di scala, coordinate, soglie e filtraggio. Micro:Bit V1 richiede un sensore audio esterno perché non dispone di microfono integrato.
+L'attività introduce campionamento, conversione di scala, coordinate, soglie e filtraggio. micro:bit V1 richiede un sensore audio esterno perché non dispone di microfono integrato.
 
 Il progetto completo è disponibile in [`examples/sound-wave`](../../../examples/sound-wave/).
 
 ### Indicatore di oscurità
 
-La lettura dell'intensità luminosa del Micro:Bit può controllare una visualizzazione progressiva: più l'ambiente diventa buio, più righe si accendono e maggiore diventa la loro luminosità. In un ambiente luminoso restano visibili meno righe con luminosità inferiore.
+La lettura dell'intensità luminosa del micro:bit può controllare una visualizzazione progressiva: più l'ambiente diventa buio, più righe si accendono e maggiore diventa la loro luminosità. In un ambiente luminoso restano visibili meno righe con luminosità inferiore.
 
 Passaggi suggeriti:
 
@@ -57,12 +57,16 @@ Il progetto completo è disponibile in [`examples/darkness-indicator`](../../../
 
 ## Hardware compatibile
 
-Sono supportati Micro:Bit V1 e V2 e pannelli RGB indirizzabili compatibili col protocollo WS2812B/NeoPixel. L'estensione usa come backend il pacchetto ufficiale Microsoft `pxt-neopixel` e non usa mBed.
+Sono supportati micro:bit V1 e V2 e pannelli RGB indirizzabili compatibili col protocollo WS2812B/NeoPixel. L'estensione usa come backend il pacchetto ufficiale Microsoft `pxt-neopixel` e non usa mBed.
 
-I pannelli richiedono un'alimentazione esterna adeguata. Micro:Bit, pannelli e alimentatore devono condividere la massa; la matrice non deve essere alimentata dal pin 3 V del Micro:Bit. Consulta la [guida al cablaggio](wiring.md).
+I pannelli richiedono un'alimentazione esterna adeguata. micro:bit, pannelli e alimentatore devono condividere la massa; la matrice non deve essere alimentata dal pin 3 V del micro:bit. Consulta la [guida al cablaggio](wiring.md).
 
 ## Risorse
 
 - [Guida utente](user-guide.md)
 - [API pubblica](api.md)
 - [Procedura di test](testing.md)
+
+```package
+sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
+```

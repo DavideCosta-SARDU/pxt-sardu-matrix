@@ -3,8 +3,7 @@
     "description": "Light-level darkness indicator for a SARDU-Matrix display",
     "dependencies": {
         "core": "*",
-        "sardu-matrix": "file:../..",
-        "microphone": "*"
+        "sardu-matrix": "file:../.."
     },
     "files": [
         "main.blocks",

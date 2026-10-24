@@ -17,7 +17,7 @@ Con moduli predefiniti:
 ```typescript
 let matrix = sarduMatrix.createModules(
     2,
-    MatrixModuleType.Matrix16x16,
+    SarduMatrixModuleType.Matrix16x16,
     DigitalPin.P1,
     128
 )
@@ -43,15 +43,15 @@ Le coordinate esterne vengono ritagliate in sicurezza. Testo statico, geometrie,
 matrix.drawText(
     "Ciao", 0, 0,
     neopixel.colors(NeoPixelColors.White),
-    MatrixFont.Sardu,
-    MatrixFontSize.X1,
+    SarduMatrixFont.Sardu,
+    SarduMatrixFontSize.X1,
     128,
-    MatrixTextOrientation.Normal
+    SarduMatrixTextOrientation.Normal
 )
 matrix.show()
 ```
 
-I font disponibili sono SARDU, Micro:Bit Esteso, SARDU Proporzionale, Micro:Bit Proporzionale, SARDU Compatto e SARDU Compatto Proporzionale. Le dimensioni vanno da 1× a 4×; gli orientamenti disponibili sono 0°, 90°, 180° e 270°.
+I font disponibili sono SARDU, micro:bit Esteso, SARDU Proporzionale, micro:bit Proporzionale, SARDU Compatto e SARDU Compatto Proporzionale. Le dimensioni vanno da 1× a 4×; gli orientamenti disponibili sono 0°, 90°, 180° e 270°.
 
 Le altezze esatte in pixel, gli esempi per posizionare più righe e le regole di misurazione sono documentati in [font e misure del testo](fonts.md).
 
@@ -69,10 +69,10 @@ Per muovere più elementi simultaneamente, aggiungili tutti alla stessa composiz
 matrix.addScrollingText(
     "Ciao", 0,
     neopixel.colors(NeoPixelColors.White),
-    MatrixFont.Sardu,
-    MatrixFontSize.X1,
+    SarduMatrixFont.Sardu,
+    SarduMatrixFontSize.X1,
     128,
-    MatrixTextOrientation.Normal,
+    SarduMatrixTextOrientation.Normal,
     1
 )
 sarduMatrix.addScrollingCircle(
@@ -80,7 +80,7 @@ sarduMatrix.addScrollingCircle(
     neopixel.colors(NeoPixelColors.Red),
     1
 )
-matrix.startScrolling(100, MatrixScrollMode.Exclusive)
+matrix.startScrolling(100, SarduMatrixScrollMode.Exclusive)
 ```
 
 I percorsi in coda accettano coordinate iniziali e finali esatte. Il valore speciale X iniziale `-1` indica la larghezza reale della matrice; ogni altro valore viene usato direttamente. La modalità Esclusiva cancella lo sfondo a ogni fotogramma. La modalità Composta conserva la scena e richiede temporaneamente una seconda copia RGB.
@@ -102,11 +102,11 @@ sarduMatrix.hslColor(210, 100, 50)
 
 RGB usa valori 0–255. HSL usa tonalità 0–360 e saturazione/luminosità 0–100.
 
-## Effetti e revisioni Micro:Bit
+## Effetti e revisioni micro:bit
 
 Gli effetti includono dissolvenza, lampeggio, riempimenti direzionali e contrapposti, maschere sul contenuto, arcobaleno e scintille. Aggiornano automaticamente i LED e possono lasciare, ripristinare o cancellare il fotogramma finale. Consulta [effetti speciali](effects.md).
 
-I progetti realistici separati di creazione, display, testo, geometrie, scorrimento, sfumature, effetti e Grafica vengono compilati per Micro:Bit V1 e V2. Micro:Bit V2 è consigliato per matrici grandi ed effetti, grazie al maggiore margine di memoria programma e RAM. Una funzione viene indicata come solo V2 esclusivamente quando un progetto rappresentativo indipendente non può funzionare su V1; l'API corrente non è classificata globalmente come solo V2.
+I progetti realistici separati di creazione, display, testo, geometrie, scorrimento, sfumature, effetti e Grafica vengono compilati per micro:bit V1 e V2. micro:bit V2 è consigliato per matrici grandi ed effetti, grazie al maggiore margine di memoria programma e RAM. Una funzione viene indicata come solo V2 esclusivamente quando un progetto rappresentativo indipendente non può funzionare su V1; l'API corrente non è classificata globalmente come solo V2.
 
 ## Errori e memoria
 
@@ -118,4 +118,14 @@ Il buffer permanente è proporzionale ai LED configurati:
 byte RGB = larghezza × altezza × 3
 ```
 
-Il limite reale dipende dalla revisione Micro:Bit, dalle altre estensioni e dal resto del programma. Consulta [memoria e rendering](memory-and-rendering.md) e [procedura di test](testing.md).
+Il limite reale dipende dalla revisione micro:bit, dalle altre estensioni e dal resto del programma. Consulta [memoria e rendering](memory-and-rendering.md) e [procedura di test](testing.md).
+
+Lo scorrimento `scrollText` con coordinate parte da X = 16 per impostazione predefinita. Per una larghezza diversa, collegare `matrix.width()` come normale blocco valore oppure usare lo scorrimento dal bordo.
+
+## Aggiornare progetti esistenti
+
+I tipi enum pubblici usano ora il prefisso univoco `SarduMatrix`, per esempio `SarduMatrixFont`, `SarduMatrixOrigin` e `SarduMatrixGraphicPixel`. Nomi dei membri e valori numerici sono invariati. Prima di aggiornare un progetto a Blocchi esistente, salvarne una copia e passare a JavaScript. Dopo aver aggiornato l’estensione, sostituire ogni vecchio tipo enum `Matrix…` con `SarduMatrix…`, quindi tornare ai Blocchi e controllare tutti i selettori. Anche i progetti Python richiedono l’aggiornamento del prefisso dei tipi. Gli identificatori dei blocchi e i metodi della matrice sono invariati.
+
+```package
+sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
+```

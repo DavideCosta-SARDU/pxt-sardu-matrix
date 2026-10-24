@@ -1,3 +1,4 @@
+/** Private - do not use. Internal matrix implementation. */
 namespace sarduMatrixInternal {
     // Fourteen independently designed 8 x 8 monochrome masks, one byte per row.
     const BUILT_IN_ICONS = hex`
@@ -9,6 +10,9 @@ namespace sarduMatrixInternal {
 080cfefffe0c0800 995a3c7e7e3c5a99
 387cf0e0e0f07c38 0c18307e0c183020`;
 
+    /**
+     * Private - do not use. Internal matrix implementation.
+     */
     export function gradientColor(
         firstColor: number,
         secondColor: number,
@@ -27,6 +31,9 @@ namespace sarduMatrixInternal {
         ), brightness);
     }
 
+    /**
+     * Private - do not use. Internal matrix implementation.
+     */
     export function brightnessGradientColor(
         color: number,
         firstBrightness: number,
@@ -46,6 +53,9 @@ namespace sarduMatrixInternal {
         return scaleColor(color, level);
     }
 
+    /**
+     * Private - do not use. Internal matrix implementation.
+     */
     export function drawGradientText(
         matrix: sarduMatrix.Matrix,
         text: string,
@@ -53,11 +63,11 @@ namespace sarduMatrixInternal {
         y: number,
         firstColor: number,
         secondColor: number,
-        direction: MatrixWipeDirection,
-        font: MatrixFont,
-        size: MatrixFontSize,
+        direction: SarduMatrixWipeDirection,
+        font: SarduMatrixFont,
+        size: SarduMatrixFontSize,
         brightness: number,
-        orientation: MatrixTextOrientation,
+        orientation: SarduMatrixTextOrientation,
         finalBrightness: number = -1
     ): void {
         if (!matrix || !text || text.length == 0) return;
@@ -70,8 +80,8 @@ namespace sarduMatrixInternal {
         const baseHeight = fontBaseHeight(font) * scale;
         const finalWidth = renderedTextWidth(text, font, size, orientation);
         const finalHeight = renderedTextHeight(text, font, size, orientation);
-        const vertical = direction == MatrixWipeDirection.TopToBottom || direction == MatrixWipeDirection.BottomToTop;
-        const reverse = direction == MatrixWipeDirection.RightToLeft || direction == MatrixWipeDirection.BottomToTop;
+        const vertical = direction == SarduMatrixWipeDirection.TopToBottom || direction == SarduMatrixWipeDirection.BottomToTop;
+        const reverse = direction == SarduMatrixWipeDirection.RightToLeft || direction == SarduMatrixWipeDirection.BottomToTop;
         const lastPosition = (vertical ? finalHeight : finalWidth) - 1;
         let xx = 1;
         let xy = 0;
@@ -79,13 +89,13 @@ namespace sarduMatrixInternal {
         let yx = 0;
         let yy = 1;
         let yOffset = 0;
-        if (orientation == MatrixTextOrientation.Clockwise90) {
+        if (orientation == SarduMatrixTextOrientation.Clockwise90) {
             xx = 0; xy = -1; xOffset = baseHeight - 1;
             yx = 1; yy = 0;
-        } else if (orientation == MatrixTextOrientation.UpsideDown180) {
+        } else if (orientation == SarduMatrixTextOrientation.UpsideDown180) {
             xx = -1; xOffset = baseWidth - 1;
             yy = -1; yOffset = baseHeight - 1;
-        } else if (orientation == MatrixTextOrientation.Clockwise270) {
+        } else if (orientation == SarduMatrixTextOrientation.Clockwise270) {
             xx = 0; xy = 1;
             yx = -1; yy = 0; yOffset = baseWidth - 1;
         }
@@ -120,24 +130,27 @@ namespace sarduMatrixInternal {
         }
     }
 
+    /**
+     * Private - do not use. Internal matrix implementation.
+     */
     export function scrollGradientTextFromEdge(
         matrix: sarduMatrix.Matrix,
         text: string,
-        edge: MatrixScrollEdge,
+        edge: SarduMatrixScrollEdge,
         firstColor: number,
         secondColor: number,
-        direction: MatrixWipeDirection,
+        direction: SarduMatrixWipeDirection,
         frameIntervalMs: number,
-        font: MatrixFont,
-        size: MatrixFontSize,
+        font: SarduMatrixFont,
+        size: SarduMatrixFontSize,
         brightness: number,
-        orientation: MatrixTextOrientation,
-        mode: MatrixScrollMode,
+        orientation: SarduMatrixTextOrientation,
+        mode: SarduMatrixScrollMode,
         finalBrightness: number = -1
     ): void {
         if (!matrix) return;
-        edge = Math.floor(edge) as MatrixScrollEdge;
-        if (edge < MatrixScrollEdge.Right || edge > MatrixScrollEdge.Bottom) edge = MatrixScrollEdge.Right;
+        edge = Math.floor(edge) as SarduMatrixScrollEdge;
+        if (edge < SarduMatrixScrollEdge.Right || edge > SarduMatrixScrollEdge.Bottom) edge = SarduMatrixScrollEdge.Right;
         orientation = normalizedTextOrientation(orientation);
 
         const contentWidth = renderedTextWidth(text, font, size, orientation);
@@ -148,11 +161,11 @@ namespace sarduMatrixInternal {
         let startY = centeredY;
         let endX = centeredX;
         let endY = centeredY;
-        if (edge == MatrixScrollEdge.Left) {
+        if (edge == SarduMatrixScrollEdge.Left) {
             startX = -contentWidth; endX = matrix.width();
-        } else if (edge == MatrixScrollEdge.Top) {
+        } else if (edge == SarduMatrixScrollEdge.Top) {
             startY = -contentHeight; endY = matrix.height();
-        } else if (edge == MatrixScrollEdge.Bottom) {
+        } else if (edge == SarduMatrixScrollEdge.Bottom) {
             startY = matrix.height(); endY = -contentHeight;
         } else {
             startX = matrix.width(); endX = -contentWidth;
@@ -165,6 +178,9 @@ namespace sarduMatrixInternal {
         );
     }
 
+    /**
+     * Private - do not use. Internal matrix implementation.
+     */
     export function scrollGradientTextBetween(
         matrix: sarduMatrix.Matrix,
         text: string,
@@ -174,13 +190,13 @@ namespace sarduMatrixInternal {
         endY: number,
         firstColor: number,
         secondColor: number,
-        direction: MatrixWipeDirection,
+        direction: SarduMatrixWipeDirection,
         frameIntervalMs: number,
-        font: MatrixFont,
-        size: MatrixFontSize,
+        font: SarduMatrixFont,
+        size: SarduMatrixFontSize,
         brightness: number,
-        orientation: MatrixTextOrientation,
-        mode: MatrixScrollMode,
+        orientation: SarduMatrixTextOrientation,
+        mode: SarduMatrixScrollMode,
         finalBrightness: number = -1
     ): void {
         startX = Math.floor(startX);
@@ -190,16 +206,16 @@ namespace sarduMatrixInternal {
         frameIntervalMs = Math.floor(frameIntervalMs);
         if (frameIntervalMs != frameIntervalMs || frameIntervalMs < 0) frameIntervalMs = 0;
         orientation = normalizedTextOrientation(orientation);
-        mode = mode == MatrixScrollMode.Composed ? MatrixScrollMode.Composed : MatrixScrollMode.Exclusive;
+        mode = mode == SarduMatrixScrollMode.Composed ? SarduMatrixScrollMode.Composed : SarduMatrixScrollMode.Exclusive;
         const operation = matrix._beginOperation();
         if (!text || text.length == 0) {
-            if (mode == MatrixScrollMode.Exclusive) {
+            if (mode == SarduMatrixScrollMode.Exclusive) {
                 matrix._clearBuffer();
                 matrix.show();
             }
             return;
         }
-        const background = mode == MatrixScrollMode.Composed ? matrix._captureBuffer() : null;
+        const background = mode == SarduMatrixScrollMode.Composed ? matrix._captureBuffer() : null;
         const deltaX = endX - startX;
         const deltaY = endY - startY;
         const frameCount = Math.max(Math.abs(deltaX), Math.abs(deltaY));
@@ -208,7 +224,7 @@ namespace sarduMatrixInternal {
             const started = control.millis();
             const x = frameCount == 0 ? endX : Math.round(startX + deltaX * frame / frameCount);
             const y = frameCount == 0 ? endY : Math.round(startY + deltaY * frame / frameCount);
-            if (mode == MatrixScrollMode.Composed) matrix._restoreBuffer(background);
+            if (mode == SarduMatrixScrollMode.Composed) matrix._restoreBuffer(background);
             else matrix._clearBuffer();
             drawGradientText(
                 matrix, text, x, y, firstColor, secondColor, direction,
@@ -220,9 +236,12 @@ namespace sarduMatrixInternal {
         }
     }
 
+    /**
+     * Private - do not use. Internal matrix implementation.
+     */
     export function drawBuiltInIcon(
         matrix: sarduMatrix.Matrix,
-        icon: MatrixIcon,
+        icon: SarduMatrixIcon,
         x: number,
         y: number,
         color: number,
@@ -230,8 +249,8 @@ namespace sarduMatrixInternal {
         brightness: number
     ): void {
         if (!matrix) return;
-        icon = Math.floor(icon) as MatrixIcon;
-        if (icon < MatrixIcon.FilledHeart || icon > MatrixIcon.Lightning) icon = MatrixIcon.FilledHeart;
+        icon = Math.floor(icon) as SarduMatrixIcon;
+        if (icon < SarduMatrixIcon.FilledHeart || icon > SarduMatrixIcon.Lightning) icon = SarduMatrixIcon.FilledHeart;
         x = Math.floor(x);
         y = Math.floor(y);
         size = Math.floor(size);
@@ -251,12 +270,26 @@ namespace sarduMatrixInternal {
     }
 }
 
+/** Configurable RGB matrix creation, drawing and animation. */
 namespace sarduMatrix {
-    /** Draws static text filled with a two-color gradient without showing it. */
-    //% blockId=sardu_matrix_draw_gradient_text block="$matrix draw gradient text $text at x $x y $y from $firstColor=neopixel_colors to $secondColor=neopixel_colors $direction|| font $font size $size brightness $brightness orientation $orientation"
-    //% group="Static text" weight=70 help=github:pxt-sardu-matrix/docs/gradient-and-icons
+    /**
+     * Draws static text filled with a two-color gradient without showing it.
+     * @param matrix target matrix
+     * @param text text to render
+     * @param x horizontal coordinate in pixels; zero is the left edge
+     * @param y vertical coordinate in pixels; zero is the top edge
+     * @param firstColor first RGB color
+     * @param secondColor second RGB color
+     * @param direction direction of the gradient or wipe
+     * @param font font used to render the text
+     * @param size integer scale from 1 to 4
+     * @param brightness brightness from 0 to 255
+     * @param orientation rotation of the rendered text
+     */
+    //% blockId=sardu_matrix_draw_gradient_text block="$matrix draw gradient text $text at x $x y $y from $firstColor=neopixel_colors to $secondColor=neopixel_colors $direction||font $font size $size brightness $brightness orientation $orientation"
+    //% group="Static text" weight=70 help=github:sardu-matrix/docs/gradient-and-icons
     //% compileHiddenArguments=true inlineInputMode="variable" inlineInputModeLimit=7 expandableArgumentBreaks="4"
-    //% matrix.shadow=variables_get matrix.defl=matrix text.defl="Hello" x.defl=0 y.defl=0 firstColor.defl=NeoPixelColors.Red secondColor.defl=NeoPixelColors.Blue direction.defl=MatrixWipeDirection.LeftToRight font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=MatrixTextOrientation.Normal
+    //% matrix.shadow=variables_get matrix.defl=matrix text.defl="Hello" x.defl=0 y.defl=0 firstColor.defl=NeoPixelColors.Red secondColor.defl=NeoPixelColors.Blue direction.defl=SarduMatrixWipeDirection.LeftToRight font.defl=SarduMatrixFont.Sardu size.defl=SarduMatrixFontSize.X1 brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=SarduMatrixTextOrientation.Normal
     //% firstColor.snippet="neopixel.colors(NeoPixelColors.Red)" firstColor.pySnippet="neopixel.colors(NeoPixelColors.RED)" secondColor.snippet="neopixel.colors(NeoPixelColors.Blue)" secondColor.pySnippet="neopixel.colors(NeoPixelColors.BLUE)"
     export function drawGradientText(
         matrix: Matrix,
@@ -265,20 +298,33 @@ namespace sarduMatrix {
         y: number = 0,
         firstColor: number = NeoPixelColors.Red,
         secondColor: number = NeoPixelColors.Blue,
-        direction: MatrixWipeDirection = MatrixWipeDirection.LeftToRight,
-        font: MatrixFont = MatrixFont.Sardu,
-        size: MatrixFontSize = MatrixFontSize.X1,
+        direction: SarduMatrixWipeDirection = SarduMatrixWipeDirection.LeftToRight,
+        font: SarduMatrixFont = SarduMatrixFont.Sardu,
+        size: SarduMatrixFontSize = SarduMatrixFontSize.X1,
         brightness: number = 128,
-        orientation: MatrixTextOrientation = MatrixTextOrientation.Normal
+        orientation: SarduMatrixTextOrientation = SarduMatrixTextOrientation.Normal
     ): void {
         sarduMatrixInternal.drawGradientText(matrix, text, x, y, firstColor, secondColor, direction, font, size, brightness, orientation, -1);
     }
 
-    /** Draws static text with one color fading between two brightness levels without showing it. */
-    //% blockId=sardu_matrix_draw_brightness_gradient_text block="$matrix draw brightness gradient text $text at x $x y $y color $color=neopixel_colors from $firstBrightness to $finalBrightness $direction|| font $font size $size orientation $orientation"
-    //% group="Static text" weight=69 help=github:pxt-sardu-matrix/docs/gradient-and-icons
+    /**
+     * Draws static text with one color fading between two brightness levels without showing it.
+     * @param matrix target matrix
+     * @param text text to render
+     * @param x horizontal coordinate in pixels; zero is the left edge
+     * @param y vertical coordinate in pixels; zero is the top edge
+     * @param color RGB color, chosen with the color picker or an RGB/HSL block
+     * @param firstBrightness initial brightness from 0 to 255
+     * @param finalBrightness final brightness from 0 to 255
+     * @param direction direction of the gradient or wipe
+     * @param font font used to render the text
+     * @param size integer scale from 1 to 4
+     * @param orientation rotation of the rendered text
+     */
+    //% blockId=sardu_matrix_draw_brightness_gradient_text block="$matrix draw brightness gradient text $text at x $x y $y color $color=neopixel_colors from $firstBrightness to $finalBrightness $direction||font $font size $size orientation $orientation"
+    //% group="Static text" weight=69 help=github:sardu-matrix/docs/gradient-and-icons
     //% compileHiddenArguments=true inlineInputMode="variable" inlineInputModeLimit=8 expandableArgumentBreaks="3"
-    //% matrix.shadow=variables_get matrix.defl=matrix text.defl="Hello" x.defl=0 y.defl=0 color.defl=NeoPixelColors.White firstBrightness.min=0 firstBrightness.max=255 firstBrightness.defl=128 finalBrightness.min=0 finalBrightness.max=255 finalBrightness.defl=8 direction.defl=MatrixWipeDirection.LeftToRight font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 orientation.defl=MatrixTextOrientation.Normal
+    //% matrix.shadow=variables_get matrix.defl=matrix text.defl="Hello" x.defl=0 y.defl=0 color.defl=NeoPixelColors.White firstBrightness.min=0 firstBrightness.max=255 firstBrightness.defl=128 finalBrightness.min=0 finalBrightness.max=255 finalBrightness.defl=8 direction.defl=SarduMatrixWipeDirection.LeftToRight font.defl=SarduMatrixFont.Sardu size.defl=SarduMatrixFontSize.X1 orientation.defl=SarduMatrixTextOrientation.Normal
     //% color.snippet="neopixel.colors(NeoPixelColors.White)" color.pySnippet="neopixel.colors(NeoPixelColors.WHITE)"
     export function drawBrightnessGradientText(
         matrix: Matrix,
@@ -288,10 +334,10 @@ namespace sarduMatrix {
         color: number = NeoPixelColors.White,
         firstBrightness: number = 128,
         finalBrightness: number = 8,
-        direction: MatrixWipeDirection = MatrixWipeDirection.LeftToRight,
-        font: MatrixFont = MatrixFont.Sardu,
-        size: MatrixFontSize = MatrixFontSize.X1,
-        orientation: MatrixTextOrientation = MatrixTextOrientation.Normal
+        direction: SarduMatrixWipeDirection = SarduMatrixWipeDirection.LeftToRight,
+        font: SarduMatrixFont = SarduMatrixFont.Sardu,
+        size: SarduMatrixFontSize = SarduMatrixFontSize.X1,
+        orientation: SarduMatrixTextOrientation = SarduMatrixTextOrientation.Normal
     ): void {
         sarduMatrixInternal.drawGradientText(
             matrix, text, x, y, color, color, direction, font, size,
@@ -299,25 +345,39 @@ namespace sarduMatrix {
         );
     }
 
-    /** Scrolls text from an edge with a two-color gradient attached to the moving glyphs. */
-    //% blockId=sardu_matrix_scroll_gradient_text_from_edge block="$matrix scroll gradient text $text from edge $edge from $firstColor=neopixel_colors to $secondColor=neopixel_colors $direction every $frameIntervalMs ms|| font $font size $size brightness $brightness orientation $orientation mode $mode"
-    //% group="Scrolling text" weight=70 help=github:pxt-sardu-matrix/docs/gradient-and-icons
+    /**
+     * Scrolls text from an edge with a two-color gradient attached to the moving glyphs.
+     * @param matrix target matrix
+     * @param text text to render
+     * @param edge display edge from which the text enters
+     * @param firstColor first RGB color
+     * @param secondColor second RGB color
+     * @param direction direction of the gradient or wipe
+     * @param frameIntervalMs pause between animation frames in milliseconds
+     * @param font font used to render the text
+     * @param size integer scale from 1 to 4
+     * @param brightness brightness from 0 to 255
+     * @param orientation rotation of the rendered text
+     * @param mode how the operation interacts with the existing background
+     */
+    //% blockId=sardu_matrix_scroll_gradient_text_from_edge block="$matrix scroll gradient text $text from edge $edge from $firstColor=neopixel_colors to $secondColor=neopixel_colors $direction every (ms) $frameIntervalMs||font $font size $size brightness $brightness orientation $orientation mode $mode"
+    //% group="Scrolling text" weight=70 help=github:sardu-matrix/docs/gradient-and-icons
     //% compileHiddenArguments=true inlineInputMode="variable" inlineInputModeLimit=8 expandableArgumentBreaks="4"
-    //% matrix.shadow=variables_get matrix.defl=matrix text.defl="Hello" edge.defl=MatrixScrollEdge.Right firstColor.defl=NeoPixelColors.Red secondColor.defl=NeoPixelColors.Blue direction.defl=MatrixWipeDirection.LeftToRight frameIntervalMs.min=0 frameIntervalMs.defl=100 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=MatrixTextOrientation.Normal mode.defl=MatrixScrollMode.Exclusive
+    //% matrix.shadow=variables_get matrix.defl=matrix text.defl="Hello" edge.defl=SarduMatrixScrollEdge.Right firstColor.defl=NeoPixelColors.Red secondColor.defl=NeoPixelColors.Blue direction.defl=SarduMatrixWipeDirection.LeftToRight frameIntervalMs.min=0 frameIntervalMs.defl=100 font.defl=SarduMatrixFont.Sardu size.defl=SarduMatrixFontSize.X1 brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=SarduMatrixTextOrientation.Normal mode.defl=SarduMatrixScrollMode.Exclusive
     //% firstColor.snippet="neopixel.colors(NeoPixelColors.Red)" firstColor.pySnippet="neopixel.colors(NeoPixelColors.RED)" secondColor.snippet="neopixel.colors(NeoPixelColors.Blue)" secondColor.pySnippet="neopixel.colors(NeoPixelColors.BLUE)"
     export function scrollGradientTextFromEdge(
         matrix: Matrix,
         text: string,
-        edge: MatrixScrollEdge = MatrixScrollEdge.Right,
+        edge: SarduMatrixScrollEdge = SarduMatrixScrollEdge.Right,
         firstColor: number = NeoPixelColors.Red,
         secondColor: number = NeoPixelColors.Blue,
-        direction: MatrixWipeDirection = MatrixWipeDirection.LeftToRight,
+        direction: SarduMatrixWipeDirection = SarduMatrixWipeDirection.LeftToRight,
         frameIntervalMs: number = 100,
-        font: MatrixFont = MatrixFont.Sardu,
-        size: MatrixFontSize = MatrixFontSize.X1,
+        font: SarduMatrixFont = SarduMatrixFont.Sardu,
+        size: SarduMatrixFontSize = SarduMatrixFontSize.X1,
         brightness: number = 128,
-        orientation: MatrixTextOrientation = MatrixTextOrientation.Normal,
-        mode: MatrixScrollMode = MatrixScrollMode.Exclusive
+        orientation: SarduMatrixTextOrientation = SarduMatrixTextOrientation.Normal,
+        mode: SarduMatrixScrollMode = SarduMatrixScrollMode.Exclusive
     ): void {
         sarduMatrixInternal.scrollGradientTextFromEdge(
             matrix, text, edge, firstColor, secondColor, direction, frameIntervalMs,
@@ -325,25 +385,39 @@ namespace sarduMatrix {
         );
     }
 
-    /** Scrolls one-color text from an edge with a brightness gradient attached to the moving glyphs. */
-    //% blockId=sardu_matrix_scroll_brightness_gradient_text_from_edge block="$matrix scroll brightness gradient text $text from edge $edge color $color=neopixel_colors from $firstBrightness to $finalBrightness $direction every $frameIntervalMs ms|| font $font size $size orientation $orientation mode $mode"
-    //% group="Scrolling text" weight=69 help=github:pxt-sardu-matrix/docs/gradient-and-icons
+    /**
+     * Scrolls one-color text from an edge with a brightness gradient attached to the moving glyphs.
+     * @param matrix target matrix
+     * @param text text to render
+     * @param edge display edge from which the text enters
+     * @param color RGB color, chosen with the color picker or an RGB/HSL block
+     * @param firstBrightness initial brightness from 0 to 255
+     * @param finalBrightness final brightness from 0 to 255
+     * @param direction direction of the gradient or wipe
+     * @param frameIntervalMs pause between animation frames in milliseconds
+     * @param font font used to render the text
+     * @param size integer scale from 1 to 4
+     * @param orientation rotation of the rendered text
+     * @param mode how the operation interacts with the existing background
+     */
+    //% blockId=sardu_matrix_scroll_brightness_gradient_text_from_edge block="$matrix scroll brightness gradient text $text from edge $edge color $color=neopixel_colors from $firstBrightness to $finalBrightness $direction every (ms) $frameIntervalMs||font $font size $size orientation $orientation mode $mode"
+    //% group="Scrolling text" weight=69 help=github:sardu-matrix/docs/gradient-and-icons
     //% compileHiddenArguments=true inlineInputMode="variable" inlineInputModeLimit=9 expandableArgumentBreaks="4"
-    //% matrix.shadow=variables_get matrix.defl=matrix text.defl="Hello" edge.defl=MatrixScrollEdge.Right color.defl=NeoPixelColors.White firstBrightness.min=0 firstBrightness.max=255 firstBrightness.defl=128 finalBrightness.min=0 finalBrightness.max=255 finalBrightness.defl=8 direction.defl=MatrixWipeDirection.LeftToRight frameIntervalMs.min=0 frameIntervalMs.defl=100 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 orientation.defl=MatrixTextOrientation.Normal mode.defl=MatrixScrollMode.Exclusive
+    //% matrix.shadow=variables_get matrix.defl=matrix text.defl="Hello" edge.defl=SarduMatrixScrollEdge.Right color.defl=NeoPixelColors.White firstBrightness.min=0 firstBrightness.max=255 firstBrightness.defl=128 finalBrightness.min=0 finalBrightness.max=255 finalBrightness.defl=8 direction.defl=SarduMatrixWipeDirection.LeftToRight frameIntervalMs.min=0 frameIntervalMs.defl=100 font.defl=SarduMatrixFont.Sardu size.defl=SarduMatrixFontSize.X1 orientation.defl=SarduMatrixTextOrientation.Normal mode.defl=SarduMatrixScrollMode.Exclusive
     //% color.snippet="neopixel.colors(NeoPixelColors.White)" color.pySnippet="neopixel.colors(NeoPixelColors.WHITE)"
     export function scrollBrightnessGradientTextFromEdge(
         matrix: Matrix,
         text: string,
-        edge: MatrixScrollEdge = MatrixScrollEdge.Right,
+        edge: SarduMatrixScrollEdge = SarduMatrixScrollEdge.Right,
         color: number = NeoPixelColors.White,
         firstBrightness: number = 128,
         finalBrightness: number = 8,
-        direction: MatrixWipeDirection = MatrixWipeDirection.LeftToRight,
+        direction: SarduMatrixWipeDirection = SarduMatrixWipeDirection.LeftToRight,
         frameIntervalMs: number = 100,
-        font: MatrixFont = MatrixFont.Sardu,
-        size: MatrixFontSize = MatrixFontSize.X1,
-        orientation: MatrixTextOrientation = MatrixTextOrientation.Normal,
-        mode: MatrixScrollMode = MatrixScrollMode.Exclusive
+        font: SarduMatrixFont = SarduMatrixFont.Sardu,
+        size: SarduMatrixFontSize = SarduMatrixFontSize.X1,
+        orientation: SarduMatrixTextOrientation = SarduMatrixTextOrientation.Normal,
+        mode: SarduMatrixScrollMode = SarduMatrixScrollMode.Exclusive
     ): void {
         sarduMatrixInternal.scrollGradientTextFromEdge(
             matrix, text, edge, color, color, direction, frameIntervalMs,
@@ -351,11 +425,28 @@ namespace sarduMatrix {
         );
     }
 
-    /** Scrolls two-color gradient text between two freely selected coordinates. */
-    //% blockId=sardu_matrix_scroll_gradient_text_between block="$matrix scroll gradient text $text from x $startX y $startY to x $endX y $endY|| from $firstColor=neopixel_colors to $secondColor=neopixel_colors $direction every $frameIntervalMs ms font $font size $size brightness $brightness orientation $orientation mode $mode"
-    //% group="Scrolling text" weight=68 help=github:pxt-sardu-matrix/docs/gradient-and-icons
+    /**
+     * Scrolls two-color gradient text between two freely selected coordinates.
+     * @param matrix target matrix
+     * @param text text to render
+     * @param startX initial horizontal coordinate in pixels
+     * @param startY initial vertical coordinate in pixels
+     * @param endX final horizontal coordinate in pixels
+     * @param endY final vertical coordinate in pixels
+     * @param firstColor first RGB color
+     * @param secondColor second RGB color
+     * @param direction direction of the gradient or wipe
+     * @param frameIntervalMs pause between animation frames in milliseconds
+     * @param font font used to render the text
+     * @param size integer scale from 1 to 4
+     * @param brightness brightness from 0 to 255
+     * @param orientation rotation of the rendered text
+     * @param mode how the operation interacts with the existing background
+     */
+    //% blockId=sardu_matrix_scroll_gradient_text_between block="$matrix scroll gradient text $text from x $startX y $startY to x $endX y $endY||from $firstColor=neopixel_colors to $secondColor=neopixel_colors $direction every (ms) $frameIntervalMs|font $font size $size brightness $brightness orientation $orientation mode $mode"
+    //% group="Scrolling text" weight=68 help=github:sardu-matrix/docs/gradient-and-icons
     //% compileHiddenArguments=true inlineInputMode="variable" inlineInputModeLimit=7 expandableArgumentBreaks="5"
-    //% matrix.shadow=variables_get matrix.defl=matrix text.defl="Hello" startX.defl=-1 startY.defl=0 endX.defl=0 endY.defl=0 firstColor.defl=NeoPixelColors.Red secondColor.defl=NeoPixelColors.Blue direction.defl=MatrixWipeDirection.LeftToRight frameIntervalMs.min=0 frameIntervalMs.defl=100 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=MatrixTextOrientation.Normal mode.defl=MatrixScrollMode.Exclusive
+    //% matrix.shadow=variables_get matrix.defl=matrix text.defl="Hello" startX.defl=-1 startY.defl=0 endX.defl=0 endY.defl=0 firstColor.defl=NeoPixelColors.Red secondColor.defl=NeoPixelColors.Blue direction.defl=SarduMatrixWipeDirection.LeftToRight frameIntervalMs.min=0 frameIntervalMs.defl=100 font.defl=SarduMatrixFont.Sardu size.defl=SarduMatrixFontSize.X1 brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=SarduMatrixTextOrientation.Normal mode.defl=SarduMatrixScrollMode.Exclusive
     //% firstColor.snippet="neopixel.colors(NeoPixelColors.Red)" firstColor.pySnippet="neopixel.colors(NeoPixelColors.RED)" secondColor.snippet="neopixel.colors(NeoPixelColors.Blue)" secondColor.pySnippet="neopixel.colors(NeoPixelColors.BLUE)"
     export function scrollGradientTextBetween(
         matrix: Matrix,
@@ -366,13 +457,13 @@ namespace sarduMatrix {
         endY: number,
         firstColor: number = NeoPixelColors.Red,
         secondColor: number = NeoPixelColors.Blue,
-        direction: MatrixWipeDirection = MatrixWipeDirection.LeftToRight,
+        direction: SarduMatrixWipeDirection = SarduMatrixWipeDirection.LeftToRight,
         frameIntervalMs: number = 100,
-        font: MatrixFont = MatrixFont.Sardu,
-        size: MatrixFontSize = MatrixFontSize.X1,
+        font: SarduMatrixFont = SarduMatrixFont.Sardu,
+        size: SarduMatrixFontSize = SarduMatrixFontSize.X1,
         brightness: number = 128,
-        orientation: MatrixTextOrientation = MatrixTextOrientation.Normal,
-        mode: MatrixScrollMode = MatrixScrollMode.Exclusive
+        orientation: SarduMatrixTextOrientation = SarduMatrixTextOrientation.Normal,
+        mode: SarduMatrixScrollMode = SarduMatrixScrollMode.Exclusive
     ): void {
         if (!matrix) return;
         if (startX == -1) startX = matrix.width();
@@ -383,11 +474,28 @@ namespace sarduMatrix {
         );
     }
 
-    /** Scrolls one-color brightness-gradient text between two freely selected coordinates. */
-    //% blockId=sardu_matrix_scroll_brightness_gradient_text_between block="$matrix scroll brightness gradient text $text from x $startX y $startY to x $endX y $endY|| color $color=neopixel_colors from $firstBrightness to $finalBrightness $direction every $frameIntervalMs ms font $font size $size orientation $orientation mode $mode"
-    //% group="Scrolling text" weight=67 help=github:pxt-sardu-matrix/docs/gradient-and-icons
+    /**
+     * Scrolls one-color brightness-gradient text between two freely selected coordinates.
+     * @param matrix target matrix
+     * @param text text to render
+     * @param startX initial horizontal coordinate in pixels
+     * @param startY initial vertical coordinate in pixels
+     * @param endX final horizontal coordinate in pixels
+     * @param endY final vertical coordinate in pixels
+     * @param color RGB color, chosen with the color picker or an RGB/HSL block
+     * @param firstBrightness initial brightness from 0 to 255
+     * @param finalBrightness final brightness from 0 to 255
+     * @param direction direction of the gradient or wipe
+     * @param frameIntervalMs pause between animation frames in milliseconds
+     * @param font font used to render the text
+     * @param size integer scale from 1 to 4
+     * @param orientation rotation of the rendered text
+     * @param mode how the operation interacts with the existing background
+     */
+    //% blockId=sardu_matrix_scroll_brightness_gradient_text_between block="$matrix scroll brightness gradient text $text from x $startX y $startY to x $endX y $endY||color $color=neopixel_colors from $firstBrightness to $finalBrightness $direction every (ms) $frameIntervalMs|font $font size $size orientation $orientation mode $mode"
+    //% group="Scrolling text" weight=67 help=github:sardu-matrix/docs/gradient-and-icons
     //% compileHiddenArguments=true inlineInputMode="variable" inlineInputModeLimit=7 expandableArgumentBreaks="5"
-    //% matrix.shadow=variables_get matrix.defl=matrix text.defl="Hello" startX.defl=-1 startY.defl=0 endX.defl=0 endY.defl=0 color.defl=NeoPixelColors.White firstBrightness.min=0 firstBrightness.max=255 firstBrightness.defl=128 finalBrightness.min=0 finalBrightness.max=255 finalBrightness.defl=8 direction.defl=MatrixWipeDirection.LeftToRight frameIntervalMs.min=0 frameIntervalMs.defl=100 font.defl=MatrixFont.Sardu size.defl=MatrixFontSize.X1 orientation.defl=MatrixTextOrientation.Normal mode.defl=MatrixScrollMode.Exclusive
+    //% matrix.shadow=variables_get matrix.defl=matrix text.defl="Hello" startX.defl=-1 startY.defl=0 endX.defl=0 endY.defl=0 color.defl=NeoPixelColors.White firstBrightness.min=0 firstBrightness.max=255 firstBrightness.defl=128 finalBrightness.min=0 finalBrightness.max=255 finalBrightness.defl=8 direction.defl=SarduMatrixWipeDirection.LeftToRight frameIntervalMs.min=0 frameIntervalMs.defl=100 font.defl=SarduMatrixFont.Sardu size.defl=SarduMatrixFontSize.X1 orientation.defl=SarduMatrixTextOrientation.Normal mode.defl=SarduMatrixScrollMode.Exclusive
     //% color.snippet="neopixel.colors(NeoPixelColors.White)" color.pySnippet="neopixel.colors(NeoPixelColors.WHITE)"
     export function scrollBrightnessGradientTextBetween(
         matrix: Matrix,
@@ -399,12 +507,12 @@ namespace sarduMatrix {
         color: number = NeoPixelColors.White,
         firstBrightness: number = 128,
         finalBrightness: number = 8,
-        direction: MatrixWipeDirection = MatrixWipeDirection.LeftToRight,
+        direction: SarduMatrixWipeDirection = SarduMatrixWipeDirection.LeftToRight,
         frameIntervalMs: number = 100,
-        font: MatrixFont = MatrixFont.Sardu,
-        size: MatrixFontSize = MatrixFontSize.X1,
-        orientation: MatrixTextOrientation = MatrixTextOrientation.Normal,
-        mode: MatrixScrollMode = MatrixScrollMode.Exclusive
+        font: SarduMatrixFont = SarduMatrixFont.Sardu,
+        size: SarduMatrixFontSize = SarduMatrixFontSize.X1,
+        orientation: SarduMatrixTextOrientation = SarduMatrixTextOrientation.Normal,
+        mode: SarduMatrixScrollMode = SarduMatrixScrollMode.Exclusive
     ): void {
         if (!matrix) return;
         if (startX == -1) startX = matrix.width();
@@ -415,13 +523,22 @@ namespace sarduMatrix {
         );
     }
 
-    /** Draws a built-in 8 x 8 icon without showing it. */
-    //% blockId=sardu_matrix_draw_icon block="$matrix draw icon $icon at x $x y $y color $color=neopixel_colors|| size $size brightness $brightness"
-    //% group="Icons" weight=90 help=github:pxt-sardu-matrix/docs/gradient-and-icons
+    /**
+     * Draws a built-in 8 x 8 icon without showing it.
+     * @param matrix target matrix
+     * @param icon built-in 8 by 8 icon
+     * @param x horizontal coordinate in pixels; zero is the left edge
+     * @param y vertical coordinate in pixels; zero is the top edge
+     * @param color RGB color, chosen with the color picker or an RGB/HSL block
+     * @param size integer scale from 1 to 4
+     * @param brightness brightness from 0 to 255
+     */
+    //% blockId=sardu_matrix_draw_icon block="$matrix draw icon$icon at x $x y $y color $color=neopixel_colors||size $size brightness $brightness"
+    //% group="Icons" weight=90 help=github:sardu-matrix/docs/gradient-and-icons
     //% compileHiddenArguments=true inlineInputMode="variable" inlineInputModeLimit=5 expandableArgumentBreaks="2"
-    //% matrix.shadow=variables_get matrix.defl=matrix icon.defl=MatrixIcon.FilledHeart x.defl=0 y.defl=0 color.defl=NeoPixelColors.Red size.min=1 size.max=4 size.defl=1 brightness.min=0 brightness.max=255 brightness.defl=128
+    //% matrix.shadow=variables_get matrix.defl=matrix icon.defl=SarduMatrixIcon.FilledHeart x.defl=0 y.defl=0 color.defl=NeoPixelColors.Red size.min=1 size.max=4 size.defl=1 brightness.min=0 brightness.max=255 brightness.defl=128
     //% color.snippet="neopixel.colors(NeoPixelColors.Red)" color.pySnippet="neopixel.colors(NeoPixelColors.RED)"
-    export function drawIcon(matrix: Matrix, icon: MatrixIcon, x: number = 0, y: number = 0, color: number = NeoPixelColors.Red, size: number = 1, brightness: number = 128): void {
+    export function drawIcon(matrix: Matrix, icon: SarduMatrixIcon, x: number = 0, y: number = 0, color: number = NeoPixelColors.Red, size: number = 1, brightness: number = 128): void {
         sarduMatrixInternal.drawBuiltInIcon(matrix, icon, x, y, color, size, brightness);
     }
 }

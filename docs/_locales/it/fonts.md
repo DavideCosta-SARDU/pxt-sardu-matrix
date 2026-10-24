@@ -12,8 +12,8 @@ SARDU-Matrix include sei font. La loro altezza in pixel è fissa per ogni famigl
 | SARDU Proporzionale | Variabile, più spaziatura | 8 | 16 | 24 | 32 |
 | SARDU Compatto | 4 pixel per carattere, più spaziatura | 8 | 16 | 24 | 32 |
 | SARDU Compatto Proporzionale | Variabile, più spaziatura | 8 | 16 | 24 | 32 |
-| Micro:Bit Esteso | 5 pixel per carattere, più spaziatura | 7 | 14 | 21 | 28 |
-| Micro:Bit Proporzionale | Variabile, più spaziatura | 7 | 14 | 21 | 28 |
+| micro:bit Esteso | 5 pixel per carattere, più spaziatura | 7 | 14 | 21 | 28 |
+| micro:bit Proporzionale | Variabile, più spaziatura | 7 | 14 | 21 | 28 |
 
 Anche la colonna di spazio tra i caratteri viene moltiplicata per la scala selezionata. La larghezza esatta di un testo proporzionale dipende quindi dai caratteri della stringa.
 
@@ -28,8 +28,8 @@ Y successiva = Y corrente + altezza font + spazio facoltativo
 Su una matrice 16×16:
 
 - due righe SARDU 1× entrano a Y=0 e Y=8, senza una riga vuota intermedia;
-- due righe Micro:Bit 1× entrano a Y=0 e Y=7;
-- con Micro:Bit 1× si possono usare Y=0 e Y=8 per lasciare una riga vuota tra i testi.
+- due righe micro:bit 1× entrano a Y=0 e Y=7;
+- con micro:bit 1× si possono usare Y=0 e Y=8 per lasciare una riga vuota tra i testi.
 
 SARDU 2× è già alto 16 pixel, quindi in una matrice alta 16 pixel entra una sola riga completa.
 
@@ -51,7 +51,11 @@ Le misure applicano gli stessi glifi, spaziatura, riduzione proporzionale, scala
 - **SARDU Proporzionale** conserva i glifi SARDU eliminando le colonne laterali inutilizzate.
 - **SARDU Compatto** riduce ogni carattere a quattro colonne per abbreviare i messaggi.
 - **SARDU Compatto Proporzionale** combina glifi compatti e larghezza variabile.
-- **Micro:Bit Esteso** segue lo stile familiare 5×5 del Micro:Bit e riserva spazio per gli accenti supportati.
-- **Micro:Bit Proporzionale** conserva lo stesso stile eliminando le colonne laterali inutilizzate.
+- **micro:bit Esteso** segue lo stile familiare 5×5 del micro:bit e riserva spazio per gli accenti supportati.
+- **micro:bit Proporzionale** conserva lo stesso stile eliminando le colonne laterali inutilizzate.
 
-Tutte le varianti SARDU condividono la metrica verticale di 8 pixel. Entrambe le varianti Micro:Bit condividono la metrica verticale di 7 pixel.
+Tutte le varianti SARDU condividono la metrica verticale di 8 pixel. Entrambe le varianti micro:bit condividono la metrica verticale di 7 pixel.
+
+```package
+sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
+```

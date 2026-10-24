@@ -19,7 +19,7 @@ Usa `createAdvanced` quando il primo pixel, l'asse di scansione o il percorso pr
 Usa `createModules` per una catena orizzontale di pannelli uguali. I formati disponibili sono 8×8, 16×16, 32×8, 8×32, 16×8 e 8×16.
 
 ```blocks
-let matrix = sarduMatrix.createModules(6, MatrixModuleType.Matrix16x16, DigitalPin.P1, 128)
+let matrix = sarduMatrix.createModules(6, SarduMatrixModuleType.Matrix16x16, DigitalPin.P1, 128)
 ```
 
 Questo esempio crea un display logico 96×16. Usa `createModulesAdvanced` per una griglia rettangolare di moduli o per configurare separatamente il percorso dei pixel e quello dei moduli.
@@ -45,6 +45,10 @@ Larghezza, altezza, numero di moduli e righe di moduli devono essere interi posi
 
 ## Memoria e scelta della scheda
 
-La memoria necessaria cresce con il numero totale di LED. Micro:Bit V1 resta adatta ai normali progetti con display più piccoli e famiglie di funzioni selezionate; Micro:Bit V2 è consigliata per matrici grandi ed effetti che richiedono più memoria. Consulta [Memoria, rendering e limiti fisici](memory-and-rendering.md).
+La memoria necessaria cresce con il numero totale di LED. micro:bit V1 resta adatta ai normali progetti con display più piccoli e famiglie di funzioni selezionate; micro:bit V2 è consigliata per matrici grandi ed effetti che richiedono più memoria. Consulta [Memoria, rendering e limiti fisici](memory-and-rendering.md).
 
 Dopo la configurazione, verifica il primo pixel, l'angolo opposto e ogni confine tra moduli seguendo la [guida al cablaggio](wiring.md).
+
+```package
+sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
+```

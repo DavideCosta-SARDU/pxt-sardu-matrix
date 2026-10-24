@@ -17,7 +17,7 @@ Use predefined modules for a horizontal chain:
 ```typescript
 let matrix = sarduMatrix.createModules(
     2,
-    MatrixModuleType.Matrix16x16,
+    SarduMatrixModuleType.Matrix16x16,
     DigitalPin.P1,
     128
 )
@@ -45,15 +45,15 @@ Out-of-range coordinates are clipped safely. Static text, geometry, icons and Gr
 matrix.drawText(
     "Hello", 0, 0,
     neopixel.colors(NeoPixelColors.White),
-    MatrixFont.Sardu,
-    MatrixFontSize.X1,
+    SarduMatrixFont.Sardu,
+    SarduMatrixFontSize.X1,
     128,
-    MatrixTextOrientation.Normal
+    SarduMatrixTextOrientation.Normal
 )
 matrix.show()
 ```
 
-Available font families are SARDU, Micro:Bit Extended, SARDU Proportional, Micro:Bit Proportional, SARDU Compact and SARDU Compact Proportional. Text can be scaled from 1× to 4× and rotated by 0°, 90°, 180° or 270°.
+Available font families are SARDU, micro:bit Extended, SARDU Proportional, micro:bit Proportional, SARDU Compact and SARDU Compact Proportional. Text can be scaled from 1× to 4× and rotated by 0°, 90°, 180° or 270°.
 
 Their exact pixel heights, line-positioning examples and measurement rules are documented in [fonts and text measurements](fonts.md).
 
@@ -71,10 +71,10 @@ To move multiple items simultaneously, add all of them to one queue and call `st
 matrix.addScrollingText(
     "Hello", 0,
     neopixel.colors(NeoPixelColors.White),
-    MatrixFont.Sardu,
-    MatrixFontSize.X1,
+    SarduMatrixFont.Sardu,
+    SarduMatrixFontSize.X1,
     128,
-    MatrixTextOrientation.Normal,
+    SarduMatrixTextOrientation.Normal,
     1
 )
 sarduMatrix.addScrollingCircle(
@@ -82,7 +82,7 @@ sarduMatrix.addScrollingCircle(
     neopixel.colors(NeoPixelColors.Red),
     1
 )
-matrix.startScrolling(100, MatrixScrollMode.Exclusive)
+matrix.startScrolling(100, SarduMatrixScrollMode.Exclusive)
 ```
 
 Queued path blocks accept exact starting and ending X/Y coordinates. The special starting X value `-1` means the real matrix width; every other value is used literally. Exclusive mode clears every animation frame. Composed mode preserves the scene behind the moving content and temporarily requires another RGB-sized snapshot.
@@ -104,11 +104,11 @@ sarduMatrix.hslColor(210, 100, 50)
 
 RGB components use 0–255. HSL uses hue 0–360 and saturation/lightness 0–100.
 
-## Effects and Micro:Bit revisions
+## Effects and micro:bit revisions
 
 Effects animate the current buffer and include fade, blink, directional and opposed fills, content-masked fills, rainbow and sparkles. They update the LEDs automatically and support leave, restore or clear final states. See [special effects](effects.md).
 
-The normal creation, display, text, geometry, scrolling, gradient, effect and Graphics feature projects are compiled independently for both Micro:Bit V1 and V2. Micro:Bit V2 is recommended for large matrices and effects because it provides considerably more program-memory and RAM margin. A feature is described as V2-only only when a representative standalone project cannot operate on V1; the current API is not labelled V2-only as a whole.
+The normal creation, display, text, geometry, scrolling, gradient, effect and Graphics feature projects are compiled independently for both micro:bit V1 and V2. micro:bit V2 is recommended for large matrices and effects because it provides considerably more program-memory and RAM margin. A feature is described as V2-only only when a representative standalone project cannot operate on V1; the current API is not labelled V2-only as a whole.
 
 ## Errors and memory
 
@@ -120,4 +120,14 @@ The permanent RGB storage is proportional to the configured LED count:
 RGB bytes = width × height × 3
 ```
 
-The actual maximum depends on the Micro:Bit revision, other extensions and the rest of the program. See [memory and rendering](memory-and-rendering.md) and the [test procedure](testing.md).
+The actual maximum depends on the micro:bit revision, other extensions and the rest of the program. See [memory and rendering](memory-and-rendering.md) and the [test procedure](testing.md).
+
+Coordinate-based `scrollText` starts at X = 16 by default. For another width, connect `matrix.width()` as a normal value block or use the edge-based scrolling block.
+
+## Updating existing projects
+
+Public enum types now use the unique `SarduMatrix` prefix, for example `SarduMatrixFont`, `SarduMatrixOrigin` and `SarduMatrixGraphicPixel`. Member names and numeric values are unchanged. Before updating an existing Blocks project, save a copy and switch it to JavaScript. After updating the extension, replace each old `Matrix…` enum type with `SarduMatrix…`, then return to Blocks and check every selector. Python projects need the same type-prefix update. Existing block IDs and matrix methods are unchanged.
+
+```package
+sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
+```

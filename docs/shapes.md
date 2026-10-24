@@ -27,7 +27,11 @@ Calling `startScrolling()` between two additions intentionally creates two separ
 
 ```blocks
 let matrix = sarduMatrix.create(32, 16, DigitalPin.P1, 128)
-matrix.addScrollingText("HELLO", 0, neopixel.colors(NeoPixelColors.White), MatrixFont.Sardu, MatrixFontSize.X1, 128, MatrixTextOrientation.Normal, 1)
+matrix.addScrollingText("HELLO", 0, neopixel.colors(NeoPixelColors.White), SarduMatrixFont.Sardu, SarduMatrixFontSize.X1, 128, SarduMatrixTextOrientation.Normal, 1)
 sarduMatrix.addScrollingCircle(matrix, 4, 7, neopixel.colors(NeoPixelColors.Red), 1)
-matrix.startScrolling(100, MatrixScrollMode.Exclusive)
+matrix.startScrolling(100, SarduMatrixScrollMode.Exclusive)
+```
+
+```package
+sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
 ```

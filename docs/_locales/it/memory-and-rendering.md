@@ -12,11 +12,11 @@ byte RGB = larghezza × altezza × 3
 
 Per esempio, 16×16 richiede 768 byte RGB, 32×16 ne richiede 1.536 e 96×16 ne richiede 4.608. Questi valori descrivono soltanto i dati RGB; anche il programma, il runtime MakeCode e i dati temporanei delle animazioni usano memoria.
 
-L'estensione non impone una dimensione massima fissa. Il limite pratico dipende dalla revisione Micro:Bit, dal programma completo dell'utente e dalle operazioni scelte.
+L'estensione non impone una dimensione massima fissa. Il limite pratico dipende dalla revisione micro:bit, dal programma completo dell'utente e dalle operazioni scelte.
 
-## Micro:Bit V1 e V2
+## micro:bit V1 e V2
 
-Micro:Bit V1 può eseguire normali progetti con matrici più piccole e famiglie di funzioni selezionate. Micro:Bit V2 offre molta più RAM e spazio programma ed è consigliata per matrici grandi, composizioni complesse ed effetti.
+micro:bit V1 può eseguire normali progetti con matrici più piccole e famiglie di funzioni selezionate. micro:bit V2 offre molta più RAM e spazio programma ed è consigliata per matrici grandi, composizioni complesse ed effetti.
 
 Un errore di dimensione del programma riguarda firmware/flash, mentre un errore di allocazione durante l'esecuzione riguarda la RAM. Il runner monolitico `pxt test` collega l'intera estensione e il proprio harness in un solo firmware sintetico; la sua dimensione su V1 non rappresenta un normale progetto che usa soltanto i blocchi necessari. La suite documentata compila quindi separatamente gruppi realistici di funzioni.
 
@@ -40,12 +40,16 @@ tempo di trasmissione ≈ numero di LED × 30 µs
 
 - Configura soltanto i LED che appartengono fisicamente al display.
 - Componi il contenuto statico nel buffer e usa `show()` una volta per fotogramma completo.
-- Preferisci Micro:Bit V2 per display grandi, dissolvenza, riempimenti contrapposti mascherati e arcobaleni animati.
+- Preferisci micro:bit V2 per display grandi, dissolvenza, riempimenti contrapposti mascherati e arcobaleni animati.
 - Mantieni luminosità e frequenza adeguate all'alimentatore e al progetto.
 - Se V1 segnala limiti di programma o memoria, suddividi programmi insolitamente grandi in scene più semplici.
 
 ## Limiti elettrici
 
-Non alimentare una matrice dal pin 3 V del Micro:Bit. Usa un alimentatore esterno dimensionato per i pannelli, collega la massa comune e adotta cablaggio, protezioni e punti di alimentazione adeguati. La luminosità software non sostituisce una progettazione elettrica sicura. Consulta la [guida al cablaggio](wiring.md).
+Non alimentare una matrice dal pin 3 V del micro:bit. Usa un alimentatore esterno dimensionato per i pannelli, collega la massa comune e adotta cablaggio, protezioni e punti di alimentazione adeguati. La luminosità software non sostituisce una progettazione elettrica sicura. Consulta la [guida al cablaggio](wiring.md).
 
-Per l'hardware utilizzato, verifica sempre protocollo e caratteristiche nelle documentazioni ufficiali Micro:Bit, Microsoft MakeCode NeoPixel e del produttore dei LED.
+Per l'hardware utilizzato, verifica sempre protocollo e caratteristiche nelle documentazioni ufficiali micro:bit, Microsoft MakeCode NeoPixel e del produttore dei LED.
+
+```package
+sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
+```

@@ -1,13 +1,13 @@
 const direct = sarduMatrix.create(8, 8, DigitalPin.P1, 128)
 const directAdvanced = sarduMatrix.createAdvanced(
-    8, 8, MatrixOrigin.TopRight, MatrixScanAxis.Rows,
-    MatrixPath.Progressive, DigitalPin.P1, 128
+    8, 8, SarduMatrixOrigin.TopRight, SarduMatrixScanAxis.Rows,
+    SarduMatrixPath.Progressive, DigitalPin.P1, 128
 )
-const modules = sarduMatrix.createModules(1, MatrixModuleType.Matrix8x8, DigitalPin.P1, 128)
+const modules = sarduMatrix.createModules(1, SarduMatrixModuleType.Matrix8x8, DigitalPin.P1, 128)
 const modulesAdvanced = sarduMatrix.createModulesAdvanced(
-    1, MatrixModuleType.Matrix8x8, 1,
-    MatrixOrigin.TopLeft, MatrixScanAxis.Columns, MatrixPath.ZigZag,
-    MatrixOrigin.TopLeft, MatrixScanAxis.Rows, MatrixPath.Progressive,
+    1, SarduMatrixModuleType.Matrix8x8, 1,
+    SarduMatrixOrigin.TopLeft, SarduMatrixScanAxis.Columns, SarduMatrixPath.ZigZag,
+    SarduMatrixOrigin.TopLeft, SarduMatrixScanAxis.Rows, SarduMatrixPath.Progressive,
     DigitalPin.P1, 128
 )
 

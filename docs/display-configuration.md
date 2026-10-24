@@ -19,7 +19,7 @@ Use `createAdvanced` when the first pixel, scan axis or progressive/ZigZag path 
 Use `createModules` for a horizontal chain of identical panels. The available module sizes are 8×8, 16×16, 32×8, 8×32, 16×8 and 8×16.
 
 ```blocks
-let matrix = sarduMatrix.createModules(6, MatrixModuleType.Matrix16x16, DigitalPin.P1, 128)
+let matrix = sarduMatrix.createModules(6, SarduMatrixModuleType.Matrix16x16, DigitalPin.P1, 128)
 ```
 
 This creates a 96×16 logical display. Use `createModulesAdvanced` for a rectangular module grid or to configure the pixel path and module path independently.
@@ -45,6 +45,10 @@ Widths, heights, module counts and module rows must be positive integers. The mo
 
 ## Memory and board choice
 
-Memory use grows with the total number of LEDs. Micro:Bit V1 remains suitable for normal projects with smaller displays and selected feature families; Micro:Bit V2 is recommended for large matrices and memory-intensive effects. See [Memory, rendering and physical limits](memory-and-rendering.md).
+Memory use grows with the total number of LEDs. micro:bit V1 remains suitable for normal projects with smaller displays and selected feature families; micro:bit V2 is recommended for large matrices and memory-intensive effects. See [Memory, rendering and physical limits](memory-and-rendering.md).
 
 After configuration, verify the first pixel, opposite corner and every module boundary by following the [wiring guide](wiring.md).
+
+```package
+sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
+```

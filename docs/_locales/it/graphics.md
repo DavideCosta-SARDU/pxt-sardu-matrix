@@ -29,3 +29,7 @@ Le coordinate sono logiche e indipendenti dal cablaggio lineare, progressivo o Z
 ## Memoria
 
 Le righe del blocco sono valori temporanei e non creano un secondo framebuffer RGB permanente. Il framebuffer della matrice resta `larghezza × altezza × 3` byte.
+
+```package
+sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
+```

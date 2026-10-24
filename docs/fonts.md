@@ -12,8 +12,8 @@ SARDU-Matrix includes six fonts. Their pixel height is fixed for each family and
 | SARDU Proportional | Variable, plus spacing | 8 | 16 | 24 | 32 |
 | SARDU Compact | 4 pixels per glyph, plus spacing | 8 | 16 | 24 | 32 |
 | SARDU Compact Proportional | Variable, plus spacing | 8 | 16 | 24 | 32 |
-| Micro:Bit Extended | 5 pixels per glyph, plus spacing | 7 | 14 | 21 | 28 |
-| Micro:Bit Proportional | Variable, plus spacing | 7 | 14 | 21 | 28 |
+| micro:bit Extended | 5 pixels per glyph, plus spacing | 7 | 14 | 21 | 28 |
+| micro:bit Proportional | Variable, plus spacing | 7 | 14 | 21 | 28 |
 
 The spacing column between characters is also multiplied by the selected scale. The exact width of proportional text therefore depends on the characters in the string.
 
@@ -28,8 +28,8 @@ next Y = current Y + font height + optional spacing
 On a 16×16 matrix:
 
 - two SARDU 1× lines fit at Y=0 and Y=8, with no empty row between them;
-- two Micro:Bit 1× lines fit at Y=0 and Y=7;
-- Micro:Bit 1× can use Y=0 and Y=8 to leave one empty row between the lines.
+- two micro:bit 1× lines fit at Y=0 and Y=7;
+- micro:bit 1× can use Y=0 and Y=8 to leave one empty row between the lines.
 
 SARDU 2× is already 16 pixels high, so only one complete line fits vertically on a 16-pixel-high matrix.
 
@@ -51,7 +51,11 @@ Measurements use the same glyph data, character spacing, proportional trimming, 
 - **SARDU Proportional** preserves the SARDU glyphs while reducing unused side columns.
 - **SARDU Compact** reduces every glyph to four columns for shorter messages.
 - **SARDU Compact Proportional** combines compact glyphs with variable width.
-- **Micro:Bit Extended** follows the familiar Micro:Bit 5×5 style and provides room for supported accents.
-- **Micro:Bit Proportional** keeps that style while trimming unused side columns.
+- **micro:bit Extended** follows the familiar micro:bit 5×5 style and provides room for supported accents.
+- **micro:bit Proportional** keeps that style while trimming unused side columns.
 
-All SARDU variants share the same 8-pixel vertical metric. Both Micro:Bit variants share the same 7-pixel vertical metric.
+All SARDU variants share the same 8-pixel vertical metric. Both micro:bit variants share the same 7-pixel vertical metric.
+
+```package
+sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
+```

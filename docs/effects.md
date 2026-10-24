@@ -18,12 +18,16 @@ Generated effect colors have their own 0–255 brightness with a default of 128.
 
 Only fade keeps two temporary RGB snapshots while it runs. Other effects use temporary snapshots only while running; no effect adds a permanent framebuffer.
 
-Micro:Bit V2 is recommended for effects. Micro:Bit V1 can compile realistic small-matrix effect projects but has very little firmware and RAM margin; use V2 for large matrices, fade, content-masked collisions and animated rainbows.
+micro:bit V2 is recommended for effects. micro:bit V1 can compile realistic small-matrix effect projects but has very little firmware and RAM margin; use V2 for large matrices, fade, content-masked collisions and animated rainbows.
 
 Effect blocks show only their essential parameters initially. Use the `+` control on a block to reveal timing, final-state and brightness options.
 
 ```blocks
 let matrix = sarduMatrix.create(16, 16, DigitalPin.P1, 128)
-sarduMatrix.rainbowCycle(matrix, MatrixRainbowAxis.Horizontal, 1, 50, MatrixEffectEndState.Leave)
-sarduMatrix.fadeToColor(matrix, neopixel.colors(NeoPixelColors.Black), 1000, 20, MatrixEffectEndState.Leave, 128)
+sarduMatrix.rainbowCycle(matrix, SarduMatrixRainbowAxis.Horizontal, 1, 50, SarduMatrixEffectEndState.Leave)
+sarduMatrix.fadeToColor(matrix, neopixel.colors(NeoPixelColors.Black), 1000, 20, SarduMatrixEffectEndState.Leave, 128)
+```
+
+```package
+sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
 ```

@@ -1,3 +1,4 @@
+/** Private - do not use. Internal matrix implementation. */
 namespace sarduMatrixInternal {
     // Independently assembled for SARDU-Matrix. Five columns and eight rows.
     // Printable ASCII has distinct uppercase and lowercase glyphs. Frequently
@@ -13,10 +14,10 @@ namespace sarduMatrixInternal {
     // Records: character code (little endian), base character, accent kind.
     const ACCENT_MAP = hex`c0004101c1004102c2004103c3004104c4004105c5004106c7004307c8004501c9004502ca004503cb004505cc004901cd004902ce004903cf004905d1004e04d2004f01d3004f02d4004f03d5004f04d6004f05d9005501da005502db005503dc005505dd00590278015905e0006101e1006102e2006103e3006104e4006105e5006106e7006307e8006501e9006502ea006503eb006505ec006901ed006902ee006903ef006905f1006e04f2006f01f3006f02f4006f03f5006f04f6006f05f9007501fa007502fb007503fc007505fd007902ff007905`;
     const ACCENT_COLUMNS = hex`00000000000001020000000002010000020102000201020100000100010000020102000000000000`;
-    // Records: character code (little endian), Micro:Bit fallback character.
+    // Records: character code (little endian), micro:bit fallback character.
     const SPECIAL_MAP = hex`c60041e6006152014f53016fdf0042d8004ff8006fbf003fa10021b0006fac2045a3004ca90043ae0052d70078f7002f`;
 
-    // The official Micro:Bit 5x5 system font, as distributed by MakeCode in
+    // The official micro:bit 5x5 system font, as distributed by MakeCode in
     // pxt-common-packages. Each record is a two-byte character code followed
     // by five bitmap columns and one blank advance column.
     const MICROBIT_FONT = hex`
@@ -121,6 +122,9 @@ namespace sarduMatrixInternal {
         return glyph;
     }
 
+    /**
+     * Private - do not use. Internal matrix implementation.
+     */
     export function microBitGlyph(characterCode: number): Buffer {
         return systemFontGlyph(microBitCharacter(characterCode));
     }
@@ -181,62 +185,83 @@ namespace sarduMatrixInternal {
         return characterCode == 32 ? 1 : 0;
     }
 
-    export function normalizedFont(font: MatrixFont): MatrixFont {
-        if (font == MatrixFont.MicroBitExtended || font == MatrixFont.SarduProportional || font == MatrixFont.MicroBitProportional || font == MatrixFont.SarduCompact || font == MatrixFont.SarduCompactProportional) return font;
-        return MatrixFont.Sardu;
+    /**
+     * Private - do not use. Internal matrix implementation.
+     */
+    export function normalizedFont(font: SarduMatrixFont): SarduMatrixFont {
+        if (font == SarduMatrixFont.MicroBitExtended || font == SarduMatrixFont.SarduProportional || font == SarduMatrixFont.MicroBitProportional || font == SarduMatrixFont.SarduCompact || font == SarduMatrixFont.SarduCompactProportional) return font;
+        return SarduMatrixFont.Sardu;
     }
 
-    export function isMicroBitFont(font: MatrixFont): boolean {
-        return font == MatrixFont.MicroBitExtended || font == MatrixFont.MicroBitProportional;
+    /**
+     * Private - do not use. Internal matrix implementation.
+     */
+    export function isMicroBitFont(font: SarduMatrixFont): boolean {
+        return font == SarduMatrixFont.MicroBitExtended || font == SarduMatrixFont.MicroBitProportional;
     }
 
-    export function normalizedFontSize(size: MatrixFontSize): number {
-        size = Math.floor(size) as MatrixFontSize;
-        if (size < MatrixFontSize.X1) return 1;
-        if (size > MatrixFontSize.X4) return 4;
+    /**
+     * Private - do not use. Internal matrix implementation.
+     */
+    export function normalizedFontSize(size: SarduMatrixFontSize): number {
+        size = Math.floor(size) as SarduMatrixFontSize;
+        if (size < SarduMatrixFontSize.X1) return 1;
+        if (size > SarduMatrixFontSize.X4) return 4;
         return size;
     }
 
-    export function fontBaseHeight(font: MatrixFont): number {
+    /**
+     * Private - do not use. Internal matrix implementation.
+     */
+    export function fontBaseHeight(font: SarduMatrixFont): number {
         return isMicroBitFont(normalizedFont(font)) ? 7 : 8;
     }
 
-    export function glyphWidth(font: MatrixFont, characterCode: number): number {
+    /**
+     * Private - do not use. Internal matrix implementation.
+     */
+    export function glyphWidth(font: SarduMatrixFont, characterCode: number): number {
         font = normalizedFont(font);
-        if (font == MatrixFont.SarduProportional)
+        if (font == SarduMatrixFont.SarduProportional)
             return proportionalRight(characterCode) - proportionalLeft(characterCode) + 1;
-        if (font == MatrixFont.MicroBitProportional) {
+        if (font == SarduMatrixFont.MicroBitProportional) {
             const glyph = microBitGlyph(characterCode);
             return microBitProportionalRight(characterCode, glyph) - microBitProportionalLeft(characterCode, glyph) + 1;
         }
-        if (font == MatrixFont.SarduCompactProportional)
+        if (font == SarduMatrixFont.SarduCompactProportional)
             return compactProportionalRight(characterCode) - compactProportionalLeft(characterCode) + 1;
-        if (font == MatrixFont.SarduCompact) return 4;
+        if (font == SarduMatrixFont.SarduCompact) return 4;
         return 5;
     }
 
-    export function glyphAdvance(font: MatrixFont, characterCode: number): number {
+    /**
+     * Private - do not use. Internal matrix implementation.
+     */
+    export function glyphAdvance(font: SarduMatrixFont, characterCode: number): number {
         return glyphWidth(font, characterCode) + FONT_GAP;
     }
 
+    /**
+     * Private - do not use. Internal matrix implementation.
+     */
     export function fontColumn(
         characterCode: number,
         column: number,
-        font: MatrixFont = MatrixFont.Sardu,
+        font: SarduMatrixFont = SarduMatrixFont.Sardu,
         microBitBuffer: Buffer = null
     ): number {
         font = normalizedFont(font);
         if (isMicroBitFont(font)) {
             if (!microBitBuffer) microBitBuffer = microBitGlyph(characterCode);
-            if (font == MatrixFont.MicroBitProportional)
+            if (font == SarduMatrixFont.MicroBitProportional)
                 column += microBitProportionalLeft(characterCode, microBitBuffer);
             return microBitColumn(characterCode, column, microBitBuffer);
         }
-        if (font == MatrixFont.SarduProportional)
+        if (font == SarduMatrixFont.SarduProportional)
             return sarduColumn(characterCode, proportionalLeft(characterCode) + column);
-        if (font == MatrixFont.SarduCompactProportional)
+        if (font == SarduMatrixFont.SarduCompactProportional)
             return compactColumn(characterCode, compactProportionalLeft(characterCode) + column);
-        if (font == MatrixFont.SarduCompact)
+        if (font == SarduMatrixFont.SarduCompact)
             return compactColumn(characterCode, column);
         return sarduColumn(characterCode, column);
     }

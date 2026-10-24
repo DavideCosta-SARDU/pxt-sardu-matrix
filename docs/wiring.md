@@ -4,11 +4,11 @@
 
 ## Safety first
 
-Do not power an LED matrix from the Micro:Bit 3 V pin. Use an external supply suitable for the panel current. Connect the supply ground, matrix ground and Micro:Bit GND together, and provide suitable wiring, protection and power injection.
+Do not power an LED matrix from the micro:bit 3 V pin. Use an external supply suitable for the panel current. Connect the supply ground, matrix ground and micro:bit GND together, and provide suitable wiring, protection and power injection.
 
 ## Data connection
 
-Connect the selected Micro:Bit data pin to `DIN` of the first panel. P1 is the default, but the creation blocks let you choose another usable digital pin. Connect each panel's `DOUT` to the next panel's `DIN`; never reverse `DIN` and `DOUT`.
+Connect the selected micro:bit data pin to `DIN` of the first panel. P1 is the default, but the creation blocks let you choose another usable digital pin. Connect each panel's `DOUT` to the next panel's `DIN`; never reverse `DIN` and `DOUT`.
 
 ## Pixel path inside a module
 
@@ -38,3 +38,7 @@ Before testing text or effects:
 If an unused connected panel lights unexpectedly, check the configured dimensions, the physical chain and the power state. The extension transmits data for the configured LED count only.
 
 See [Display configuration](display-configuration.md) for creation methods and [Memory, rendering and physical limits](memory-and-rendering.md) for large chains.
+
+```package
+sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
+```

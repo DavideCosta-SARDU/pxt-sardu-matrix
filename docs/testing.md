@@ -6,7 +6,7 @@ This page defines the automated, compilation, simulator and physical checks for 
 
 ## Test structure
 
-The root `test.ts` is intentionally lightweight. The monolithic `pxt test` runner links the complete extension package and its harness into one synthetic V1 image regardless of the small entry point, so it is not representative of normal V1 programs. Executable TypeScript coverage is therefore divided into independent projects under [`tests/`](../tests/README.md); every real feature family compiles separately for V1 and V2 and each result remains attributable to that family.
+The root `test.ts` is a representative public API smoke program covering creation, dimensions, RGB/HSL colors, pixels, static text, geometry, immediate scrolling and sparkles. A deterministic failure calls `control.panic(921)`. Build it with `pxt build` and `pxt build --hwvariant v2`; load it in the MakeCode simulator without physical hardware. The independent projects under [`tests/`](../tests/README.md) provide broader coverage without forcing every renderer and animation into a single V1 image. The monolithic `pxt test` harness remains a different compilation mode and must not be confused with the representative program.
 
 The projects cover:
 
@@ -21,6 +21,8 @@ The projects cover:
 Deterministic failures call `control.panic(921)`.
 
 ## Compilation checks
+
+Run `python tests/check-metadata.py` from the extension root to check block signatures, English/Italian placeholders, shadow references and Help paths. This structural check does not replace the manual editor conversions below.
 
 For every directory listed in `tests/README.md`, run:
 
@@ -52,8 +54,8 @@ Import the exact candidate or release into a fresh project and verify:
 
 1. the category and groups appear in the documented order;
 2. block labels, defaults, selectors and expandable parameters are readable;
-3. direct JavaScript and Python code decompile to Blocks with the original Matrix instance variable;
-4. color parameters remain replaceable cyan color-picker shadows after JavaScript/Python to Blocks conversion;
+3. start from a new project with blocks dragged from the toolbox and connected; test Blocks → JavaScript → Blocks and Blocks → Python → Blocks separately; repeat the JavaScript round trip twice for coordinate-based scrolling;
+4. verify the receiver remains `matrix`, both untouched default colors and manually selected colors survive, command order and all parameters remain unchanged, and no gray blocks appear; test scrolling with both numeric X and a normally connected matrix-width block;
 5. Blocks, JavaScript and Python conversions produce no error;
 6. the English and Italian tutorial URLs load and every step exposes the required blocks.
 
@@ -73,6 +75,10 @@ Use an externally powered matrix with common ground and test at least one single
 
 ## Pass/fail record
 
-Record the exact commit or tag, Micro:Bit revision, matrix arrangement, data pin and power configuration. A pass requires all compiled projects and tested frames to match the expected result. Any compiler error, panic, unexplained pixel, missing group, broken conversion or incorrect final state is a failure and blocks promotion of that commit.
+Record the exact commit or tag, micro:bit revision, matrix arrangement, data pin and power configuration. A pass requires all compiled projects and tested frames to match the expected result. Any compiler error, panic, unexplained pixel, missing group, broken conversion or incorrect final state is a failure and blocks promotion of that commit.
 
 The `v0.8.4` release keeps the runtime verified in `v0.8.3` and adds documentation, tutorials and the structured test suite. Its candidate was verified by the user, and the runtime was tested on a real 96×16 six-panel chain. Every later candidate must repeat the checks affected by its changes.
+
+```package
+sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
+```

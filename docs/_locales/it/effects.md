@@ -16,6 +16,10 @@ Gli effetti animati eseguono un aggiornamento per fotogramma con pause cooperati
 
 La luminosità generata dagli effetti usa l'intervallo 0–255 e il default 128. La dissolvenza parte esattamente dal buffer corrente; lampeggio e arcobaleno non aumentano la luminosità del contenuto sorgente.
 
-Micro:Bit V2 è consigliato per effetti e matrici grandi perché offre maggiore margine di memoria programma e RAM. I progetti realistici degli effetti compilano anche per V1, che resta adatta alle configurazioni più piccole; per dissolvenze, collisioni mascherate e arcobaleni animati su superfici grandi è preferibile V2.
+micro:bit V2 è consigliato per effetti e matrici grandi perché offre maggiore margine di memoria programma e RAM. I progetti realistici degli effetti compilano anche per V1, che resta adatta alle configurazioni più piccole; per dissolvenze, collisioni mascherate e arcobaleni animati su superfici grandi è preferibile V2.
 
 I blocchi mostrano inizialmente i parametri essenziali. Il controllo `+` espone temporizzazione, stato finale e luminosità.
+
+```package
+sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
+```

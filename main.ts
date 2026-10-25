@@ -12,6 +12,7 @@ namespace sarduMatrix {
     //% blockId=sardu_matrix_create block="create matrix width %width height %height on pin %pin brightness %brightness"
     //% blockSetVariable=matrix group="Creation" weight=100 help=github:pxt-sardu-matrix/docs/display-configuration
     //% width.defl=16 height.defl=16 pin.defl=DigitalPin.P1 brightness.min=0 brightness.max=255 brightness.defl=128
+    //% hiddenParts="neopixel"
     export function create(width: number = 16, height: number = 16, pin: DigitalPin = DigitalPin.P1, brightness: number = 128): Matrix {
         return new Matrix(sarduMatrixInternal.directConfig(
             width, height,

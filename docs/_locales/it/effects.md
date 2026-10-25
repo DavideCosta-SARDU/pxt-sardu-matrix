@@ -1,6 +1,6 @@
 # Effetti speciali
 
-[English](../../effects.md)
+[English](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/candidate-approval-fixes/docs/effects.md)
 
 Il gruppo **Effetti** contiene animazioni che aggiornano automaticamente la matrice fisica e non richiedono un blocco `mostra` separato.
 
@@ -21,5 +21,5 @@ micro:bit V2 è consigliato per effetti e matrici grandi perché offre maggiore 
 I blocchi mostrano inizialmente i parametri essenziali. Il controllo `+` espone temporizzazione, stato finale e luminosità.
 
 ```package
-pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
+pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#candidate-approval-fixes
 ```

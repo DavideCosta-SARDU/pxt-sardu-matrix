@@ -1,6 +1,6 @@
 # Cablaggio della matrice
 
-[English](../../wiring.md)
+[English](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/candidate-approval-fixes/docs/wiring.md)
 
 ## Prima la sicurezza
 
@@ -37,8 +37,8 @@ Prima di provare testo o effetti:
 
 Se un pannello collegato ma non utilizzato si accende in modo inatteso, controlla le dimensioni configurate, la catena fisica e lo stato dell'alimentazione. L'estensione trasmette dati soltanto per il numero di LED configurato.
 
-Consulta [Configurazione del display](display-configuration.md) per i metodi di creazione e [Memoria, rendering e limiti fisici](memory-and-rendering.md) per le catene grandi.
+Consulta [Configurazione del display](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/candidate-approval-fixes/docs/_locales/it/display-configuration.md) per i metodi di creazione e [Memoria, rendering e limiti fisici](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/candidate-approval-fixes/docs/_locales/it/memory-and-rendering.md) per le catene grandi.
 
 ```package
-pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
+pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#candidate-approval-fixes
 ```

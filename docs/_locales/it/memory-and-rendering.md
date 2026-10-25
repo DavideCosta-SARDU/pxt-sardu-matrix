@@ -1,6 +1,6 @@
 # Memoria, rendering e limiti fisici
 
-[English](../../memory-and-rendering.md)
+[English](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/candidate-approval-fixes/docs/memory-and-rendering.md)
 
 ## Memoria utilizzata
 
@@ -46,10 +46,10 @@ tempo di trasmissione ≈ numero di LED × 30 µs
 
 ## Limiti elettrici
 
-Non alimentare una matrice dal pin 3 V del micro:bit. Usa un alimentatore esterno dimensionato per i pannelli, collega la massa comune e adotta cablaggio, protezioni e punti di alimentazione adeguati. La luminosità software non sostituisce una progettazione elettrica sicura. Consulta la [guida al cablaggio](wiring.md).
+Non alimentare una matrice dal pin 3 V del micro:bit. Usa un alimentatore esterno dimensionato per i pannelli, collega la massa comune e adotta cablaggio, protezioni e punti di alimentazione adeguati. La luminosità software non sostituisce una progettazione elettrica sicura. Consulta la [guida al cablaggio](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/candidate-approval-fixes/docs/_locales/it/wiring.md).
 
 Per l'hardware utilizzato, verifica sempre protocollo e caratteristiche nelle documentazioni ufficiali micro:bit, Microsoft MakeCode NeoPixel e del produttore dei LED.
 
 ```package
-pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
+pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#candidate-approval-fixes
 ```

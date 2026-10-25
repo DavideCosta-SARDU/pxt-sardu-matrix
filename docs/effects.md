@@ -1,6 +1,6 @@
 # Special effects
 
-[Italiano](_locales/it/effects.md)
+[Italiano](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/candidate-approval-fixes/docs/_locales/it/effects.md)
 
 The **Effects** group contains animations that update the physical display automatically. They do not require a separate `show` block.
 
@@ -29,5 +29,5 @@ sarduMatrix.fadeToColor(matrix, neopixel.colors(NeoPixelColors.Black), 1000, 20,
 ```
 
 ```package
-pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
+pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#candidate-approval-fixes
 ```

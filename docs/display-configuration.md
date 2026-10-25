@@ -1,6 +1,6 @@
 # Display configuration
 
-[Italiano](_locales/it/display-configuration.md)
+[Italiano](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/candidate-approval-fixes/docs/_locales/it/display-configuration.md)
 
 SARDU-Matrix can configure the display from its overall dimensions or from a grid of identical physical modules. Both methods create the same logical coordinate system for pixels, text, graphics, scrolling and effects.
 
@@ -45,10 +45,10 @@ Widths, heights, module counts and module rows must be positive integers. The mo
 
 ## Memory and board choice
 
-Memory use grows with the total number of LEDs. micro:bit V1 remains suitable for normal projects with smaller displays and selected feature families; micro:bit V2 is recommended for large matrices and memory-intensive effects. See [Memory, rendering and physical limits](memory-and-rendering.md).
+Memory use grows with the total number of LEDs. micro:bit V1 remains suitable for normal projects with smaller displays and selected feature families; micro:bit V2 is recommended for large matrices and memory-intensive effects. See [Memory, rendering and physical limits](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/candidate-approval-fixes/docs/memory-and-rendering.md).
 
-After configuration, verify the first pixel, opposite corner and every module boundary by following the [wiring guide](wiring.md).
+After configuration, verify the first pixel, opposite corner and every module boundary by following the [wiring guide](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/candidate-approval-fixes/docs/wiring.md).
 
 ```package
-pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
+pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#candidate-approval-fixes
 ```

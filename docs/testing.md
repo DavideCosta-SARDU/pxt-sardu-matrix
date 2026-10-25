@@ -1,12 +1,12 @@
 # Verification and test procedure
 
-[Italiano](_locales/it/testing.md)
+[Italiano](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/candidate-approval-fixes/docs/_locales/it/testing.md)
 
 This page defines the automated, compilation, simulator and physical checks for SARDU-Matrix. A release passes only when every applicable check finishes without a compiler error, panic, unexpected pixel or visual mismatch.
 
 ## Test structure
 
-The root `test.ts` is a representative public API smoke program covering creation, dimensions, RGB/HSL colors, pixels, static text, geometry, immediate scrolling and sparkles. A deterministic failure calls `control.panic(921)`. Build it with `pxt build` and `pxt build --hwvariant v2`; load it in the MakeCode simulator without physical hardware. The independent projects under [`tests/`](../tests/README.md) provide broader coverage without forcing every renderer and animation into a single V1 image. The monolithic `pxt test` harness remains a different compilation mode and must not be confused with the representative program.
+The root `test.ts` is a representative public API smoke program covering creation, dimensions, RGB/HSL colors, pixels, static text, geometry, immediate scrolling and sparkles. A deterministic failure calls `control.panic(921)`. Build it with `pxt build` and `pxt build --hwvariant v2`; load it in the MakeCode simulator without physical hardware. The independent projects under [`tests/`](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/candidate-approval-fixes/tests/README.md) provide broader coverage without forcing every renderer and animation into a single V1 image. The monolithic `pxt test` harness remains a different compilation mode and must not be confused with the representative program.
 
 The projects cover:
 
@@ -80,5 +80,5 @@ Record the exact commit or tag, micro:bit revision, matrix arrangement, data pin
 The `v0.8.4` release keeps the runtime verified in `v0.8.3` and adds documentation, tutorials and the structured test suite. Its candidate was verified by the user, and the runtime was tested on a real 96×16 six-panel chain. Every later candidate must repeat the checks affected by its changes.
 
 ```package
-pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
+pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#candidate-approval-fixes
 ```

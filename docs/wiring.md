@@ -1,6 +1,6 @@
 # Matrix wiring
 
-[Italiano](_locales/it/wiring.md)
+[Italiano](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/candidate-approval-fixes/docs/_locales/it/wiring.md)
 
 ## Safety first
 
@@ -37,8 +37,8 @@ Before testing text or effects:
 
 If an unused connected panel lights unexpectedly, check the configured dimensions, the physical chain and the power state. The extension transmits data for the configured LED count only.
 
-See [Display configuration](display-configuration.md) for creation methods and [Memory, rendering and physical limits](memory-and-rendering.md) for large chains.
+See [Display configuration](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/candidate-approval-fixes/docs/display-configuration.md) for creation methods and [Memory, rendering and physical limits](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/candidate-approval-fixes/docs/memory-and-rendering.md) for large chains.
 
 ```package
-pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
+pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#candidate-approval-fixes
 ```

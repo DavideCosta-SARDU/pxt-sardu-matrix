@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.9.0 - 2026-10-25
+
+- Fixed coordinate-scrolling and sparkles block metadata; verified real Blocks/JavaScript/Python round trips with default and selected colors.
+- Aligned package identity, Help paths and locale filenames with pxt-sardu-matrix; fixed documentation navigation and English/Italian tutorials.
+- Renamed public enum types from Matrix... to SarduMatrix... to prevent collisions. Existing projects must follow the documented enum and dependency-key migration.
+- Expanded API parameter documentation, representative test.ts and V1/V2 checks; clarified V1 limits and removed the engine's unnecessary microphone dependency.
+- Corrected block labels, micro:bit branding, millisecond placement and icon spacing; removed the duplicate license and shortened package/repository descriptions.
+- Confirmed static RGB text, six-panel scrolling and icon/sparkles/background restoration on micro:bit V2 with a 96x16 matrix on P1. V1 coverage is compilation only.
+- Kept hiddenParts disabled: a controlled P1/P2 comparison showed it also hides independent NeoPixel strips. The MakeCode simulator-part limitation remains documented for review.
+
 ## 0.8.4 - 2026-09-08
 
 - Added a bilingual English/Italian MakeCode tutorial and matching localized help pages.
@@ -90,8 +100,8 @@
 
 ## 0.2.1 - 2026-08-30
 
-- Added the standalone six-format graphic editor, RGB simulator page and GitHub Pages publication workflow without attaching them to the PXT toolbox manifest.
-- Added the Graphics and simulator guides, including the Microsoft approval boundary for automatic MakeCode integration.
+- Added the standalone six-format graphic editor and GitHub Pages publication workflow without attaching them to the PXT toolbox manifest.
+- Added the Graphics guide.
 
 ## 0.2.0 - 2026-08-30
 

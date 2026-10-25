@@ -1,6 +1,6 @@
 # Native Graphics blocks
 
-[Italiano](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/candidate-approval-fixes/docs/_locales/it/graphics.md)
+[Italiano](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v0.9.0/docs/_locales/it/graphics.md)
 
 SARDU-Matrix provides native MakeCode Graphics blocks for 8×8, 16×16, 32×8, 8×32, 16×8 and 8×16 areas. They are available under `... more` because the editable grids are intentionally tall.
 
@@ -22,5 +22,5 @@ Coordinates outside the logical matrix are clipped safely.
 The native blocks use the predefined RGB cell palette. They draw directly into the existing Matrix buffer and do not allocate a second framebuffer.
 
 ```package
-pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#candidate-approval-fixes
+pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#v0.9.0
 ```

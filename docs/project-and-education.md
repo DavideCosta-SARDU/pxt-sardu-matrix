@@ -1,6 +1,6 @@
 # SARDU-Matrix project and educational use
 
-[Italiano](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/candidate-approval-fixes/docs/_locales/it/project-and-education.md)
+[Italiano](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v0.9.0/docs/_locales/it/project-and-education.md)
 
 SARDU-Matrix is a free, MIT-licensed MakeCode extension for controlling commonly available WS2812B/NeoPixel RGB matrix panels with a micro:bit. It is not tied to, bundled with or sold as one proprietary accessory: learners can use compatible commercial panels from different manufacturers and configure their real dimensions and wiring path.
 
@@ -59,15 +59,15 @@ The complete project is available in [`examples/darkness-indicator`](../examples
 
 The supported hardware is a micro:bit V1 or V2 and one or more commercial addressable RGB panels compatible with the WS2812B/NeoPixel data protocol. The extension uses Microsoft's official `pxt-neopixel` package as its backend. It does not use mBed.
 
-An appropriate external power supply is required for LED panels. The micro:bit, panels and supply must share ground; the matrix must not be powered from the micro:bit 3 V pin. See the [wiring guide](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/candidate-approval-fixes/docs/wiring.md).
+An appropriate external power supply is required for LED panels. The micro:bit, panels and supply must share ground; the matrix must not be powered from the micro:bit 3 V pin. See the [wiring guide](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v0.9.0/docs/wiring.md).
 
 ## Project resources
 
-- [Installation and API overview](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/candidate-approval-fixes/README.md)
-- [English user guide](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/candidate-approval-fixes/docs/user-guide.md)
-- [Italian user guide](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/candidate-approval-fixes/docs/_locales/it/user-guide.md)
-- [Documented test procedure](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/candidate-approval-fixes/docs/testing.md)
+- [Installation and API overview](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v0.9.0/README.md)
+- [English user guide](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v0.9.0/docs/user-guide.md)
+- [Italian user guide](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v0.9.0/docs/_locales/it/user-guide.md)
+- [Documented test procedure](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v0.9.0/docs/testing.md)
 
 ```package
-pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#candidate-approval-fixes
+pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#v0.9.0
 ```

@@ -1,6 +1,6 @@
 # Memory, rendering and physical limits
 
-[Italiano](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/candidate-approval-fixes/docs/_locales/it/memory-and-rendering.md)
+[Italiano](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v0.9.0/docs/_locales/it/memory-and-rendering.md)
 
 ## Memory use
 
@@ -46,10 +46,10 @@ This is a protocol estimate, not a guaranteed frame rate. Rendering, pauses, rad
 
 ## Electrical limits
 
-Do not power an LED matrix from the micro:bit 3 V pin. Use an external supply sized for the panels, connect a common ground and provide appropriate wiring, protection and power injection. Software brightness does not replace safe electrical design. See the [wiring guide](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/candidate-approval-fixes/docs/wiring.md).
+Do not power an LED matrix from the micro:bit 3 V pin. Use an external supply sized for the panels, connect a common ground and provide appropriate wiring, protection and power injection. Software brightness does not replace safe electrical design. See the [wiring guide](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v0.9.0/docs/wiring.md).
 
 Protocol and board specifications should be checked against the official micro:bit, Microsoft MakeCode NeoPixel and LED-manufacturer documentation for the hardware in use.
 
 ```package
-pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#candidate-approval-fixes
+pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#v0.9.0
 ```

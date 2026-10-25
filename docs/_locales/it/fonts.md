@@ -1,6 +1,6 @@
 # Font e misure del testo
 
-[English](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/candidate-approval-fixes/docs/fonts.md)
+[English](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v0.9.0/docs/fonts.md)
 
 SARDU-Matrix include sei font. La loro altezza in pixel è fissa per ogni famiglia e viene moltiplicata per la scala selezionata da 1× a 4×. I font proporzionali modificano la larghezza dei caratteri, non l'altezza.
 
@@ -57,5 +57,5 @@ Le misure applicano gli stessi glifi, spaziatura, riduzione proporzionale, scala
 Tutte le varianti SARDU condividono la metrica verticale di 8 pixel. Entrambe le varianti micro:bit condividono la metrica verticale di 7 pixel.
 
 ```package
-pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#candidate-approval-fixes
+pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#v0.9.0
 ```

@@ -1,6 +1,6 @@
 # Public API
 
-[Italiano](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/candidate-approval-fixes/docs/_locales/it/api.md)
+[Italiano](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v0.9.0/docs/_locales/it/api.md)
 
 SARDU-Matrix exposes the `sarduMatrix` namespace and returns a `Matrix` object from every creation function. The object owns the physical mapping, NeoPixel strip and RGB buffer; applications work with logical X/Y coordinates whose origin is always the top-left corner.
 
@@ -23,7 +23,7 @@ let matrix = sarduMatrix.createModules(
 )
 ```
 
-Advanced creation blocks additionally select pixel origin, scan axis, progressive or ZigZag wiring, module-grid origin and module order. See [display configuration](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/candidate-approval-fixes/docs/display-configuration.md) and [wiring](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/candidate-approval-fixes/docs/wiring.md).
+Advanced creation blocks additionally select pixel origin, scan axis, progressive or ZigZag wiring, module-grid origin and module order. See [display configuration](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v0.9.0/docs/display-configuration.md) and [wiring](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v0.9.0/docs/wiring.md).
 
 The default data pin is P1 and the default brightness is 128. Valid brightness values are 0–255.
 
@@ -55,11 +55,11 @@ matrix.show()
 
 Available font families are SARDU, micro:bit Extended, SARDU Proportional, micro:bit Proportional, SARDU Compact and SARDU Compact Proportional. Text can be scaled from 1× to 4× and rotated by 0°, 90°, 180° or 270°.
 
-Their exact pixel heights, line-positioning examples and measurement rules are documented in [fonts and text measurements](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/candidate-approval-fixes/docs/fonts.md).
+Their exact pixel heights, line-positioning examples and measurement rules are documented in [fonts and text measurements](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v0.9.0/docs/fonts.md).
 
 Centered-text blocks can center across the matrix or within selected bounds. `measureTextWidth()`, `measureTextHeight()` and `measureFontHeight()` expose the same measurements used by the renderer.
 
-Static gradient text supports two selected colors or one color with independently selected initial and final brightness. See [gradient text and icons](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/candidate-approval-fixes/docs/gradient-and-icons.md).
+Static gradient text supports two selected colors or one color with independently selected initial and final brightness. See [gradient text and icons](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v0.9.0/docs/gradient-and-icons.md).
 
 ## Scrolling
 
@@ -106,7 +106,7 @@ RGB components use 0–255. HSL uses hue 0–360 and saturation/lightness 0–10
 
 ## Effects and micro:bit revisions
 
-Effects animate the current buffer and include fade, blink, directional and opposed fills, content-masked fills, rainbow and sparkles. They update the LEDs automatically and support leave, restore or clear final states. See [special effects](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/candidate-approval-fixes/docs/effects.md).
+Effects animate the current buffer and include fade, blink, directional and opposed fills, content-masked fills, rainbow and sparkles. They update the LEDs automatically and support leave, restore or clear final states. See [special effects](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v0.9.0/docs/effects.md).
 
 The normal creation, display, text, geometry, scrolling, gradient, effect and Graphics feature projects are compiled independently for both micro:bit V1 and V2. micro:bit V2 is recommended for large matrices and effects because it provides considerably more program-memory and RAM margin. A feature is described as V2-only only when a representative standalone project cannot operate on V1; the current API is not labelled V2-only as a whole.
 
@@ -120,7 +120,7 @@ The permanent RGB storage is proportional to the configured LED count:
 RGB bytes = width × height × 3
 ```
 
-The actual maximum depends on the micro:bit revision, other extensions and the rest of the program. See [memory and rendering](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/candidate-approval-fixes/docs/memory-and-rendering.md) and the [test procedure](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/candidate-approval-fixes/docs/testing.md).
+The actual maximum depends on the micro:bit revision, other extensions and the rest of the program. See [memory and rendering](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v0.9.0/docs/memory-and-rendering.md) and the [test procedure](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v0.9.0/docs/testing.md).
 
 Coordinate-based `scrollText` starts at X = 16 by default. For another width, connect `matrix.width()` as a normal value block or use the edge-based scrolling block.
 
@@ -129,5 +129,5 @@ Coordinate-based `scrollText` starts at X = 16 by default. For another width, co
 Public enum types now use the unique `SarduMatrix` prefix, for example `SarduMatrixFont`, `SarduMatrixOrigin` and `SarduMatrixGraphicPixel`. Member names and numeric values are unchanged. Before updating an existing Blocks project, save a copy and switch it to JavaScript. After updating the extension, replace each old `Matrix…` enum type with `SarduMatrix…`, then return to Blocks and check every selector. Python projects need the same type-prefix update. Existing block IDs and matrix methods are unchanged.
 
 ```package
-pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#candidate-approval-fixes
+pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#v0.9.0
 ```

@@ -1,12 +1,12 @@
 # Verification and test procedure
 
-[Italiano](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/candidate-approval-fixes/docs/_locales/it/testing.md)
+[Italiano](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v0.9.0/docs/_locales/it/testing.md)
 
 This page defines the automated, compilation, simulator and physical checks for SARDU-Matrix. A release passes only when every applicable check finishes without a compiler error, panic, unexpected pixel or visual mismatch.
 
 ## Test structure
 
-The root `test.ts` is a representative public API smoke program covering creation, dimensions, RGB/HSL colors, pixels, static text, geometry, immediate scrolling and sparkles. A deterministic failure calls `control.panic(921)`. Build it with `pxt build` and `pxt build --hwvariant v2`; load it in the MakeCode simulator without physical hardware. The independent projects under [`tests/`](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/candidate-approval-fixes/tests/README.md) provide broader coverage without forcing every renderer and animation into a single V1 image. The monolithic `pxt test` harness remains a different compilation mode and must not be confused with the representative program.
+The root `test.ts` is a representative public API smoke program covering creation, dimensions, RGB/HSL colors, pixels, static text, geometry, immediate scrolling and sparkles. A deterministic failure calls `control.panic(921)`. Build it with `pxt build` and `pxt build --hwvariant v2`; load it in the MakeCode simulator without physical hardware. The independent projects under [`tests/`](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v0.9.0/tests/README.md) provide broader coverage without forcing every renderer and animation into a single V1 image. The monolithic `pxt test` harness remains a different compilation mode and must not be confused with the representative program.
 
 The projects cover:
 
@@ -77,8 +77,8 @@ Use an externally powered matrix with common ground and test at least one single
 
 Record the exact commit or tag, micro:bit revision, matrix arrangement, data pin and power configuration. A pass requires all compiled projects and tested frames to match the expected result. Any compiler error, panic, unexplained pixel, missing group, broken conversion or incorrect final state is a failure and blocks promotion of that commit.
 
-The `v0.8.4` release keeps the runtime verified in `v0.8.3` and adds documentation, tutorials and the structured test suite. Its candidate was verified by the user, and the runtime was tested on a real 96×16 six-panel chain. Every later candidate must repeat the checks affected by its changes.
+Release `v0.9.0` passed the approval-correction checks: real Blocks/JavaScript/Python round trips, Help, English/Italian tutorials and V1/V2 compilation. The rendering algorithms match hardware-tested candidate `c7c5307b96a5051f56a32991b944bfe30cfd3b02`. On 25 October 2026, Davide confirmed static RGB text, repeated scrolling with `matrix.width()` connected to X, and red-heart/purple-sparkles/background restoration on a micro:bit V2 with six horizontal 16×16 panels (96×16), P1, external power and common ground. These are representative hardware checks, not a claim that every API configuration was physically exercised. V1 was checked in compilation, not on hardware. The MakeCode NeoPixel-part simulator limitation remains; `hiddenParts` is disabled because a controlled P1/P2 experiment also hid an independent strip. Every later candidate must repeat the checks affected by its changes.
 
 ```package
-pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#candidate-approval-fixes
+pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#v0.9.0
 ```

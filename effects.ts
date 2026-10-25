@@ -297,7 +297,7 @@ namespace sarduMatrix {
      * @param brightness brightness from 0 to 255
      */
     //% blockId=sardu_matrix_fade_to_color block="$matrix fade content to $color=neopixel_colors in (ms) $durationMs||frames $frames end $endState brightness $brightness"
-    //% group="Effects" weight=90 help=github:sardu-matrix/docs/effects
+    //% group="Effects" weight=90 help=github:pxt-sardu-matrix/docs/effects
     //% compileHiddenArguments=true inlineInputMode="variable" inlineInputModeLimit=3 expandableArgumentBreaks="3"
     //% matrix.shadow=variables_get matrix.defl=matrix color.defl=NeoPixelColors.Black durationMs.min=0 durationMs.defl=1000 frames.min=1 frames.max=255 frames.defl=20 endState.defl=SarduMatrixEffectEndState.Leave brightness.min=0 brightness.max=255 brightness.defl=128
     //% color.snippet="neopixel.colors(NeoPixelColors.Black)" color.pySnippet="neopixel.colors(NeoPixelColors.BLACK)"
@@ -314,7 +314,7 @@ namespace sarduMatrix {
      * @param endState display state when the effect finishes
      */
     //% blockId=sardu_matrix_blink_color block="$matrix blink content $repetitions times||on (ms) $onMs off (ms) $offMs end $endState"
-    //% group="Effects" weight=80 help=github:sardu-matrix/docs/effects
+    //% group="Effects" weight=80 help=github:pxt-sardu-matrix/docs/effects
     //% compileHiddenArguments=true inlineInputMode="variable" inlineInputModeLimit=2 expandableArgumentBreaks="3"
     //% matrix.shadow=variables_get matrix.defl=matrix repetitions.min=1 repetitions.defl=3 onMs.min=0 onMs.defl=300 offMs.min=0 offMs.defl=300 endState.defl=SarduMatrixEffectEndState.Restore
     export function blinkContent(matrix: Matrix, repetitions: number = 3, onMs: number = 300, offMs: number = 300, endState: SarduMatrixEffectEndState = SarduMatrixEffectEndState.Restore): void {
@@ -332,7 +332,7 @@ namespace sarduMatrix {
      * @param brightness brightness from 0 to 255
      */
     //% blockId=sardu_matrix_color_wipe block="$matrix wipe $color=neopixel_colors $direction from $start||every (ms) $frameIntervalMs end $endState brightness $brightness"
-    //% group="Effects" weight=70 help=github:sardu-matrix/docs/effects
+    //% group="Effects" weight=70 help=github:pxt-sardu-matrix/docs/effects
     //% compileHiddenArguments=true inlineInputMode="variable" inlineInputModeLimit=4 expandableArgumentBreaks="3"
     //% matrix.shadow=variables_get matrix.defl=matrix color.defl=NeoPixelColors.White direction.defl=SarduMatrixWipeDirection.LeftToRight start.min=0 start.defl=0 frameIntervalMs.min=0 frameIntervalMs.defl=50 endState.defl=SarduMatrixEffectEndState.Leave brightness.min=0 brightness.max=255 brightness.defl=128
     //% color.snippet="neopixel.colors(NeoPixelColors.White)" color.pySnippet="neopixel.colors(NeoPixelColors.WHITE)"
@@ -349,7 +349,7 @@ namespace sarduMatrix {
      * @param endState display state when the effect finishes
      */
     //% blockId=sardu_matrix_rainbow_cycle block="$matrix rainbow content $axis $frames frames||every (ms) $frameIntervalMs end $endState"
-    //% group="Effects" weight=60 help=github:sardu-matrix/docs/effects
+    //% group="Effects" weight=60 help=github:pxt-sardu-matrix/docs/effects
     //% compileHiddenArguments=true inlineInputMode="variable" inlineInputModeLimit=3 expandableArgumentBreaks="2"
     //% matrix.shadow=variables_get matrix.defl=matrix axis.defl=SarduMatrixRainbowAxis.Horizontal frames.min=1 frames.defl=1 frameIntervalMs.min=0 frameIntervalMs.defl=50 endState.defl=SarduMatrixEffectEndState.Leave
     export function rainbowCycle(matrix: Matrix, axis: SarduMatrixRainbowAxis = SarduMatrixRainbowAxis.Horizontal, frames: number = 1, frameIntervalMs: number = 50, endState: SarduMatrixEffectEndState = SarduMatrixEffectEndState.Leave): void {
@@ -368,7 +368,7 @@ namespace sarduMatrix {
      * @param brightness brightness from 0 to 255
      */
     //% blockId=sardu_matrix_sparkles block="$matrix sparkles $color=neopixel_colors density $density percent||duration (ms) $durationMs every (ms) $frameIntervalMs mode $mode end $endState brightness $brightness"
-    //% group="Effects" weight=40 help=github:sardu-matrix/docs/effects
+    //% group="Effects" weight=40 help=github:pxt-sardu-matrix/docs/effects
     //% compileHiddenArguments=true inlineInputMode="variable" inlineInputModeLimit=3 expandableArgumentBreaks="5"
     //% matrix.shadow=variables_get matrix.defl=matrix color.defl=NeoPixelColors.White density.min=1 density.max=100 density.defl=10 durationMs.min=0 durationMs.defl=2000 frameIntervalMs.min=1 frameIntervalMs.defl=100 mode.defl=SarduMatrixScrollMode.Exclusive endState.defl=SarduMatrixEffectEndState.Restore brightness.min=0 brightness.max=255 brightness.defl=128
     //% color.snippet="neopixel.colors(NeoPixelColors.White)" color.pySnippet="neopixel.colors(NeoPixelColors.WHITE)"
@@ -389,7 +389,7 @@ namespace sarduMatrix {
      * @param brightness brightness from 0 to 255
      */
     //% blockId=sardu_matrix_opposed_color_wipe block="$matrix collision $firstColor=neopixel_colors $secondColor=neopixel_colors $axis meet at X/Y $meeting only content $contentOnly||every (ms) $frameIntervalMs end $endState brightness $brightness"
-    //% group="Effects" weight=65 help=github:sardu-matrix/docs/effects
+    //% group="Effects" weight=65 help=github:pxt-sardu-matrix/docs/effects
     //% compileHiddenArguments=true inlineInputMode="variable" inlineInputModeLimit=6 expandableArgumentBreaks="3"
     //% matrix.shadow=variables_get matrix.defl=matrix firstColor.defl=NeoPixelColors.Red secondColor.defl=NeoPixelColors.Blue axis.defl=SarduMatrixRainbowAxis.Horizontal meeting.min=0 meeting.defl=7 contentOnly.defl=false frameIntervalMs.min=0 frameIntervalMs.defl=50 endState.defl=SarduMatrixEffectEndState.Leave brightness.min=0 brightness.max=255 brightness.defl=128
     //% firstColor.snippet="neopixel.colors(NeoPixelColors.Red)" firstColor.pySnippet="neopixel.colors(NeoPixelColors.RED)" secondColor.snippet="neopixel.colors(NeoPixelColors.Blue)" secondColor.pySnippet="neopixel.colors(NeoPixelColors.BLUE)"

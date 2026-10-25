@@ -80,5 +80,5 @@ Record the exact commit or tag, micro:bit revision, matrix arrangement, data pin
 The `v0.8.4` release keeps the runtime verified in `v0.8.3` and adds documentation, tutorials and the structured test suite. Its candidate was verified by the user, and the runtime was tested on a real 96×16 six-panel chain. Every later candidate must repeat the checks affected by its changes.
 
 ```package
-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
+pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
 ```

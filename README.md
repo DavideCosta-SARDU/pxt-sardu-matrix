@@ -12,6 +12,8 @@ The coordinate-based scrolling block starts at X = 16 by default. For a differen
 
 Existing JavaScript/Python projects must update enum type names from `Matrix…` to `SarduMatrix…`. For Blocks projects, follow the [update procedure](docs/api.md#updating-existing-projects) before changing the extension version.
 
+The package identifier is now `pxt-sardu-matrix`, matching the repository and the dependency created by MakeCode tutorials. Existing projects using the old `sardu-matrix` dependency key must rename that key in `pxt.json` while keeping its version reference, so block Help can resolve the included documentation. The `sarduMatrix` programming namespace is unchanged.
+
 ## Installation in MakeCode
 
 1. Open [MakeCode for micro:bit](https://makecode.microbit.org/).

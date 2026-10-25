@@ -68,5 +68,5 @@ I pannelli richiedono un'alimentazione esterna adeguata. micro:bit, pannelli e a
 - [Procedura di test](testing.md)
 
 ```package
-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
+pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
 ```

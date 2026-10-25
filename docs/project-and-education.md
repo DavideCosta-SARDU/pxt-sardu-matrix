@@ -69,5 +69,5 @@ An appropriate external power supply is required for LED panels. The micro:bit, 
 - [Documented test procedure](testing.md)
 
 ```package
-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
+pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
 ```

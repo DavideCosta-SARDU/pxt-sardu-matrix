@@ -29,5 +29,5 @@ sarduMatrix.fadeToColor(matrix, neopixel.colors(NeoPixelColors.Black), 1000, 20,
 ```
 
 ```package
-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
+pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
 ```

@@ -129,5 +129,5 @@ Coordinate-based `scrollText` starts at X = 16 by default. For another width, co
 Public enum types now use the unique `SarduMatrix` prefix, for example `SarduMatrixFont`, `SarduMatrixOrigin` and `SarduMatrixGraphicPixel`. Member names and numeric values are unchanged. Before updating an existing Blocks project, save a copy and switch it to JavaScript. After updating the extension, replace each old `Matrix…` enum type with `SarduMatrix…`, then return to Blocks and check every selector. Python projects need the same type-prefix update. Existing block IDs and matrix methods are unchanged.
 
 ```package
-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
+pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
 ```

@@ -51,5 +51,5 @@ Do not power an LED matrix from the micro:bit 3 V pin. Use an external supply si
 Protocol and board specifications should be checked against the official micro:bit, Microsoft MakeCode NeoPixel and LED-manufacturer documentation for the hardware in use.
 
 ```package
-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
+pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
 ```

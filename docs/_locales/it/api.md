@@ -127,5 +127,5 @@ Lo scorrimento `scrollText` con coordinate parte da X = 16 per impostazione pred
 I tipi enum pubblici usano ora il prefisso univoco `SarduMatrix`, per esempio `SarduMatrixFont`, `SarduMatrixOrigin` e `SarduMatrixGraphicPixel`. Nomi dei membri e valori numerici sono invariati. Prima di aggiornare un progetto a Blocchi esistente, salvarne una copia e passare a JavaScript. Dopo aver aggiornato l’estensione, sostituire ogni vecchio tipo enum `Matrix…` con `SarduMatrix…`, quindi tornare ai Blocchi e controllare tutti i selettori. Anche i progetti Python richiedono l’aggiornamento del prefisso dei tipi. Gli identificatori dei blocchi e i metodi della matrice sono invariati.
 
 ```package
-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
+pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
 ```

@@ -43,7 +43,7 @@ Registrare commit o tag esatto, revisione micro:bit, pannelli, pin dati e alimen
 La release `v0.8.4` mantiene il runtime verificato in `v0.8.3` e aggiunge documentazione, tutorial e suite di test strutturata. La candidata è stata verificata dall'utente e il runtime è stato provato su una catena reale di sei pannelli 16×16 (96×16). Ogni candidata successiva deve ripetere i controlli interessati dalle modifiche.
 
 ```package
-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
+pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
 ```
 
 La prova di conversione parte da un progetto nuovo con blocchi realmente trascinati e collegati: verificare separatamente Blocchi → JavaScript → Blocchi e Blocchi → Python → Blocchi. Ripetere due volte il percorso JavaScript per lo scorrimento con coordinate. Controllare ricevitore `matrix`, colore predefinito e colore scelto, ordine, parametri e assenza di blocchi grigi. Provare X numerico e il blocco larghezza della matrice collegato come normale valore.

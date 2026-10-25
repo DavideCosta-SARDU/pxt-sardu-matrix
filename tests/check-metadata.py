@@ -7,6 +7,8 @@ ROOT = Path(__file__).resolve().parents[1]
 config = json.loads((ROOT / 'pxt.json').read_text(encoding='utf-8'))
 blocks = {}
 errors = []
+if config['name'] != 'pxt-sardu-matrix':
+    errors.append('Package name must match the canonical repository name used by the tutorial loader')
 pattern = re.compile(
     r'(?P<annotations>(?:^[ \t]*//[^\n]*\n)+)[ \t]*'
     r'(?:export function )?(?P<name>\w+)\((?P<params>[^)]*)\)', re.M
@@ -43,7 +45,7 @@ for block_id, (label, annotations, name, filename) in blocks.items():
     if not block_id.startswith('sardu_matrix_graphic_row') and 'help=github:' not in annotations:
         errors.append(f'{block_id}: missing Help path')
 
-translations = [ROOT / '_locales/sardu-matrix-strings.json', ROOT / '_locales/it/sardu-matrix-strings.json']
+translations = [ROOT / '_locales/pxt-sardu-matrix-strings.json', ROOT / '_locales/it/pxt-sardu-matrix-strings.json']
 for path in translations:
     data = json.loads(path.read_text(encoding='utf-8'))
     for block_id, (label, annotations, name, filename) in blocks.items():

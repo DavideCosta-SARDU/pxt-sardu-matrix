@@ -21,5 +21,5 @@ micro:bit V2 è consigliato per effetti e matrici grandi perché offre maggiore 
 I blocchi mostrano inizialmente i parametri essenziali. Il controllo `+` espone temporizzazione, stato finale e luminosità.
 
 ```package
-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
+pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
 ```

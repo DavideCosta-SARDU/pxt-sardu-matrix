@@ -21,5 +21,5 @@ The Icons group provides fourteen original 8 x 8 monochrome masks: filled and ou
 Icons write only their active pixels into the current buffer and are safely clipped at the matrix edges. Call `show()` after drawing. No micro:bit or third-party logo is included.
 
 ```package
-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
+pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
 ```

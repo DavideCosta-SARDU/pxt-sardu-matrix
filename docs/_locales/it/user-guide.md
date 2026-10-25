@@ -117,5 +117,5 @@ Se un pixel di un pannello non configurato si accende all'alimentazione, prima v
 Per approfondire consulta [configurazione del display](display-configuration.md), [font e misure del testo](fonts.md), [memoria e rendering](memory-and-rendering.md) e [cablaggio](wiring.md).
 
 ```package
-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
+pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
 ```

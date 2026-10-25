@@ -57,5 +57,5 @@ Measurements use the same glyph data, character spacing, proportional trimming, 
 All SARDU variants share the same 8-pixel vertical metric. Both micro:bit variants share the same 7-pixel vertical metric.
 
 ```package
-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
+pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
 ```

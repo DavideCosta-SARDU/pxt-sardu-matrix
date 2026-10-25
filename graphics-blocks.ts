@@ -158,7 +158,7 @@ namespace sarduMatrix {
      */
     //% blockId=sardu_matrix_draw_native_16x16 block="%matrix draw 16 x 16 graphic (◌ transparent)|%r1|%r2|%r3|%r4|%r5|%r6|%r7|%r8|%r9|%r10|%r11|%r12|%r13|%r14|%r15|%r16|at x %x y %y mode %mode"
     //% group="Graphics" weight=77 advanced=true inlineInputMode=external
-    //% help=github:sardu-matrix/docs/graphics
+    //% help=github:pxt-sardu-matrix/docs/graphics
     //% matrix.defl=matrix x.defl=0 y.defl=0 mode.defl=SarduMatrixGraphicMode.Overlay
     //% matrix.shadow=variables_get
     //% r1.shadow=sardu_matrix_graphic_row16
@@ -198,7 +198,7 @@ namespace sarduMatrix {
      */
     //% blockId=sardu_matrix_draw_native_8x8 block="%matrix draw 8 x 8 graphic (◌ transparent)|%r1|%r2|%r3|%r4|%r5|%r6|%r7|%r8|at x %x y %y mode %mode"
     //% group="Graphics" weight=76 advanced=true inlineInputMode=external
-    //% help=github:sardu-matrix/docs/graphics
+    //% help=github:pxt-sardu-matrix/docs/graphics
     //% matrix.defl=matrix x.defl=0 y.defl=0 mode.defl=SarduMatrixGraphicMode.Overlay
     //% matrix.shadow=variables_get
     //% r1.shadow=sardu_matrix_graphic_row8
@@ -230,7 +230,7 @@ namespace sarduMatrix {
      */
     //% blockId=sardu_matrix_draw_native_32x8 block="%matrix draw 32 x 8 graphic (◌ transparent)|%r1|%r2|%r3|%r4|%r5|%r6|%r7|%r8|at x %x y %y mode %mode"
     //% group="Graphics" weight=75 advanced=true inlineInputMode=external
-    //% help=github:sardu-matrix/docs/graphics
+    //% help=github:pxt-sardu-matrix/docs/graphics
     //% matrix.defl=matrix x.defl=0 y.defl=0 mode.defl=SarduMatrixGraphicMode.Overlay
     //% matrix.shadow=variables_get
     //% r1.shadow=sardu_matrix_graphic_row32
@@ -286,7 +286,7 @@ namespace sarduMatrix {
      */
     //% blockId=sardu_matrix_draw_native_8x32 block="%matrix draw 8 x 32 graphic (◌ transparent)|%r1|%r2|%r3|%r4|%r5|%r6|%r7|%r8|%r9|%r10|%r11|%r12|%r13|%r14|%r15|%r16|%r17|%r18|%r19|%r20|%r21|%r22|%r23|%r24|%r25|%r26|%r27|%r28|%r29|%r30|%r31|%r32|at x %x y %y mode %mode"
     //% group="Graphics" weight=74 advanced=true inlineInputMode=external
-    //% help=github:sardu-matrix/docs/graphics
+    //% help=github:pxt-sardu-matrix/docs/graphics
     //% matrix.defl=matrix x.defl=0 y.defl=0 mode.defl=SarduMatrixGraphicMode.Overlay
     //% matrix.shadow=variables_get
     //% r1.shadow=sardu_matrix_graphic_row8
@@ -342,7 +342,7 @@ namespace sarduMatrix {
      */
     //% blockId=sardu_matrix_draw_native_16x8 block="%matrix draw 16 x 8 graphic (◌ transparent)|%r1|%r2|%r3|%r4|%r5|%r6|%r7|%r8|at x %x y %y mode %mode"
     //% group="Graphics" weight=73 advanced=true inlineInputMode=external
-    //% help=github:sardu-matrix/docs/graphics
+    //% help=github:pxt-sardu-matrix/docs/graphics
     //% matrix.defl=matrix x.defl=0 y.defl=0 mode.defl=SarduMatrixGraphicMode.Overlay
     //% matrix.shadow=variables_get
     //% r1.shadow=sardu_matrix_graphic_row16
@@ -382,7 +382,7 @@ namespace sarduMatrix {
      */
     //% blockId=sardu_matrix_draw_native_8x16 block="%matrix draw 8 x 16 graphic (◌ transparent)|%r1|%r2|%r3|%r4|%r5|%r6|%r7|%r8|%r9|%r10|%r11|%r12|%r13|%r14|%r15|%r16|at x %x y %y mode %mode"
     //% group="Graphics" weight=72 advanced=true inlineInputMode=external
-    //% help=github:sardu-matrix/docs/graphics
+    //% help=github:pxt-sardu-matrix/docs/graphics
     //% matrix.defl=matrix x.defl=0 y.defl=0 mode.defl=SarduMatrixGraphicMode.Overlay
     //% matrix.shadow=variables_get
     //% r1.shadow=sardu_matrix_graphic_row8

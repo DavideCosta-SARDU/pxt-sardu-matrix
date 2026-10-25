@@ -51,5 +51,5 @@ Non alimentare una matrice dal pin 3 V del micro:bit. Usa un alimentatore estern
 Per l'hardware utilizzato, verifica sempre protocollo e caratteristiche nelle documentazioni ufficiali micro:bit, Microsoft MakeCode NeoPixel e del produttore dei LED.
 
 ```package
-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
+pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
 ```

@@ -57,5 +57,5 @@ Le misure applicano gli stessi glifi, spaziatura, riduzione proporzionale, scala
 Tutte le varianti SARDU condividono la metrica verticale di 8 pixel. Entrambe le varianti micro:bit condividono la metrica verticale di 7 pixel.
 
 ```package
-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
+pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
 ```

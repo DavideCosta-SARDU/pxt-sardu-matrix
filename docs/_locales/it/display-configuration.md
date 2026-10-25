@@ -50,5 +50,5 @@ La memoria necessaria cresce con il numero totale di LED. micro:bit V1 resta ada
 Dopo la configurazione, verifica il primo pixel, l'angolo opposto e ogni confine tra moduli seguendo la [guida al cablaggio](wiring.md).
 
 ```package
-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
+pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
 ```

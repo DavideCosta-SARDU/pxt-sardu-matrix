@@ -1,5 +1,5 @@
 {
-    "name": "sardu-matrix",
+    "name": "pxt-sardu-matrix",
     "version": "0.8.4",
     "description": "Configurable RGB LED matrices, text, graphics and effects",
     "license": "MIT",
@@ -47,8 +47,8 @@
         "docs/_locales/it/testing.md",
         "docs/_locales/it/memory-and-rendering.md",
         "docs/_locales/it/wiring.md",
-        "_locales/it/sardu-matrix-strings.json",
-        "_locales/it/sardu-matrix-jsdoc-strings.json"
+        "_locales/it/pxt-sardu-matrix-strings.json",
+        "_locales/it/pxt-sardu-matrix-jsdoc-strings.json"
     ],
     "testFiles": [
         "test.ts"

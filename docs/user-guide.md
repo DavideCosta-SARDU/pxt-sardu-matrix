@@ -80,5 +80,5 @@ micro:bit V1 supports normal projects and the extension is compiled in separate 
 For exact signatures see the [public API](api.md). For release verification see the [test procedure](testing.md).
 
 ```package
-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
+pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
 ```

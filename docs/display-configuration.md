@@ -50,5 +50,5 @@ Memory use grows with the total number of LEDs. micro:bit V1 remains suitable fo
 After configuration, verify the first pixel, opposite corner and every module boundary by following the [wiring guide](wiring.md).
 
 ```package
-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
+pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
 ```

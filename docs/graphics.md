@@ -22,5 +22,5 @@ Coordinates outside the logical matrix are clipped safely.
 The native blocks use the predefined RGB cell palette. They draw directly into the existing Matrix buffer and do not allocate a second framebuffer.
 
 ```package
-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
+pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
 ```

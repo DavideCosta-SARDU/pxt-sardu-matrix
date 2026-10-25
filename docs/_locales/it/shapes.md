@@ -19,5 +19,5 @@ I blocchi `aggiungi ... allo scorrimento` costruiscono una composizione leggera 
 La composizione conserva comandi di disegno, non un secondo framebuffer RGB: testo e geometrie vengono ridisegnati insieme con lo stesso spostamento e una sola chiamata `show()` per fotogramma.
 
 ```package
-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
+pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
 ```

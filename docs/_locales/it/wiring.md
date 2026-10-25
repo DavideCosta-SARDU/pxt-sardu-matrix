@@ -40,5 +40,5 @@ Se un pannello collegato ma non utilizzato si accende in modo inatteso, controll
 Consulta [Configurazione del display](display-configuration.md) per i metodi di creazione e [Memoria, rendering e limiti fisici](memory-and-rendering.md) per le catene grandi.
 
 ```package
-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
+pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
 ```

@@ -40,5 +40,5 @@ If an unused connected panel lights unexpectedly, check the configured dimension
 See [Display configuration](display-configuration.md) for creation methods and [Memory, rendering and physical limits](memory-and-rendering.md) for large chains.
 
 ```package
-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
+pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix-test#candidate-approval-fixes
 ```

@@ -27,6 +27,8 @@ for path in ROOT.glob('*.ts'):
             params.insert(0, 'this')
         placeholders = re.findall(r'[%$](\w+)', label[1])
         if '||' in label[1]:
+            if 'compileHiddenArguments=true' not in annotations:
+                errors.append(f'{block_id}: hidden options must remain in generated code')
             optional_labels = re.findall(r'[%$](\w+)', label[1].split('||', 1)[1])
             required = [p.split(':', 1)[0].strip() for p in match['params'].split(',')
                         if ':' in p and '=' not in p and '?' not in p.split(':', 1)[0]]

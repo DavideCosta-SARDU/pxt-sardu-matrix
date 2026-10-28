@@ -352,7 +352,7 @@ namespace sarduMatrix {
      */
     //% blockId=sardu_matrix_scroll_text_between block="$matrix scroll text $text from x $startX y $startY to x $endX y $endY||color $color=neopixel_colors every (ms) $frameIntervalMs|font $font size $size brightness $brightness orientation $orientation mode $mode"
     //% group="Scrolling text" weight=73 help=github:pxt-sardu-matrix/docs/api subcategory="Text"
-    //% compileHiddenArguments=true inlineInputMode="variable" inlineInputModeLimit=7 expandableArgumentBreaks="5"
+    //% compileHiddenArguments=true inlineInputMode="variable" inlineInputModeLimit=4 expandableArgumentBreaks="5"
     //% matrix.shadow=variables_get matrix.defl=matrix text.defl="Hello" startX.defl=-1 startY.defl=0 endX.defl=0 endY.defl=0 color.defl=NeoPixelColors.White frameIntervalMs.min=0 frameIntervalMs.defl=100 font.defl=SarduMatrixFont.Sardu size.defl=SarduMatrixFontSize.X1 brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=SarduMatrixTextOrientation.Normal mode.defl=SarduMatrixScrollMode.Exclusive
     //% color.snippet="neopixel.colors(NeoPixelColors.White)" color.pySnippet="neopixel.colors(NeoPixelColors.WHITE)"
     export function scrollTextBetween(

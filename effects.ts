@@ -390,7 +390,7 @@ namespace sarduMatrix {
      */
     //% blockId=sardu_matrix_opposed_color_wipe block="$matrix collision $firstColor=neopixel_colors $secondColor=neopixel_colors $axis meet at x/y $meeting only content $contentOnly||every (ms) $frameIntervalMs end $endState brightness $brightness"
     //% group="Effects" weight=65 help=github:pxt-sardu-matrix/docs/effects subcategory="Effects"
-    //% compileHiddenArguments=true inlineInputMode="variable" inlineInputModeLimit=6 expandableArgumentBreaks="3"
+    //% compileHiddenArguments=true inlineInputMode="variable" inlineInputModeLimit=4 expandableArgumentBreaks="3"
     //% matrix.shadow=variables_get matrix.defl=matrix firstColor.defl=NeoPixelColors.Red secondColor.defl=NeoPixelColors.Blue axis.defl=SarduMatrixRainbowAxis.Horizontal meeting.min=0 meeting.defl=7 contentOnly.defl=false frameIntervalMs.min=0 frameIntervalMs.defl=50 endState.defl=SarduMatrixEffectEndState.Leave brightness.min=0 brightness.max=255 brightness.defl=128
     //% firstColor.snippet="neopixel.colors(NeoPixelColors.Red)" firstColor.pySnippet="neopixel.colors(NeoPixelColors.RED)" secondColor.snippet="neopixel.colors(NeoPixelColors.Blue)" secondColor.pySnippet="neopixel.colors(NeoPixelColors.BLUE)"
     export function opposedColorWipe(matrix: Matrix, firstColor: number = NeoPixelColors.Red, secondColor: number = NeoPixelColors.Blue, axis: SarduMatrixRainbowAxis = SarduMatrixRainbowAxis.Horizontal, meeting: number = 7, contentOnly: boolean = false, frameIntervalMs: number = 50, endState: SarduMatrixEffectEndState = SarduMatrixEffectEndState.Leave, brightness: number = 128): void {

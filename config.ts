@@ -75,13 +75,13 @@ enum SarduMatrixFontSize {
 
 /** Rotation applied to the complete rendered text line. */
 enum SarduMatrixTextOrientation {
-    //% block="normal (0 degrees)"
+    //% block="0°"
     Normal = 0,
-    //% block="90 degrees clockwise"
+    //% block="90°"
     Clockwise90 = 1,
-    //% block="180 degrees"
+    //% block="180°"
     UpsideDown180 = 2,
-    //% block="270 degrees clockwise"
+    //% block="270°"
     Clockwise270 = 3
 }
 
@@ -99,9 +99,9 @@ enum SarduMatrixScrollEdge {
 
 /** How scrolling text interacts with content already in the RGB buffer. */
 enum SarduMatrixScrollMode {
-    //% block="exclusive (clear display)"
+    //% block="clear display"
     Exclusive = 0,
-    //% block="composed (preserve background)"
+    //% block="preserve background"
     Composed = 1
 }
 

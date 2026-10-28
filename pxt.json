@@ -48,7 +48,8 @@
         "docs/_locales/it/memory-and-rendering.md",
         "docs/_locales/it/wiring.md",
         "_locales/it/pxt-sardu-matrix-strings.json",
-        "_locales/it/pxt-sardu-matrix-jsdoc-strings.json"
+        "_locales/it/pxt-sardu-matrix-jsdoc-strings.json",
+        "pxtparts.json"
     ],
     "testFiles": [
         "test.ts"

@@ -1,5 +1,6 @@
 /** Configurable RGB matrix creation, drawing and animation. */
 //% color=#003366 icon="\uf00a" block="SARDU Matrix"
+//% subcategories='["Text", "Geometry", "Graphics", "Effects"]'
 //% groups='["Creation", "Display", "Static text", "Scrolling text", "Static geometry", "Scrolling geometry", "Icons", "Effects", "Pixels", "Colors", "Graphics"]'
 namespace sarduMatrix {
     /**
@@ -12,6 +13,7 @@ namespace sarduMatrix {
     //% blockId=sardu_matrix_create block="create matrix width %width height %height on pin %pin brightness %brightness"
     //% blockSetVariable=matrix group="Creation" weight=100 help=github:pxt-sardu-matrix/docs/display-configuration
     //% width.defl=16 height.defl=16 pin.defl=DigitalPin.P1 brightness.min=0 brightness.max=255 brightness.defl=128
+    //% parts="neopixel" trackArgs=2
     export function create(width: number = 16, height: number = 16, pin: DigitalPin = DigitalPin.P1, brightness: number = 128): Matrix {
         return new Matrix(sarduMatrixInternal.directConfig(
             width, height,
@@ -32,6 +34,7 @@ namespace sarduMatrix {
     //% blockId=sardu_matrix_create_advanced block="create matrix width %width height %height|pixel start %origin scan %axis path %path|on pin %pin brightness %brightness"
     //% blockSetVariable=matrix group="Creation" weight=30 advanced=true help=github:pxt-sardu-matrix/docs/display-configuration
     //% width.defl=16 height.defl=16 origin.defl=SarduMatrixOrigin.TopLeft axis.defl=SarduMatrixScanAxis.Columns path.defl=SarduMatrixPath.ZigZag pin.defl=DigitalPin.P1 brightness.min=0 brightness.max=255 brightness.defl=128
+    //% parts="neopixel" trackArgs=5
     export function createAdvanced(
         width: number = 16,
         height: number = 16,
@@ -54,6 +57,7 @@ namespace sarduMatrix {
     //% blockId=sardu_matrix_create_modules block="create matrix with %moduleCount modules of type %moduleType on pin %pin brightness %brightness"
     //% blockSetVariable=matrix group="Creation" weight=99 help=github:pxt-sardu-matrix/docs/display-configuration
     //% moduleCount.defl=1 moduleCount.min=1 moduleType.defl=SarduMatrixModuleType.Matrix16x16 pin.defl=DigitalPin.P1 brightness.min=0 brightness.max=255 brightness.defl=128
+    //% parts="neopixel" trackArgs=2
     export function createModules(
         moduleCount: number = 1,
         moduleType: SarduMatrixModuleType = SarduMatrixModuleType.Matrix16x16,
@@ -86,6 +90,7 @@ namespace sarduMatrix {
     //% moduleCount.defl=1 moduleCount.min=1 moduleRows.defl=1 moduleRows.min=1 moduleType.defl=SarduMatrixModuleType.Matrix16x16
     //% pixelOrigin.defl=SarduMatrixOrigin.TopLeft pixelAxis.defl=SarduMatrixScanAxis.Columns pixelPath.defl=SarduMatrixPath.ZigZag
     //% moduleOrigin.defl=SarduMatrixOrigin.TopLeft moduleAxis.defl=SarduMatrixScanAxis.Rows modulePath.defl=SarduMatrixPath.ZigZag pin.defl=DigitalPin.P1 brightness.min=0 brightness.max=255 brightness.defl=128
+    //% parts="neopixel" trackArgs=9
     export function createModulesAdvanced(
         moduleCount: number = 1,
         moduleType: SarduMatrixModuleType = SarduMatrixModuleType.Matrix16x16,
@@ -114,7 +119,7 @@ namespace sarduMatrix {
      * @param orientation rotation of the rendered text
      */
     //% blockId=sardu_matrix_text_width block="text width %text font %font size %size orientation %orientation"
-    //% group="Static text" weight=12 advanced=true help=github:pxt-sardu-matrix/docs/api
+    //% group="Static text" weight=12 advanced=true help=github:pxt-sardu-matrix/docs/api subcategory="Text"
     //% text.defl="Hello" font.defl=SarduMatrixFont.Sardu size.defl=SarduMatrixFontSize.X1 orientation.defl=SarduMatrixTextOrientation.Normal
     export function measureTextWidth(
         text: string,
@@ -133,7 +138,7 @@ namespace sarduMatrix {
      * @param orientation rotation of the rendered text
      */
     //% blockId=sardu_matrix_text_height block="text height %text font %font size %size orientation %orientation"
-    //% group="Static text" weight=11 advanced=true help=github:pxt-sardu-matrix/docs/api
+    //% group="Static text" weight=11 advanced=true help=github:pxt-sardu-matrix/docs/api subcategory="Text"
     //% text.defl="Hello" font.defl=SarduMatrixFont.Sardu size.defl=SarduMatrixFontSize.X1 orientation.defl=SarduMatrixTextOrientation.Normal
     export function measureTextHeight(
         text: string,
@@ -150,7 +155,7 @@ namespace sarduMatrix {
      * @param size integer scale from 1 to 4
      */
     //% blockId=sardu_matrix_font_height block="font height %font size %size"
-    //% group="Static text" weight=10 advanced=true help=github:pxt-sardu-matrix/docs/api
+    //% group="Static text" weight=10 advanced=true help=github:pxt-sardu-matrix/docs/api subcategory="Text"
     //% font.defl=SarduMatrixFont.Sardu size.defl=SarduMatrixFontSize.X1
     export function measureFontHeight(
         font: SarduMatrixFont = SarduMatrixFont.Sardu,

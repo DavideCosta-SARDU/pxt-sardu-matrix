@@ -186,7 +186,7 @@ namespace sarduMatrix {
      * @param color RGB color, chosen with the color picker or an RGB/HSL block
      */
     //% blockId=sardu_matrix_draw_line block="%matrix draw line from x %x1 y %y1 to x %x2 y %y2|color %color=neopixel_colors"
-    //% group="Static geometry" weight=90 help=github:pxt-sardu-matrix/docs/shapes
+    //% group="Static geometry" weight=90 help=github:pxt-sardu-matrix/docs/shapes subcategory="Geometry"
     //% matrix.shadow=variables_get matrix.defl=matrix x1.defl=0 y1.defl=0 x2.defl=7 y2.defl=7 color.defl=NeoPixelColors.White
     //% color.snippet="neopixel.colors(NeoPixelColors.White)" color.pySnippet="neopixel.colors(NeoPixelColors.WHITE)"
     export function drawLine(matrix: Matrix, x1: number, y1: number, x2: number, y2: number, color: number): void {
@@ -203,7 +203,7 @@ namespace sarduMatrix {
      * @param color RGB color, chosen with the color picker or an RGB/HSL block
      */
     //% blockId=sardu_matrix_draw_rectangle block="%matrix draw rectangle from x %x1 y %y1 to x %x2 y %y2|color %color=neopixel_colors"
-    //% group="Static geometry" weight=80 help=github:pxt-sardu-matrix/docs/shapes
+    //% group="Static geometry" weight=80 help=github:pxt-sardu-matrix/docs/shapes subcategory="Geometry"
     //% matrix.shadow=variables_get matrix.defl=matrix x1.defl=0 y1.defl=0 x2.defl=7 y2.defl=7 color.defl=NeoPixelColors.White
     //% color.snippet="neopixel.colors(NeoPixelColors.White)" color.pySnippet="neopixel.colors(NeoPixelColors.WHITE)"
     export function drawRectangle(matrix: Matrix, x1: number, y1: number, x2: number, y2: number, color: number): void {
@@ -220,7 +220,7 @@ namespace sarduMatrix {
      * @param color RGB color, chosen with the color picker or an RGB/HSL block
      */
     //% blockId=sardu_matrix_fill_rectangle block="%matrix fill rectangle from x %x1 y %y1 to x %x2 y %y2|color %color=neopixel_colors"
-    //% group="Static geometry" weight=70 help=github:pxt-sardu-matrix/docs/shapes
+    //% group="Static geometry" weight=70 help=github:pxt-sardu-matrix/docs/shapes subcategory="Geometry"
     //% matrix.shadow=variables_get matrix.defl=matrix x1.defl=0 y1.defl=0 x2.defl=7 y2.defl=7 color.defl=NeoPixelColors.White
     //% color.snippet="neopixel.colors(NeoPixelColors.White)" color.pySnippet="neopixel.colors(NeoPixelColors.WHITE)"
     export function fillRectangle(matrix: Matrix, x1: number, y1: number, x2: number, y2: number, color: number): void {
@@ -236,7 +236,7 @@ namespace sarduMatrix {
      * @param color RGB color, chosen with the color picker or an RGB/HSL block
      */
     //% blockId=sardu_matrix_draw_circle block="%matrix draw circle center x %centerX y %centerY radius %radius|color %color=neopixel_colors"
-    //% group="Static geometry" weight=60 help=github:pxt-sardu-matrix/docs/shapes
+    //% group="Static geometry" weight=60 help=github:pxt-sardu-matrix/docs/shapes subcategory="Geometry"
     //% matrix.shadow=variables_get matrix.defl=matrix centerX.defl=7 centerY.defl=7 radius.defl=4 radius.min=0 color.defl=NeoPixelColors.White
     //% color.snippet="neopixel.colors(NeoPixelColors.White)" color.pySnippet="neopixel.colors(NeoPixelColors.WHITE)"
     export function drawCircle(matrix: Matrix, centerX: number, centerY: number, radius: number, color: number): void {
@@ -252,7 +252,7 @@ namespace sarduMatrix {
      * @param color RGB color, chosen with the color picker or an RGB/HSL block
      */
     //% blockId=sardu_matrix_fill_circle block="%matrix fill circle center x %centerX y %centerY radius %radius|color %color=neopixel_colors"
-    //% group="Static geometry" weight=50 help=github:pxt-sardu-matrix/docs/shapes
+    //% group="Static geometry" weight=50 help=github:pxt-sardu-matrix/docs/shapes subcategory="Geometry"
     //% matrix.shadow=variables_get matrix.defl=matrix centerX.defl=7 centerY.defl=7 radius.defl=4 radius.min=0 color.defl=NeoPixelColors.White
     //% color.snippet="neopixel.colors(NeoPixelColors.White)" color.pySnippet="neopixel.colors(NeoPixelColors.WHITE)"
     export function fillCircle(matrix: Matrix, centerX: number, centerY: number, radius: number, color: number): void {

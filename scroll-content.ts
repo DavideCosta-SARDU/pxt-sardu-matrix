@@ -259,7 +259,7 @@ namespace sarduMatrix {
      * @param orientation rotation of the rendered text
      */
     //% blockId=sardu_matrix_add_scrolling_text_path block="$matrix add text $text with path from x $startX y $startY to x $endX y $endY||color $color=neopixel_colors font $font size $size brightness $brightness orientation $orientation"
-    //% group="Scrolling text" weight=72 help=github:pxt-sardu-matrix/docs/api
+    //% group="Scrolling text" weight=72 help=github:pxt-sardu-matrix/docs/api subcategory="Text"
     //% compileHiddenArguments=true inlineInputMode="variable" inlineInputModeLimit=7 expandableArgumentBreaks="6"
     //% matrix.shadow=variables_get matrix.defl=matrix text.defl="Hello" startX.defl=-1 startY.defl=0 endX.defl=0 endY.defl=0 color.defl=NeoPixelColors.White font.defl=SarduMatrixFont.Sardu size.defl=SarduMatrixFontSize.X1 brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=SarduMatrixTextOrientation.Normal
     //% color.snippet="neopixel.colors(NeoPixelColors.White)" color.pySnippet="neopixel.colors(NeoPixelColors.WHITE)"
@@ -288,7 +288,7 @@ namespace sarduMatrix {
      * @param spacing blank pixels after this scrolling item
      */
     //% blockId=sardu_matrix_add_scrolling_line block="%matrix add scrolling line width %width from y %startY to y %endY|color %color=neopixel_colors spacing %spacing"
-    //% group="Scrolling geometry" weight=90 help=github:pxt-sardu-matrix/docs/shapes
+    //% group="Scrolling geometry" weight=90 help=github:pxt-sardu-matrix/docs/shapes subcategory="Geometry"
     //% matrix.shadow=variables_get matrix.defl=matrix width.min=1 width.defl=8 startY.defl=0 endY.defl=7 color.defl=NeoPixelColors.White spacing.min=0 spacing.defl=1
     //% color.snippet="neopixel.colors(NeoPixelColors.White)" color.pySnippet="neopixel.colors(NeoPixelColors.WHITE)"
     export function addScrollingLine(matrix: Matrix, width: number = 8, startY: number = 0, endY: number = 7, color: number = NeoPixelColors.White, spacing: number = 1): void {
@@ -305,7 +305,7 @@ namespace sarduMatrix {
      * @param spacing blank pixels after this scrolling item
      */
     //% blockId=sardu_matrix_add_scrolling_rectangle block="%matrix add scrolling rectangle width %width height %height at y %y|color %color=neopixel_colors spacing %spacing"
-    //% group="Scrolling geometry" weight=80 help=github:pxt-sardu-matrix/docs/shapes
+    //% group="Scrolling geometry" weight=80 help=github:pxt-sardu-matrix/docs/shapes subcategory="Geometry"
     //% matrix.shadow=variables_get matrix.defl=matrix width.min=1 width.defl=8 height.min=1 height.defl=8 y.defl=0 color.defl=NeoPixelColors.White spacing.min=0 spacing.defl=1
     //% color.snippet="neopixel.colors(NeoPixelColors.White)" color.pySnippet="neopixel.colors(NeoPixelColors.WHITE)"
     export function addScrollingRectangle(matrix: Matrix, width: number = 8, height: number = 8, y: number = 0, color: number = NeoPixelColors.White, spacing: number = 1): void {
@@ -322,7 +322,7 @@ namespace sarduMatrix {
      * @param spacing blank pixels after this scrolling item
      */
     //% blockId=sardu_matrix_add_scrolling_filled_rectangle block="%matrix add scrolling filled rectangle width %width height %height at y %y|color %color=neopixel_colors spacing %spacing"
-    //% group="Scrolling geometry" weight=70 help=github:pxt-sardu-matrix/docs/shapes
+    //% group="Scrolling geometry" weight=70 help=github:pxt-sardu-matrix/docs/shapes subcategory="Geometry"
     //% matrix.shadow=variables_get matrix.defl=matrix width.min=1 width.defl=8 height.min=1 height.defl=8 y.defl=0 color.defl=NeoPixelColors.White spacing.min=0 spacing.defl=1
     //% color.snippet="neopixel.colors(NeoPixelColors.White)" color.pySnippet="neopixel.colors(NeoPixelColors.WHITE)"
     export function addScrollingFilledRectangle(matrix: Matrix, width: number = 8, height: number = 8, y: number = 0, color: number = NeoPixelColors.White, spacing: number = 1): void {
@@ -338,7 +338,7 @@ namespace sarduMatrix {
      * @param spacing blank pixels after this scrolling item
      */
     //% blockId=sardu_matrix_add_scrolling_circle block="%matrix add scrolling circle radius %radius center y %centerY|color %color=neopixel_colors spacing %spacing"
-    //% group="Scrolling geometry" weight=60 help=github:pxt-sardu-matrix/docs/shapes
+    //% group="Scrolling geometry" weight=60 help=github:pxt-sardu-matrix/docs/shapes subcategory="Geometry"
     //% matrix.shadow=variables_get matrix.defl=matrix radius.min=0 radius.defl=4 centerY.defl=7 color.defl=NeoPixelColors.White spacing.min=0 spacing.defl=1
     //% color.snippet="neopixel.colors(NeoPixelColors.White)" color.pySnippet="neopixel.colors(NeoPixelColors.WHITE)"
     export function addScrollingCircle(matrix: Matrix, radius: number = 4, centerY: number = 7, color: number = NeoPixelColors.White, spacing: number = 1): void {
@@ -354,7 +354,7 @@ namespace sarduMatrix {
      * @param spacing blank pixels after this scrolling item
      */
     //% blockId=sardu_matrix_add_scrolling_filled_circle block="%matrix add scrolling filled circle radius %radius center y %centerY|color %color=neopixel_colors spacing %spacing"
-    //% group="Scrolling geometry" weight=50 help=github:pxt-sardu-matrix/docs/shapes
+    //% group="Scrolling geometry" weight=50 help=github:pxt-sardu-matrix/docs/shapes subcategory="Geometry"
     //% matrix.shadow=variables_get matrix.defl=matrix radius.min=0 radius.defl=4 centerY.defl=7 color.defl=NeoPixelColors.White spacing.min=0 spacing.defl=1
     //% color.snippet="neopixel.colors(NeoPixelColors.White)" color.pySnippet="neopixel.colors(NeoPixelColors.WHITE)"
     export function addScrollingFilledCircle(matrix: Matrix, radius: number = 4, centerY: number = 7, color: number = NeoPixelColors.White, spacing: number = 1): void {

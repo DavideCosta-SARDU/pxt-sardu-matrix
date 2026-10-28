@@ -26,6 +26,13 @@ for path in ROOT.glob('*.ts'):
         if path.name == 'matrix.ts':
             params.insert(0, 'this')
         placeholders = re.findall(r'[%$](\w+)', label[1])
+        if '||' in label[1]:
+            optional_labels = re.findall(r'[%$](\w+)', label[1].split('||', 1)[1])
+            required = [p.split(':', 1)[0].strip() for p in match['params'].split(',')
+                        if ':' in p and '=' not in p and '?' not in p.split(':', 1)[0]]
+            hidden_required = set(optional_labels).intersection(required)
+            if hidden_required:
+                errors.append(f'{block_id}: required parameters hidden by expansion: {sorted(hidden_required)}')
         if placeholders != params:
             errors.append(f'{block_id}: label {placeholders} != signature {params}')
         if re.search(r'%(?!\w)', label[1]):

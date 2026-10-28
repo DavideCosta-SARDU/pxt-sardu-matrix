@@ -97,7 +97,7 @@ The native **Graphics** blocks are available under `... more` in all six module 
 
 ## Block/API overview
 
-The toolbox is ordered as **Creation**, **Display**, **Static text**, **Scrolling text**, **Static geometry**, **Scrolling geometry**, **Icons**, **Effects**, **Pixels** and **Colors**. The tall native Graphics blocks are last under `... more`.
+The main category contains matrix creation, display controls, pixels and colors. **Text**, **Geometry**, **Graphics** and **Effects** subcategories keep related blocks together; Graphics also contains icons. Advanced blocks remain under `... more`. Static and scrolling text blocks expose their extra options with (+), preserving the same defaults and per-block settings.
 
 Static text, static geometry, pixels and Graphics write to the RGB buffer; compose the scene and call `show()` once. Immediate text scrolling starts at once. To combine text and shapes into one moving sequence, add every item to the scrolling composition and call `startScrolling()` only once. Effects animate the current buffer directly and provide leave, restore and clear final states. Full block behavior, defaults and troubleshooting are documented in the [English user guide](docs/user-guide.md), the [Italian user guide](docs/_locales/it/user-guide.md) and the topic pages below.
 

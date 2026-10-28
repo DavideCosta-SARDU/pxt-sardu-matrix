@@ -144,7 +144,7 @@ namespace sarduMatrix {
          * @param orientation rotation of the rendered text
          */
         // Keep block placeholders in the same order as the TypeScript parameters.
-        //% blockId=sardu_matrix_draw_text block="$this=variables_get(matrix) draw static text $text at x $x y $y||color $color=neopixel_colors font $font size $size brightness $brightness orientation $orientation"
+        //% blockId=sardu_matrix_draw_text block="$this=variables_get(matrix) draw static text $text at x $x y $y|color $color=neopixel_colors||font $font size $size brightness $brightness orientation $orientation"
         //% group="Static text" weight=80 help=github:pxt-sardu-matrix/docs/api subcategory="Text"
         //% this.shadow=variables_get this.defl=matrix text.defl="Hello" x.defl=0 y.defl=0 font.defl=SarduMatrixFont.Sardu size.defl=SarduMatrixFontSize.X1 color.shadow=neopixel_colors color.snippet="neopixel.colors(NeoPixelColors.White)" color.pySnippet="neopixel.colors(NeoPixelColors.WHITE)" brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=SarduMatrixTextOrientation.Normal
         drawText(
@@ -170,7 +170,7 @@ namespace sarduMatrix {
          * @param brightness brightness from 0 to 255
          * @param orientation rotation of the rendered text
          */
-        //% blockId=sardu_matrix_draw_text_centered_width block="$this=variables_get(matrix) draw static text $text centered in width at y $y||color $color=neopixel_colors font $font size $size brightness $brightness orientation $orientation"
+        //% blockId=sardu_matrix_draw_text_centered_width block="$this=variables_get(matrix) draw static text $text centered in width at y $y|color $color=neopixel_colors||font $font size $size brightness $brightness orientation $orientation"
         //% group="Static text" weight=79 help=github:pxt-sardu-matrix/docs/api subcategory="Text"
         //% this.shadow=variables_get this.defl=matrix text.defl="Hello" y.defl=0 font.defl=SarduMatrixFont.Sardu size.defl=SarduMatrixFontSize.X1 color.defl=NeoPixelColors.White color.snippet="neopixel.colors(NeoPixelColors.White)" color.pySnippet="neopixel.colors(NeoPixelColors.WHITE)" brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=SarduMatrixTextOrientation.Normal
         drawTextCenteredWidth(
@@ -200,7 +200,7 @@ namespace sarduMatrix {
          * @param brightness brightness from 0 to 255
          * @param orientation rotation of the rendered text
          */
-        //% blockId=sardu_matrix_draw_text_centered_height block="$this=variables_get(matrix) draw static text $text centered in height at x $x||color $color=neopixel_colors font $font size $size brightness $brightness orientation $orientation"
+        //% blockId=sardu_matrix_draw_text_centered_height block="$this=variables_get(matrix) draw static text $text centered in height at x $x|color $color=neopixel_colors||font $font size $size brightness $brightness orientation $orientation"
         //% group="Static text" weight=78 help=github:pxt-sardu-matrix/docs/api subcategory="Text"
         //% this.shadow=variables_get this.defl=matrix text.defl="Hello" x.defl=0 font.defl=SarduMatrixFont.Sardu size.defl=SarduMatrixFontSize.X1 color.defl=NeoPixelColors.White color.snippet="neopixel.colors(NeoPixelColors.White)" color.pySnippet="neopixel.colors(NeoPixelColors.WHITE)" brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=SarduMatrixTextOrientation.Normal
         drawTextCenteredHeight(
@@ -229,7 +229,7 @@ namespace sarduMatrix {
          * @param brightness brightness from 0 to 255
          * @param orientation rotation of the rendered text
          */
-        //% blockId=sardu_matrix_draw_text_centered block="$this=variables_get(matrix) draw static text $text centered in width and height||color $color=neopixel_colors font $font size $size brightness $brightness orientation $orientation"
+        //% blockId=sardu_matrix_draw_text_centered block="$this=variables_get(matrix) draw static text $text centered in width and height|color $color=neopixel_colors||font $font size $size brightness $brightness orientation $orientation"
         //% group="Static text" weight=77 help=github:pxt-sardu-matrix/docs/api subcategory="Text"
         //% this.shadow=variables_get this.defl=matrix text.defl="Hello" font.defl=SarduMatrixFont.Sardu size.defl=SarduMatrixFontSize.X1 color.defl=NeoPixelColors.White color.snippet="neopixel.colors(NeoPixelColors.White)" color.pySnippet="neopixel.colors(NeoPixelColors.WHITE)" brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=SarduMatrixTextOrientation.Normal
         drawTextCentered(
@@ -265,7 +265,7 @@ namespace sarduMatrix {
          * @param brightness brightness from 0 to 255
          * @param orientation rotation of the rendered text
          */
-        //% blockId=sardu_matrix_draw_text_centered_width_range block="$this=variables_get(matrix) draw static text $text centered from x $startX to x $endX at y $y||color $color=neopixel_colors font $font size $size brightness $brightness orientation $orientation"
+        //% blockId=sardu_matrix_draw_text_centered_width_range block="$this=variables_get(matrix) draw static text $text centered from x $startX to x $endX at y $y|color $color=neopixel_colors||font $font size $size brightness $brightness orientation $orientation"
         //% group="Static text" weight=15 advanced=true help=github:pxt-sardu-matrix/docs/api subcategory="Text"
         //% this.shadow=variables_get this.defl=matrix text.defl="Hello" startX.defl=0 endX.defl=15 y.defl=0 font.defl=SarduMatrixFont.Sardu size.defl=SarduMatrixFontSize.X1 color.defl=NeoPixelColors.White color.snippet="neopixel.colors(NeoPixelColors.White)" color.pySnippet="neopixel.colors(NeoPixelColors.WHITE)" brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=SarduMatrixTextOrientation.Normal
         drawTextCenteredWidthRange(
@@ -293,7 +293,7 @@ namespace sarduMatrix {
          * @param brightness brightness from 0 to 255
          * @param orientation rotation of the rendered text
          */
-        //% blockId=sardu_matrix_draw_text_centered_height_range block="$this=variables_get(matrix) draw static text $text centered from y $startY to y $endY at x $x||color $color=neopixel_colors font $font size $size brightness $brightness orientation $orientation"
+        //% blockId=sardu_matrix_draw_text_centered_height_range block="$this=variables_get(matrix) draw static text $text centered from y $startY to y $endY at x $x|color $color=neopixel_colors||font $font size $size brightness $brightness orientation $orientation"
         //% group="Static text" weight=14 advanced=true help=github:pxt-sardu-matrix/docs/api subcategory="Text"
         //% this.shadow=variables_get this.defl=matrix text.defl="Hello" startY.defl=0 endY.defl=15 x.defl=0 font.defl=SarduMatrixFont.Sardu size.defl=SarduMatrixFontSize.X1 color.defl=NeoPixelColors.White color.snippet="neopixel.colors(NeoPixelColors.White)" color.pySnippet="neopixel.colors(NeoPixelColors.WHITE)" brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=SarduMatrixTextOrientation.Normal
         drawTextCenteredHeightRange(
@@ -322,7 +322,7 @@ namespace sarduMatrix {
          * @param brightness brightness from 0 to 255
          * @param orientation rotation of the rendered text
          */
-        //% blockId=sardu_matrix_draw_text_centered_area block="$this=variables_get(matrix) draw static text $text centered in area a x $startX y $startY b x $endX y $endY||color $color=neopixel_colors font $font size $size brightness $brightness orientation $orientation"
+        //% blockId=sardu_matrix_draw_text_centered_area block="$this=variables_get(matrix) draw static text $text centered in area a x $startX y $startY b x $endX y $endY|color $color=neopixel_colors||font $font size $size brightness $brightness orientation $orientation"
         //% group="Static text" weight=13 advanced=true help=github:pxt-sardu-matrix/docs/api subcategory="Text"
         //% this.shadow=variables_get this.defl=matrix text.defl="Hello" startX.defl=0 startY.defl=0 endX.defl=15 endY.defl=15 font.defl=SarduMatrixFont.Sardu size.defl=SarduMatrixFontSize.X1 color.defl=NeoPixelColors.White color.snippet="neopixel.colors(NeoPixelColors.White)" color.pySnippet="neopixel.colors(NeoPixelColors.WHITE)" brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=SarduMatrixTextOrientation.Normal
         drawTextCenteredArea(

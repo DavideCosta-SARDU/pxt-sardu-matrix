@@ -33,9 +33,9 @@ On Windows, `tests\\run-all.cmd` performs the same complete sequence for every l
 
 A compile pass requires both builds to finish without an error. A deterministic runtime failure calls `control.panic(921)`.
 
-## Verified baseline and release preparation
+## Verified compilation and hardware record
 
-The ten independent feature projects compiled for V1 and V2 during the October approval-correction work. The 1.0.0 candidate preserves the v0.9.0 executable algorithms; its root V1/V2 builds, block metadata, real editor conversions and affected V2 hardware behaviors were checked separately. A compilation result is not a physical test or a measured RAM capacity. Repeat checks affected by later source changes.
+The ten independent feature projects compiled for V1 and V2 during the October approval-correction work. The 1.0.0 release preserves the v0.9.0 executable algorithms; its root V1/V2 builds, block metadata, real editor conversions and affected V2 hardware behaviors were checked separately. A compilation result is not a physical test or a measured RAM capacity. Repeat checks affected by later source changes.
 
 The monolithic `pxt test` command is not used as the feature runner because it links the complete extension package and its own harness into one synthetic V1 image regardless of how few entry-point instructions are present. That artificial image exceeds the V1 program-size limit; that result alone does not determine whether a particular user program fits on V1. The independent projects prove this by compiling creation, configuration, text, geometry, scrolling, gradients, effects and graphics separately for both V1 and V2.
 

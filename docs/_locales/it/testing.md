@@ -42,7 +42,7 @@ Registrare commit o tag esatto, revisione micro:bit, pannelli, pin dati e alimen
 
 ## Cronologia delle verifiche
 
-La preparazione 1.0.0 usa la candidata hardware `7f560094216797569e520be6e9dabbc13e63656b`. Il 28 ottobre sono stati verificati sottocategorie e layout EN/IT, valori predefiniti e scelti, apertura/richiusura delle opzioni e conversioni JavaScript/Python conservando fino a 50 blocchi. Sul caso misto il simulatore mostra la matrice P1 e la striscia NeoPixel indipendente P2; con la sola matrice resta la diagnostica dell'istanza standard non chiamata. Gli avvisi stock sono riportati separatamente dagli errori applicativi.
+La versione 1.0.0 mantiene gli algoritmi della candidata provata sull'hardware `7f560094216797569e520be6e9dabbc13e63656b`. Il 28 ottobre sono stati verificati sottocategorie e layout EN/IT, valori predefiniti e scelti, apertura/richiusura delle opzioni e conversioni JavaScript/Python conservando fino a 50 blocchi. Sul caso misto il simulatore mostra la matrice P1 e la striscia NeoPixel indipendente P2; con la sola matrice resta la diagnostica dell'istanza standard non chiamata. Gli avvisi stock sono riportati separatamente dagli errori applicativi.
 
 Il 29 ottobre Davide ha confermato su micro:bit V2 e sei pannelli 16×16 orizzontali (96×16), P1: scorrimento bianco attraverso tutti i pannelli; due righe statiche rosso/verde a Y=0/Y=8; arresto con A e riavvio con B. L'alimentazione esterna e la massa comune sono quelle della configurazione già verificata. V1 resta verificata in compilazione, non fisicamente. Queste prove non stabiliscono il numero massimo di moduli.
 

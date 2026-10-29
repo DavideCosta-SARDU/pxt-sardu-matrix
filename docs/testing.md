@@ -79,7 +79,7 @@ Record the exact commit or tag, micro:bit revision, matrix arrangement, data pin
 
 ## Verified release history
 
-The 1.0.0 preparation is based on hardware candidate `7f560094216797569e520be6e9dabbc13e63656b`. On 28 October, checks covered EN/IT categories and layouts, default and selected values, expanding/collapsing options and JavaScript/Python conversions preserving up to 50 blocks. The mixed-project simulator shows both matrix P1 and independent NeoPixel strip P2; matrix-only projects retain the standard-factory diagnostic. Stock warnings are recorded separately from application errors.
+Version 1.0.0 retains the executable algorithms of hardware-tested candidate `7f560094216797569e520be6e9dabbc13e63656b`. On 28 October, checks covered EN/IT categories and layouts, default and selected values, expanding/collapsing options and JavaScript/Python conversions preserving up to 50 blocks. The mixed-project simulator shows both matrix P1 and independent NeoPixel strip P2; matrix-only projects retain the standard-factory diagnostic. Stock warnings are recorded separately from application errors.
 
 On 29 October, Davide confirmed on a micro:bit V2 with six horizontal 16×16 panels (96×16), P1: white scrolling through every panel; static red/green lines at Y=0/Y=8; interruption with A and restart with B. External power and common ground are the previously verified wiring configuration. V1 coverage remains compilation only. These checks do not establish a maximum module count.
 

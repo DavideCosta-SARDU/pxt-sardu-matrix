@@ -1,6 +1,6 @@
 # Testo sfumato e icone integrate
 
-[English](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v0.9.0/docs/gradient-and-icons.md)
+[English](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v1.0.0/docs/gradient-and-icons.md)
 
 ## Testo sfumato
 
@@ -19,5 +19,5 @@ Sono disponibili quattordici maschere monocromatiche originali 8×8: cuore pieno
 Le icone scrivono soltanto i pixel attivi nel buffer, con ritaglio sicuro ai bordi. Dopo il disegno occorre chiamare `show()`. Non sono inclusi loghi micro:bit o di terze parti.
 
 ```package
-pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#v0.9.0
+pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#v1.0.0
 ```

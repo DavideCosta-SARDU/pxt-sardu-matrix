@@ -1,6 +1,6 @@
 {
     "name": "pxt-sardu-matrix",
-    "version": "0.9.0",
+    "version": "1.0.0",
     "description": "Configurable RGB LED matrices, text, graphics and effects",
     "license": "MIT",
     "dependencies": {

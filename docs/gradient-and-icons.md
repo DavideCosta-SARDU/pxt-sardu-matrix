@@ -1,6 +1,6 @@
 # Gradient text and built-in icons
 
-[Italiano](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v0.9.0/docs/_locales/it/gradient-and-icons.md)
+[Italiano](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v1.0.0/docs/_locales/it/gradient-and-icons.md)
 
 ## Gradient text
 
@@ -21,5 +21,5 @@ The Icons group provides fourteen original 8 x 8 monochrome masks: filled and ou
 Icons write only their active pixels into the current buffer and are safely clipped at the matrix edges. Call `show()` after drawing. No micro:bit or third-party logo is included.
 
 ```package
-pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#v0.9.0
+pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#v1.0.0
 ```

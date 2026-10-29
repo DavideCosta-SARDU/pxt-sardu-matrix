@@ -1,6 +1,6 @@
 # Progetto SARDU-Matrix e uso educativo
 
-[English](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v0.9.0/docs/project-and-education.md)
+[English](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v1.0.0/docs/project-and-education.md)
 
 SARDU-Matrix è un'estensione MakeCode gratuita con licenza MIT per controllare comuni pannelli RGB WS2812B/NeoPixel tramite micro:bit. Non è legata a un accessorio proprietario: gli studenti possono usare pannelli compatibili di produttori diversi configurandone dimensioni e cablaggio reali.
 
@@ -57,16 +57,16 @@ Il progetto completo è disponibile in [`examples/darkness-indicator`](../../../
 
 ## Hardware compatibile
 
-Sono supportati micro:bit V1 e V2 e pannelli RGB indirizzabili compatibili col protocollo WS2812B/NeoPixel. L'estensione usa come backend il pacchetto ufficiale Microsoft `pxt-neopixel` e non usa mBed.
+Sono supportati micro:bit V1 e V2 e pannelli RGB indirizzabili compatibili col protocollo WS2812B/NeoPixel. L'estensione usa come backend il pacchetto ufficiale Microsoft `pxt-neopixel` ed è implementata in TypeScript, senza codice C++ personalizzato o chiamate dirette alle API mbed.
 
-I pannelli richiedono un'alimentazione esterna adeguata. micro:bit, pannelli e alimentatore devono condividere la massa; la matrice non deve essere alimentata dal pin 3 V del micro:bit. Consulta la [guida al cablaggio](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v0.9.0/docs/_locales/it/wiring.md).
+I pannelli richiedono un'alimentazione esterna adeguata. micro:bit, pannelli e alimentatore devono condividere la massa; la matrice non deve essere alimentata dal pin 3 V del micro:bit. Consulta la [guida al cablaggio](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v1.0.0/docs/_locales/it/wiring.md).
 
 ## Risorse
 
-- [Guida utente](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v0.9.0/docs/_locales/it/user-guide.md)
-- [API pubblica](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v0.9.0/docs/_locales/it/api.md)
-- [Procedura di test](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v0.9.0/docs/_locales/it/testing.md)
+- [Guida utente](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v1.0.0/docs/_locales/it/user-guide.md)
+- [API pubblica](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v1.0.0/docs/_locales/it/api.md)
+- [Procedura di test](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v1.0.0/docs/_locales/it/testing.md)
 
 ```package
-pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#v0.9.0
+pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#v1.0.0
 ```

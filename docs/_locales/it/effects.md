@@ -1,6 +1,6 @@
 # Effetti speciali
 
-[English](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v0.9.0/docs/effects.md)
+[English](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v1.0.0/docs/effects.md)
 
 Il gruppo **Effetti** contiene animazioni che aggiornano automaticamente la matrice fisica e non richiedono un blocco `mostra` separato.
 
@@ -16,10 +16,12 @@ Gli effetti animati eseguono un aggiornamento per fotogramma con pause cooperati
 
 La luminosità generata dagli effetti usa l'intervallo 0–255 e il default 128. La dissolvenza parte esattamente dal buffer corrente; lampeggio e arcobaleno non aumentano la luminosità del contenuto sorgente.
 
+La dissolvenza mantiene tre copie RGB temporanee oltre al buffer principale: scena iniziale, destinazione e fotogramma corrente. Il totale è quattro buffer RGB; consulta la [tabella RAM](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v1.0.0/docs/_locales/it/memory-and-rendering.md#formati-standard-costo-ram-per-modulo).
+
 micro:bit V2 è consigliato per effetti e matrici grandi perché offre maggiore margine di memoria programma e RAM. I progetti realistici degli effetti compilano anche per V1, che resta adatta alle configurazioni più piccole; per dissolvenze, collisioni mascherate e arcobaleni animati su superfici grandi è preferibile V2.
 
 I blocchi mostrano inizialmente i parametri essenziali. Il controllo `+` espone temporizzazione, stato finale e luminosità.
 
 ```package
-pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#v0.9.0
+pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#v1.0.0
 ```

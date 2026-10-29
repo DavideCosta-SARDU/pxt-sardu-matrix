@@ -1,12 +1,12 @@
 # SARDU-Matrix user guide
 
-[Italiano](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v0.9.0/docs/_locales/it/user-guide.md)
+[Italiano](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v1.0.0/docs/_locales/it/user-guide.md)
 
 SARDU-Matrix controls configurable WS2812B/NeoPixel matrix panels from Microsoft MakeCode for micro:bit. It supports direct dimensions, modular panels, multiple physical wiring paths, text, geometry, scrolling compositions, gradients, icons and effects.
 
 ## Before connecting hardware
 
-Use a suitable external supply for the LED panels and connect the supply ground, panel ground and micro:bit ground together. Do not power a matrix panel from the micro:bit 3 V pin. Follow the [wiring guide](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v0.9.0/docs/wiring.md).
+Use a suitable external supply for the LED panels and connect the supply ground, panel ground and micro:bit ground together. Do not power a matrix panel from the micro:bit 3 V pin. Follow the [wiring guide](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v1.0.0/docs/wiring.md).
 
 The default data pin is P1 and the default brightness is 128. High brightness on many LEDs can require substantial current.
 
@@ -17,6 +17,10 @@ In MakeCode, open **Extensions**, paste this repository address and select SARDU
 ```text
 https://github.com/DavideCosta-SARDU/pxt-sardu-matrix
 ```
+
+## Toolbox layout
+
+The main SARDU Matrix category contains Creation, Display, Pixels and Colors. Text contains static text and scrolling text; Geometry contains static and scrolling shapes; Graphics contains icons and native pixel grids; Effects contains the animation blocks. Text options with defaults can be opened with (+); closing them preserves their values in the generated code.
 
 ## Create the display
 
@@ -38,7 +42,7 @@ Static text, geometry, pixels, icons and Graphics write to the matrix buffer. Ad
 ```blocks
 let matrix = sarduMatrix.create(16, 16, DigitalPin.P1, 128)
 matrix.drawText("Hi", 1, 4, neopixel.colors(NeoPixelColors.White), SarduMatrixFont.Sardu, SarduMatrixFontSize.X1, 128, SarduMatrixTextOrientation.Normal)
-sarduMatrix.drawRectangle(matrix, 0, 0, 16, 16, neopixel.colors(NeoPixelColors.Blue), 1)
+sarduMatrix.drawRectangle(matrix, 0, 0, 15, 15, neopixel.colors(NeoPixelColors.Blue))
 matrix.show()
 ```
 
@@ -50,13 +54,13 @@ Use an immediate scrolling block when one text must complete before the next ins
 
 Use the **add scrolling** blocks to combine several texts and shapes. Add every item first, then call **start scrolling** once. All queued paths begin together; shorter paths remain at their final coordinate until the longest path ends.
 
-Exclusive mode clears the background for each frame. Composed mode restores the pre-existing scene behind each frame and needs more temporary RAM.
+**clear display** (`Exclusive`) clears the background for each frame. **preserve background** (`Composed`) restores the pre-existing scene behind each frame and needs more temporary RAM.
 
 ## Fonts and measurements
 
 Six font choices are available: SARDU, micro:bit Extended, proportional versions of both, SARDU Compact and SARDU Compact Proportional. Font sizes range from 1× to 4×. The orientation rotates the complete rendered line.
 
-See [fonts and text measurements](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v0.9.0/docs/fonts.md) for exact pixel heights and examples of positioning multiple lines on a matrix.
+See [fonts and text measurements](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v1.0.0/docs/fonts.md) for exact pixel heights and examples of positioning multiple lines on a matrix.
 
 Text-measurement blocks report the exact width and height used by rendering. They are useful for positioning a fully visible string or calculating a bounce path.
 
@@ -68,17 +72,23 @@ Effects operate on the current matrix content. Fade, blink and rainbow preserve 
 
 micro:bit V1 supports normal projects and the extension is compiled in separate realistic feature projects for both V1 and V2. micro:bit V2 is recommended for large matrices, composed scrolling and advanced effects because it has more RAM and program-memory margin.
 
+## MakeCode simulator
+
+Part definitions connect all four SARDU factory functions to the generic NeoPixel visualization. In the controlled mixed-project test, the matrix on P1 and an independent standard NeoPixel strip on P2 both remain visible; `hiddenParts` is not used.
+
+The generic part does not reproduce the panels' two-dimensional geometry. A matrix-only project can still report `parts failed to read pin(s) from callsite for: neopixel.create` for the standard factory that is not called directly. Stock `text/text_join` warnings were also reproduced without SARDU. Distinguish these known limitations from application exceptions, panics or grey blocks. Physical checks are still needed for wiring, colors, timing and module layout.
+
 ## Troubleshooting
 
 - Nothing lights: verify external power, common ground, data direction and selected pin.
 - Wrong pixel order: use advanced origin, scan-axis and ZigZag/progressive configuration.
 - Unexpected pixel on an unused connected panel: clear the complete physical chain before reducing the configured logical dimensions.
-- Program too large or allocation panic: reduce the selected feature set or matrix dimensions, prefer Exclusive scrolling and use micro:bit V2.
+- Program too large or allocation panic: reduce the selected feature set or matrix dimensions, prefer clear-display scrolling and use micro:bit V2.
 - Static drawing is not visible: add `show()` after composing the scene.
 - Queued items run separately: add all items before one `startScrolling()` call.
 
-For exact signatures see the [public API](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v0.9.0/docs/api.md). For release verification see the [test procedure](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v0.9.0/docs/testing.md).
+For exact signatures see the [public API](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v1.0.0/docs/api.md). For release verification see the [test procedure](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v1.0.0/docs/testing.md).
 
 ```package
-pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#v0.9.0
+pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#v1.0.0
 ```

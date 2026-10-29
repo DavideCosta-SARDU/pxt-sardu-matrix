@@ -1,6 +1,6 @@
 # Special effects
 
-[Italiano](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v0.9.0/docs/_locales/it/effects.md)
+[Italiano](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v1.0.0/docs/_locales/it/effects.md)
 
 The **Effects** group contains animations that update the physical display automatically. They do not require a separate `show` block.
 
@@ -16,7 +16,7 @@ Animated effects use one `show` operation per frame and cooperative pauses. `sto
 
 Generated effect colors have their own 0–255 brightness with a default of 128. Fade starts from the exact current buffer; blink and rainbow never increase the brightness of the source content.
 
-Only fade keeps two temporary RGB snapshots while it runs. Other effects use temporary snapshots only while running; no effect adds a permanent framebuffer.
+Fade keeps three temporary RGB copies while it runs, in addition to the main buffer: initial scene, target and current frame. Other effects use temporary snapshots only while running; no effect adds a permanent framebuffer.
 
 micro:bit V2 is recommended for effects. micro:bit V1 can compile realistic small-matrix effect projects but has very little firmware and RAM margin; use V2 for large matrices, fade, content-masked collisions and animated rainbows.
 
@@ -29,5 +29,5 @@ sarduMatrix.fadeToColor(matrix, neopixel.colors(NeoPixelColors.Black), 1000, 20,
 ```
 
 ```package
-pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#v0.9.0
+pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#v1.0.0
 ```

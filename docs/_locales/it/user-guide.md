@@ -1,6 +1,6 @@
 # Guida italiana a SARDU-Matrix
 
-[English](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v0.9.0/docs/user-guide.md)
+[English](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v1.0.0/docs/user-guide.md)
 
 Questa guida descrive l'uso dell'estensione SARDU-Matrix in Microsoft MakeCode per micro:bit.
 
@@ -22,7 +22,7 @@ Finché Microsoft non avrà approvato l'estensione, è normale dover usare l'ind
 
 Collega il pin dati scelto al `DIN` del primo pannello e collega ogni `DOUT` al `DIN` del pannello successivo. Tutti i pannelli, l'alimentatore esterno e la micro:bit devono avere la massa in comune.
 
-Non alimentare la matrice dal pin 3 V della micro:bit. Dimensiona alimentatore, cavi, protezioni e punti di iniezione in base al numero reale di LED. La luminosità software riduce la luce emessa, ma non sostituisce un impianto elettrico corretto.
+**Non alimentare la matrice dal pin 3 V della micro:bit.** Dimensiona alimentatore, cavi, protezioni e punti di iniezione in base al numero reale di LED. La luminosità software riduce la luce emessa, ma non sostituisce un impianto elettrico corretto.
 
 ## Creazione della matrice
 
@@ -33,22 +33,16 @@ Nel gruppo **Creazione** puoi scegliere uno dei due metodi:
 
 La luminosità iniziale predefinita è `128`. Le coordinate logiche partono da `X=0, Y=0` nell'angolo superiore sinistro, indipendentemente dal cablaggio fisico. Le varianti avanzate permettono di configurare origine, scansione per righe o colonne e percorso progressivo o ZigZag, sia dentro i moduli sia tra i moduli.
 
-## Ordine e funzione dei gruppi
+## Categorie e gruppi
 
-La categoria usa questo ordine:
+La categoria principale **SARDU Matrix** contiene Creazione, Display, Pixel e Colori. Le sottocategorie raccolgono le altre funzioni:
 
-1. **Creazione**: costruzione e configurazione della matrice.
-2. **Display**: mostra, avvia scorrimento, cancella e interrompi.
-3. **Testo statico**: testo alle coordinate indicate o centrato.
-4. **Testo scorrevole**: scorrimento immediato oppure aggiunta a una composizione.
-5. **Geometria statica**: linee, rettangoli e cerchi, vuoti o pieni.
-6. **Geometria scorrevole**: figure da aggiungere alla composizione.
-7. **Icone**: immagini 8×8 predefinite, colorabili e scalabili.
-8. **Effetti**: dissolvenza, lampeggio, riempimenti, arcobaleno e scintille.
-9. **Pixel**: modifica di un singolo punto.
-10. **Colori**: selezione RGB o HSL.
+- **Testo**: testo statico, centrature, misure e testo scorrevole.
+- **Geometria**: figure statiche e figure da aggiungere allo scorrimento.
+- **Grafica**: icone integrate e griglie di pixel native.
+- **Effetti**: dissolvenza, lampeggio, riempimenti, arcobaleno e scintille.
 
-I blocchi **Grafica** molto alti sono collocati per ultimi in `... altro`.
+Nei blocchi di testo, (+) mostra le opzioni con valori predefiniti. Richiuderle conserva nel codice i valori scelti; il colore obbligatorio del testo statico resta visibile. Le griglie native rimangono grandi perché espongono le righe modificabili.
 
 ## Buffer e blocco Mostra
 
@@ -62,7 +56,7 @@ Puoi scegliere coordinate, colore, font, dimensione, luminosità e orientamento.
 
 La luminosità del testo ha default `128` e non modifica la luminosità generale scelta durante la creazione. Le coordinate esterne vengono ritagliate in sicurezza.
 
-Per le altezze esatte in pixel e gli esempi di posizionamento su più righe, consulta [font e misure del testo](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v0.9.0/docs/_locales/it/fonts.md).
+Per le altezze esatte in pixel e gli esempi di posizionamento su più righe, consulta [font e misure del testo](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v1.0.0/docs/_locales/it/fonts.md).
 
 Il blocco **testo sfumato** miscela due colori soltanto sui pixel dei caratteri. Il blocco separato **testo sfumato in luminosità** mantiene invece un solo colore e passa dalla luminosità iniziale a quella finale, entrambe regolabili da 0 a 255. I default sono 128 e 8, così il lato meno luminoso resta visibile; scegli 0 soltanto quando vuoi spegnerlo intenzionalmente. Puoi scegliere da sinistra a destra, da destra a sinistra, dall'alto al basso o dal basso all'alto: il lato di partenza usa il valore iniziale e il lato opposto raggiunge quello finale. La direzione segue sempre il testo visibile, anche quando è ruotato; dopo il disegno usa **mostra**. I due blocchi sfumati sono collocati dopo i normali blocchi del testo statico.
 
@@ -74,8 +68,8 @@ Il gruppo **Icone** contiene cuore pieno e vuoto, sorriso, faccina triste, stell
 
 I blocchi **scorri testo** eseguono subito lo scorrimento. Il testo può partire da coordinate manuali oppure entrare da destra, sinistra, alto o basso.
 
-- **Esclusivo** usa uno sfondo nero e termina col display nero.
-- **Composto** conserva la scena già presente e la ripristina dietro il testo.
+- **cancella display** (`Exclusive` nel codice) usa uno sfondo nero e termina col display nero.
+- **conserva sfondo** (`Composed` nel codice) conserva la scena già presente e la ripristina dietro il testo.
 
 Per unire testo e figure in un solo scorrimento non usare i blocchi di scorrimento immediato. Usa **aggiungi testo allo scorrimento**, aggiungi una o più geometrie e infine chiama una sola volta **avvia scorrimento**. Per esempio, testo `CIAO` più cerchio diventano una sola sequenza. Chiamando **avvia scorrimento** tra i due inserimenti si ottengono invece due sequenze separate.
 
@@ -106,16 +100,22 @@ I blocchi **Grafica** permettono di disegnare griglie 8×8, 16×16, 32×8, 8×32
 
 **Imposta pixel** modifica una coordinata. I colori possono provenire dal selettore NeoPixel oppure dai blocchi RGB e HSL. La luminosità HSL appartiene al colore e non coincide con la luminosità generale o del testo.
 
+## Simulatore MakeCode
+
+Le definizioni delle parti collegano le quattro funzioni di creazione SARDU alla visualizzazione NeoPixel generica. Nella prova controllata, matrice su P1 e striscia NeoPixel standard indipendente su P2 restano entrambe visibili; `hiddenParts` non viene usato.
+
+La parte generica non rappresenta la geometria bidimensionale dei pannelli. Con la sola matrice può restare il messaggio `parts failed to read pin(s) from callsite for: neopixel.create`, relativo all'istanza standard non chiamata direttamente. Gli avvisi stock `text/text_join` sono stati riprodotti anche senza SARDU. Questi limiti noti vanno distinti da errori del programma, panic o blocchi grigi. La verifica fisica resta necessaria per cablaggio, colori, tempi e disposizione dei moduli.
+
 ## Memoria e problemi comuni
 
-Il buffer RGB principale usa `larghezza × altezza × 3` byte. Gli scorrimenti composti e alcuni effetti richiedono copie temporanee. Se un progetto grande non compila o non parte, prova micro:bit V2, riduci la matrice o usa lo scorrimento esclusivo.
+Il buffer RGB principale usa `larghezza × altezza × 3` byte. Gli scorrimenti composti e alcuni effetti richiedono copie temporanee. Se un progetto grande non compila o non parte, prova micro:bit V2, riduci la matrice o usa la modalità cancella display.
 
-Se MakeCode mostra **Richiesta di rete non riuscita**, verifica di avere incollato un URL pubblico esatto e, per una prova candidata, anche il riferimento finale dopo `#`. Dopo l'aggiornamento di una versione può essere necessario rimuovere l'estensione dal progetto, ricaricare MakeCode e importarla di nuovo.
+Se MakeCode mostra **Richiesta di rete non riuscita**, verifica l’URL pubblico. Per una candidata, controlla in `pxt.json` che la dipendenza `pxt-sardu-matrix` contenga proprio il commit completo comunicato: la ricerca Estensioni può risolvere una versione diversa anche quando si incolla un hash. Salva una copia del progetto prima di aggiornare o rimuovere dipendenze.
 
 Se un pixel di un pannello non configurato si accende all'alimentazione, prima verifica alimentazione, massa, ingresso dati e stato elettrico del pannello: il software aggiorna soltanto il numero di LED configurato e non può azzerare LED esclusi dalla configurazione.
 
-Per approfondire consulta [configurazione del display](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v0.9.0/docs/_locales/it/display-configuration.md), [font e misure del testo](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v0.9.0/docs/_locales/it/fonts.md), [memoria e rendering](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v0.9.0/docs/_locales/it/memory-and-rendering.md) e [cablaggio](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v0.9.0/docs/_locales/it/wiring.md).
+Per approfondire consulta [configurazione del display](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v1.0.0/docs/_locales/it/display-configuration.md), [font e misure del testo](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v1.0.0/docs/_locales/it/fonts.md), [memoria e rendering](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v1.0.0/docs/_locales/it/memory-and-rendering.md) e [cablaggio](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v1.0.0/docs/_locales/it/wiring.md).
 
 ```package
-pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#v0.9.0
+pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#v1.0.0
 ```

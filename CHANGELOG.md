@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.0.0 - 2026-10-29
+
+- Established the documented public API as the stable 1.0 release, preserving v0.9.0 API names, block IDs, enum values and executable algorithms.
+- Organized the toolbox into Text, Geometry, Graphics and Effects subcategories; shortened labels and rotation choices and wrapped the widest text/effect blocks.
+- Made text options expandable while keeping required colors visible and preserving selected values when options are collapsed.
+- Added simulator-part definitions for all matrix factories while preserving independent standard NeoPixel strips; documented the remaining matrix-only diagnostic and generic visualization.
+- Verified real Blocks/JavaScript/Python round trips with default and selected colors and hidden options, plus English/Italian layouts. Confirmed six-panel scrolling, static two-line output and button-driven interruption/restart on micro:bit V2; V1 coverage is compilation only.
+- Updated guides, tutorials, examples and test records; corrected RGB snapshot counts, added standard-module RAM costs and clarified that maximum practical module counts have not been measured.
+
 ## 0.9.0 - 2026-10-25
 
 - Fixed coordinate-scrolling and sparkles block metadata; verified real Blocks/JavaScript/Python round trips with default and selected colors.

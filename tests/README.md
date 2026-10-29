@@ -1,6 +1,6 @@
 # TypeScript test suite
 
-SARDU-Matrix uses independent MakeCode projects so every feature family can be compiled for both Micro:Bit V1 and V2 without creating one unrealistic firmware containing every renderer and animation at once.
+SARDU-Matrix uses independent MakeCode projects so every feature family can be compiled for both micro:bit V1 and V2 without creating one unrealistic firmware containing every renderer and animation at once.
 
 The root `test.ts` is a representative public API smoke program for V1/V2, including static text, geometry, both immediate text scrolling APIs and sparkles. Build it from the extension root with `pxt build` and `pxt build --hwvariant v2`; load it in the MakeCode simulator without hardware. It must finish without a panic or simulator error. Executable coverage is divided as follows:
 
@@ -33,11 +33,11 @@ On Windows, `tests\\run-all.cmd` performs the same complete sequence for every l
 
 A compile pass requires both builds to finish without an error. A deterministic runtime failure calls `control.panic(921)`.
 
-## Current candidate result
+## Verified baseline and release preparation
 
-On 2026-09-08, all independent projects compiled successfully for both Micro:Bit V1 and V2. The candidate changes do not alter the verified `v0.8.3` runtime. The package configuration check and root package build also passed. These results must be repeated after any later source change.
+The ten independent feature projects compiled for V1 and V2 during the October approval-correction work. The 1.0.0 candidate preserves the v0.9.0 executable algorithms; its root V1/V2 builds, block metadata, real editor conversions and affected V2 hardware behaviors were checked separately. A compilation result is not a physical test or a measured RAM capacity. Repeat checks affected by later source changes.
 
-The monolithic `pxt test` command is not used as the feature runner because it links the complete extension package and its own harness into one synthetic V1 image regardless of how few entry-point instructions are present. That artificial image exceeds the V1 program-size limit; ordinary V1 projects are not affected. The independent projects prove this by compiling creation, configuration, text, geometry, scrolling, gradients, effects and graphics separately for both V1 and V2.
+The monolithic `pxt test` command is not used as the feature runner because it links the complete extension package and its own harness into one synthetic V1 image regardless of how few entry-point instructions are present. That artificial image exceeds the V1 program-size limit; that result alone does not determine whether a particular user program fits on V1. The independent projects prove this by compiling creation, configuration, text, geometry, scrolling, gradients, effects and graphics separately for both V1 and V2.
 
 ## Hardware boundary
 

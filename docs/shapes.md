@@ -1,6 +1,6 @@
 # Static and scrolling geometry
 
-[Italiano](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v0.9.0/docs/_locales/it/shapes.md)
+[Italiano](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v1.0.0/docs/_locales/it/shapes.md)
 
 ## Static geometry
 
@@ -33,5 +33,5 @@ matrix.startScrolling(100, SarduMatrixScrollMode.Exclusive)
 ```
 
 ```package
-pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#v0.9.0
+pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#v1.0.0
 ```

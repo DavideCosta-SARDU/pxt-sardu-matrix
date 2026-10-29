@@ -2,7 +2,7 @@
 
 SARDU-Matrix is a configurable RGB LED matrix extension for Microsoft MakeCode and micro:bit. It uses the official Microsoft `pxt-neopixel` extension as its RGB backend.
 
-The current stable release is verified on a real six-panel 96×16 display. Its pre-1.0 semantic version identifies an evolving public API, not an untested beta: each release candidate is compiled for micro:bit V1 and V2 and is confirmed on the affected hardware before promotion.
+Version 1.0.0 establishes the documented public API. Representative programs compile for micro:bit V1 and V2; the tested V2 configuration uses six 16×16 panels in a 96×16 display. The [test record](docs/testing.md#verified-release-history) distinguishes compilation, editor and physical results.
 
 ## micro:bit V1 and V2
 
@@ -10,9 +10,9 @@ Both boards support the extension. V1 has less program memory and RAM: a program
 
 The coordinate-based scrolling block starts at X = 16 by default. For a different display width, connect the matrix width block to X as a normal value block, or use **scroll text from edge** to position text automatically.
 
-Existing JavaScript/Python projects must update enum type names from `Matrix…` to `SarduMatrix…`. For Blocks projects, follow the [update procedure](docs/api.md#updating-existing-projects) before changing the extension version.
+Projects created before v0.9.0 must update enum type names from `Matrix…` to `SarduMatrix…`. For Blocks projects, follow the [update procedure](docs/api.md#updating-existing-projects) before changing the extension version.
 
-The package identifier is now `pxt-sardu-matrix`, matching the repository and the dependency created by MakeCode tutorials. Existing projects using the old `sardu-matrix` dependency key must rename that key in `pxt.json` while keeping its version reference, so block Help can resolve the included documentation. The `sarduMatrix` programming namespace is unchanged.
+Since v0.9.0, the package identifier is `pxt-sardu-matrix`, matching the repository and the dependency created by MakeCode tutorials. Existing projects using the old `sardu-matrix` dependency key must rename that key in `pxt.json` while keeping its version reference, so block Help can resolve the included documentation. The `sarduMatrix` programming namespace is unchanged.
 
 ## Installation in MakeCode
 
@@ -87,7 +87,7 @@ The text blocks offer six fonts: SARDU, micro:bit Extended, proportional version
 
 Static and scrolling text can rotate the complete rendered line to 0°, 90° clockwise, 180° or 270° clockwise. Rotation is independent from the scrolling edge, so all 16 combinations are available. Static text can use explicit X/Y coordinates, be centered across the complete width, complete height or both, or be centered inside an advanced inclusive X/Y range. Centering uses the dimensions after rotation. Every string also has its own 0–255 brightness, independent from the matrix-wide brightness selected during creation.
 
-Scrolling offers two scene modes. **Exclusive** clears the display for every frame and finishes with a black display. **Composed** preserves the pixels already drawn, restores them behind the moving text and finishes with the original scene visible.
+Scrolling offers two scene modes. **clear display** (`Exclusive` in code) clears the display for every frame and finishes with a black display. **preserve background** (`Composed` in code) preserves the pixels already drawn, restores them behind the moving text and finishes with the original scene visible.
 
 Lines, rectangles and circles, with outline and filled variants, use the same logical coordinates and clipping as pixels and text. Static geometry changes only the buffer and requires `show()`. Scrolling geometry can run by itself or be queued after text; add the desired items and call `startScrolling()` once to move the complete sequence as one composition. Custom text paths can also be queued and start only when `startScrolling()` is called.
 
@@ -97,7 +97,7 @@ The native **Graphics** blocks are available under `... more` in all six module 
 
 ## Block/API overview
 
-The main category contains matrix creation, display controls, pixels and colors. **Text**, **Geometry**, **Graphics** and **Effects** subcategories keep related blocks together; Graphics also contains icons. Advanced blocks remain under `... more`. Static and scrolling text blocks expose their extra options with (+), preserving the same defaults and per-block settings.
+The main category contains matrix creation, display controls, pixels and colors. **Text**, **Geometry**, **Graphics** and **Effects** subcategories keep related blocks together; Graphics also contains icons. Advanced settings remain available with their related controls; native pixel grids are in Graphics. Static and scrolling text blocks expose their extra options with (+), preserving the same defaults and per-block settings.
 
 Static text, static geometry, pixels and Graphics write to the RGB buffer; compose the scene and call `show()` once. Immediate text scrolling starts at once. To combine text and shapes into one moving sequence, add every item to the scrolling composition and call `startScrolling()` only once. Effects animate the current buffer directly and provide leave, restore and clear final states. Full block behavior, defaults and troubleshooting are documented in the [English user guide](docs/user-guide.md), the [Italian user guide](docs/_locales/it/user-guide.md) and the topic pages below.
 
@@ -117,7 +117,7 @@ matrix.show()
 
 ## Dynamic memory use
 
-There is no arbitrary 1536-LED limit. One RGB NeoPixel buffer is allocated using:
+The six-panel test is not a maximum module-count specification. The [standard-module RAM table](docs/memory-and-rendering.md#standard-modules-ram-cost-per-module) lists exact RGB payload costs and the measured configuration. There is no arbitrary 1536-LED limit. One RGB NeoPixel buffer is allocated using:
 
 ```text
 RGB bytes = width × height × 3
@@ -125,7 +125,7 @@ RGB bytes = width × height × 3
 
 The actual maximum depends on the micro:bit revision, MakeCode runtime, the rest of the program and other extensions. An allocation that does not fit fails explicitly; the library does not silently reduce dimensions.
 
-Exclusive scrolling adds no second RGB scene buffer. Composed scrolling temporarily copies the existing NeoPixel buffer, so during that animation it requires another `width × height × 3` bytes. This copy is released when scrolling ends. On micro:bit V1, prefer exclusive mode or small matrices when memory is tight.
+Exclusive scrolling adds no second RGB scene buffer. Composed scrolling temporarily copies the existing NeoPixel buffer, so during that animation it requires another `width × height × 3` bytes. The copy is temporary animation data rather than a second permanent framebuffer. On micro:bit V1, prefer exclusive mode or small matrices when memory is tight.
 
 micro:bit V2 is recommended for special effects, especially on large matrices. Fade, content-masked effects and animated rainbows use temporary RGB snapshots while running; V1 has substantially less firmware and RAM margin.
 
@@ -133,7 +133,7 @@ micro:bit V2 is recommended for special effects, especially on large matrices. F
 
 Connect the micro:bit data pin to `DIN` of the first panel, then connect each panel's `DOUT` to the next panel's `DIN` in the configured order.
 
-Do not power a matrix from the micro:bit 3V pin. Use an external supply suitable for the real panels and connect a common ground between the supply, every panel and the micro:bit. Power sizing, wiring, injection points, fusing and installation compliance remain the user's responsibility. Software brightness is not a substitute for correct electrical design.
+**Do not power a matrix from the micro:bit 3 V pin.** Use an external supply suitable for the real panels and connect a common ground between the supply, every panel and the micro:bit. Power sizing, wiring, injection points, fusing and installation compliance remain the user's responsibility. Software brightness is not a substitute for correct electrical design.
 
 See [docs/wiring.md](docs/wiring.md) for diagrams and mapping examples.
 

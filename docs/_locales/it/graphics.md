@@ -1,19 +1,19 @@
 # Blocchi grafici nativi
 
-[English](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v0.9.0/docs/graphics.md)
+[English](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v1.0.0/docs/graphics.md)
 
 I blocchi Grafica permettono di disegnare direttamente dentro MakeCode nei formati **8×8, 16×16, 32×8, 8×32, 16×8 e 8×16**. Una grafica che supera i bordi della matrice viene ritagliata in sicurezza.
 
 ## Disegnare una grafica
 
-Aprire `...altro`, inserire il blocco `disegna ...` del formato desiderato e impostare le celle direttamente nelle righe visualizzate. Non occorrono collegamenti esterni e non bisogna copiare codice.
+Aprire **SARDU Matrix → Grafica**, inserire il blocco `disegna ...` del formato desiderato e impostare le celle direttamente nelle righe visualizzate. Non occorrono collegamenti esterni e non bisogna copiare codice.
 
 Il simbolo `◌` è la cella trasparente predefinita. `⚫` è invece nero reale e spegne il LED. Le altre scelte rappresentano colori reali.
 
 ## Trasparente e nero
 
-- **TRASP.** indica che il pixel non ha un colore. In modalità `sovrapponi` lascia invariato ciò che era già presente.
-- **NERO** è un colore reale `#000000` e spegne esplicitamente il LED.
+- **◌ trasparente** indica che il pixel non ha un colore. In modalità `sovrapponi` lascia invariato ciò che era già presente.
+- **⚫ nero** è un colore reale `#000000` e spegne esplicitamente il LED.
 
 Questa distinzione permette di comporre più lavori senza spegnere involontariamente i pixel non usati dal secondo disegno.
 
@@ -31,5 +31,5 @@ Le coordinate sono logiche e indipendenti dal cablaggio lineare, progressivo o Z
 Le righe del blocco sono valori temporanei e non creano un secondo framebuffer RGB permanente. Il framebuffer della matrice resta `larghezza × altezza × 3` byte.
 
 ```package
-pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#v0.9.0
+pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#v1.0.0
 ```

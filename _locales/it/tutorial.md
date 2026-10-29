@@ -18,7 +18,7 @@ let matrix = sarduMatrix.create(16, 16, DigitalPin.P1, 128)
 
 ## Disegna il testo statico
 
-Da **SARDU Matrix → Testo statico**, aggiungi il blocco del testo centrato in larghezza. Scrivi `OK`, mantieni Y a 0 e scegli bianco.
+Da **SARDU Matrix → Testo**, nel gruppo **Testo statico**, aggiungi il blocco del testo centrato in larghezza. Scrivi `OK`, mantieni Y a 0 e scegli bianco.
 
 ```blocks
 let matrix = sarduMatrix.create(16, 16, DigitalPin.P1, 128)
@@ -39,7 +39,7 @@ matrix.show()
 
 ## Aggiungi il testo scorrevole
 
-Aggiungi una pausa di un secondo, quindi scegli **scorri testo dal bordo** da **SARDU Matrix → Testo scorrevole**. Inserisci `CIAO`, ingresso da destra, bianco, 100 ms e modalità Esclusiva.
+Aggiungi una pausa di un secondo, quindi scegli **scorri testo dal bordo** da **SARDU Matrix → Testo**, nel gruppo **Testo scorrevole**. Inserisci `CIAO`, ingresso da destra, bianco, 100 ms e modalità **cancella display**. Usa (+) per vedere le opzioni predefinite di colore e temporizzazione.
 
 ```blocks
 let matrix = sarduMatrix.create(16, 16, DigitalPin.P1, 128)

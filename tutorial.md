@@ -18,7 +18,7 @@ let matrix = sarduMatrix.create(16, 16, DigitalPin.P1, 128)
 
 ## Draw static text
 
-From **SARDU Matrix → Static text**, add the centered-width text block. Write `HI`, keep Y at 0 and select white.
+From **SARDU Matrix → Text**, in the **Static text** group, add the centered-width text block. Write `HI`, keep Y at 0 and select white.
 
 ```blocks
 let matrix = sarduMatrix.create(16, 16, DigitalPin.P1, 128)
@@ -39,7 +39,7 @@ matrix.show()
 
 ## Add scrolling text
 
-Add a one-second pause, then choose **scroll text from edge** from **SARDU Matrix → Scrolling text**. Enter `HELLO` and keep entry from the right, white, 100 ms and Exclusive mode.
+Add a one-second pause, then choose **scroll text from edge** from **SARDU Matrix → Text**, in the **Scrolling text** group. Enter `HELLO` and keep entry from the right, white, 100 ms and **clear display** mode. Use (+) to inspect the default color and timing options.
 
 ```blocks
 let matrix = sarduMatrix.create(16, 16, DigitalPin.P1, 128)

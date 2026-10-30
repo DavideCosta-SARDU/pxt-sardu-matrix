@@ -2,7 +2,7 @@
 
 SARDU-Matrix is a configurable RGB LED matrix extension for Microsoft MakeCode and micro:bit. It uses the official Microsoft `pxt-neopixel` extension as its RGB backend.
 
-Version 1.0.0 establishes the documented public API. Representative programs compile for micro:bit V1 and V2; the tested V2 configuration uses six 16×16 panels in a 96×16 display. The [test record](docs/testing.md#verified-release-history) distinguishes compilation, editor and physical results.
+Version 1.0.1 establishes the documented public API. Representative programs compile for micro:bit V1 and V2; the tested V2 configuration uses six 16×16 panels in a 96×16 display. The [test record](docs/testing.md#verified-release-history) distinguishes compilation, editor and physical results.
 
 ## micro:bit V1 and V2
 

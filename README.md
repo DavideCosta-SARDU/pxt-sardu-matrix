@@ -70,6 +70,7 @@ Each path selects its starting corner, row/column scan axis and progressive/ZigZ
 Changes are written to the RGB buffer. Call `show()` when the physical LEDs must be updated.
 
 ```blocks
+let matrix = sarduMatrix.createModules(1, SarduMatrixModuleType.Matrix16x16, DigitalPin.P1, 128)
 matrix.clearBuffer()
 matrix.drawText(
     "Hello, città!", 0, 4,

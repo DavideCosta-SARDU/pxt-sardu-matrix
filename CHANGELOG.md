@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.1
+
+- Fixed the standalone Drawing example by creating its matrix before use.
+
 ## 1.0.0 - 2026-10-29
 
 - Established the documented public API as the stable 1.0 release, preserving v0.9.0 API names, block IDs, enum values and executable algorithms.

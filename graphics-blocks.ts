@@ -156,8 +156,8 @@ namespace sarduMatrix {
      * @param r15 colors for graphic row 15
      * @param r16 colors for graphic row 16
      */
-    //% blockId=sardu_matrix_draw_native_16x16 block="%matrix draw 16 x 16 graphic (◌ transparent)|%r1|%r2|%r3|%r4|%r5|%r6|%r7|%r8|%r9|%r10|%r11|%r12|%r13|%r14|%r15|%r16|at x %x y %y mode %mode"
-    //% group="Graphics" weight=77 advanced=true inlineInputMode=external subcategory="Graphics"
+    //% blockId=sardu_matrix_draw_native_16x16 block="$matrix draw 16 x 16 graphic (◌ transparent) at x $x y $y mode $mode||$r1|$r2|$r3|$r4|$r5|$r6|$r7|$r8|$r9|$r10|$r11|$r12|$r13|$r14|$r15|$r16"
+    //% group="Graphics" weight=73 advanced=true inlineInputMode=external subcategory="Graphics"
     //% help=github:pxt-sardu-matrix/docs/graphics
     //% matrix.defl=matrix x.defl=0 y.defl=0 mode.defl=SarduMatrixGraphicMode.Overlay
     //% matrix.shadow=variables_get
@@ -177,7 +177,8 @@ namespace sarduMatrix {
     //% r14.shadow=sardu_matrix_graphic_row16
     //% r15.shadow=sardu_matrix_graphic_row16
     //% r16.shadow=sardu_matrix_graphic_row16
-    export function drawNative16x16(matrix: Matrix, r1: number[], r2: number[], r3: number[], r4: number[], r5: number[], r6: number[], r7: number[], r8: number[], r9: number[], r10: number[], r11: number[], r12: number[], r13: number[], r14: number[], r15: number[], r16: number[], x: number = 0, y: number = 0, mode: SarduMatrixGraphicMode = SarduMatrixGraphicMode.Overlay): void {
+    //% compileHiddenArguments=true expandableArgumentMode="toggle"
+    export function drawNative16x16(matrix: Matrix, r1: number[] = null, r2: number[] = null, r3: number[] = null, r4: number[] = null, r5: number[] = null, r6: number[] = null, r7: number[] = null, r8: number[] = null, r9: number[] = null, r10: number[] = null, r11: number[] = null, r12: number[] = null, r13: number[] = null, r14: number[] = null, r15: number[] = null, r16: number[] = null, x: number = 0, y: number = 0, mode: SarduMatrixGraphicMode = SarduMatrixGraphicMode.Overlay): void {
         drawNativeRows(matrix, 16, 16, [r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, r13, r14, r15, r16], x, y, mode);
     }
 
@@ -196,8 +197,8 @@ namespace sarduMatrix {
      * @param r7 colors for graphic row 7
      * @param r8 colors for graphic row 8
      */
-    //% blockId=sardu_matrix_draw_native_8x8 block="%matrix draw 8 x 8 graphic (◌ transparent)|%r1|%r2|%r3|%r4|%r5|%r6|%r7|%r8|at x %x y %y mode %mode"
-    //% group="Graphics" weight=76 advanced=true inlineInputMode=external subcategory="Graphics"
+    //% blockId=sardu_matrix_draw_native_8x8 block="$matrix draw 8 x 8 graphic (◌ transparent) at x $x y $y mode $mode||$r1|$r2|$r3|$r4|$r5|$r6|$r7|$r8"
+    //% group="Graphics" weight=77 advanced=true inlineInputMode=external subcategory="Graphics"
     //% help=github:pxt-sardu-matrix/docs/graphics
     //% matrix.defl=matrix x.defl=0 y.defl=0 mode.defl=SarduMatrixGraphicMode.Overlay
     //% matrix.shadow=variables_get
@@ -209,7 +210,8 @@ namespace sarduMatrix {
     //% r6.shadow=sardu_matrix_graphic_row8
     //% r7.shadow=sardu_matrix_graphic_row8
     //% r8.shadow=sardu_matrix_graphic_row8
-    export function drawNative8x8(matrix: Matrix, r1: number[], r2: number[], r3: number[], r4: number[], r5: number[], r6: number[], r7: number[], r8: number[], x: number = 0, y: number = 0, mode: SarduMatrixGraphicMode = SarduMatrixGraphicMode.Overlay): void {
+    //% compileHiddenArguments=true expandableArgumentMode="toggle"
+    export function drawNative8x8(matrix: Matrix, r1: number[] = null, r2: number[] = null, r3: number[] = null, r4: number[] = null, r5: number[] = null, r6: number[] = null, r7: number[] = null, r8: number[] = null, x: number = 0, y: number = 0, mode: SarduMatrixGraphicMode = SarduMatrixGraphicMode.Overlay): void {
         drawNativeRows(matrix, 8, 8, [r1, r2, r3, r4, r5, r6, r7, r8], x, y, mode);
     }
 
@@ -228,8 +230,8 @@ namespace sarduMatrix {
      * @param r7 colors for graphic row 7
      * @param r8 colors for graphic row 8
      */
-    //% blockId=sardu_matrix_draw_native_32x8 block="%matrix draw 32 x 8 graphic (◌ transparent)|%r1|%r2|%r3|%r4|%r5|%r6|%r7|%r8|at x %x y %y mode %mode"
-    //% group="Graphics" weight=75 advanced=true inlineInputMode=external subcategory="Graphics"
+    //% blockId=sardu_matrix_draw_native_32x8 block="$matrix draw 32 x 8 graphic (◌ transparent) at x $x y $y mode $mode||$r1|$r2|$r3|$r4|$r5|$r6|$r7|$r8"
+    //% group="Graphics" weight=72 advanced=true inlineInputMode=external subcategory="Graphics"
     //% help=github:pxt-sardu-matrix/docs/graphics
     //% matrix.defl=matrix x.defl=0 y.defl=0 mode.defl=SarduMatrixGraphicMode.Overlay
     //% matrix.shadow=variables_get
@@ -241,7 +243,8 @@ namespace sarduMatrix {
     //% r6.shadow=sardu_matrix_graphic_row32
     //% r7.shadow=sardu_matrix_graphic_row32
     //% r8.shadow=sardu_matrix_graphic_row32
-    export function drawNative32x8(matrix: Matrix, r1: number[], r2: number[], r3: number[], r4: number[], r5: number[], r6: number[], r7: number[], r8: number[], x: number = 0, y: number = 0, mode: SarduMatrixGraphicMode = SarduMatrixGraphicMode.Overlay): void {
+    //% compileHiddenArguments=true expandableArgumentMode="toggle"
+    export function drawNative32x8(matrix: Matrix, r1: number[] = null, r2: number[] = null, r3: number[] = null, r4: number[] = null, r5: number[] = null, r6: number[] = null, r7: number[] = null, r8: number[] = null, x: number = 0, y: number = 0, mode: SarduMatrixGraphicMode = SarduMatrixGraphicMode.Overlay): void {
         drawNativeRows(matrix, 32, 8, [r1, r2, r3, r4, r5, r6, r7, r8], x, y, mode);
     }
 
@@ -284,8 +287,8 @@ namespace sarduMatrix {
      * @param r31 colors for graphic row 31
      * @param r32 colors for graphic row 32
      */
-    //% blockId=sardu_matrix_draw_native_8x32 block="%matrix draw 8 x 32 graphic (◌ transparent)|%r1|%r2|%r3|%r4|%r5|%r6|%r7|%r8|%r9|%r10|%r11|%r12|%r13|%r14|%r15|%r16|%r17|%r18|%r19|%r20|%r21|%r22|%r23|%r24|%r25|%r26|%r27|%r28|%r29|%r30|%r31|%r32|at x %x y %y mode %mode"
-    //% group="Graphics" weight=74 advanced=true inlineInputMode=external subcategory="Graphics"
+    //% blockId=sardu_matrix_draw_native_8x32 block="$matrix draw 8 x 32 graphic (◌ transparent) at x $x y $y mode $mode||$r1|$r2|$r3|$r4|$r5|$r6|$r7|$r8|$r9|$r10|$r11|$r12|$r13|$r14|$r15|$r16|$r17|$r18|$r19|$r20|$r21|$r22|$r23|$r24|$r25|$r26|$r27|$r28|$r29|$r30|$r31|$r32"
+    //% group="Graphics" weight=75 advanced=true inlineInputMode=external subcategory="Graphics"
     //% help=github:pxt-sardu-matrix/docs/graphics
     //% matrix.defl=matrix x.defl=0 y.defl=0 mode.defl=SarduMatrixGraphicMode.Overlay
     //% matrix.shadow=variables_get
@@ -321,7 +324,8 @@ namespace sarduMatrix {
     //% r30.shadow=sardu_matrix_graphic_row8
     //% r31.shadow=sardu_matrix_graphic_row8
     //% r32.shadow=sardu_matrix_graphic_row8
-    export function drawNative8x32(matrix: Matrix, r1: number[], r2: number[], r3: number[], r4: number[], r5: number[], r6: number[], r7: number[], r8: number[], r9: number[], r10: number[], r11: number[], r12: number[], r13: number[], r14: number[], r15: number[], r16: number[], r17: number[], r18: number[], r19: number[], r20: number[], r21: number[], r22: number[], r23: number[], r24: number[], r25: number[], r26: number[], r27: number[], r28: number[], r29: number[], r30: number[], r31: number[], r32: number[], x: number = 0, y: number = 0, mode: SarduMatrixGraphicMode = SarduMatrixGraphicMode.Overlay): void {
+    //% compileHiddenArguments=true expandableArgumentMode="toggle"
+    export function drawNative8x32(matrix: Matrix, r1: number[] = null, r2: number[] = null, r3: number[] = null, r4: number[] = null, r5: number[] = null, r6: number[] = null, r7: number[] = null, r8: number[] = null, r9: number[] = null, r10: number[] = null, r11: number[] = null, r12: number[] = null, r13: number[] = null, r14: number[] = null, r15: number[] = null, r16: number[] = null, r17: number[] = null, r18: number[] = null, r19: number[] = null, r20: number[] = null, r21: number[] = null, r22: number[] = null, r23: number[] = null, r24: number[] = null, r25: number[] = null, r26: number[] = null, r27: number[] = null, r28: number[] = null, r29: number[] = null, r30: number[] = null, r31: number[] = null, r32: number[] = null, x: number = 0, y: number = 0, mode: SarduMatrixGraphicMode = SarduMatrixGraphicMode.Overlay): void {
         drawNativeRows(matrix, 8, 32, [r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r30, r31, r32], x, y, mode);
     }
 
@@ -340,8 +344,8 @@ namespace sarduMatrix {
      * @param r7 colors for graphic row 7
      * @param r8 colors for graphic row 8
      */
-    //% blockId=sardu_matrix_draw_native_16x8 block="%matrix draw 16 x 8 graphic (◌ transparent)|%r1|%r2|%r3|%r4|%r5|%r6|%r7|%r8|at x %x y %y mode %mode"
-    //% group="Graphics" weight=73 advanced=true inlineInputMode=external subcategory="Graphics"
+    //% blockId=sardu_matrix_draw_native_16x8 block="$matrix draw 16 x 8 graphic (◌ transparent) at x $x y $y mode $mode||$r1|$r2|$r3|$r4|$r5|$r6|$r7|$r8"
+    //% group="Graphics" weight=74 advanced=true inlineInputMode=external subcategory="Graphics"
     //% help=github:pxt-sardu-matrix/docs/graphics
     //% matrix.defl=matrix x.defl=0 y.defl=0 mode.defl=SarduMatrixGraphicMode.Overlay
     //% matrix.shadow=variables_get
@@ -353,7 +357,8 @@ namespace sarduMatrix {
     //% r6.shadow=sardu_matrix_graphic_row16
     //% r7.shadow=sardu_matrix_graphic_row16
     //% r8.shadow=sardu_matrix_graphic_row16
-    export function drawNative16x8(matrix: Matrix, r1: number[], r2: number[], r3: number[], r4: number[], r5: number[], r6: number[], r7: number[], r8: number[], x: number = 0, y: number = 0, mode: SarduMatrixGraphicMode = SarduMatrixGraphicMode.Overlay): void {
+    //% compileHiddenArguments=true expandableArgumentMode="toggle"
+    export function drawNative16x8(matrix: Matrix, r1: number[] = null, r2: number[] = null, r3: number[] = null, r4: number[] = null, r5: number[] = null, r6: number[] = null, r7: number[] = null, r8: number[] = null, x: number = 0, y: number = 0, mode: SarduMatrixGraphicMode = SarduMatrixGraphicMode.Overlay): void {
         drawNativeRows(matrix, 16, 8, [r1, r2, r3, r4, r5, r6, r7, r8], x, y, mode);
     }
 
@@ -380,8 +385,8 @@ namespace sarduMatrix {
      * @param r15 colors for graphic row 15
      * @param r16 colors for graphic row 16
      */
-    //% blockId=sardu_matrix_draw_native_8x16 block="%matrix draw 8 x 16 graphic (◌ transparent)|%r1|%r2|%r3|%r4|%r5|%r6|%r7|%r8|%r9|%r10|%r11|%r12|%r13|%r14|%r15|%r16|at x %x y %y mode %mode"
-    //% group="Graphics" weight=72 advanced=true inlineInputMode=external subcategory="Graphics"
+    //% blockId=sardu_matrix_draw_native_8x16 block="$matrix draw 8 x 16 graphic (◌ transparent) at x $x y $y mode $mode||$r1|$r2|$r3|$r4|$r5|$r6|$r7|$r8|$r9|$r10|$r11|$r12|$r13|$r14|$r15|$r16"
+    //% group="Graphics" weight=76 advanced=true inlineInputMode=external subcategory="Graphics"
     //% help=github:pxt-sardu-matrix/docs/graphics
     //% matrix.defl=matrix x.defl=0 y.defl=0 mode.defl=SarduMatrixGraphicMode.Overlay
     //% matrix.shadow=variables_get
@@ -401,7 +406,8 @@ namespace sarduMatrix {
     //% r14.shadow=sardu_matrix_graphic_row8
     //% r15.shadow=sardu_matrix_graphic_row8
     //% r16.shadow=sardu_matrix_graphic_row8
-    export function drawNative8x16(matrix: Matrix, r1: number[], r2: number[], r3: number[], r4: number[], r5: number[], r6: number[], r7: number[], r8: number[], r9: number[], r10: number[], r11: number[], r12: number[], r13: number[], r14: number[], r15: number[], r16: number[], x: number = 0, y: number = 0, mode: SarduMatrixGraphicMode = SarduMatrixGraphicMode.Overlay): void {
+    //% compileHiddenArguments=true expandableArgumentMode="toggle"
+    export function drawNative8x16(matrix: Matrix, r1: number[] = null, r2: number[] = null, r3: number[] = null, r4: number[] = null, r5: number[] = null, r6: number[] = null, r7: number[] = null, r8: number[] = null, r9: number[] = null, r10: number[] = null, r11: number[] = null, r12: number[] = null, r13: number[] = null, r14: number[] = null, r15: number[] = null, r16: number[] = null, x: number = 0, y: number = 0, mode: SarduMatrixGraphicMode = SarduMatrixGraphicMode.Overlay): void {
         drawNativeRows(matrix, 8, 16, [r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, r13, r14, r15, r16], x, y, mode);
     }
 

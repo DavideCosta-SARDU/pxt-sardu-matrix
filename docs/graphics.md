@@ -2,7 +2,7 @@
 
 [Italiano](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v1.0.0/docs/_locales/it/graphics.md)
 
-SARDU-Matrix provides native MakeCode Graphics blocks for 8×8, 16×16, 32×8, 8×32, 16×8 and 8×16 areas. Open the Graphics subcategory in SARDU Matrix. The editable pixel grids remain intentionally tall.
+SARDU-Matrix provides native MakeCode Graphics blocks for 8×8, 16×16, 32×8, 8×32, 16×8 and 8×16 areas. Open the Graphics subcategory in SARDU Matrix. The pixel editor starts collapsed. Drag the required block into the workspace, then use (+) to edit its pixels and (-) to close it. Coordinates and mode stay visible; closing the editor preserves every pixel.
 
 ## Drawing a graphic
 

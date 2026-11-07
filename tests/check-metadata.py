@@ -1,5 +1,6 @@
 """Check block signatures, translations and Help paths without dependencies."""
 import json
+from collections import Counter
 import re
 from pathlib import Path
 
@@ -35,7 +36,7 @@ for path in ROOT.glob('*.ts'):
             hidden_required = set(optional_labels).intersection(required)
             if hidden_required:
                 errors.append(f'{block_id}: required parameters hidden by expansion: {sorted(hidden_required)}')
-        if placeholders != params:
+        if (placeholders != params if re.search(r'%\w+', label[1]) else Counter(placeholders) != Counter(params)):
             errors.append(f'{block_id}: label {placeholders} != signature {params}')
         if re.search(r'%(?!\w)', label[1]):
             errors.append(f'{block_id}: unescaped percent in block label')
@@ -62,7 +63,9 @@ for path in translations:
         translated = data.get(qname + '|block')
         if translated is None:
             continue  # Missing optional translations use the source label.
-        if re.findall(r'[%$](\w+)', translated) != re.findall(r'[%$](\w+)', label):
+        translated_params = re.findall(r'[%$](\w+)', translated)
+        source_params = re.findall(r'[%$](\w+)', label)
+        if (translated_params != source_params if re.search(r'%\w+', translated) else Counter(translated_params) != Counter(source_params)):
             errors.append(f'{path.relative_to(ROOT)}: mismatched parameters for {qname}')
         if re.search(r'%(?!\w)', translated):
             errors.append(f'{path.relative_to(ROOT)}: unescaped percent for {qname}')

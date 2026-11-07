@@ -2,7 +2,7 @@
 
 [English](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v1.0.0/docs/graphics.md)
 
-I blocchi Grafica permettono di disegnare direttamente dentro MakeCode nei formati **8×8, 16×16, 32×8, 8×32, 16×8 e 8×16**. Una grafica che supera i bordi della matrice viene ritagliata in sicurezza.
+I blocchi Grafica permettono di disegnare direttamente dentro MakeCode nei formati **8×8, 16×16, 32×8, 8×32, 16×8 e 8×16**. Una grafica che supera i bordi della matrice viene ritagliata in sicurezza. Apri la sottocategoria Grafica di SARDU Matrix. L’editor dei pixel parte chiuso: trascina il blocco desiderato nello spazio di lavoro, poi usa (+) per modificare i pixel e (-) per richiuderlo. Coordinate e modalità restano visibili; richiudere l’editor conserva tutti i pixel.
 
 ## Disegnare una grafica
 

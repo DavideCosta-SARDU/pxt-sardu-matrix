@@ -258,11 +258,12 @@ namespace sarduMatrix {
      * @param brightness brightness from 0 to 255
      * @param orientation rotation of the rendered text
      */
-    //% blockId=sardu_matrix_add_scrolling_text_path block="$matrix add text $text with path from x $startX y $startY to x $endX y $endY||color $color=neopixel_colors font $font size $size brightness $brightness orientation $orientation"
+    //% blockId=sardu_matrix_add_scrolling_text_path block="$matrix add text $text with path from x $startX y $startY to x $endX y $endY color $color=neopixel_colors font $font size $size brightness $brightness orientation $orientation"
     //% group="Scrolling text" weight=72 help=github:pxt-sardu-matrix/docs/api subcategory="Text"
-    //% compileHiddenArguments=true inlineInputMode="variable" inlineInputModeLimit=7 expandableArgumentBreaks="6"
+    //% compileHiddenArguments=true
     //% matrix.shadow=variables_get matrix.defl=matrix text.defl="Hello" startX.defl=-1 startY.defl=0 endX.defl=0 endY.defl=0 color.defl=NeoPixelColors.White font.defl=SarduMatrixFont.Sardu size.defl=SarduMatrixFontSize.X1 brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=SarduMatrixTextOrientation.Normal
     //% color.snippet="neopixel.colors(NeoPixelColors.White)" color.pySnippet="neopixel.colors(NeoPixelColors.WHITE)"
+    //% inlineInputMode=inline
     export function addScrollingTextPath(
         matrix: Matrix, text: string,
         startX: number, startY: number, endX: number, endY: number,

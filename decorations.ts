@@ -286,11 +286,12 @@ namespace sarduMatrix {
      * @param brightness brightness from 0 to 255
      * @param orientation rotation of the rendered text
      */
-    //% blockId=sardu_matrix_draw_gradient_text block="$matrix draw gradient text $text at x $x y $y from $firstColor=neopixel_colors to $secondColor=neopixel_colors $direction||font $font size $size brightness $brightness orientation $orientation"
+    //% blockId=sardu_matrix_draw_gradient_text block="$matrix draw gradient text $text at x $x y $y from $firstColor=neopixel_colors to $secondColor=neopixel_colors $direction font $font size $size brightness $brightness orientation $orientation"
     //% group="Static text" weight=70 help=github:pxt-sardu-matrix/docs/gradient-and-icons subcategory="Text"
-    //% compileHiddenArguments=true inlineInputMode="external" inlineInputModeLimit=4 expandableArgumentBreaks="4"
+    //% compileHiddenArguments=true
     //% matrix.shadow=variables_get matrix.defl=matrix text.defl="Hello" x.defl=0 y.defl=0 firstColor.defl=NeoPixelColors.Red secondColor.defl=NeoPixelColors.Blue direction.defl=SarduMatrixWipeDirection.LeftToRight font.defl=SarduMatrixFont.Sardu size.defl=SarduMatrixFontSize.X1 brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=SarduMatrixTextOrientation.Normal
     //% firstColor.snippet="neopixel.colors(NeoPixelColors.Red)" firstColor.pySnippet="neopixel.colors(NeoPixelColors.RED)" secondColor.snippet="neopixel.colors(NeoPixelColors.Blue)" secondColor.pySnippet="neopixel.colors(NeoPixelColors.BLUE)"
+    //% inlineInputMode=inline
     export function drawGradientText(
         matrix: Matrix,
         text: string,
@@ -321,11 +322,12 @@ namespace sarduMatrix {
      * @param size integer scale from 1 to 4
      * @param orientation rotation of the rendered text
      */
-    //% blockId=sardu_matrix_draw_brightness_gradient_text block="$matrix draw brightness gradient text $text at x $x y $y color $color=neopixel_colors from $firstBrightness to $finalBrightness $direction||font $font size $size orientation $orientation"
+    //% blockId=sardu_matrix_draw_brightness_gradient_text block="$matrix draw brightness gradient text $text at x $x y $y color $color=neopixel_colors from $firstBrightness to $finalBrightness $direction font $font size $size orientation $orientation"
     //% group="Static text" weight=69 help=github:pxt-sardu-matrix/docs/gradient-and-icons subcategory="Text"
-    //% compileHiddenArguments=true inlineInputMode="external" inlineInputModeLimit=4 expandableArgumentBreaks="3"
+    //% compileHiddenArguments=true
     //% matrix.shadow=variables_get matrix.defl=matrix text.defl="Hello" x.defl=0 y.defl=0 color.defl=NeoPixelColors.White firstBrightness.min=0 firstBrightness.max=255 firstBrightness.defl=128 finalBrightness.min=0 finalBrightness.max=255 finalBrightness.defl=8 direction.defl=SarduMatrixWipeDirection.LeftToRight font.defl=SarduMatrixFont.Sardu size.defl=SarduMatrixFontSize.X1 orientation.defl=SarduMatrixTextOrientation.Normal
     //% color.snippet="neopixel.colors(NeoPixelColors.White)" color.pySnippet="neopixel.colors(NeoPixelColors.WHITE)"
+    //% inlineInputMode=inline
     export function drawBrightnessGradientText(
         matrix: Matrix,
         text: string,
@@ -360,11 +362,12 @@ namespace sarduMatrix {
      * @param orientation rotation of the rendered text
      * @param mode how the operation interacts with the existing background
      */
-    //% blockId=sardu_matrix_scroll_gradient_text_from_edge block="$matrix scroll gradient text $text from edge $edge from $firstColor=neopixel_colors to $secondColor=neopixel_colors $direction every (ms) $frameIntervalMs||font $font size $size brightness $brightness orientation $orientation mode $mode"
+    //% blockId=sardu_matrix_scroll_gradient_text_from_edge block="$matrix scroll gradient text $text from edge $edge from $firstColor=neopixel_colors to $secondColor=neopixel_colors $direction every (ms) $frameIntervalMs font $font size $size brightness $brightness orientation $orientation mode $mode"
     //% group="Scrolling text" weight=70 help=github:pxt-sardu-matrix/docs/gradient-and-icons subcategory="Text"
-    //% compileHiddenArguments=true inlineInputMode="external" inlineInputModeLimit=4 expandableArgumentBreaks="4"
+    //% compileHiddenArguments=true
     //% matrix.shadow=variables_get matrix.defl=matrix text.defl="Hello" edge.defl=SarduMatrixScrollEdge.Right firstColor.defl=NeoPixelColors.Red secondColor.defl=NeoPixelColors.Blue direction.defl=SarduMatrixWipeDirection.LeftToRight frameIntervalMs.min=0 frameIntervalMs.defl=100 font.defl=SarduMatrixFont.Sardu size.defl=SarduMatrixFontSize.X1 brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=SarduMatrixTextOrientation.Normal mode.defl=SarduMatrixScrollMode.Exclusive
     //% firstColor.snippet="neopixel.colors(NeoPixelColors.Red)" firstColor.pySnippet="neopixel.colors(NeoPixelColors.RED)" secondColor.snippet="neopixel.colors(NeoPixelColors.Blue)" secondColor.pySnippet="neopixel.colors(NeoPixelColors.BLUE)"
+    //% inlineInputMode=inline
     export function scrollGradientTextFromEdge(
         matrix: Matrix,
         text: string,
@@ -400,11 +403,12 @@ namespace sarduMatrix {
      * @param orientation rotation of the rendered text
      * @param mode how the operation interacts with the existing background
      */
-    //% blockId=sardu_matrix_scroll_brightness_gradient_text_from_edge block="$matrix scroll brightness gradient text $text from edge $edge color $color=neopixel_colors from $firstBrightness to $finalBrightness $direction every (ms) $frameIntervalMs||font $font size $size orientation $orientation mode $mode"
+    //% blockId=sardu_matrix_scroll_brightness_gradient_text_from_edge block="$matrix scroll brightness gradient text $text from edge $edge color $color=neopixel_colors from $firstBrightness to $finalBrightness $direction every (ms) $frameIntervalMs font $font size $size orientation $orientation mode $mode"
     //% group="Scrolling text" weight=69 help=github:pxt-sardu-matrix/docs/gradient-and-icons subcategory="Text"
-    //% compileHiddenArguments=true inlineInputMode="external" inlineInputModeLimit=4 expandableArgumentBreaks="4"
+    //% compileHiddenArguments=true
     //% matrix.shadow=variables_get matrix.defl=matrix text.defl="Hello" edge.defl=SarduMatrixScrollEdge.Right color.defl=NeoPixelColors.White firstBrightness.min=0 firstBrightness.max=255 firstBrightness.defl=128 finalBrightness.min=0 finalBrightness.max=255 finalBrightness.defl=8 direction.defl=SarduMatrixWipeDirection.LeftToRight frameIntervalMs.min=0 frameIntervalMs.defl=100 font.defl=SarduMatrixFont.Sardu size.defl=SarduMatrixFontSize.X1 orientation.defl=SarduMatrixTextOrientation.Normal mode.defl=SarduMatrixScrollMode.Exclusive
     //% color.snippet="neopixel.colors(NeoPixelColors.White)" color.pySnippet="neopixel.colors(NeoPixelColors.WHITE)"
+    //% inlineInputMode=inline
     export function scrollBrightnessGradientTextFromEdge(
         matrix: Matrix,
         text: string,
@@ -443,11 +447,12 @@ namespace sarduMatrix {
      * @param orientation rotation of the rendered text
      * @param mode how the operation interacts with the existing background
      */
-    //% blockId=sardu_matrix_scroll_gradient_text_between block="$matrix scroll gradient text $text from x $startX y $startY to x $endX y $endY||from $firstColor=neopixel_colors to $secondColor=neopixel_colors $direction every (ms) $frameIntervalMs|font $font size $size brightness $brightness orientation $orientation mode $mode"
+    //% blockId=sardu_matrix_scroll_gradient_text_between block="$matrix scroll gradient text $text from x $startX y $startY to x $endX y $endY from $firstColor=neopixel_colors to $secondColor=neopixel_colors $direction every (ms) $frameIntervalMs font $font size $size brightness $brightness orientation $orientation mode $mode"
     //% group="Scrolling text" weight=68 help=github:pxt-sardu-matrix/docs/gradient-and-icons subcategory="Text"
-    //% compileHiddenArguments=true inlineInputMode="external" inlineInputModeLimit=4 expandableArgumentBreaks="5"
+    //% compileHiddenArguments=true
     //% matrix.shadow=variables_get matrix.defl=matrix text.defl="Hello" startX.defl=-1 startY.defl=0 endX.defl=0 endY.defl=0 firstColor.defl=NeoPixelColors.Red secondColor.defl=NeoPixelColors.Blue direction.defl=SarduMatrixWipeDirection.LeftToRight frameIntervalMs.min=0 frameIntervalMs.defl=100 font.defl=SarduMatrixFont.Sardu size.defl=SarduMatrixFontSize.X1 brightness.min=0 brightness.max=255 brightness.defl=128 orientation.defl=SarduMatrixTextOrientation.Normal mode.defl=SarduMatrixScrollMode.Exclusive
     //% firstColor.snippet="neopixel.colors(NeoPixelColors.Red)" firstColor.pySnippet="neopixel.colors(NeoPixelColors.RED)" secondColor.snippet="neopixel.colors(NeoPixelColors.Blue)" secondColor.pySnippet="neopixel.colors(NeoPixelColors.BLUE)"
+    //% inlineInputMode=inline
     export function scrollGradientTextBetween(
         matrix: Matrix,
         text: string,
@@ -492,11 +497,12 @@ namespace sarduMatrix {
      * @param orientation rotation of the rendered text
      * @param mode how the operation interacts with the existing background
      */
-    //% blockId=sardu_matrix_scroll_brightness_gradient_text_between block="$matrix scroll brightness gradient text $text from x $startX y $startY to x $endX y $endY||color $color=neopixel_colors from $firstBrightness to $finalBrightness $direction every (ms) $frameIntervalMs|font $font size $size orientation $orientation mode $mode"
+    //% blockId=sardu_matrix_scroll_brightness_gradient_text_between block="$matrix scroll brightness gradient text $text from x $startX y $startY to x $endX y $endY color $color=neopixel_colors from $firstBrightness to $finalBrightness $direction every (ms) $frameIntervalMs font $font size $size orientation $orientation mode $mode"
     //% group="Scrolling text" weight=67 help=github:pxt-sardu-matrix/docs/gradient-and-icons subcategory="Text"
-    //% compileHiddenArguments=true inlineInputMode="external" inlineInputModeLimit=4 expandableArgumentBreaks="5"
+    //% compileHiddenArguments=true
     //% matrix.shadow=variables_get matrix.defl=matrix text.defl="Hello" startX.defl=-1 startY.defl=0 endX.defl=0 endY.defl=0 color.defl=NeoPixelColors.White firstBrightness.min=0 firstBrightness.max=255 firstBrightness.defl=128 finalBrightness.min=0 finalBrightness.max=255 finalBrightness.defl=8 direction.defl=SarduMatrixWipeDirection.LeftToRight frameIntervalMs.min=0 frameIntervalMs.defl=100 font.defl=SarduMatrixFont.Sardu size.defl=SarduMatrixFontSize.X1 orientation.defl=SarduMatrixTextOrientation.Normal mode.defl=SarduMatrixScrollMode.Exclusive
     //% color.snippet="neopixel.colors(NeoPixelColors.White)" color.pySnippet="neopixel.colors(NeoPixelColors.WHITE)"
+    //% inlineInputMode=inline
     export function scrollBrightnessGradientTextBetween(
         matrix: Matrix,
         text: string,

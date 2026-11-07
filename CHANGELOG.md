@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.1.0 - 2026-11-07
+
+- Expose font, colour, size, brightness and orientation directly in text blocks.
+- Collapse the six pixel editors initially, with one toggle for the complete grid and narrower formats first.
+- Add Fixed 4x6 on V1/V2 and font8x8 plus original Spleen 8x16 on V2; label V2-only options explicitly.
+- Pack font tables, exclude V2 tables from V1 and remove simulator-only font data from native firmware.
+- Preserve existing block IDs, six font IDs and defaults; verify ten saved projects, 32 code round trips and 16 project reopen checks.
+- Update English/Italian documentation, original font licences and button-driven font tests.
+- Root and eleven independent feature projects compile on V1/V2. The largest independent V1 test has 292 bytes free; V2-only fonts raise error 927 on V1.
+- The cumulative all-scrolling conversion fixture exceeds V1 memory on both old and new versions and is not counted as a native compilation pass.
+- Microsoft editor scrollbar issue #7096 remains separate; physical iPad Safari has not been tested.
+
 ## 1.0.1
 
 - Fixed the standalone Drawing example by creating its matrix before use.

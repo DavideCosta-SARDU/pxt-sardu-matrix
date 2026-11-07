@@ -1,12 +1,12 @@
 # SARDU-Matrix user guide
 
-[Italiano](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v1.0.0/docs/_locales/it/user-guide.md)
+[Italiano](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v1.1.0/docs/_locales/it/user-guide.md)
 
 SARDU-Matrix controls configurable WS2812B/NeoPixel matrix panels from Microsoft MakeCode for micro:bit. It supports direct dimensions, modular panels, multiple physical wiring paths, text, geometry, scrolling compositions, gradients, icons and effects.
 
 ## Before connecting hardware
 
-Use a suitable external supply for the LED panels and connect the supply ground, panel ground and micro:bit ground together. Do not power a matrix panel from the micro:bit 3 V pin. Follow the [wiring guide](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v1.0.0/docs/wiring.md).
+Use a suitable external supply for the LED panels and connect the supply ground, panel ground and micro:bit ground together. Do not power a matrix panel from the micro:bit 3 V pin. Follow the [wiring guide](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v1.1.0/docs/wiring.md).
 
 The default data pin is P1 and the default brightness is 128. High brightness on many LEDs can require substantial current.
 
@@ -60,7 +60,7 @@ Use the **add scrolling** blocks to combine several texts and shapes. Add every 
 
 Six font choices are available: SARDU, micro:bit Extended, proportional versions of both, SARDU Compact and SARDU Compact Proportional. Font sizes range from 1× to 4×. The orientation rotates the complete rendered line.
 
-See [fonts and text measurements](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v1.0.0/docs/fonts.md) for exact pixel heights and examples of positioning multiple lines on a matrix.
+See [fonts and text measurements](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v1.1.0/docs/fonts.md) for exact pixel heights and examples of positioning multiple lines on a matrix.
 
 Text-measurement blocks report the exact width and height used by rendering. They are useful for positioning a fully visible string or calculating a bounce path.
 
@@ -87,8 +87,8 @@ The generic part does not reproduce the panels' two-dimensional geometry. A matr
 - Static drawing is not visible: add `show()` after composing the scene.
 - Queued items run separately: add all items before one `startScrolling()` call.
 
-For exact signatures see the [public API](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v1.0.0/docs/api.md). For release verification see the [test procedure](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v1.0.0/docs/testing.md).
+For exact signatures see the [public API](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v1.1.0/docs/api.md). For release verification see the [test procedure](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v1.1.0/docs/testing.md).
 
 ```package
-pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#v1.0.0
+pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#v1.1.0
 ```

@@ -1,6 +1,6 @@
 # Blocchi grafici nativi
 
-[English](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v1.0.0/docs/graphics.md)
+[English](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v1.1.0/docs/graphics.md)
 
 I blocchi Grafica permettono di disegnare direttamente dentro MakeCode nei formati **8×8, 16×16, 32×8, 8×32, 16×8 e 8×16**. Una grafica che supera i bordi della matrice viene ritagliata in sicurezza. Apri la sottocategoria Grafica di SARDU Matrix. L’editor dei pixel parte chiuso: trascina il blocco desiderato nello spazio di lavoro, poi usa (+) per modificare i pixel e (-) per richiuderlo. Coordinate e modalità restano visibili; richiudere l’editor conserva tutti i pixel.
 
@@ -31,5 +31,5 @@ Le coordinate sono logiche e indipendenti dal cablaggio lineare, progressivo o Z
 Le righe del blocco sono valori temporanei e non creano un secondo framebuffer RGB permanente. Il framebuffer della matrice resta `larghezza × altezza × 3` byte.
 
 ```package
-pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#v1.0.0
+pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#v1.1.0
 ```

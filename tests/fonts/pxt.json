@@ -1,0 +1,11 @@
+{
+    "name": "sardu-fonts-test",
+    "dependencies": {
+        "core": "*",
+        "microphone": "*",
+        "pxt-sardu-matrix": "file:../.."
+    },
+    "files": ["main.ts"],
+    "supportedTargets": ["microbit"],
+    "preferredEditor": "tsprj"
+}

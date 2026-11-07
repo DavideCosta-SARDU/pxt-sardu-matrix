@@ -58,7 +58,13 @@ enum SarduMatrixFont {
     //% block="SARDU compact"
     SarduCompact = 4,
     //% block="SARDU compact proportional"
-    SarduCompactProportional = 5
+    SarduCompactProportional = 5,
+    //% block="Fixed 4x6"
+    Fixed4x6 = 9,
+    //% block="font8x8 (V2)"
+    Font8x8 = 7,
+    //% block="Spleen 8x16 (V2)"
+    Spleen8x16 = 8
 }
 
 /** Integer scale applied to a text font. */

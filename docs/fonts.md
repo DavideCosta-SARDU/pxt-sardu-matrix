@@ -2,7 +2,7 @@
 
 [Italiano](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v1.0.0/docs/_locales/it/fonts.md)
 
-SARDU-Matrix includes six fonts. Their pixel height is fixed for each family and is multiplied by the selected 1×–4× scale. Proportional fonts change character width, not height.
+SARDU-Matrix includes nine fonts. Their pixel height is fixed for each family and is multiplied by the selected 1×–4× scale. Proportional fonts change character width, not height.
 
 ## Font dimensions
 
@@ -14,6 +14,9 @@ SARDU-Matrix includes six fonts. Their pixel height is fixed for each family and
 | SARDU Compact Proportional | Variable, plus spacing | 8 | 16 | 24 | 32 |
 | micro:bit Extended | 5 pixels per glyph, plus spacing | 7 | 14 | 21 | 28 |
 | micro:bit Proportional | Variable, plus spacing | 7 | 14 | 21 | 28 |
+| Fixed 4x6 | 4 pixels, plus spacing | 6 | 12 | 18 | 24 |
+| font8x8 (V2) | 8 pixels, plus spacing | 8 | 16 | 24 | 32 |
+| Spleen 8x16 (V2) | 8 pixels, plus spacing | 16 | 32 | 48 | 64 |
 
 The spacing column between characters is also multiplied by the selected scale. The exact width of proportional text therefore depends on the characters in the string.
 
@@ -59,3 +62,16 @@ All SARDU variants share the same 8-pixel vertical metric. Both micro:bit varian
 ```package
 pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#v1.0.0
 ```
+
+## New font compatibility
+
+**Fixed 4x6** supports micro:bit V1 and V2. **font8x8 (V2)** and
+**Spleen 8x16 (V2)** require micro:bit V2: their tables do not occupy V1 Flash.
+Using them on V1 raises error 927 (a V2-only feature); the font is never silently
+substituted. The six existing fonts retain their data, identifiers, dimensions
+and defaults.
+
+The three new fonts include printable ASCII and Latin-1, including Italian accents.
+Spleen retains its original design, including a and g. Tables use lossless packing
+without changing glyph pixels or allocating decompression buffers in RAM.
+Sources and licences: [THIRD_PARTY_FONTS.md](../THIRD_PARTY_FONTS.md).

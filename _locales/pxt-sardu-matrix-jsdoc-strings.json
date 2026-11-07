@@ -610,6 +610,7 @@
   "sarduMatrixInternal.drawLine": "Draws a clipped integer line into the matrix buffer.",
   "sarduMatrixInternal.drawRectangle": "Draws a clipped inclusive rectangle outline into the matrix buffer.",
   "sarduMatrixInternal.drawText": "Private - do not use. Internal matrix implementation.",
+  "sarduMatrixInternal.extraFontColumn": "Private - do not use. Internal matrix implementation.",
   "sarduMatrixInternal.fadeEffect": "Private - do not use. Internal matrix implementation.",
   "sarduMatrixInternal.fillRectangle": "Draws a clipped inclusive filled rectangle into the matrix buffer.",
   "sarduMatrixInternal.firstVisibleGlyph": "Private - do not use. Internal matrix implementation.",

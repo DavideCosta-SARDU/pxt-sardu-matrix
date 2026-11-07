@@ -9,7 +9,8 @@ The root `test.ts` is a representative public API smoke program for V1/V2, inclu
 | `basic` | matrix creation, pixels, brightness, buffer/display clearing and `show` |
 | `configuration` | all four public creation methods and reported dimensions |
 | `core` | all mapping combinations, module layouts, fonts and RGB/HSL conversion |
-| `text-shapes` | six fonts, four orientations, centering, static geometry, all icons and native 8×8 graphics |
+| `text-shapes` | the six original fonts, four orientations, centering, static geometry, all icons and native 8×8 graphics |
+| `fonts` | new font heights and Fixed 4x6 accent pixels; A/B/A+B scrolling comparison (font8x8 and Spleen buttons require V2) |
 | `scrolling` | immediate, edge and coordinate-path text scrolling |
 | `scrolling-queued` | queued text, path text and all scrolling geometry |
 | `gradients` | deterministic color interpolation plus static and scrolling text gradients |

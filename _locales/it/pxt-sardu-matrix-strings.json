@@ -196,5 +196,8 @@
   "{id:subcategory}Text": "Testo",
   "{id:subcategory}Geometry": "Geometria",
   "{id:subcategory}Graphics": "Grafica",
-  "{id:subcategory}Effects": "Effetti"
+  "{id:subcategory}Effects": "Effetti",
+  "SarduMatrixFont.Fixed4x6|block": "Fixed 4x6",
+  "SarduMatrixFont.Font8x8|block": "font8x8 (V2)",
+  "SarduMatrixFont.Spleen8x16|block": "Spleen 8x16 (V2)"
 }

@@ -2,7 +2,7 @@
 
 [English](https://github.com/DavideCosta-SARDU/pxt-sardu-matrix/blob/v1.0.0/docs/fonts.md)
 
-SARDU-Matrix include sei font. La loro altezza in pixel è fissa per ogni famiglia e viene moltiplicata per la scala selezionata da 1× a 4×. I font proporzionali modificano la larghezza dei caratteri, non l'altezza.
+SARDU-Matrix include nove font. La loro altezza in pixel è fissa per ogni famiglia e viene moltiplicata per la scala selezionata da 1× a 4×. I font proporzionali modificano la larghezza dei caratteri, non l'altezza.
 
 ## Dimensioni dei font
 
@@ -14,6 +14,9 @@ SARDU-Matrix include sei font. La loro altezza in pixel è fissa per ogni famigl
 | SARDU Compatto Proporzionale | Variabile, più spaziatura | 8 | 16 | 24 | 32 |
 | micro:bit Esteso | 5 pixel per carattere, più spaziatura | 7 | 14 | 21 | 28 |
 | micro:bit Proporzionale | Variabile, più spaziatura | 7 | 14 | 21 | 28 |
+| Fixed 4x6 | 4 pixel, più spaziatura | 6 | 12 | 18 | 24 |
+| font8x8 (V2) | 8 pixel, più spaziatura | 8 | 16 | 24 | 32 |
+| Spleen 8x16 (V2) | 8 pixel, più spaziatura | 16 | 32 | 48 | 64 |
 
 Anche la colonna di spazio tra i caratteri viene moltiplicata per la scala selezionata. La larghezza esatta di un testo proporzionale dipende quindi dai caratteri della stringa.
 
@@ -59,3 +62,16 @@ Tutte le varianti SARDU condividono la metrica verticale di 8 pixel. Entrambe le
 ```package
 pxt-sardu-matrix=github:DavideCosta-SARDU/pxt-sardu-matrix#v1.0.0
 ```
+
+## Compatibilità dei nuovi font
+
+**Fixed 4x6** è disponibile su micro:bit V1 e V2. **font8x8 (V2)** e
+**Spleen 8x16 (V2)** richiedono micro:bit V2: le loro tabelle non occupano la Flash
+di V1. Usarli su V1 produce l'errore 927 (funzione riservata a V2); non viene
+sostituito silenziosamente il font. I sei font precedenti conservano dati,
+identificativi, dimensioni e valori predefiniti.
+
+I tre nuovi font includono ASCII stampabile e Latin-1, con gli accenti italiani.
+Spleen conserva il disegno originale, incluse a e g. Le tabelle sono compresse
+senza modificare i pixel e senza buffer di decompressione in RAM.
+Fonti e licenze: [THIRD_PARTY_FONTS.md](../../../THIRD_PARTY_FONTS.md).

@@ -49,7 +49,10 @@
         "docs/_locales/it/wiring.md",
         "_locales/it/pxt-sardu-matrix-strings.json",
         "_locales/it/pxt-sardu-matrix-jsdoc-strings.json",
-        "pxtparts.json"
+        "pxtparts.json",
+        "font-extra.ts",
+        "font-v2.cpp",
+        "THIRD_PARTY_FONTS.md"
     ],
     "testFiles": [
         "test.ts"

@@ -20,23 +20,7 @@ namespace sarduMatrixInternal {
     // The official micro:bit 5x5 system font, as distributed by MakeCode in
     // pxt-common-packages. Each record is a two-byte character code followed
     // by five bitmap columns and one blank advance column.
-    const MICROBIT_FONT = hex`
-2000000000000000 2100001700000000 2200000300030000 23000a1f0a1f0a00 24000a17151d0a00 2500130904121900
-26000a15150a1000 2700000300000000 2800000e11000000 290000110e000000 2a00000a040a0000 2b0000040e040000
-2c00001008000000 2d00000404040000 2e00000800000000 2f00100804020100 30000e11110e0000 310000121f100000
-3200191515120000 33000911150b0000 34000c0a091f0800 3500171515150900 3600081416150800 3700110905030100
-38000a1515150a00 390002150d050200 3a00000a00000000 3b0000100a000000 3c0000040a110000 3d00000a0a0a0000
-3e0000110a040000 3f00020115050200 40000e1115090e00 41001e05051e0000 42001f15150a0000 43000e1111110000
-44001f11110e0000 45001f1515110000 46001f0505010000 47000e1111150c00 48001f04041f0000 4900111f11000000
-4a000911110f0100 4b001f040a110000 4c001f1010100000 4d001f0204021f00 4e001f0204081f00 4f000e11110e0000
-50001f0505020000 5100060919160000 52001f05050a1000 5300121515090000 540001011f010100 55000f10100f0000
-5600070810080700 57001f0804081f00 58001b04041b0000 590001021c020100 5a00191513110000 5b00001f11110000
-5c00010204081000 5d000011111f0000 5e00000201020000 5f00101010101000 6000000102000000 61000c12121e1000
-62001f1414080000 63000c1212120000 64000814141f0000 65000e1515120000 6600041e05010000 67000215150f0000
-68001f0404180000 6900001d00000000 6a000010100d0000 6b001f040a100000 6c00000f10100000 6d001e0204021e00
-6e001e02021c0000 6f000c12120c0000 70001e0a0a040000 7100040a0a1e0000 72001c0202020000 730010140a020000
-7400000f14141000 75000e10101e1000 7600060810080600 77001e1008101e00 7800120c0c120000 7900121408040200
-7a00121a16120000 7b0000041f110000 7c00001f00000000 7d00111f04000000 7e00000404080800`;
+    let microBitSimulatorFont: Buffer = null;
 
     export const SARDU_GLYPH_WIDTH = 5;
     export const FONT_GAP = 1;
@@ -109,12 +93,29 @@ namespace sarduMatrixInternal {
     // converts the same official column table to that format for the simulator.
     //% shim=images::charCodeBuffer
     function systemFontGlyph(characterCode: number): Buffer {
+        if (!microBitSimulatorFont) microBitSimulatorFont = hex`
+2000000000000000 2100001700000000 2200000300030000 23000a1f0a1f0a00 24000a17151d0a00 2500130904121900
+26000a15150a1000 2700000300000000 2800000e11000000 290000110e000000 2a00000a040a0000 2b0000040e040000
+2c00001008000000 2d00000404040000 2e00000800000000 2f00100804020100 30000e11110e0000 310000121f100000
+3200191515120000 33000911150b0000 34000c0a091f0800 3500171515150900 3600081416150800 3700110905030100
+38000a1515150a00 390002150d050200 3a00000a00000000 3b0000100a000000 3c0000040a110000 3d00000a0a0a0000
+3e0000110a040000 3f00020115050200 40000e1115090e00 41001e05051e0000 42001f15150a0000 43000e1111110000
+44001f11110e0000 45001f1515110000 46001f0505010000 47000e1111150c00 48001f04041f0000 4900111f11000000
+4a000911110f0100 4b001f040a110000 4c001f1010100000 4d001f0204021f00 4e001f0204081f00 4f000e11110e0000
+50001f0505020000 5100060919160000 52001f05050a1000 5300121515090000 540001011f010100 55000f10100f0000
+5600070810080700 57001f0804081f00 58001b04041b0000 590001021c020100 5a00191513110000 5b00001f11110000
+5c00010204081000 5d000011111f0000 5e00000201020000 5f00101010101000 6000000102000000 61000c12121e1000
+62001f1414080000 63000c1212120000 64000814141f0000 65000e1515120000 6600041e05010000 67000215150f0000
+68001f0404180000 6900001d00000000 6a000010100d0000 6b001f040a100000 6c00000f10100000 6d001e0204021e00
+6e001e02021c0000 6f000c12120c0000 70001e0a0a040000 7100040a0a1e0000 72001c0202020000 730010140a020000
+7400000f14141000 75000e10101e1000 7600060810080600 77001e1008101e00 7800120c0c120000 7900121408040200
+7a00121a16120000 7b0000041f110000 7c00001f00000000 7d00111f04000000 7e00000404080800`;
         const glyph = control.createBuffer(5);
         const offset = (characterCode - 32) * 8 + 2;
         for (let row = 0; row < 5; row++) {
             let bits = 0;
             for (let column = 0; column < 5; column++) {
-                if ((MICROBIT_FONT[offset + column] & (1 << row)) != 0)
+                if ((microBitSimulatorFont[offset + column] & (1 << row)) != 0)
                     bits |= 1 << (4 - column);
             }
             glyph[row] = bits;
@@ -189,7 +190,8 @@ namespace sarduMatrixInternal {
      * Private - do not use. Internal matrix implementation.
      */
     export function normalizedFont(font: SarduMatrixFont): SarduMatrixFont {
-        if (font == SarduMatrixFont.MicroBitExtended || font == SarduMatrixFont.SarduProportional || font == SarduMatrixFont.MicroBitProportional || font == SarduMatrixFont.SarduCompact || font == SarduMatrixFont.SarduCompactProportional) return font;
+        // IDs 0..5 and 7..9 are supported; 6 remains excluded.
+        if (font >= 0 && font <= 9 && (font | 0) == font && ((0x3bf >> font) & 1) != 0) return font;
         return SarduMatrixFont.Sardu;
     }
 
@@ -214,7 +216,10 @@ namespace sarduMatrixInternal {
      * Private - do not use. Internal matrix implementation.
      */
     export function fontBaseHeight(font: SarduMatrixFont): number {
-        return isMicroBitFont(normalizedFont(font)) ? 7 : 8;
+        font = normalizedFont(font);
+        if (font == SarduMatrixFont.Fixed4x6) return 6;
+        if (font == SarduMatrixFont.Spleen8x16) return 16;
+        return isMicroBitFont(font) ? 7 : 8;
     }
 
     /**
@@ -222,6 +227,8 @@ namespace sarduMatrixInternal {
      */
     export function glyphWidth(font: SarduMatrixFont, characterCode: number): number {
         font = normalizedFont(font);
+        if (font == SarduMatrixFont.Fixed4x6) return 4;
+        if (font == SarduMatrixFont.Font8x8 || font == SarduMatrixFont.Spleen8x16) return 8;
         if (font == SarduMatrixFont.SarduProportional)
             return proportionalRight(characterCode) - proportionalLeft(characterCode) + 1;
         if (font == SarduMatrixFont.MicroBitProportional) {
@@ -251,6 +258,8 @@ namespace sarduMatrixInternal {
         microBitBuffer: Buffer = null
     ): number {
         font = normalizedFont(font);
+        if (font == SarduMatrixFont.Fixed4x6 || font == SarduMatrixFont.Font8x8 || font == SarduMatrixFont.Spleen8x16)
+            return extraFontColumn(characterCode, column, font);
         if (isMicroBitFont(font)) {
             if (!microBitBuffer) microBitBuffer = microBitGlyph(characterCode);
             if (font == SarduMatrixFont.MicroBitProportional)

@@ -2,7 +2,7 @@
 
 SARDU-Matrix is a configurable RGB LED matrix extension for Microsoft MakeCode and micro:bit. It uses the official Microsoft `pxt-neopixel` extension as its RGB backend.
 
-Version 1.1.0 adds clearer text blocks, collapsible pixel editors and new fonts while preserving the existing public API. Fixed 4x6 supports micro:bit V1 and V2; font8x8 and Spleen 8x16 require V2. Representative programs compile for both boards, subject to V1 memory limits. The tested V2 configuration uses six 16×16 panels in a 96×16 display. The [test record](docs/testing.md#verified-release-history) distinguishes compilation, editor and physical results.
+Version 1.1.0 adds clearer text blocks, collapsible pixel editors and new fonts while preserving the existing public API. Fixed 4x6 is available on micro:bit V1 and V2. Due to V1's limited program memory, font8x8 and Spleen 8x16 are available only on V2 and are labelled `(V2)` in the font selector. Representative programs compile for both boards, subject to V1 memory limits. The tested V2 configuration uses six 16×16 panels in a 96×16 display. The [test record](docs/testing.md#verified-release-history) distinguishes compilation, editor and physical results.
 
 ## micro:bit V1 and V2
 

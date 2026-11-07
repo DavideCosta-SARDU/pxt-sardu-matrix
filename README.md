@@ -10,10 +10,6 @@ Both boards support the extension. V1 has less program memory and RAM: a program
 
 The coordinate-based scrolling block starts at X = 16 by default. For a different display width, connect the matrix width block to X as a normal value block, or use **scroll text from edge** to position text automatically.
 
-Projects created before v0.9.0 must update enum type names from `Matrix…` to `SarduMatrix…`. For Blocks projects, follow the [update procedure](docs/api.md#updating-existing-projects) before changing the extension version.
-
-Since v0.9.0, the package identifier is `pxt-sardu-matrix`, matching the repository and the dependency created by MakeCode tutorials. Existing projects using the old `sardu-matrix` dependency key must rename that key in `pxt.json` while keeping its version reference, so block Help can resolve the included documentation. The `sarduMatrix` programming namespace is unchanged.
-
 ## Installation in MakeCode
 
 1. Open [MakeCode for micro:bit](https://makecode.microbit.org/).
